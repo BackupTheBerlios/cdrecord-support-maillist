@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] BD-RE: getting nominal max write speed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C5011190B.5030508%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000855.html">
+   <LINK REL="Next"  HREF="000857.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] BD-RE: getting nominal max write speed</H1>
+    <B>Omega Weapon</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C5011190B.5030508%40gmail.com%3E"
+       TITLE="[Cdrecord-support] BD-RE: getting nominal max write speed">omegaphil at gmail.com
+       </A><BR>
+    <I>Thu Jul 26 12:16:43 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000855.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+        <LI>Next message: <A HREF="000857.html">[Cdrecord-support] BD-R multi session disc finalises after the	first session?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 26/07/12 11:07, Omega Weapon wrote:
+&gt;<i> On 26/07/12 10:14, Joerg Schilling wrote:
+</I>&gt;&gt;<i> Omega Weapon&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Right, I have done more work on this - since I am calling the
+</I>&gt;&gt;&gt;<i> correct mkisofs and cdrecord direct, I now get 2x burning - I
+</I>&gt;&gt;&gt;<i> assume this means the strange defect recovery stuff is no longer
+</I>&gt;&gt;&gt;<i> happening? I had previously told k3b to use cdrecord whereever
+</I>&gt;&gt;&gt;<i> possible, perhaps growisofs was somehow to blame for the previous
+</I>&gt;&gt;&gt;<i> slow burning.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> growisofa operates on formatted media and this enforces a defect
+</I>&gt;&gt;<i> handling that makes writes slow.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> So, now I am in a position where the drive probably doesnt
+</I>&gt;&gt;&gt;<i> recognise the media, and subsequently burns at 2x rather than the
+</I>&gt;&gt;&gt;<i> media's rated 6x. To counter this I used the following:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> /opt/schily/bin/cdrecord -v -multi -fs=8m -driveropts=forcespeed
+</I>&gt;&gt;&gt;<i> -speed=4 -dev=/dev/sr0 &quot;/mnt/Storage_1/Temporary Storage
+</I>&gt;&gt;&gt;<i> Folder/Processing Folder/Burning/disc_image.iso&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> However, cdrecord says 'Starting to write CD/DVD/BD at speed 0 in
+</I>&gt;&gt;&gt;<i> real SAO mode for multi session' - presumably if the force speed
+</I>&gt;&gt;&gt;<i> stuff works, it should say 4x? It then proceeds to burn at 2x.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Am I correct in understanding that this is wrong? The drive
+</I>&gt;&gt;&gt;<i> reports that it supports forcespeed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Cdrecord depends on the speed selection of the drive. You may
+</I>&gt;&gt;<i> request a write speed from the drive but the drive may ignore this
+</I>&gt;&gt;<i> request and select a lower speed.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The actual speed depends on the constraints and the drive/media
+</I>&gt;&gt;<i> pairing is one of the criteria.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> J&#246;rg
+</I>&gt;&gt;<i>
+</I>
+Excellent, that clears up the defect management problem then. The reason
+why I'm testing cdrecord etc direct is because:
+
+1. k3b reported all BD burns as failed due to write I/O error right at
+the end, yet no errors were reported in the log.
+2. It had no idea what the size of the disc was - literally files
+written that CRC'd to 0000... in the first burn.
+3. The slow write issue due to unwanted defect management.
+
+So, now I have a few partial and full BD-R burns under my belt courtesy
+f cdrecord, I can see that if I never did this research project burning
+blurays would remain a mess. Please can you mail me an email address I
+can Paypal to? Since basically you 'implemented' stopping defect
+management already ;)
+
+OK, so the 2x issue probably means that the drive is ignoring the order
+to burn at a higher speed, even though it purports to support
+forcespeed. Shame - perhaps this is due to the media being LTH.
+
+I have started to look into getting the drive's firmware out of it to
+find whatever this media table is, but the special Liteon tools are all
+Windows-based and dont work in WINE (Debian Testing) :/
+
+One thing that I havent found yet with cdrecord is a verification mode -
+with Nero back in the Windows days and now k3b, I always have it verify
+what it burnt immediately after the burn, since the burning tool is the
+only thing that actually knows what has been burnt (i.e. confirming the
+contents of the sectors that have been burnt, rather than hashing files
+in a filesytem which I can do). If it isn't there, is this beyond the
+scope of cdrecord currently?
+
+Thanks
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000855.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+	<LI>Next message: <A HREF="000857.html">[Cdrecord-support] BD-R multi session disc finalises after the	first session?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#856">[ date ]</a>
+              <a href="thread.html#856">[ thread ]</a>
+              <a href="subject.html#856">[ subject ]</a>
+              <a href="author.html#856">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] -scanbus broken with hardware raid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3Cop.u28ioglk1e62zd%40balu.cs.uni-paderborn.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000483.html">
+   <LINK REL="Next"  HREF="000487.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] -scanbus broken with hardware raid</H1>
+    <B>Matthias Andree</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3Cop.u28ioglk1e62zd%40balu.cs.uni-paderborn.de%3E"
+       TITLE="[Cdrecord-support] -scanbus broken with hardware raid">matthias.andree at gmx.de
+       </A><BR>
+    <I>Wed Nov 11 15:32:30 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000483.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+        <LI>Next message: <A HREF="000487.html">[Cdrecord-support] cdrtools-2.01.01a68 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Am 10.11.2009, 16:40 Uhr, schrieb Joerg Schilling  
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt;:
+
+&gt;<i> Joe Feise &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">jfeise at feise.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I have a SCSI hardware RAID system, using an Adaptec 2200S dual channel  
+</I>&gt;&gt;<i> card.
+</I>&gt;&gt;<i> Channel 1 has a RAID 1 and a RAID 0 disk, channel 2 has a CD-ROM drive.
+</I>&gt;&gt;<i> cdrecord -scanbus shows this output:
+</I>&gt;&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>
+Rather missing feature or support for Linux interfaces.
+
+Spare the world such useless warnings.
+If that were a technical complaint, it might make sense.
+
+&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a67 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;&gt;<i> 1995-2009 J&#246;rg Schilling
+</I>&gt;&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;&gt;<i> scsibus0:
+</I>&gt;&gt;<i>         0,0,0     0) 'Adaptec ' '2200S Legacy    ' 'V1.0' Disk
+</I>&gt;&gt;<i>         0,1,0     1) 'Adaptec ' 'Media           ' 'V1.0' Disk
+</I>&gt;&gt;<i>         0,2,0     2) *
+</I>&gt;&gt;<i>         0,3,0     3) 'MAXTOR  ' 'ATLAS10K5_147WLS' 'GVV0' Disk
+</I>&gt;&gt;<i>         0,4,0     4) *
+</I>&gt;&gt;<i>         0,5,0     5) 'YAMAHA  ' 'CRW-F1S         ' '1.0g' Removable  
+</I>&gt;&gt;<i> CD-ROM
+</I>&gt;&gt;<i>         0,6,0     6) *
+</I>&gt;&gt;<i>         0,7,0     7) *
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> However, sgdiag (from <A HREF="http://scsirastools.sourceforge.net/">http://scsirastools.sourceforge.net/</A>) shows the  
+</I>&gt;&gt;<i> correct
+</I>&gt;&gt;<i> output:
+</I>&gt;&gt;<i> -- sgdiag v1.60 log started at Fri Nov  6 08:32:13 2009
+</I>&gt;&gt;<i>  0 /dev/sg0 [0:0:0:0] Disk Adaptec  2200S Legacy     V1.0  [em]
+</I>&gt;&gt;<i>  1 /dev/sg1 [0:0:1:0] Disk Adaptec  Media            V1.0  [em]
+</I>&gt;&gt;<i>  2 /dev/sg2 [0:1:0:0] Disk ModusLnk                                 [em]
+</I>&gt;&gt;<i>  3 /dev/sg3 [0:1:1:0] Disk ModusLnk MXJ3300SC800600W M108   ML0001  [em]
+</I>&gt;&gt;<i>  4 /dev/sg4 [0:1:3:0] Disk MAXTOR   ATLAS10K5_147WLS GVV0 D4Y00QYK  [em]
+</I>&gt;&gt;<i>  5 /dev/sg5 [0:2:5:0] CDRM YAMAHA   CRW-F1S          1.0g 16/04/03  [em]
+</I>                 | | | \___ LUN
+                 | | \___ device ID
+                 | \___ channel
+                 \___ bus/host adaptor
+
+...
+
+&gt;<i> Linux drivers make a strange assumptions by calling the different SCSI  
+</I>&gt;<i> busses
+</I>&gt;<i> on a single card &quot;channels&quot; but without implementing a kernel interface  
+</I>&gt;<i> that
+</I>&gt;<i> allows to ask about the number of busses on that card. This makes it  
+</I>&gt;<i> impossible
+</I>&gt;<i> to implement a mapping from the Linux Scheme to what the SCSI standard  
+</I>&gt;<i> defines
+</I>&gt;<i> for the CAM interface.
+</I>
+This is false. How could sgdiag then have obtained the bus:channel:id:lun  
+information that Joe showed? The truth is that sgdiag uses ioctl()s to  
+obtain this information. Look at lines 695 - 706 of  
+&lt;<A HREF="http://scsirastools.svn.sourceforge.net/viewvc/scsirastools/trunk/src/sgcommon.c?revision=22&amp;view=markup">http://scsirastools.svn.sourceforge.net/viewvc/scsirastools/trunk/src/sgcommon.c?revision=22&amp;view=markup</A>&gt;,  
+695-698, 703-706, 713f in particular.
+
+And IIRC your code iterates over all /dev/sg* nodes anyways, so you get  
+information about all relevant buses (those with devices attached).
+
+Please don't ask me where the official documentation for these interfaces  
+resides, I'm too unmotivated to dig that up for you, and it's not my  
+software that invents (rather than queries the kernel) such IDs...
+
+Even after all those years I fail to see why we conceptually need to map  
+devices to the bus/ch/id/lun thing only to have cdrecord maps it back  
+later. That's two needless indirections and *heaps* of code that needs to  
+be cared for all the time. We should just be using a device node and be  
+done.
+
+-- 
+Matthias Andree
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000483.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+	<LI>Next message: <A HREF="000487.html">[Cdrecord-support] cdrtools-2.01.01a68 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

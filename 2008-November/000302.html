@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] error after 773918720 bytes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20after%20773918720%20bytes&In-Reply-To=%3CF1C09617-3BA2-474D-905A-CB349B2C638C%40brown.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000298.html">
+   <LINK REL="Next"  HREF="000303.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] error after 773918720 bytes</H1>
+    <B>Margaret Doll</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20after%20773918720%20bytes&In-Reply-To=%3CF1C09617-3BA2-474D-905A-CB349B2C638C%40brown.edu%3E"
+       TITLE="[Cdrecord-support] error after 773918720 bytes">margaret_doll at brown.edu
+       </A><BR>
+    <I>Tue Nov 11 22:15:29 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000298.html">[Cdrecord-support] delete directory on cdrw
+</A></li>
+        <LI>Next message: <A HREF="000303.html">[Cdrecord-support] Fwd: error after 773918720 bytes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#302">[ date ]</a>
+              <a href="thread.html#302">[ thread ]</a>
+              <a href="subject.html#302">[ subject ]</a>
+              <a href="author.html#302">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have been trying to burn cds on two different  RedHat systems,  
+2.6.9-78.ELsmp and 2.4.21-57.ELsmp, using cdrecord-2.01.1-5.0.EL4.4  
+and cdrecord-2.01.0.a32-0.EL3.6   respectively.
+
+I am using Magnavox  CD-R cds.  I am trying to record data directories  
+that are less than 4 Gb in size.
+
+I am using the following commands:
+
+mkisof -R -o  disk1.iso disk1
+cdrecord speed=4 dev=2,0,0 disk1.iso
+
+and
+
+cdrecord speed=4 dev=/dev/cdwriter:@ disk1.iso
+
+Both systems are  Dell optiplex GX 620s
+
+I keep getting the WARNING:  Data may not fit on current disk.
+		Notice:  Most recorders cannot write CD's &gt;= 90 minutes.
+	        Notice:  Use - ignsize option to allow &gt;= 90 minutes.
+
+If I use  the -ignsize option on either computer, I get the error  
+message
+
+Error after 773918720 bytes.
+
+I used to be able to record without problems.   What's going on?
+
+The Vendor_info from cdrecord:  'HL-DT-ST'
+Identification:  DVD+-RW GWA4164B
+
+Using generic SCSI-3/mmc
+Drvier flags:  MMC-3 SWABAUDIO BURNFREE
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000298.html">[Cdrecord-support] delete directory on cdrw
+</A></li>
+	<LI>Next message: <A HREF="000303.html">[Cdrecord-support] Fwd: error after 773918720 bytes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#302">[ date ]</a>
+              <a href="thread.html#302">[ thread ]</a>
+              <a href="subject.html#302">[ subject ]</a>
+              <a href="author.html#302">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

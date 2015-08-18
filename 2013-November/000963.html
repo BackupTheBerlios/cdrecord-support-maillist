@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C20131116033954.GA17938%40skamandros.andrews-corner.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000957.html">
+   <LINK REL="Next"  HREF="000964.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....</H1>
+    <B>andrew</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C20131116033954.GA17938%40skamandros.andrews-corner.org%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....">andrew.david.strong at gmail.com
+       </A><BR>
+    <I>Sat Nov 16 04:39:54 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000957.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+        <LI>Next message: <A HREF="000964.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#963">[ date ]</a>
+              <a href="thread.html#963">[ thread ]</a>
+              <a href="subject.html#963">[ subject ]</a>
+              <a href="author.html#963">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for your reply:
+
+On Thu, Nov 14, 2013 at 02:10:50PM +0100, Joerg Schilling wrote:
+
+&gt;<i> How is this binary installed?
+</I>
+I have installed the latest source using a standard Slackware build
+script:
+
+<A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/</A>
+
+and the actual script:
+
+<A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild</A>
+
+simply using the latest source instead of the version in that
+location.
+
+&gt;<i> Is it installed suid root or with fcaps?
+</I>
+After installation I have manually altered the permissions as
+suggested in Slackware docs:
+
+chown root:cdrom /usr/bin/cdrecord /usr/bin/cdda2wav
+chmod 4750 /usr/bin/cdrecord /usr/bin/cdda2wav
+
+although cdda2wav is not included in the formal docs for these
+changes. Permissions are:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at skamandros</A>~$ ls -l /usr/bin/cdrecord /usr/bin/cdda2wav                                
+-rwsr-x--- 1 root cdrom 326856 Nov 16 12:16 /usr/bin/cdda2wav
+-rwsr-x--- 1 root cdrom 470408 Nov 16 12:16 /usr/bin/cdrecord
+
+and there is no difference with the error when I make it root:root.
+
+&gt;<i> Does the curent directory allow you to create new files?
+</I>
+Indeed both root and myself as ordinary user can write in this
+directory.
+
+Thanks again,
+
+Andrew
+-- 
+You think that's air you're breathing now?
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000957.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+	<LI>Next message: <A HREF="000964.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#963">[ date ]</a>
+              <a href="thread.html#963">[ thread ]</a>
+              <a href="subject.html#963">[ subject ]</a>
+              <a href="author.html#963">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

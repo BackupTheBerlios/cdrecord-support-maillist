@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] possible buildsystem bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C48761a59.got3xSUa6VbQbSaP%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000263.html">
+   <LINK REL="Next"  HREF="000267.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] possible buildsystem bug</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C48761a59.got3xSUa6VbQbSaP%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] possible buildsystem bug">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 10 16:19:05 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000263.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+        <LI>Next message: <A HREF="000267.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#266">[ date ]</a>
+              <a href="thread.html#266">[ thread ]</a>
+              <a href="subject.html#266">[ subject ]</a>
+              <a href="author.html#266">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> &gt; make -i	---&gt; sh -c &quot;cmd ....&quot;
+</I>&gt;<i> &gt; make	---&gt; sh -ce &quot;cmd ....&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; gmake always calls sh -c &quot;cmd ....&quot; which is the reason for your problem.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Unfortunately POSIX itself is buggy here in the make man page :-(
+</I>&gt;<i>
+</I>&gt;<i> Well, I could also turn the whole thing around and claim that you
+</I>&gt;<i> just realy on an false assumption ;-P
+</I>
+No, see below
+
+&gt;<i> Actually, using &amp;&amp; intead of ; trivially fixed it and reflects what 
+</I>&gt;<i> one expects from an interactive shell - in fact, I didn't ever tried 
+</I>&gt;<i> your way within a makefile (at least, can't rember ;-o).
+</I>
+Well, you did replace ; by &amp;&amp; only at a place whete the left side would never 
+fail. Your change is obviously not related to the problem I describe. There may 
+be another bash bug in your case.
+
+
+&gt;<i> &gt; You should really rethink whether you continue to use gmake.
+</I>&gt;<i>
+</I>&gt;<i> Already did. But at that point I did a bit research with a completely
+</I>&gt;<i> different approach: <A HREF="http://treebuild.metux.de/index.php/Main_Page">http://treebuild.metux.de/index.php/Main_Page</A>
+</I>&gt;<i> It's actually a completely different paradigm: modeling the package's
+</I>&gt;<i> structure instead of build rules (model- instead of process-driven).
+</I>&gt;<i> Not an Ultime Solution (tm), but fine for simply structured packages.
+</I>
+Reading this, I understand that you don't know David Korn ;-)
+
+First, you should read this: 
+
+<A HREF="ftp://ftp.berlios.de/pub/smake/PortableSoftware.ps.gz">ftp://ftp.berlios.de/pub/smake/PortableSoftware.ps.gz</A>
+
+It explains how highly portable software may be build.
+
+
+When I first saw imake 20 years ago, I understood that this is the wrong way 
+and just a big machine to wast CPU cycles.
+
+Later, the FSF started with autoconf which usually does two jobs:
+
+-	create a include file with config data that contain results from
+	fine grained platform tests. This is an implemtation of the ideas
+	of the pioneers of the openSource movement Larry Wall and Rich $alz
+	from around 1980.
+
+-	create modified makefiles. This is not a good idea.
+
+This is why I only use the first part from autoconf. BTW: stay with the working
+old portable autoconf as the new autoconf is based on the existence of bash.
+
+David Korn in 1991 decided to believe that he needs a &quot;make&quot; replacement
+and wrote &quot;nmake&quot;. I (together with a friend) found in 1992 that any halfway 
+modern make supports &quot;include&quot; and allows to write object oriented make rules
+in case a portable solution to implement if/then/else was found.
+
+The result is funny: David Korn's &quot;leaf nmakefiles&quot; look _very_ similar to my 
+makefiles. They are just a table that lists the source files and the options.
+The rest is done by the build system.
+
+I believe that your idea of using xml for this task is &quot;inhumane&quot; ;-)
+
+BTW: bootstrapping my build system is simple as any even brain dead &quot;make&quot; 
+could build the bootstrap-smake and as there is even a way to compile the first
+stage of smake using portable shell scripts. How do you port your software to a 
+new unknown platform?
+
+
+&gt;<i> &gt; Gmake still did not fix a bug that I reported in 1997 although it has been 
+</I>&gt;<i>
+</I>&gt;<i> URL ?
+</I>
+There was a mail exchange 11 years ago. I know of no URLs, you may search for 
+it.
+
+GNU make has a design bug. It does not follow the rule &quot;try to 'make' anything
+before you try to use it&quot;. gmake does this for top the level &quot;makefile&quot; but not
+for included make files. As a result gmake prints error messages that should 
+never appear. In this area gmake is a piece of junk. It tries to hide this bug 
+with the following strategy:
+
+-	start gmake and continue on failed include statements _although_ the 
+	files are missing.
+
+-	execute rules including the ones to create the include files
+
+-	restart (re-exec) gmake with the saved args
+
+I did even allow the gmake authors to use the correct algorithm from smake, so 
+it would not be hard to fix the bug.
+
+3 years ago, I reported a bug in the way gmake examines it's environment. This 
+causes gmake to dump core under certain conditions. This bug could be fixed 
+with a 2 line change that I send. The bug is still present in recent gname 
+releases. I consider gmake to be an &quot;unmaintained program&quot; for this reason.
+
+&gt;<i> &gt; accepted to be a bug by the gmake &quot;crew&quot;. Gmake in addition does not work 
+</I>&gt;<i> &gt; correctly on several &quot;DOS like&quot; platforms like e.g. Win-32. This is because 
+</I>&gt;<i> &gt; the makefile parser from gmake does not correctly handle white space and the 
+</I>&gt;<i> &gt; quote character '\\'.
+</I>&gt;<i>
+</I>&gt;<i> Yep, the tab/whitespace issue is an ugly thing. Back when I was learning
+</I>&gt;<i> (g)make, it caused me some headache ;-o
+</I>
+There is no way to work around this gmake bug unless you like to make the 
+makefile to fail on correct make implementations.
+
+Rule of thumb: better try to fix the defective program instead of trying to 
+work around the bugs.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000263.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+	<LI>Next message: <A HREF="000267.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#266">[ date ]</a>
+              <a href="thread.html#266">[ thread ]</a>
+              <a href="subject.html#266">[ subject ]</a>
+              <a href="author.html#266">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

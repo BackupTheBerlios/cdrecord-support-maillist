@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a73 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b67f90b.irx1q2dU8yvo565J%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000525.html">
+   <LINK REL="Next"  HREF="000530.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a73 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b67f90b.irx1q2dU8yvo565J%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a73 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Feb  2 11:06:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000525.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+        <LI>Next message: <A HREF="000530.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#528">[ date ]</a>
+              <a href="thread.html#528">[ thread ]</a>
+              <a href="subject.html#528">[ subject ]</a>
+              <a href="author.html#528">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i> Hi Jorg,
+</I>&gt;<i>    Thanks for the info. It's making a little more sense but my simple
+</I>&gt;<i> experiment trying it out didn't work and left me with a few questions.
+</I>&gt;<i>
+</I>&gt;<i>    Referring back to the original TOC the source disc looks like this:
+</I>&gt;<i>
+</I>&gt;<i> first: 1 last 8
+</I>&gt;<i> track:   1 lba:         0 (        0) 00:02:00 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   2 lba:     33819 (   135276) 07:32:69 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   3 lba:     52244 (   208976) 11:38:44 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   4 lba:     88201 (   352804) 19:38:01 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   5 lba:    108417 (   433668) 24:07:42 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   6 lba:    137983 (   551932) 30:41:58 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   7 lba:    171364 (   685456) 38:06:64 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   8 lba:    225994 (   903976) 50:15:19 adr: 1 control: 4 mode: 2
+</I>&gt;<i> track:lout lba:    278706 (  1114824) 61:58:06 adr: 1 control: 4 mode: -1
+</I>&gt;<i>
+</I>&gt;<i>    I rearranged slightly your instructions into this:
+</I>&gt;<i>
+</I>&gt;<i> 1) Read audio tracks
+</I>&gt;<i> 2) Read mutltimedia trade
+</I>&gt;<i> 3) Write audio tracks
+</I>&gt;<i> 4) Write multimedia track
+</I>&gt;<i>
+</I>&gt;<i>    Doing that resulted in a different TOC and a disc that only played
+</I>&gt;<i> the first 7 audio tracks correctly:
+</I>&gt;<i>
+</I>&gt;<i> track:   1 lba:         0 (        0) 00:02:00 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   2 lba:     33819 (   135276) 07:32:69 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   3 lba:     52244 (   208976) 11:38:44 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   4 lba:     88201 (   352804) 19:38:01 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   5 lba:    108417 (   433668) 24:07:42 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   6 lba:    137983 (   551932) 30:41:58 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   7 lba:    171364 (   685456) 38:06:64 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   8 lba:    214594 (   858376) 47:43:19 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   9 lba:    290106 (  1160424) 64:30:06 adr: 1 control: 4 mode: 2
+</I>&gt;<i> track:lout lba:    290408 (  1161632) 64:34:08 adr: 1 control: 4 mode: -1
+</I>
+Well, I cannot help as long as I don't knoe what you did.
+
+It seems that you did write the data track twice: once as &quot;audio&quot; and
+later as data track.
+
+&gt;<i>    The other question was about the correct number of sectors to read
+</I>&gt;<i> on the multimedia data. If I understand the man page it seems that
+</I>&gt;<i> readcd reads up through but not including the last sector. Is this
+</I>&gt;<i> true? It says 0-0 reads nothing, 0-1 reads 1 sector. If that's correct
+</I>&gt;<i> then shouldn't I have done
+</I>&gt;<i>
+</I>&gt;<i> readcd sectors=225994-278706
+</I>&gt;<i>
+</I>&gt;<i> which would have read through 278705?
+</I>
+You are correct
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000525.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+	<LI>Next message: <A HREF="000530.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#528">[ date ]</a>
+              <a href="thread.html#528">[ thread ]</a>
+              <a href="subject.html#528">[ subject ]</a>
+              <a href="author.html#528">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E282FDB.8000204%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000802.html">
+   <LINK REL="Next"  HREF="000806.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E282FDB.8000204%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Jul 21 15:55:39 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000802.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000806.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#805">[ date ]</a>
+              <a href="thread.html#805">[ thread ]</a>
+              <a href="subject.html#805">[ subject ]</a>
+              <a href="author.html#805">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> &gt; I am  still waiting for the outout from
+ &gt;
+ &gt; smake -r -p -f /dev/null
+ &gt;
+ &gt; I need the values of all '*MAKE*' variables, SHELL and PATH.
+I am sorry, this was a misunderstanding. I thought just $MAKE. Please
+find it in the attachment. I created both for the boostrap smake and
+the final smake; each under the MSYS shell and the Windows cmd.exe
+shell.
+
+Best regards,
+
+Johannes
+
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>   &gt;  -	What is the exact version of GCC you are using?
+</I>&gt;&gt;<i> gcc (GCC) 3.2.3 (mingw special 20030504-1)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   &gt;  -	What is the exact message from GCC when compikleing the sources?
+</I>&gt;&gt;<i> make.c:4: warning: `__used__? attribute ignored
+</I>&gt;&gt;<i> This is repeated a lot of times (for each file where the __used__
+</I>&gt;&gt;<i> attribute is used)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   &gt;  -	Does GCC continue or abort?
+</I>&gt;&gt;<i> It is a warning message and GCC continues and compilation is successful
+</I>&gt;<i>
+</I>&gt;<i> OK, it seems I need to get GCC sourcecode and check for the changelog file.
+</I>&gt;<i>
+</I>&gt;<i> I am  still waiting for the outout from
+</I>&gt;<i>
+</I>&gt;<i> smake -r -p -f /dev/null
+</I>&gt;<i>
+</I>&gt;<i> I need the values of all '*MAKE*' variables, SHELL and PATH.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: smake_variables.tar.gz
+Type: application/x-gzip
+Size: 1715 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110721/a2d9126f/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110721/a2d9126f/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000802.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000806.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#805">[ date ]</a>
+              <a href="thread.html#805">[ thread ]</a>
+              <a href="subject.html#805">[ subject ]</a>
+              <a href="author.html#805">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

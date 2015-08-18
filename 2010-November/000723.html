@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord -minfo disc loading question
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-minfo%20disc%20loading%20question&In-Reply-To=%3C4cebf505.zLK%2B/LZ2Bt/q6Km0%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000718.html">
+   <LINK REL="Next"  HREF="000719.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord -minfo disc loading question</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-minfo%20disc%20loading%20question&In-Reply-To=%3C4cebf505.zLK%2B/LZ2Bt/q6Km0%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord -minfo disc loading question">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Nov 23 18:08:21 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000718.html">[Cdrecord-support] cdrecord -minfo disc loading question
+</A></li>
+        <LI>Next message: <A HREF="000719.html">[Cdrecord-support] minfo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#723">[ date ]</a>
+              <a href="thread.html#723">[ thread ]</a>
+              <a href="subject.html#723">[ subject ]</a>
+              <a href="author.html#723">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bob DeCarlo &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">bobs2002mail at yahoo.com</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> &#160;
+</I>&gt;<i> When I use cdrecord -minfo to get disc&#160;information, the drawer is loaded even if I do not use the -load option. I want to only read the disc if the drawer is manually closed.&#160;&#160; If the drawer is open, I would like it to stay open and have minfo report no disc.&#160;Is there a way to do this?
+</I>&gt;<i> &#160;
+</I>&gt;<i> This is more useful in systems with several burners.
+</I>
+If you ask cdrecord to do something that only makses sense in case there is a 
+medium, I believe it is hot helpful not to close the tray.
+
+If you like check the tray status, follow the documented way and call 
+
+	readcd sectors=0-0
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000718.html">[Cdrecord-support] cdrecord -minfo disc loading question
+</A></li>
+	<LI>Next message: <A HREF="000719.html">[Cdrecord-support] minfo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#723">[ date ]</a>
+              <a href="thread.html#723">[ thread ]</a>
+              <a href="subject.html#723">[ subject ]</a>
+              <a href="author.html#723">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

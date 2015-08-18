@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] trouble writing 25G blu-ray
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3C4ee08ac5.6yydRoEjyYfEwxwe%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000828.html">
+   <LINK REL="Next"  HREF="000830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] trouble writing 25G blu-ray</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3C4ee08ac5.6yydRoEjyYfEwxwe%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] trouble writing 25G blu-ray">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Dec  8 11:00:37 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000828.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+        <LI>Next message: <A HREF="000830.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#829">[ date ]</a>
+              <a href="thread.html#829">[ thread ]</a>
+              <a href="subject.html#829">[ subject ]</a>
+              <a href="author.html#829">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Steve Kelem &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">steve at kelem.net</A>&gt; wrote:
+
+&gt;<i> I have Cdrecord-ProDVD-ProBD-Clone 3.01a06 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2011 Joerg Schilling.
+</I>&gt;<i> I'm trying to create a 25G blu-ray (BD) for the first time, and it's not working, so I may be failing at any of the steps along the way.
+</I>&gt;<i>
+</I>&gt;<i> The first time I tried it, I ended up with a BD that I can mount on Linux, read the directories, but I get input/output errors when I try to read files, I get:
+</I>&gt;<i> % file *.jpg
+</I>&gt;<i> belel_daniel.jpg:               ERROR: cannot read `belel_daniel.jpg' (Input/output error)
+</I>&gt;<i> bill_dolly.jpg:                 ERROR: cannot read `bill_dolly.jpg' (Input/output error)
+</I>&gt;<i> cozy08.jpg:                     ERROR: cannot read `cozy08.jpg' (Input/output error)
+</I>&gt;<i> jdk-monty.jpg:                  ERROR: cannot read `jdk-monty.jpg' (Input/output error)
+</I>&gt;<i> % ls -l *.jpg
+</I>&gt;<i> -r--r--r--. 1 skelem users 1941262 Jan  6  2008 belel_daniel.jpg
+</I>&gt;<i> -r--r--r--. 1 skelem users 1924970 Jan  6  2008 bill_dolly.jpg
+</I>&gt;<i> -r--r--r--. 1 skelem users 2286365 Jan 27  2008 cozy08.jpg
+</I>&gt;<i> -r--r--r--. 1 skelem users 2009965 Feb 24  2008 jdk-monty.jpg
+</I>&gt;<i>
+</I>&gt;<i> To create the iso, I used:
+</I>&gt;<i> % mkisofs -o /media/Maxtor2/Backups/maxtor2.iso -r -J -hide-rr-moved -V &quot;Backup 2011/12/07&quot; -publisher &quot;user&quot; -iso-level 4 -graft-points photos/Maxtor2/Photos=/media/Maxtor2/Photos photos/Maxtor2/Pictures=/media/Maxtor2/Pictures photos/Maxtor2/pix=/media/Maxtor2/pix
+</I>&gt;<i> Warning: Creating ISO-9660:1999 (version 2) filesystem.
+</I>&gt;<i> Warning: ISO-9660 filenames longer than 31 may cause buffer overflows in the OS.
+</I>&gt;<i> Setting input-charset to 'UTF-8' from locale.
+</I>&gt;<i>   0.04% done, estimate finish Wed Dec  7 13:47:24 2011
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>  99.97% done, estimate finish Wed Dec  7 11:59:19 2011
+</I>&gt;<i> Total translation table size: 0
+</I>&gt;<i> Total rockridge attributes bytes: 767644
+</I>&gt;<i> Total directory bytes: 1501184
+</I>&gt;<i> Path table size(bytes): 3534
+</I>&gt;<i> Max brk space used 707000
+</I>&gt;<i> 12248975 extents written (23923 MB)
+</I>&gt;<i> % ls -l maxtor2.iso
+</I>&gt;<i> -rw-r--r--. 1 user group 25085900800 Dec  7 11:59 maxtor2.iso
+</I>
+This is more than a single layer BD can hold.
+
+&gt;<i> I then got the block size with:
+</I>&gt;<i> % mkisofs -o /media/Maxtor2/Backups/maxtor2.iso -print-size -quiet -r -J -hide-rr-moved -V &quot;Backup 2011/12/07&quot; -publisher &quot;user&quot; -iso-level 4 -graft-points photos/Maxtor2/Photos=/media/Maxtor2/Photos photos/Maxtor2/Pictures=/media/Maxtor2/Pictures photos/Maxtor2/pix=/media/Maxtor2/pix
+</I>&gt;<i> 12248975
+</I>&gt;<i>
+</I>&gt;<i> [sidebar: Do I need all those paramters if the iso file already exists? I tried:
+</I>
+-hide-rr-moved is obsoleted since mkisofs in August 2006 started to correctly 
+follow the Rock Ridge standard.
+
+&gt;<i> % mkisofs -print-size maxtor2.iso
+</I>&gt;<i> Setting input-charset to 'UTF-8' from locale.
+</I>&gt;<i> mkisofs: Value too large for defined data type. File maxtor2.iso is too large for current mkisofs settings - ignoring
+</I>&gt;<i> Total extents scheduled to be written = 174
+</I>&gt;<i> 174
+</I>
+See man page.....
+
+&gt;<i> Which raises three issues:
+</I>&gt;<i> 1. Did I issue the command correctly?
+</I>&gt;<i> 2. Why does mkisofs think that the iso file is too large? What if I'm trying to write a double-layer BD? A double-layer BD can hold 50GB.
+</I>
+See man page.....
+
+&gt;<i> 3. Which number is correct? The 12248975 or the 174?
+</I>&gt;<i> end sidebar]
+</I>&gt;<i>
+</I>&gt;<i> I then wrote the BD with the following command:
+</I>&gt;<i> % cdrecord -v dev=/dev/sr2 tsize=12248975 -dao maxtor2.iso
+</I>
+Why do you use an unsupported dev= parameter?
+Setting dev= to a named driver instead of using the standard SCSI addresses may 
+force Linux to use a bad driver (note that Linux implements more than one 
+driver to access CD-ROM type drives).
+
+Why do you use tsize= at all and why do you use such a strange value?
+
+&gt;<i> That's what created the BD that has directories I can read but files that give input/output errors.
+</I>
+This is as expected: you told cdrecord to do something weird.
+
+&gt;<i> I then tried adding the &quot;s&quot; suffix to the cdrecord command:
+</I>&gt;<i> % cdrecord -v dev=/dev/sr2 tsize=12248975s -dao maxtor2.iso
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a06 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2011 Joerg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '/dev/sr2'
+</I>&gt;<i> devname: '/dev/sr2'
+</I>&gt;<i> scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> Warning: Open by 'devname' is unintentional and not supported.
+</I>&gt;<i> Linux sg driver version: 3.5.27
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'PIONEER '
+</I>&gt;<i> Identifikation : 'BD-RW   BDR-206D'
+</I>&gt;<i> Revision       : '1.56'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: BD-R sequential recording
+</I>&gt;<i> Profile: BD-RE
+</I>&gt;<i> Profile: BD-R random recording
+</I>&gt;<i> Profile: BD-R sequential recording (current)
+</I>&gt;<i> Profile: BD-ROM
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;<i> Driver flags   : NO-CD BD MMC-3 BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1703936 = 1664 KB
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data  23923 MB       
+</I>&gt;<i> Total size:     23923 MB = 12248975 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> WARNING: Phys disk size 4452354 differs from rzone size 12219392! Prerecorded disk?
+</I>&gt;<i> WARNING: Phys start: 25088 Phys end 4477441
+</I>&gt;<i> Blocks total: 12219392 Blocks current: 12219392 Blocks remaining: -29583
+</I>&gt;<i> cdrecord: Data does not fit on current disk.
+</I>&gt;<i>
+</I>&gt;<i> This implies that either the iso is too big, or that I have the wrong sector size (should it be 174 instead of 12248975?), or something else?
+</I>
+As you see, the BD media is 60 MB too small for your data.
+
+You tried to write more than 25 billion bytes.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000828.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+	<LI>Next message: <A HREF="000830.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#829">[ date ]</a>
+              <a href="thread.html#829">[ thread ]</a>
+              <a href="subject.html#829">[ subject ]</a>
+              <a href="author.html#829">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

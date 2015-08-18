@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C48738461.RJu0HDGbpB5rD58L%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000252.html">
+   <LINK REL="Next"  HREF="000264.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C48738461.RJu0HDGbpB5rD58L%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jul  8 17:14:41 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000252.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000264.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> Well, at least you can easily check whether some type has specific size 
+</I>&gt;<i> (which should be enough for int types), eg:
+</I>&gt;<i>
+</I>&gt;<i>     char [((sizeof(int)==2) ? 1 : -1];
+</I>&gt;<i>
+</I>&gt;<i> Obviously, if the size of int != 2, that code won't compile.
+</I>
+OK, but then you would need to run _many_ compile attempts in order to get the 
+right values....
+
+&gt;<i> &gt; cc is there and did always create _correct_ code. gcc on HP-UX (HPPA) did in 
+</I>&gt;<i> &gt; many cases have bugs in the optimizer that caused the code not to work 
+</I>&gt;<i> &gt; correctly.
+</I>&gt;<i>
+</I>&gt;<i> Ok. Is gcc on HP-UX still buggy today ?
+</I>
+I believe it is currently OK, but gcc did recently have the same bug on 
+Linux/x86. It seems that this kind of optimizer bug reappears frequently :-(
+
+
+&gt;<i> &gt; The minimum you would need to do is to _link_ in order to find whether 
+</I>&gt;<i> &gt; tinezone is a function or a variable. 
+</I>&gt;<i>
+</I>&gt;<i> Yep, when I'm talking about &quot;compile-test&quot;, linking is also included ;P
+</I>
+For the HP-UX linker you need to run the program 
+
+
+&gt;<i> &gt; ??? Should I drop support for all platforms that do not match the criteria
+</I>&gt;<i> &gt; for &quot;this century&quot; like Linux which is still non-POSIX?
+</I>&gt;<i>
+</I>&gt;<i> Isn't the signed/unsigned keyword included in ANSI-C ?
+</I>
+There are some pre-ANSI compilers that have unsigned chars by default. _These_ 
+compilers support &quot;signed&quot;. 
+  
+&gt;<i> &gt; I support everything back to ~ 20 years.
+</I>&gt;<i>
+</I>&gt;<i> IMHO, cd burners are only around for about 10 (max.15) years ;-P
+</I>
+Star is around since 1982. Most of my software has been written around 1984.
+
+&gt;<i> &gt; &gt; So you have a better source ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Correct.
+</I>&gt;<i>
+</I>&gt;<i> URL ?
+</I>
+Private contact to the authors of the lib.
+
+&gt;<i> Actually, weak symbols always caused me lot of headache (eg. gpm vs. ncurses issue),
+</I>&gt;<i> so I never use them. Do you have an pointer to appropriate bug reports ?
+</I>&gt;<i>
+</I>&gt;<i> BTW: Why not just using sprintf ?
+</I>
+If you look around you will see that higly portable software may only be built 
+if you include your own portable *printf() subsystem.
+
+
+&gt;<i> &gt; ????  cdrtools _highly_ depend on bit-ordering as it implements SCSI.
+</I>&gt;<i> &gt; This is why a test exist.
+</I>&gt;<i>
+</I>&gt;<i> Why does that prevent you from adding an explicit configure option 
+</I>&gt;<i> to get around the run-test ?
+</I>
+Why should I break my general rules?
+
+I created a _siple_ compile environment for anything. 
+  
+&gt;<i> &gt; You need to understand that compile tests only work if there are correct 
+</I>&gt;<i> &gt; definitions in well known include files _and_ if the linker works correctly.
+</I>&gt;<i>
+</I>&gt;<i> Of course - a working toolchain is vital. If it's broken, there's not much
+</I>&gt;<i> you can do, but fixing/replacing it.
+</I>&gt;<i>
+</I>&gt;<i> Why exactly (and in which cases) does an link+compile test not work this case ?
+</I>
+Mmmmmmm run some test programs to understand......
+
+If you do not know which include file and if you do not know whether the linker
+converts extern .... into COMMON sections, you are forced to do a runtime check.
+
+&gt;<i> &gt; &gt; Why do you need your own malloc() at all ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Used by e.g. &quot;bsh&quot; and &quot;sh&quot;.
+</I>&gt;<i>
+</I>&gt;<i> a) why exactly ?
+</I>&gt;<i> b) required within cdrtools ?
+</I>
+I am not talking about cdrtools. The schily makefilesystem is project 
+independent.
+
+&gt;<i> &gt; I am not going to reduce the content of my source consolidation just to get
+</I>&gt;<i> &gt; questionable results for the rest.
+</I>&gt;<i>
+</I>&gt;<i> Ah, the point is that you've got lot's code shared between several packages,
+</I>&gt;<i> but it's not split into several library packages. That explains a lot, eg.
+</I>&gt;<i> why there's lots of unused code laying around in cdrtools.
+</I>&gt;<i>
+</I>&gt;<i> IMHO, it's wise to make separte packages (eg. one per lib) out of it.
+</I>&gt;<i> cdrtools for example then would only import those packages it really needs,
+</I>&gt;<i> reducing unncessary code (including unnecessary checks).
+</I>
+It turns out to be even more wise to publish the complete consolidation instead 
+of parts that easily become out of sync. 
+
+It reduces the work load......
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000252.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000264.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#255">[ date ]</a>
+              <a href="thread.html#255">[ thread ]</a>
+              <a href="subject.html#255">[ subject ]</a>
+              <a href="author.html#255">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

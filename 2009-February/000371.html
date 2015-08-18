@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Blu-Ray burn errors (sorry,	maybe posted twice)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Blu-Ray%20burn%20errors%20%28sorry%2C%0A%09maybe%20posted%20twice%29&In-Reply-To=%3C49A7D70D.5050904%40dimm.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000370.html">
+   <LINK REL="Next"  HREF="000372.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Blu-Ray burn errors (sorry,	maybe posted twice)</H1>
+    <B>Mark Williams</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Blu-Ray%20burn%20errors%20%28sorry%2C%0A%09maybe%20posted%20twice%29&In-Reply-To=%3C49A7D70D.5050904%40dimm.de%3E"
+       TITLE="[Cdrecord-support] Blu-Ray burn errors (sorry,	maybe posted twice)">mark at dimm.de
+       </A><BR>
+    <I>Fri Feb 27 13:05:33 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000370.html">[Cdrecord-support] Blu-Ray burn errors (sorry, maybe posted twice)
+</A></li>
+        <LI>Next message: <A HREF="000372.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#371">[ date ]</a>
+              <a href="thread.html#371">[ thread ]</a>
+              <a href="subject.html#371">[ subject ]</a>
+              <a href="author.html#371">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joerg, thank you for your quick response!
+
+This behaviour is probably not correlated to temp, it occurs on two 
+different SW-5582 drives
+(one is lying in free air above my PC ...).
+
+It seems to be a hardware problem, I've got the drive specific result 
+codes for this drive:
+(they differ from mmc specifications...)
+
+04/03/01 PERIPHERAL DEVICE WRITE FAULT - TRACKING SERVO FAILURE
+
+But I can reproduce this behaviour on two different drives with 
+different Firmware, so I am rather clueless right now.
+It seems to me that BluRay drives need an activation of the defect 
+management, but I am not sure how to manage this.
+Dvd+rw-Tools call a format command prior to burning, but the source code 
+seems broken, I doesn't work for BD-R media.
+
+So I am poking here and there now, has anybody has successfully used 
+this drive (for large images)?
+
+Thanks,
+Mark
+
+&gt;<i> Mark Williams &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at dimm.de</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm trying to use a Panasonic SW-5582C and the actual cdrecord release
+</I>&gt;&gt;<i> for burning large UDF images (30-40GB).
+</I>&gt;&gt;<i> Burning of media fails in 9 of 10 tries, in dummy mode as in real mode too.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The abort occurs sometimes quick, sometimes half way through the image
+</I>&gt;&gt;<i> file of 33 GB.
+</I>&gt;&gt;<i> One burn process has been successfull (using 1x speed) but this was not
+</I>&gt;&gt;<i> reproducable.
+</I>&gt;&gt;<i> The error seems to be the same everytime (see the appended logs).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm trying Solaris Sparc and Linux x86, both show similar behaviour (vol
+</I>&gt;&gt;<i> management was switched off on Solaris)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sunn uname -r gives SunOS xxx 5.9 Generic_122300-35 sun4u sparc
+</I>&gt;&gt;<i> SUNW,Sun-Fire-V440
+</I>&gt;&gt;<i> Linux was 2.6.18 Debian
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Has anybody used this drive successfully with cdrecord?
+</I>&gt;&gt;<i> I tried Panasonic media and Sony media (manufacturer is Panasonic) which
+</I>&gt;&gt;<i> were recommended for this drive by the distributor,
+</I>&gt;&gt;<i> I've ordered Verbatim, maybe they perform better.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Do you have any suggestions what I am doing wrong?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks in advance,
+</I>&gt;&gt;<i> Mark
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Appendings:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Log of burn error with -v
+</I>&gt;&gt;<i> Log of -v -v -minfo for an empty media
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ====================================================
+</I>&gt;&gt;<i> Coaster
+</I>&gt;&gt;<i> ====================================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> bash-2.05# ./cdrecord -dev=2,1,0 -v /mnt1/OPAS-Archiv/test/burn.img
+</I>&gt;&gt;<i> ./cdrecord: No write mode specified.
+</I>&gt;&gt;<i> ./cdrecord: Asuming -sao mode.
+</I>&gt;&gt;<i> ./cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;&gt;<i> ./cdrecord: Future versions of cdrecord may have different drive
+</I>&gt;&gt;<i> dependent defaults.
+</I>&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a57 (sparc-sun-solaris2.9) Copyright
+</I>&gt;&gt;<i> (C) 1995-2009 J&#246;rg Schilling
+</I>&gt;&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;&gt;<i> scsidev: '2,1,0'
+</I>&gt;&gt;<i> scsibus: 2 target: 1 lun: 0
+</I>&gt;&gt;<i> Warning: Using USCSI interface.
+</I>&gt;&gt;<i> Warning: Volume management is running, medialess managed drives are
+</I>&gt;&gt;<i> invisible.
+</I>&gt;&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;&gt;<i> SCSI buffer size: 64512
+</I>&gt;&gt;<i> atapi: 0
+</I>&gt;&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;&gt;<i> Version        : 2
+</I>&gt;&gt;<i> Response Format: 2
+</I>&gt;&gt;<i> Capabilities   : WBUS16 SYNC
+</I>&gt;&gt;<i> Vendor_info    : 'MATSHITA'
+</I>&gt;&gt;<i> Identifikation : 'BD-MLT SW-5582  '
+</I>&gt;&gt;<i> Revision       : 'BZF2'
+</I>&gt;&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;&gt;<i> Current: BD-R sequential recording
+</I>&gt;&gt;<i> Profile: BD-R sequential recording (current)
+</I>&gt;&gt;<i> Profile: BD-R random recording
+</I>&gt;&gt;<i> Profile: BD-RE
+</I>&gt;&gt;<i> Profile: BD-ROM
+</I>&gt;&gt;<i> Profile: DVD-RAM
+</I>&gt;&gt;<i> Profile: DVD+R/DL
+</I>&gt;&gt;<i> Profile: DVD+R
+</I>&gt;&gt;<i> Profile: DVD+RW
+</I>&gt;&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;&gt;<i> Profile: DVD-ROM
+</I>&gt;&gt;<i> Profile: CD-RW
+</I>&gt;&gt;<i> Profile: CD-R
+</I>&gt;&gt;<i> Profile: CD-ROM
+</I>&gt;&gt;<i> Profile: Removable Disk
+</I>&gt;&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;&gt;<i> Driver flags   : NO-CD BD MMC-3 BURNFREE
+</I>&gt;&gt;<i> Supported modes: PACKET SAO
+</I>&gt;&gt;<i> Drive buf size : 6684672 = 6528 KB
+</I>&gt;&gt;<i> ./cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;&gt;<i> Track 01: data  34216 MB
+</I>&gt;&gt;<i> Total size:     34216 MB = 17518844 sectors
+</I>&gt;&gt;<i> Current Secsize: 2048
+</I>&gt;&gt;<i> Blocks total: 24438784 Blocks current: 24438784 Blocks remaining: 6919940
+</I>&gt;&gt;<i> Reducing transfer size from 64512 to 32768 bytes.
+</I>&gt;&gt;<i> Starting to write CD/DVD/BD at speed 0 in real SAO mode for single session.
+</I>&gt;&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;&gt;<i> Starting new track at sector: 0
+</I>&gt;&gt;<i> Track 01: 22651 of 34216 MB written (fifo  95%) [buf 100%]
+</I>&gt;&gt;<i> 2.1x../cdrecord: I/O error. write_g1: scsi sendcmd: no error
+</I>&gt;&gt;<i> CDB:  2A 00 00 B0 F6 80 00 00 10 00
+</I>&gt;&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;&gt;<i> Sense Bytes: F1 00 04 00 B0 E9 C0 0A 00 A7 02 06 03 01 00 00 00 00
+</I>&gt;&gt;<i> Sense Key: 0x4 Hardware Error, deferred error, Segment 0
+</I>&gt;&gt;<i> Sense Code: 0x03 Qual 0x01 (no write current) Fru 0x0
+</I>&gt;&gt;<i> Sense flags: Blk 11594176 (valid)
+</I>&gt;&gt;<i> resid: 32768
+</I>&gt;&gt;<i> cmd finished after 0.026s timeout 200s
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> write track data: error after 23751557120 bytes
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> It seems that there is a hardwar problem in the drive while writing to the 
+</I>&gt;<i> medium.
+</I>&gt;<i>
+</I>&gt;<i> Is it possible that your drive did overheat?
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+-- 
+_________________
+Store!
+Media Engineering
+Mark Williams
+&#214;sterstr. 3
+25764 Wesselburen
+Germany
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at dimm.de</A>
+Fon: +49-4833-429944
+Fax: +49-4833-429804
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000370.html">[Cdrecord-support] Blu-Ray burn errors (sorry, maybe posted twice)
+</A></li>
+	<LI>Next message: <A HREF="000372.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#371">[ date ]</a>
+              <a href="thread.html#371">[ thread ]</a>
+              <a href="subject.html#371">[ subject ]</a>
+              <a href="author.html#371">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

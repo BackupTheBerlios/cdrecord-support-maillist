@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Drives with the fewest user problems?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Drives%20with%20the%20fewest%20user%20problems%3F&In-Reply-To=%3C4b5585d9.ZNfHzHEGBaJycUbA%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000513.html">
+   <LINK REL="Next"  HREF="000514.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Drives with the fewest user problems?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Drives%20with%20the%20fewest%20user%20problems%3F&In-Reply-To=%3C4b5585d9.ZNfHzHEGBaJycUbA%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Drives with the fewest user problems?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jan 19 11:13:45 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000513.html">[Cdrecord-support] Drives with the fewest user problems?
+</A></li>
+        <LI>Next message: <A HREF="000514.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#511">[ date ]</a>
+              <a href="thread.html#511">[ thread ]</a>
+              <a href="subject.html#511">[ subject ]</a>
+              <a href="author.html#511">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i>    First post here. My long term Gentoo machine smoked itself this
+</I>&gt;<i> week after 5 years of hard work for me. I'm looking for thoughts on
+</I>&gt;<i> which drive manufacturers generally cause the fewest compatibility
+</I>&gt;<i> problems with cdrtools. I've had some (not a lot) problems with
+</I>&gt;<i> Lite-On in previous machines. I've had good luck with a Matshusta in a
+</I>&gt;<i> PPC Apple box. Other than that not much specific manufacturer
+</I>&gt;<i> experience so no way to choose well.
+</I>&gt;<i>
+</I>&gt;<i>    Typical brands I think I remember seeing at Frys are Lite-on, Sony
+</I>&gt;<i> and Plextor, along with a few HP's which are typically more expensive.
+</I>
+Plextor does no longer make drives and HP did never make drives.
+Many companies did stop making drives during the past 5 years as production 
+costs in Japan are high while the win on a single drive is less than 2 US $.
+In general most companies did form alliances with companies that have 
+production plants in either Korera or Malaysia. A single company (LiteON)
+seems to be located in China.
+
+The following companies remain:
+
+NEC/Sony/Optiarc	Manufactured by Mitsumi
+Pioneer/TEAC   		(here is where I con't know the exact relations)
+Hitachi/LG (HL-DT-ST)	Manufactured by LG
+Toshiba/Samsung (TSST)	Manufactured by Samsung
+Matsduschda		(english transcription Matsushita) No information on relations
+LiteON			May also manufacture for Optiarc
+
+Based on recent firmware bugs, it seems that Plextor currently sells
+Pioneer drives. Maybe, Pioneer no buys motors from &quot;Shinano Kenshi&quot; ;-)
+
+&gt;<i>     The new motherboard is in the mail but only has SATA ports so I
+</I>&gt;<i> need to go buy a new internal drive at Fry's today or tomorrow. I
+</I>&gt;<i> spent time looking at the compatibility list at the cdrtools web site
+</I>&gt;<i> but was unable to find any of the model numbers for sale at NewEgg so
+</I>&gt;<i> I'm shooting in the dark a bit without some guidance.
+</I>
+You may be interested on whether your OS implements correctly working 
+ATAPI on SATA support.
+
+&gt;<i>    I need the drive primarily for playing DVD movies, writing DVD
+</I>&gt;<i> backups once in awhile, and writing CD copies using cdda2wav/cdrecord.
+</I>
+The market seems to be completely reordered since ~ 2 years.
+
+The usability of a drive for a specific case mainly depends on the firmware.
+Firmware producers seem to be:
+
+NEC		Good overall behavior
+		Does not read hidden track on &quot;13&quot; &quot;Die &#196;rzte&quot;
+		Writes partially wrong TOC for audio CDs if not using RAW mode
+		Shows wrong max DVD write speed
+Pioneer		Best ability to write low quality DVD media
+		Writes CDs with more than &quot;Index 00 + Index 01&quot; only on RAW mode
+		due to a silly internal drive memory layout design.
+		Shows wrong max DVD write speed
+Hitachi		I have neither good nor bad information for this one
+Toshiba		I currently have no related writer
+Matsduschda	I only own a BluRay from them and it seemd to be OK otherwise
+LiteON		Writes CDs with backwards counting time code if not in RAW mode
+
+Note that (unlile in earlier times) I don't own drives from all companies.
+I cannot tell whether there are other problems with any of the companies than the 
+ones I mentioned above.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000513.html">[Cdrecord-support] Drives with the fewest user problems?
+</A></li>
+	<LI>Next message: <A HREF="000514.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#511">[ date ]</a>
+              <a href="thread.html#511">[ thread ]</a>
+              <a href="subject.html#511">[ subject ]</a>
+              <a href="author.html#511">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%09build%20with%20gmake&In-Reply-To=%3C51a4badf.KDFlh0fhsxaVyAI8%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000935.html">
+   <LINK REL="Next"  HREF="000937.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%09build%20with%20gmake&In-Reply-To=%3C51a4badf.KDFlh0fhsxaVyAI8%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue May 28 16:10:39 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000935.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+        <LI>Next message: <A HREF="000937.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#936">[ date ]</a>
+              <a href="thread.html#936">[ thread ]</a>
+              <a href="subject.html#936">[ subject ]</a>
+              <a href="author.html#936">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear Sir,
+</I>&gt;<i>
+</I>&gt;<i> I moved the offending files to a temporary folder and I got cdrecord
+</I>&gt;<i> to compile :)
+</I>&gt;<i>
+</I>&gt;<i> $ cdrecord --version
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a14 (amd64-unknown-freebsd8.3)
+</I>&gt;<i> Copyright (C) 1995-2013 Joerg Schilling
+</I>&gt;<i> $
+</I>&gt;<i>
+</I>&gt;<i> But the code in schily-2013-05-10.tar.bz2 fails to compile.  In that
+</I>&gt;<i> case some other header files get in the way :(
+</I>
+schily-2013-05-10.tar.bz2 is known to fail if your system shell is bash, as 
+smake then contains an assignement to a no longe rexisting variable. There is a 
+preliminary archive with a fix.
+
+If you have a different problem, please report!
+
+&gt;<i> Thanks for the help.  I could not get cdrtools from source to compile
+</I>&gt;<i> on BSD* systems, and I hesitated to ask for help :(
+</I>&gt;<i> Now it is working!
+</I>
+Well, your problem seems to be an unfriendly project that installed outdated 
+local definitions into a global include directory. Please make a bug report 
+against your distro managing.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000935.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+	<LI>Next message: <A HREF="000937.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#936">[ date ]</a>
+              <a href="thread.html#936">[ thread ]</a>
+              <a href="subject.html#936">[ subject ]</a>
+              <a href="author.html#936">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

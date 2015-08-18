@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C20100213192413.1ec295a0%40amdlocal.localdomain%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000542.html">
+   <LINK REL="Next"  HREF="000553.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn</H1>
+    <B>Cia Watson</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C20100213192413.1ec295a0%40amdlocal.localdomain%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn">ciamarie at my180.net
+       </A><BR>
+    <I>Sun Feb 14 04:24:13 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000542.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+        <LI>Next message: <A HREF="000553.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#547">[ date ]</a>
+              <a href="thread.html#547">[ thread ]</a>
+              <a href="subject.html#547">[ subject ]</a>
+              <a href="author.html#547">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joerg,
+
+I wasn't specifically trying to help with the tests, but I had some
+instructional DVD's I'd offered to copy for someone before I realized
+what an issue that task would be with linux (8 total). That led me to
+cdrtools and everything seemed to work pretty well last weekend for
+about 3 DVD's. 
+
+I since upgraded to the 075 version (on CentOS 5.4) and it's very
+hit-or-miss, I've only managed to burn 2 good DVD's trying with both
+Sony DVD-R or Phillips DVD-R. Last weekend what worked was using the
+nautilus (desktop) copy cd or burn image to cd option; using the
+command-line 'cdrecord' worked but the dvd menu didn't work for a
+couple of them so the first part (title) of the dvd was unable to
+be viewed.
+
+Today and yesterday that method hasn't worked at all, so I used K9copy
+to make an iso and only 1 has burned correctly using the command-line,
+at least 3 others won't come up with anything in my DVD player. And one
+had an error burning, here's the output:
+
+Track 01:    0 of 3562 MB written.cdrecord: Input/output error.
+write_g1: scsi sendcmd: no error CDB:  2A 00 00 00 00 00 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 03 00 00 00 00 0A 32 38 03 0C 73 04 00 00
+Sense Key: 0x3 Medium Error, Segment 0
+Sense Code: 0x73 Qual 0x04 (program memory area update failure) Fru 0x0
+Sense flags: Blk 0 (not valid) 
+cmd finished after 16.169s timeout 200s
+
+write track data: error after 0 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+Writing  time:   21.216s
+Average write speed 127.3x.
+Fixating...
+Fixating time:    0.003s
+cdrecord: fifo had 128 puts and 1 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+
+I was logged into a terminal as the root user and the command I used
+was: cdrecord -v dev=/dev/scd0 -gracetime=2 speed=4 /path
+to/dvd_DVD5.iso I'm going to keep trying but I thought I'd pass that
+on. I have 3 more to try to copy from iso.
+
+I just burned 2 more coasters so I give up for today, or I'll go to
+Fedora (13'ish) and try there. I used the nautilus 'burn to disk' for
+the iso file and it burned but the beginning of the dvd has no menu and
+the video is very choppy. So I tried the command-line again using a
+Phillips dvd instead of a Sony and got the same error as above. Here's
+the output from -minfo after the burn error:
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at amdlocal</A> bin]# cdrecord -minfo
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a73 (i686-pc-linux-gnu) Copyright
+(C) 1995-2010 J&#65533;rg Schilling Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   : 
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'DVDRAM GH22NS50 '
+Revision       : 'TN01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE 
+Supported modes: PACKET SAO LAYER_JUMP
+WARNING: Phys disk size 2298496 differs from rzone size 0! Prerecorded
+disk? WARNING: Phys start: 196608 Phys end 2495103
+WARNING: Drive returns zero media size. Using media size from ADIP.
+Mounted media class:      DVD
+Mounted media type:       DVD-ROM
+Disk Is not erasable
+data type:                standard
+disk status:              complete
+session status:           complete
+BG format status:         none
+first track:              1
+number of sessions:       1
+first track in last sess: 1
+last track in last sess:  1
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+    1     1 Data   0          1824197    1824198
+
+Last session start address:         0
+Last session leadout start address: 1824198
+
+
+Cia W
+
+On Tue, 09 Feb 2010 14:18:20 +0100
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+
+&gt;<i> Now that enhanced audio support is complete, the few final BluRay
+</I>&gt;<i> issues will be addressed and this includes the firmware bug in your
+</I>&gt;<i> drive. 
+</I>&gt;<i> 
+</I>&gt;<i> It would be nice if you could help with tests during the next ~ 10
+</I>&gt;<i> days.
+</I>&gt;<i> 
+</I>&gt;<i> BTW: cdrtools is now really close to the final cdrtools-3.0 edition.
+</I>&gt;<i> Please test so we can be sure that all iomportant problems can be
+</I>&gt;<i> fixed before the final cdrtools-3.0 will be out.
+</I>&gt;<i> 
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i> 
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000542.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+	<LI>Next message: <A HREF="000553.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#547">[ date ]</a>
+              <a href="thread.html#547">[ thread ]</a>
+              <a href="subject.html#547">[ subject ]</a>
+              <a href="author.html#547">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

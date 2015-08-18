@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs exclude paramater.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20exclude%20paramater.&In-Reply-To=%3C49ea49cc.vGikf2Tk50KJ6uiU%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000432.html">
+   <LINK REL="Next"  HREF="000444.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs exclude paramater.</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20exclude%20paramater.&In-Reply-To=%3C49ea49cc.vGikf2Tk50KJ6uiU%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs exclude paramater.">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat Apr 18 23:44:44 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000432.html">[Cdrecord-support] mkisofs exclude paramater.
+</A></li>
+        <LI>Next message: <A HREF="000444.html">[Cdrecord-support] mkisofs exclude paramater.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#433">[ date ]</a>
+              <a href="thread.html#433">[ thread ]</a>
+              <a href="subject.html#433">[ subject ]</a>
+              <a href="author.html#433">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Quey &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">qms01 at optusnet.com.au</A>&gt; wrote:
+
+&gt;<i> On 18/04/09 22:35:46, Joerg Schilling wrote:
+</I>&gt;<i> &gt; Quey &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">qms01 at optusnet.com.au</A>&gt; wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; Ahhhh ok if I  &quot;-x /samba/files /samba&quot;  it works .. so can I  
+</I>&gt;<i> &gt; make
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; this a &quot;minor&quot; bug report please, so it works as most people  
+</I>&gt;<i> &gt; would
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; think it would (identical to shell)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; There is no bug, mkisofs works as documented.
+</I>&gt;<i> &gt; PLease carefully reread the man page.
+</I>&gt;<i>
+</I>&gt;<i> so it works differently to most other software written since the 20th  
+</I>&gt;<i> century? as target should not have to be explicitly named if you are  
+</I>&gt;<i> already there, even your much detested &quot;tar&quot; does that, or do you  
+</I>&gt;<i> think it does that because its broken...
+</I>
+Sorry, but I cannot see any helpful content in your mail.
+
+The -x option has been implemented by Eric Youngdale in December 1993.
+The was marked as deprecated by Eric Youngdale in November 1997
+because it does not work as most users expect. See mkisofs -help:
+
+  -x FILE, -old-exclude FILE  Exclude file name(depreciated)
+
+So the main question is: Why do you try to use an option that is deprecated 
+since nearly 12 years?
+
+Why don't you read the man page to find more apropriate options:
+
+  -m GLOBFILE, -exclude GLOBFILE
+                              Exclude file name
+  -exclude-list FILE          File with list of file names to exclude
+
+
+or the -find option that implementd the find(1) command inside mkisofs.
+BTW: Builtin find(1) in mkisofs was added three years ago....
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000432.html">[Cdrecord-support] mkisofs exclude paramater.
+</A></li>
+	<LI>Next message: <A HREF="000444.html">[Cdrecord-support] mkisofs exclude paramater.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#433">[ date ]</a>
+              <a href="thread.html#433">[ thread ]</a>
+              <a href="subject.html#433">[ subject ]</a>
+              <a href="author.html#433">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

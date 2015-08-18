@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open	audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%09audio%20sample%20file.....&In-Reply-To=%3C20131114003722.GA1886%40skamandros.andrews-corner.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000955.html">
+   <LINK REL="Next"  HREF="000957.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open	audio sample file.....</H1>
+    <B>andrew</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%09audio%20sample%20file.....&In-Reply-To=%3C20131114003722.GA1886%40skamandros.andrews-corner.org%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open	audio sample file.....">andrew.david.strong at gmail.com
+       </A><BR>
+    <I>Thu Nov 14 01:37:22 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000955.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+        <LI>Next message: <A HREF="000957.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#956">[ date ]</a>
+              <a href="thread.html#956">[ thread ]</a>
+              <a href="subject.html#956">[ subject ]</a>
+              <a href="author.html#956">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I am having difficulty ripping an audio cd to HDD using:
+
+---------------
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at skamandros</A>~$ cdda2wav --version
+cdda2wav 3.01a18 (x86_64-unknown-linux-gnu) Copyright (C) 1993-2004 Heiko Eissfeldt (C) 2004-2013 Joerg Schilling
+
+Defaults: stereo, 16 bit, 44100.00 Hz, track 1, no offset, one track,
+          type: wav filename: 'audio', don't wait for signal, not quiet,
+          use: 'generic_scsi', device: 'yourSCSI_Bus,yourSCSI_ID,yourSCSI_LUN', aux: '/dev/cdrom'
+--------------
+
+under Slackware 14.1 and kernel 3.10.17. The error is:
+
+--------------
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at skamandros</A>/home/andrew/tmp# cdda2wav -vall cddb=0 -paranoia -B
+No target specified, trying to find one...
+Using dev=1,0,0.
+Type: ROM, Vendor 'Optiarc ' Model 'DVD RW AD-7590A ' Revision '1.52' MMC+CDDA
+176128 bytes buffer memory requested, transfer size 32768 bytes, 4 buffers, 13 sectors
+#Cdda2wav version <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">3.01a18_linux_3.10.17_x86_64_intel-r--core-tm-2-cpu---------t5500-- at -1.66ghz</A>, real time sched., soundcard, libparanoia support
+5 entries found:
+00: data 360afc06 PINK FLOYD / Meddle (RM 1992)
+01: folk 360afc06 Pink Floyd / Meddle
+02: misc 360afc06 Pink Floyd / Meddle [Remaster]
+03: rock 360afc06 Pink Floyd / Meddle
+04: blues 360afc06 Pink floyd / Meddle
+05: ignore
+0
+please choose one (0-5): 33 sectors of audio data before track #0
+AUDIOtrack pre-emphasis  copy-permitted tracktype channels
+      1- 6           no              no     audio    2
+Table of Contents: total tracks:6, (total time 46:51.47)
+  1.( 5:58.55),  2.( 5:11.12),  3.( 6:09.15),  4.( 3:44.30),  5.( 2:16.48),
+  6.(23:31.37)
+
+Table of Contents: starting sectors
+  1.(      33),  2.(   26938),  3.(   50275),  4.(   77965),  5.(   94795),
+  6.(  105043), lead-out(  210905)
+CDINDEX discid: Vb4OGUrNFuZOVs5yOjDkmEJ6ifk-
+CDDB discid: 0x360afc06 CDDBP titles: resolved
+CD-Text: not detected
+CD-Extra: not detected
+Album title: 'Meddle (RM 1992)' [from PINK FLOYD]
+Track  1: 'One Of These Days'
+Track  2: 'A Pillow Of Winds'
+Track  3: 'Fearless'
+Track  4: 'San Tropez'
+Track  5: 'Seamus'
+Track  6: 'Echoes'
+No media catalog number present.
+scanning for ISRCs: 6 ...
+index scan: 6...
+cdda2wav: Permission denied. Could not open audio sample file audio_01.wav.
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at skamandros</A>/home/andrew/tmp# 
+-------------------
+
+Interestingly enough I am prompted to make a selection from the cddb
+choices only _after_ I have actually made the selection. 
+
+Thanks for looking at this issue, please let me know if I should
+provide more information.
+
+Andrew
+
+-- 
+You think that's air you're breathing now?
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000955.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+	<LI>Next message: <A HREF="000957.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#956">[ date ]</a>
+              <a href="thread.html#956">[ thread ]</a>
+              <a href="subject.html#956">[ subject ]</a>
+              <a href="author.html#956">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

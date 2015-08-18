@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Write file list
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20file%20list&In-Reply-To=%3C20090301055406.23b41838%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000396.html">
+   <LINK REL="Next"  HREF="000403.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Write file list</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20file%20list&In-Reply-To=%3C20090301055406.23b41838%40bashir%3E"
+       TITLE="[Cdrecord-support] Write file list">list1 at michaelshell.org
+       </A><BR>
+    <I>Sun Mar  1 11:54:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000396.html">[Cdrecord-support] Write file list
+</A></li>
+        <LI>Next message: <A HREF="000403.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#398">[ date ]</a>
+              <a href="thread.html#398">[ thread ]</a>
+              <a href="subject.html#398">[ subject ]</a>
+              <a href="author.html#398">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 28 Feb 2009 17:07:38 -0800
+Joe Feise &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">jfeise at feise.com</A>&gt; wrote:
+
+
+&gt;<i> -graft-points -path-list does that, having the path spec mappings in a file.
+</I>&gt;<i> I stated that in my post to the list yesterday already:
+</I>&gt;<i> &quot;The mkisofs -graft-points option in combination with -path-list would
+</I>&gt;<i> probably be what you need.&quot;
+</I>
+
+Joe, do show us an example. The interaction between -graft-points
+and -path-list is not clear to me. I didn't know one could list *files*
+within the -path-list file. I assume these default to the root
+directory of the image. Do you mean that one can use -path-list
+to include a large number of files (and contents of directories) to
+the root directory of the image without exceeding the maximum command
+line length, however, to map files to arbitrary paths on the
+image one has to use -graft-points and thus the command line limit
+becomes an issue. If so, there still is a need for a -graft-points-list.
+
+
+On Sun, 1 Mar 2009 00:50:46 -0000
+&quot;Phil Rhodes&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">phil_rhodes at rocketmail.com</A>&gt; wrote:
+
+:<i> The permissions stuff really turns me off linux, to be honest - 
+</I>:<i> the amount of time I spend thrashing keyboards on Ubuntu machines,
+</I>:<i> intemperately screaming &quot;it's my file/program/setting on my computer,
+</I>:<i> why can't I delete/run/change it&quot;, is way beyond reasonable.
+</I>
+There is an interesting article by an IT guy related to this concerning
+Windows 7:
+
+<A HREF="http://blogs.eweek.com/signaling_it/content001/security/getting_real_work_done.html">http://blogs.eweek.com/signaling_it/content001/security/getting_real_work_done.html</A>
+ 
+One of the great things about Unix is the multiple levels of
+configuration (for applications that are done correctly). There's
+a system wide setting in /etc and per-user settings in .files
+in the user's home directory. This way, the machine can be set
+by root with a default configuration for all users, and each
+user can override as needed (without needing root privileges).
+
+It is also possible to have /home/mydir/bin and reconfigure
+PATH to allow for user executables.
+
+The reason for the concept of file ownership is security. It
+can be a pain to get used to, but in the long run it can
+save time by not having to deal so much with broken or
+compromised systems.
+
+Unix guru Henry Spencer said, &quot;Those who do not understand
+Unix are condemned to reinvent it, poorly.&quot; I think Microsoft
+has been heading in that direction for some time.
+
+
+  Mike
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000396.html">[Cdrecord-support] Write file list
+</A></li>
+	<LI>Next message: <A HREF="000403.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#398">[ date ]</a>
+              <a href="thread.html#398">[ thread ]</a>
+              <a href="subject.html#398">[ subject ]</a>
+              <a href="author.html#398">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

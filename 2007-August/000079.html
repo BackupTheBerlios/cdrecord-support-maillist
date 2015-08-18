@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] dvd-video HFS hybrid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20dvd-video%20HFS%20hybrid&In-Reply-To=%3C46c1e7f1.eqQ5TqefC/ThT61u%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000078.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] dvd-video HFS hybrid</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20dvd-video%20HFS%20hybrid&In-Reply-To=%3C46c1e7f1.eqQ5TqefC/ThT61u%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] dvd-video HFS hybrid">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Aug 14 19:35:45 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000078.html">[Cdrecord-support] dvd-video HFS hybrid
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Chris Denley &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdenley at failsafeinc.com</A>&gt; wrote:
+
+&gt;<i> The problem with DVD players is that it will stall or freeze during
+</I>&gt;<i> playback. I tried three different DVD players which will play other
+</I>&gt;<i> discs burned on identical media with no problem. Everything works fine
+</I>&gt;<i> except for standard DVD players which read the UDF filesystem. DVD
+</I>&gt;<i> players that read the ISO9660 filesystem don't seem to have any
+</I>&gt;<i> problems. I can mount it on my Linux machine as udf, iso9660, or hfs.
+</I>&gt;<i>
+</I>&gt;<i> It is a DVD-video disc with a Mac application. There is a VIDEO_TS
+</I>&gt;<i> folder with a bunch of .VOB files, and an AUDIO_TS folder. The Mac
+</I>&gt;<i> application is a flash application (I think it's called a projector). It
+</I>&gt;<i> is a binary file, and will no longer run if it has been on a non-mac
+</I>&gt;<i> filesystem. There is also a folder with various data files that the
+</I>&gt;<i> application will open and display. There is also a Windows version of
+</I>&gt;<i> the same application, and an autorun.inf file.
+</I>&gt;<i>
+</I>&gt;<i> Sorry, I forgot to include two options I used in the command:
+</I>&gt;<i>
+</I>&gt;<i> mkisofs -dvd-video -hfs --osx-hfs --macbin -V MYTITLE -o
+</I>&gt;<i> image.iso /path/to/mydata
+</I>&gt;<i>
+</I>&gt;<i> How do I enable Apple UDF extensions instead of Mac OS 9 methods? Does
+</I>&gt;<i> the &quot;hfs&quot; option mean Mac OS 9 methods? Will this fix the problem with
+</I>&gt;<i> DVD players? Sorry, I'm not a Mac user, so I'm trying to learn.
+</I>&gt;<i>
+</I>&gt;<i> mkisofs 2.01 (powerpc-apple-macosx7.9.0)
+</I>&gt;<i> compiled using:
+</I>&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/cdrecord/cdrtools-2.01.tar.gz">ftp://ftp.berlios.de/pub/cdrecord/cdrtools-2.01.tar.gz</A>
+</I>
+You are using an extremely old version of mkisofs get the &quot;latest&quot; download
+from:
+
+<A HREF="http://cdrecord.berlios.de/">http://cdrecord.berlios.de/</A>
+
+and compile.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+.,
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000078.html">[Cdrecord-support] dvd-video HFS hybrid
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080710224909.GB6838%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000268.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080710224909.GB6838%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] cdrecord">weigelt at metux.de
+       </A><BR>
+    <I>Fri Jul 11 00:49:09 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000268.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+
+&gt;<i> &gt; There're only a few possible sizes in real life (eg. I've *never*
+</I>&gt;<i> &gt; seen a 40bit int type ;-P).
+</I>&gt;<i> 
+</I>&gt;<i> I've seen a machine with a 60 bit byte in 1979 and most DSPs use
+</I>&gt;<i> 24 bit ints. 
+</I>
+Right, but these machines are probably out of scope for the 
+software we're talking about. Most likely you'll code dsp
+stuff in asssembler or other specific languages.
+
+&gt;<i> &gt; &gt; &gt; Ok. Is gcc on HP-UX still buggy today ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I believe it is currently OK, but gcc did recently have the same bug on 
+</I>&gt;<i> &gt; &gt; Linux/x86. It seems that this kind of optimizer bug reappears frequently :-(
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The interesting question: is it necessary to take care of all these
+</I>&gt;<i> &gt; old buggy versions ? Wouldn't version check + big-fat-warning be enough ?
+</I>&gt;<i> 
+</I>&gt;<i> Again: most of these exceptions are needed for Linux. Do you like me to drop 
+</I>&gt;<i> Linux from the list of supported platforms?
+</I>
+GNU/Linux can be fixed, so please let's concentrate on doing so.
+
+&gt;<i> &gt; &gt; For the HP-UX linker you need to run the program 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ugh ?!
+</I>&gt;<i> &gt; You need to *run* the program to get it linked ?
+</I>&gt;<i> 
+</I>&gt;<i> Let me repeat: you need to run the program in order to decide whether you got 
+</I>&gt;<i> a reference to the localtime() function or variable.
+</I>
+Please explain more detailed why that's exactly neccessary.
+(I never had such guly cases yet, but I'm also not HP-UX experienced)
+
+&gt;<i> &gt; Aha, but they don't support unsigned ?
+</I>&gt;<i> &gt; hmm, so the question is:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a) do they really need to be supported (speaking only of cdrtools)
+</I>&gt;<i> &gt; b) wouldn't an #define unsiged be enough for these compilers ?
+</I>&gt;<i> 
+</I>&gt;<i> If you stop supporting things, you soon end with being unable to support Linux.
+</I>&gt;<i> Is this what you like?
+</I>
+Could you please answer my question instead of just bashing Linux ? ;-o
+
+&gt;<i> &gt; The point is, your approach makes (automatic) crosscompiling impossible.
+</I>&gt;<i> &gt; For me, crosscompiling most times is an general requirement.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I don't see why an explicit configure option hurts.
+</I>&gt;<i> 
+</I>&gt;<i> Decent software compiles without manual changes.
+</I>
+At least for cdrtools that's not true: dozens of AC_TRY_RUN()'s 
+prevent it.
+
+&gt;<i> &gt; &gt; If you do not know which include file and if you do not know whether the linker
+</I>&gt;<i> &gt; &gt; converts extern .... into COMMON sections, you are forced to do a runtime check.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; What exactly do you need that details for ?
+</I>&gt;<i> 
+</I>&gt;<i> I believe this is a Mac OS lnker problem.
+</I>
+Do you have a bit more details on that ?
+
+&gt;<i> &gt; The problem, IMHO, is that your buildsystem does all these checks regardless
+</I>&gt;<i> &gt; whether they're needed. I don't see why this is necessary.
+</I>&gt;<i> 
+</I>&gt;<i> There are only very few tests that I added for future (already planned) code.
+</I>&gt;<i> All other tests are definitely needed.
+</I>
+For cdrtools I've found lots of unnecessary checks. Probably they're needed
+for others of your packages, but then it should be a bit more modularized.
+
+&gt;<i> You make the mistake to believe that the way the FSF like to see autoconf 
+</I>&gt;<i> to be used is useful. 
+</I>
+No, absolutely not. I want to get rid of autoconf at all, but that's 
+still a long way to go.
+
+&gt;<i> I have one &quot;configure&quot; run that supports all my software and it 
+</I>&gt;<i> turns out that this is the most effective way to do the tests.
+</I>
+Seems that's exactly what your doing with your buildsystem ;-P
+
+&gt;<i> &gt; &gt; It turns out to be even more wise to publish the complete consolidation instead 
+</I>&gt;<i> &gt; &gt; of parts that easily become out of sync. 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This is the case if you're not doing modular development ;-P
+</I>&gt;<i> 
+</I>&gt;<i> The schily makefilesystem is very modular. Most of the potential users will not 
+</I>&gt;<i> understand modularity.
+</I>
+Okay, but why are there so many completely unnecessary checks in
+cdrtools ? ;-o
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000268.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#270">[ date ]</a>
+              <a href="thread.html#270">[ thread ]</a>
+              <a href="subject.html#270">[ subject ]</a>
+              <a href="author.html#270">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

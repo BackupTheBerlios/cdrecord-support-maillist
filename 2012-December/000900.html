@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%09in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50ba19d0.GOT0tloY/qFX%2BIJS%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000901.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%09in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50ba19d0.GOT0tloY/qFX%2BIJS%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat Dec  1 15:53:04 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000901.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#900">[ date ]</a>
+              <a href="thread.html#900">[ thread ]</a>
+              <a href="subject.html#900">[ subject ]</a>
+              <a href="author.html#900">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Omega Weapon &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt; wrote:
+
+&gt;<i> Based on media info, the bad session is 3:
+</I>&gt;<i>
+</I>&gt;<i> ============================================
+</I>&gt;<i>
+</I>&gt;<i> 3     3 Data   3066496    3182943    116448
+</I>&gt;<i>
+</I>&gt;<i> ============================================
+</I>&gt;<i>
+</I>&gt;<i> So the following commandline is hopefully a valid test:
+</I>&gt;<i>
+</I>&gt;<i> ========================================================================
+</I>&gt;<i>
+</I>&gt;<i> $ /opt/schily/bin/mkisofs -volid &quot;ADN70&quot; -rational-rock 
+</I>&gt;<i> -full-iso9660-filenames -iso-level 3 -follow-links -C &quot;3066496,3182943&quot; 
+</I>&gt;<i> -M &quot;/dev/sr0&quot; -o &quot;/mnt/Storage_1/Temporary Storage Folder/Processing 
+</I>&gt;<i> Folder/ADN70-mkisofsa9.iso&quot; '/mnt/Storage_3/Anime Storage Folder 
+</I>&gt;<i> 2/Nisemonogatari [N-S][Coalgirls]'
+</I>&gt;<i>
+</I>&gt;<i> Setting input-charset to 'UTF-8' from locale.
+</I>&gt;<i> ISO-9660 image includes checksum signature for correct inode numbers.
+</I>&gt;<i> SUSP signatures version 1 found
+</I>&gt;<i> Rock Ridge signatures version 1 found
+</I>&gt;<i> Rock Ridge id 'RRIP_1991A'
+</I>&gt;<i> BAD RR ATTRIBUTES: 11 A2 07 4A 3D 88 93 69 A5 CD 37 52 71 FD 97 71 B9 FE 
+</I>&gt;<i> 78 BE 03 E4 FA B0 C1 26
+</I>&gt;<i> BAD RR ATTRIBUTES: ...J=..i..7Rq..q..x......&amp;
+</I>&gt;<i> mkisofs: **BAD RRVERSION (74) in '????' field (11 A2).
+</I>&gt;<i> mkisofs: Cannot parse Rock Ridge attributes for 
+</I>&gt;<i> 'MERI_VEGETTOEX___EVA___OBL.MPEG;1RR????NMd?'.
+</I>
+It seems that you missunderstand the problem.
+
+The message you see here is not a result of a bug in mkisofs but flags the 
+result of a bug in the filesystem image.
+
+This bug cannot be &quot;fixed&quot; automatically unless you add a lot of specific 
+heuristics. In case that the filesystem is larger than 2x 4GB, there even may 
+be more possible &quot;correct&quot; block numbers.
+
+Note that we currently know of just one single defective filesystem with that 
+problem, so it does not make sense to add such a heuristic. 
+
+Aprox. 6 years ago, when people discovered _many_ gnu tar archives with 
+incorrect block bumbers for sparse files, I could not help them with a trick in 
+star to become able to read the archives, I could just advise them to use star 
+instead of gnu tar for creating future archives.
+
+So I can only advise you to use the fixed mkisofs to avoid to create another 
+similar filesystem image. If you like to test that, you need to create a new 
+session based on the previous session without the bug.
+
+After we verified that the new mkisofs fixed the problem, we may discuss 
+whether it may be a good idea to add an option to mkisofs to tell it to be a 
+bit more forgiving with similar problems in the filesystem image.
+
+The problem with doing this is the fact that a ISO-9660 file name usually does 
+not match the real file name and in our case we would result in a left over 
+file with rotten file name.
+
+
+&gt;<i> &gt; Well, the Linux isoo-9660 implementation is full of bugs and it does not even
+</I>&gt;<i> &gt; check the data using heuristics or whether some values are outside possible
+</I>&gt;<i> &gt; bounds. So it is simple to make Linux crash while reading an iso-9660 image.
+</I>&gt;<i>
+</I>&gt;<i> Yes, I fully agree. A few months ago I was investigating a bad burn 
+</I>&gt;<i> (something like an image that didn't end on the last disc sector) and 
+</I>&gt;<i> dd'd off the last session, then mounted it to see what would happen. It 
+</I>&gt;<i> locked up mount with 100% kernel mode CPU usage, requiring a hard boot 
+</I>&gt;<i> to 'fix'. Seem to remember having this shocking failure occasionally 
+</I>&gt;<i> with discs that weren't purposefully malformed as well, but I haven't 
+</I>&gt;<i> come across another yet.
+</I>
+The problem was discovered by a FreeBSD person around 2005. He tested the 
+problem on Linux and Solaris also and could verify that the problem also exists 
+on these platforms, so he send a note to the relevant people.
+
+FreeBSD fixed the problem and a friend working for Sun at that time fixed the 
+problem for Solaris. Later, when I added support for ISO-9660:1999 and for 
+Joliet to the Solaris code, we discovered that we extended the valid range for 
+some parameters and thus made some overlooked problems more probable. As a 
+result, I added some more range tests to the code and since then, mobody ever 
+reported a problem with the Solaris ISO-9660 implementation.
+
+Linux people ignored the hint...
+
+
+&gt;<i> &gt; Note that I added an option to the Solaris implementaion to mount any session
+</I>&gt;<i> &gt; of interest aprox. 6 years ago.
+</I>&gt;<i>
+</I>&gt;<i> OK, I will look into what it takes to get a Solaris VM.
+</I>
+If you like to test to mount different session, I just checked the public 
+source and it seems that I did not publish the code to work with the sector=# 
+mount option to the &quot;hsfs&quot; filesystem.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000901.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#900">[ date ]</a>
+              <a href="thread.html#900">[ thread ]</a>
+              <a href="subject.html#900">[ subject ]</a>
+              <a href="author.html#900">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

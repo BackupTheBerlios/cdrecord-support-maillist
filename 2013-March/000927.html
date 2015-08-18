@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20with%20media%20sony%20and%20drive%20LG%20BD-RE%0A%20BH14NS40&In-Reply-To=%3C5150236a.Viu%2BUl1S4qtpLni7%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000926.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20with%20media%20sony%20and%20drive%20LG%20BD-RE%0A%20BH14NS40&In-Reply-To=%3C5150236a.Viu%2BUl1S4qtpLni7%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Mar 25 11:14:02 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000926.html">[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Miguel Beltran R. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">yourpadre at gmail.com</A>&gt; wrote:
+
+&gt;<i> Helo list
+</I>&gt;<i> I bought a LG BD-RE  BH14NS40 bluray burner and I tried to burn an DVD ISO
+</I>&gt;<i> with k3b but it gave me an error (1) .
+</I>&gt;<i>
+</I>&gt;<i> But all work fine if a choose my another burner, and LG DVDRAM GH22NS5, the
+</I>&gt;<i> ISO is burned perfectly. Here is the output (2).
+</I>&gt;<i>
+</I>&gt;<i> My system is a slackware 14 without customs.
+</I>&gt;<i>
+</I>&gt;<i> Also I tried in Windows 7 with Nero 11 and it burn right using the
+</I>&gt;<i> BH14NS40.
+</I>&gt;<i>
+</I>&gt;<i> what is the problem?
+</I>
+There are several possibilities...
+
+&gt;<i> System
+</I>&gt;<i> -----------------------
+</I>&gt;<i> K3b Version: 2.0.2
+</I>&gt;<i> KDE Version: 4.8.5 (4.8.5)
+</I>&gt;<i> QT Version:  4.8.2
+</I>&gt;<i> Kernel:      3.2.29
+</I>&gt;<i>
+</I>&gt;<i> Used versions
+</I>&gt;<i> -----------------------
+</I>&gt;<i> cdrecord: 3.1a13
+</I>&gt;<i>
+</I>&gt;<i> cdrecord
+</I>&gt;<i> -----------------------
+</I>&gt;<i> scsidev: '/dev/sr1'
+</I>&gt;<i> devname: '/dev/sr1'
+</I>
+By using an undocumented dev= parameter, you force cdrecord to use a specific 
+driver on a Linux system that supports more than one driver per device.
+
+If you use the official documented dev= syntax, cdrecord choses the best 
+available driver.
+
+&gt;<i> scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> Warning: Open by 'devname' is unintentional and not supported.
+</I>&gt;<i> Linux sg driver version: 3.5.27
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a13 (x86_64-unknown-linux-gnu) Copyright
+</I>&gt;<i> (C) 1995-2012 Joerg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'HL-DT-ST'
+</I>&gt;<i> Identifikation : 'BD-RE  BH14NS40 '
+</I>&gt;<i> Revision       : '1.00'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD-R sequential recording
+</I>&gt;<i> Profile: BD-RE
+</I>&gt;<i> Profile: BD-R random recording
+</I>&gt;<i> Profile: BD-R sequential recording
+</I>&gt;<i> Profile: BD-ROM
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: DVD-R sequential recording (current)
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 2916352 = 2848 KB
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data  3315 MB
+</I>&gt;<i> Total size:     3315 MB = 1697610 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> WARNING: Phys disk size 2298496 differs from rzone size 2297888!
+</I>&gt;<i> Prerecorded disk?
+</I>&gt;<i> WARNING: Phys start: 196608 Phys end 2495103
+</I>&gt;<i> Blocks total: 2297888 Blocks current: 2297888 Blocks remaining: 600278
+</I>&gt;<i> Reducing transfer size from 64512 to 32768 bytes.
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 16 in real SAO mode for single session.
+</I>&gt;<i> Last chance to quit, starting real write in 3 seconds.
+</I>&gt;<i>    2 seconds.
+</I>&gt;<i>    1 seconds.
+</I>&gt;<i>    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is OFF.
+</I>&gt;<i> Turning BURN-Free on
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01:    0 of 3315 MB written.
+</I>&gt;<i> cdrecord: Error de entrada/salida. write_g1: scsi sendcmd: no error
+</I>&gt;<i> CDB:  2A 00 00 00 00 00 00 00 10 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 71 00 03 00 00 00 00 0A 00 00 00 00 0C 00 00 00
+</I>&gt;<i> Sense Key: 0x3 Medium Error, deferred error, Segment 0
+</I>&gt;<i> Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>
+An early abort may be a result of trying to use media that is not supported by 
+your drive (try cdrecord -atip, cdrecord -minfo -v to get the media 
+manufacturer and state).
+
+In addition, on Linux there are hostile programs that interrupt the write 
+process. These programs are &quot;hald&quot; or it's successors (all written by the same 
+person who is not interested in understanding drive states for optical media).
+
+If you use chean unreliable media, try to use Verbatim media that is identified 
+as &quot;Verbatim&quot; by cdrecord -atip.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000926.html">[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

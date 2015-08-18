@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Blu-ray identification strings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Blu-ray%20identification%20strings&In-Reply-To=%3C65D99FA8948E4DE7B3AE56236FD8F896%40indigobox%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000286.html">
+   <LINK REL="Next"  HREF="000288.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Blu-ray identification strings</H1>
+    <B>Phil_Rhodes@rocketmail.com</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Blu-ray%20identification%20strings&In-Reply-To=%3C65D99FA8948E4DE7B3AE56236FD8F896%40indigobox%3E"
+       TITLE="[Cdrecord-support] Blu-ray identification strings">phil_rhodes at rocketmail.com
+       </A><BR>
+    <I>Tue Oct 28 19:39:18 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000286.html">[Cdrecord-support] Blu-ray identification strings
+</A></li>
+        <LI>Next message: <A HREF="000288.html">[Cdrecord-support] Blu-ray identification strings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I am sorry, but if you do not tell us what these two versions are, I 
+</I>&gt;<i> cannot
+</I>&gt;<i> help.
+</I>
+I have two versions:
+
+Cdrecord-Clone 2.01.01a01-dvd (i686-pc-cygwin) Copyright (C) 1995-2004 J&#246;rg 
+Schilling
+
+This version has a note saying not to bother you about it since it's an 
+offshoot, but it is the only version I can find which does what I need. I 
+keep another version for comparison:
+
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a51 (i686-pc-cygwin) Copyright (C) 
+1995-2008 J&#246;rg Schilling
+
+This came from a google search you suggested. They seem to differ only in a 
+tiny difference in the version number but they perform very differently.
+
+Both versions say the same thing with -checkdrive for a USB device:
+
+C:\Documents and 
+Settings\Administrator.INDIGOBOX&gt;c:\elphaba\helper\cdrecord\cdrecord.exe 
+dev=6,0,6 -checkdrive -v
+Cdrecord-Clone 2.01.01a01-dvd (i686-pc-cygwin) Copyright (C) 1995-2004 J&#246;rg 
+Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '6,0,6'
+scsibus: 6 target: 0 lun: 6
+Using libscg version 'schily-0.8'.
+SCSI buffer size: 64512
+atapi: -1
+/cygdrive/c/elphaba/helper/cdrecord/cdrecord: Cannot do inquiry for 
+CD/DVD-Recor
+der.
+/cygdrive/c/elphaba/helper/cdrecord/cdrecord: Invalid argument. test unit 
+ready:
+ scsi sendcmd: fatal error
+CDB:  00 C0 00 00 00 00
+cmd finished after 0.000s timeout 40s
+
+For a directly-connected ATAPI drive, a01-dvd says:
+
+[lots skipped]
+Device seems to be: Generic mmc2 DVD-R/DVD-RW.
+Current: 0x0008
+Profile: 0x0014
+Profile: 0x0013
+Profile: 0x0011
+Profile: 0x0010
+Profile: 0x000A
+Profile: 0x0009
+Profile: 0x0008 (current)
+
+For the same drive, a51 says:
+
+[lots skipped]
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-ROM
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM (current)
+
+To recap:
+
+a01-dvd will accept piped input from mkisofs, but -msinfo doesn't work.
+a51 will not accept piped input from mkisofs, but -msinfo does seem to work, 
+though I haven't tried to use its output.
+Neither version will examine USB-connected drives.
+
+Piped input is more important to me than multi-session and USB connection is 
+essential, so I probably have to use a01-dvd and rely on parsing strings to 
+detect writers. I would like to follow your advice and use only your code, 
+but there's not much else I can do - I really need piped input and for 
+various reasons I can't run it in a cygwin shell.
+
+Therefore my request for example ID strings stands!
+
+P 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000286.html">[Cdrecord-support] Blu-ray identification strings
+</A></li>
+	<LI>Next message: <A HREF="000288.html">[Cdrecord-support] Blu-ray identification strings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

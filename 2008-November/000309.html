@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%0A%20usage%20%40%20compile%20time.&In-Reply-To=%3C492C776C.1070208%40parallaxshift.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000308.html">
+   <LINK REL="Next"  HREF="000310.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.</H1>
+    <B>Philippe Chaintreuil</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%0A%20usage%20%40%20compile%20time.&In-Reply-To=%3C492C776C.1070208%40parallaxshift.com%3E"
+       TITLE="[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.">cdrtools_peep at parallaxshift.com
+       </A><BR>
+    <I>Tue Nov 25 23:08:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000308.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+        <LI>Next message: <A HREF="000310.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+&gt;<i> Are you talking about the implicit dependency of libfind to ACL support that
+</I>&gt;<i> is used by mkisofs?
+</I>
+	Yes, the dependency from libfind.
+
+&gt;<i> I would call this a Linux distro problem. I believe that ACL support is a basic
+</I>&gt;<i> OS feature that cannot be removed without creating major problems.
+</I>&gt;<i> 
+</I>&gt;<i> The basic ACL support that is needed by libfind is inside libc on Solaris and 
+</I>&gt;<i> the extended ACL support that is e.g. needed by programs like star is inside 
+</I>&gt;<i> libsec on Solaris and nobody would ever try to think about removing this.
+</I>
+	cdrtools works fine for me without having ACL support installed and
+therefore compiled against.*
+
+	I personally have a single user box, and don't need the overhead of
+ACL.  Standard/Classic Unix users and groups are enough for me and my
+uses.  Further I could imagine a setup where you had a rather embedded
+system (PVR with DVD-R burning capabilities) that wouldn't need the
+overhead of ACL either.
+	So not strictly requiring ACL is a good thing from my perspective.
+Which, again, your software appears to do just fine.
+
+
+* NOTE: I personally am using only using the older 2.01.01a34, and I'm
+assuming that the latest versions will work without ACL as well.
+
+&gt;<i> Q1:	Wouldn't it be better to treat things similar on Linux?
+</I>
+	That's a question for someone with more brains than me.  :)  I'm just a
+user, not Mr. Torvalds.
+
+&gt;<i> Q2:	Is there no support for dependencies on Gentoo that knows that
+</I>&gt;<i> 	ACL support is still &quot;in use&quot; and cannot be removed before all other
+</I>&gt;<i> 	ACL users have been removed also?
+</I>
+	The Gentoo Devs problem is more with tracking that dependency.  You
+kind of surprise them, as they don't realize you've linked against ACL
+really.  They want explicit control over the use of ACL.  They want to
+be able to tell cdrtools's build system to not use ACL, even if it is on
+the system at this moment.
+	This boils down (I think) to conditionally settings the USE_ACL define
+(it looks like it's always being enabled in libfind's .mk files) via the
+make/build system.  Via an environment variable or something?
+
+
+	-- Philippe Chaintreuil
+	   (Gentoo user)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000308.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+	<LI>Next message: <A HREF="000310.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#309">[ date ]</a>
+              <a href="thread.html#309">[ thread ]</a>
+              <a href="subject.html#309">[ subject ]</a>
+              <a href="author.html#309">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

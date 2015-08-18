@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20configure%3A%20error%3A%20installation%20or%0A%20configuration%20problem%3A%20C%20compiler%20cannot%20create%20executables.%27%3B%0A%20schily-2013-11-09%20not%20compiling%20on%20FreeBSD%208.4&In-Reply-To=%3C528398fa.O6naQ6C79mU3JsiJ%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000951.html">
+   <LINK REL="Next"  HREF="000953.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20configure%3A%20error%3A%20installation%20or%0A%20configuration%20problem%3A%20C%20compiler%20cannot%20create%20executables.%27%3B%0A%20schily-2013-11-09%20not%20compiling%20on%20FreeBSD%208.4&In-Reply-To=%3C528398fa.O6naQ6C79mU3JsiJ%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Nov 13 16:21:30 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000951.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+        <LI>Next message: <A HREF="000953.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#952">[ date ]</a>
+              <a href="thread.html#952">[ thread ]</a>
+              <a href="subject.html#952">[ subject ]</a>
+              <a href="author.html#952">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear all,
+</I>&gt;<i>
+</I>&gt;<i> I have a working version of cdrecord version a16 and saw new version
+</I>&gt;<i> and wanted to update to latest, I get error:
+</I>&gt;<i>
+</I>&gt;<i>     ==&gt; CONFIGURING RULES &quot;incs/amd64-freebsd-cc/rules.cnf&quot;
+</I>&gt;<i> loading cache ./config.cache
+</I>&gt;<i> checking host system type... amd64-unknown-freebsd8.4
+</I>&gt;<i> checking if sh is bash... no
+</I>&gt;<i> checking if /bin/sh is bash... no
+</I>&gt;<i> checking whether sh -ce is broken... no
+</I>&gt;<i> checking whether /bin/sh -ce is broken... no
+</I>&gt;<i> checking whether /bin/bosh is a working shell... no
+</I>&gt;<i> checking whether /opt/schily/bin/bosh is a working shell... yes
+</I>&gt;<i> checking for cc... gcc
+</I>&gt;<i> checking for gcc... (cached) gcc
+</I>&gt;<i> checking whether the C compiler (gcc   -O   -Llibs/amd64-freebsd-cc
+</I>&gt;<i> -L/opt/schily/lib -L/usr/local/lib) works... no
+</I>&gt;<i> configure: error: installation or configuration problem: C compiler
+</I>&gt;<i> cannot create executables.
+</I>&gt;<i> smake: Operation not permitted. *** Code 1 from command line for
+</I>&gt;<i> target 'incs/amd64-freebsd-cc/rules.cnf'.
+</I>&gt;<i> smake: The following command caused the error:
+</I>&gt;<i> echo &quot;    ==&gt; CONFIGURING RULES \&quot;incs/amd64-freebsd-cc/rules.cnf\&quot;&quot;;
+</I>&gt;<i> /bin/rm -f incs/amd64-freebsd-cc/rules.cnf;  cd incs/amd64-freebsd-cc;
+</I>&gt;<i>  CONFIG_NOFAIL=TRUE CC=&quot;gcc&quot; CFLAGS=&quot;  -O  &quot;  CXXFLAGS=&quot;  -O  &quot;
+</I>&gt;<i> CPPFLAGS=&quot;/usr/local/include  &quot;  LDFLAGS=&quot;-Llibs/amd64-freebsd-cc
+</I>&gt;<i> -L/opt/schily/lib -L/usr/local/lib&quot; sh ../../autoconf/configure
+</I>&gt;<i> smake: No such file or directory. Can not open
+</I>&gt;<i> 'incs/amd64-freebsd-cc/rules.cnf'.
+</I>&gt;<i> gmake: *** [all] Error 2
+</I>
+Edit RULES/cc* and RULES/rules.cnf and change:
+
+$(OSINCDIRS)
+
+to
+
+$(OSINCDIRS:%=-I%)
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000951.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+	<LI>Next message: <A HREF="000953.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#952">[ date ]</a>
+              <a href="thread.html#952">[ thread ]</a>
+              <a href="subject.html#952">[ subject ]</a>
+              <a href="author.html#952">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

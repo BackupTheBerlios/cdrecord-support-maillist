@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] errors after first burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C1361080917.9189.19.camel%40tardis%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000921.html">
+   <LINK REL="Next"  HREF="000923.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] errors after first burn</H1>
+    <B>Noel Butler</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C1361080917.9189.19.camel%40tardis%3E"
+       TITLE="[Cdrecord-support] errors after first burn">noel.butler at ausics.net
+       </A><BR>
+    <I>Sun Feb 17 07:01:57 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000921.html">[Cdrecord-support] cdrtools-3.01a12 ready
+</A></li>
+        <LI>Next message: <A HREF="000923.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#922">[ date ]</a>
+              <a href="thread.html#922">[ thread ]</a>
+              <a href="subject.html#922">[ subject ]</a>
+              <a href="author.html#922">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joerg,
+
+Have a niggling problem, just changed the (IDE) burner recently which
+worked well for some 8 years until it decided to go nite nite and not
+wake up again, but with the replacement (SATA) burner - 
+    3,1,0	301) 'TSSTcorp' 'CDDVDW SH-S223C ' 'SB04' Removable CD-ROM
+
+I can burn one disc successfully, try to burn another and it fails,
+every time, giving me several new beer coasters.
+
+The only way I can get a new burn to succeed is to reboot &lt;gulp&gt; the
+box, and then its groundhog day all over again, more beer coasters,
+reboot......so on
+
+I have additionally upgraded the kernel (3.7 series) and cdrecord which
+was  a11  to   a12  with no change.
+
+
+Cdrecord-ProDVD-ProBD-Clone 3.01a11 (i686-pc-linux-gnu) Copyright (C)
+1995-2012 Joerg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '3,1,0'
+scsibus: 3 target: 1 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   : 
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB04'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-R sequential recording
+Profile: DVD+R/DL 
+Profile: DVD+R 
+Profile: DVD+RW 
+Profile: DVD-R/DL layer jump recording 
+Profile: DVD-R/DL sequential recording 
+Profile: DVD-RW sequential recording 
+Profile: DVD-RW restricted overwrite 
+Profile: DVD-RAM 
+Profile: DVD-R sequential recording (current)
+Profile: DVD-ROM 
+Profile: CD-RW 
+Profile: CD-R 
+Profile: CD-ROM 
+Profile: Removable Disk 
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE 
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1048576 = 1024 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  This always used to occur on my
+previous sony drive which worked.
+
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is ON.
+Starting new track at sector: 0
+Track 01:    0 of 3285 MB written.cdrecord: Input/output error.
+write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 00 01 A0 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 03 00 00 00 00 0A 00 00 00 00 0C 81 00 00
+Sense Key: 0x3 Medium Error, Segment 0
+Sense Code: 0x0C Qual 0x81 (write error) [No matching qualifier] Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.923s timeout 200s
+
+write track data: error after 851968 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+Writing  time:   59.262s
+Average write speed  42.0x.
+Fixating...
+Fixating time:    0.002s
+BURN-Free was not used.
+cdrecord: fifo had 154 puts and 27 gets.
+cdrecord: fifo was 0 times empty and 8 times full, min fill was 90%.
+
+
+Any suggestions?
+
+PS:
+Cdrecord-ProDVD-ProBD-Clone   isnt it time we changed that now to
+Cdrecord-ProDVD-ProBD  :)
+Thanks
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: face-smile.png
+Type: image/png
+Size: 873 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.png">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 490 bytes
+Desc: This is a digitally signed message part
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.pgp">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130217/d0c03ccf/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000921.html">[Cdrecord-support] cdrtools-3.01a12 ready
+</A></li>
+	<LI>Next message: <A HREF="000923.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#922">[ date ]</a>
+              <a href="thread.html#922">[ thread ]</a>
+              <a href="subject.html#922">[ subject ]</a>
+              <a href="author.html#922">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

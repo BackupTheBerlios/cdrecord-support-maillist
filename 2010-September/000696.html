@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] error reported when busno is &gt; 15
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20reported%20when%20busno%20is%20%3E%2015&In-Reply-To=%3C4c861732.T8MSHK2TZ%2BguxCd7%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000695.html">
+   <LINK REL="Next"  HREF="000697.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] error reported when busno is &gt; 15</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20reported%20when%20busno%20is%20%3E%2015&In-Reply-To=%3C4c861732.T8MSHK2TZ%2BguxCd7%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] error reported when busno is &gt; 15">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Sep  7 12:42:58 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000695.html">[Cdrecord-support]  error reported when busno is &gt; 15
+</A></li>
+        <LI>Next message: <A HREF="000697.html">[Cdrecord-support] error reported when busno is &gt; 15
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#696">[ date ]</a>
+              <a href="thread.html#696">[ thread ]</a>
+              <a href="subject.html#696">[ subject ]</a>
+              <a href="author.html#696">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i> When I had a few &quot;scsi&quot; devices on a system and by scanbus the busno was &gt;
+</I>&gt;<i> 15, cdrecord would report the following error message and quitted.
+</I>&gt;<i> I tried v3.0 also, same issue.
+</I>&gt;<i> Is it possible to change the limitation? or just provide another option for
+</I>&gt;<i> user to specify the threshold? Environment variable will work as well I
+</I>&gt;<i> think. Either way will be much flexible.
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a44 (i686-pc-cygwin) Copyright (C)
+</I>&gt;<i> 1995-2008
+</I>&gt;<i> J&#246;rg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '16,0,0'
+</I>&gt;<i> scsibus: 16 target: 0 lun: 0
+</I>&gt;<i> cdrecord: Invalid argument. Illegal value for busno, target or lun '16,0,0'.
+</I>&gt;<i> Can
+</I>&gt;<i> not open or use SCSI driver.
+</I>
+If this is because of USB, you could change MAX_SCG in libscg/scsi-wnt.c
+
+What is the reason for having higher bus numbers at your system?
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000695.html">[Cdrecord-support]  error reported when busno is &gt; 15
+</A></li>
+	<LI>Next message: <A HREF="000697.html">[Cdrecord-support] error reported when busno is &gt; 15
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#696">[ date ]</a>
+              <a href="thread.html#696">[ thread ]</a>
+              <a href="subject.html#696">[ subject ]</a>
+              <a href="author.html#696">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

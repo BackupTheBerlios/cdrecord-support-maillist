@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Help%20needed%20on%20Mac%20OS%20Extended%20%28i.e%20HFS%2B%29%0A%20support%20with%20mkisofs.exe&In-Reply-To=%3C460A776A.3010406%40byn.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000024.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe</H1>
+    <B>Dan Burchmore</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Help%20needed%20on%20Mac%20OS%20Extended%20%28i.e%20HFS%2B%29%0A%20support%20with%20mkisofs.exe&In-Reply-To=%3C460A776A.3010406%40byn.net.au%3E"
+       TITLE="[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe">d.burchmore at byn.net.au
+       </A><BR>
+    <I>Wed Mar 28 16:10:50 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000024.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+&gt;<i> I am not sure whether mkisofs supports thsi for mac hybrid CDs, did
+</I>&gt;<i> you test?
+</I>Well, what I did do was this:
+
+mkisofs -R -l -J -part -V hybrid -o hybrid.raw -C |`cdrecord dev=1,0,0
+-msinfo`| /cygdrive/i
+
+cdrecord -dev=1,0,0 -driveropts=burnfree -speed=12 -tao hybrid.raw
+|<i>
+</I>|<i>Of course   /cygdrive/i   or indeed any    /files/path     is no good
+</I>when I'm using a ready made iso image (from MacImage) - because when the
+image is mounted in Daemon Tools in Windows or as a loop device in
+linux, there is no recognition of the HFS+ structure.
+&gt;<i> It usually is easier to find a solutoion that is based on standards only
+</I>&gt;<i> and that does not need a mac specific hack.
+</I>&gt;<i>
+</I>&gt;<i> The problem with the HFS code in mkisofs is that is is not cleanly written and
+</I>&gt;<i> hard to impossible to maintain.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>   
+</I>I agree with that.
+
+The method I am trying to employ now is to avoid mkisofs altogether and
+to hack the hybrid.iso directly. For this I imagine I need some kind of
+TOC editor.
+
+BTW, the hybrid.iso from MacImage, if burned directly onto 1 disc as a
+DAO recording, works beautifully in both a PC and a Mac. It does exactly
+what it's supposed to do. My goal is to put audio tracks before my data
+session in order to make an Enhanced Hybrid CD.
+
+Dan
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000024.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

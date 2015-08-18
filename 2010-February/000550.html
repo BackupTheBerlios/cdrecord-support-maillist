@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20truncates%20file%20names%20from%20previous%0A%20session%20%28ISO9660%2BJoliet%29%20-%20CD-R&In-Reply-To=%3C4b7958ea.DsHSKYEjo8ufMqhC%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000549.html">
+   <LINK REL="Next"  HREF="000551.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20truncates%20file%20names%20from%20previous%0A%20session%20%28ISO9660%2BJoliet%29%20-%20CD-R&In-Reply-To=%3C4b7958ea.DsHSKYEjo8ufMqhC%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Feb 15 15:23:38 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000549.html">[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R
+</A></li>
+        <LI>Next message: <A HREF="000551.html">[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#550">[ date ]</a>
+              <a href="thread.html#550">[ thread ]</a>
+              <a href="subject.html#550">[ subject ]</a>
+              <a href="author.html#550">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sebastien TOPIN &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">sebastien.topin at waaves.com</A>&gt; wrote:
+
+&gt;<i> I am trying to use &quot;cdrecord + mkisofs&quot; to add a session on a non  
+</I>&gt;<i> finalized CD-R that already contains data burned on Windows. I use ISO  
+</I>&gt;<i> 9660 level 1 + relaxed Joliet options on Windows to support longer  
+</I>&gt;<i> names.
+</I>&gt;<i>
+</I>&gt;<i> Now I can add a new session to my CD on Mac OS X (10.5.8) also  
+</I>&gt;<i> supporting long file names using Joliet. The only problem is that it  
+</I>&gt;<i> truncates all file names from previous sessions to strict ISO 9660  
+</I>&gt;<i> &quot;8+3&quot; characters.
+</I>
+This is an unfortunate result of using the non-standard Joliet.
+While there is a 100% 1:1 relation between ISO-9660 file names and the 
+Rock Ridge extensions, such a relation does not exist between ISO-9660
+and Joliet. For this reason, it is not possible to keep any file names that
+only exist in Joliet.
+
+&gt;<i> I also tried to add the following option but that did not change  
+</I>&gt;<i> anything:
+</I>&gt;<i> -allow-lowercase
+</I>&gt;<i> -relaxed-filenames
+</I>&gt;<i> - r or -R (that does not work since it claims that the previous  
+</I>&gt;<i> session does not contain Rock ridge option)
+</I>&gt;<i>
+</I>&gt;<i> If I use ISO 9660 level 2 on Windows side to burn the first session,  
+</I>&gt;<i> that solves the problem up to 31 characters but I would need to be  
+</I>&gt;<i> able to use ISO 9660 level 1 for compatibility reasons on Windows side.
+</I>&gt;<i>
+</I>&gt;<i> Any ideas how I can solve this problem?
+</I>
+Use Rock Ridge extensions starting with the first session.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000549.html">[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R
+</A></li>
+	<LI>Next message: <A HREF="000551.html">[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#550">[ date ]</a>
+              <a href="thread.html#550">[ thread ]</a>
+              <a href="subject.html#550">[ subject ]</a>
+              <a href="author.html#550">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

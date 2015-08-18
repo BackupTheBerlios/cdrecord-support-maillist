@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] possible buildsystem bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080710223649.GA6838%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000267.html">
+   <LINK REL="Next"  HREF="000256.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] possible buildsystem bug</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080710223649.GA6838%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] possible buildsystem bug">weigelt at metux.de
+       </A><BR>
+    <I>Fri Jul 11 00:36:50 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000267.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+        <LI>Next message: <A HREF="000256.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#269">[ date ]</a>
+              <a href="thread.html#269">[ thread ]</a>
+              <a href="subject.html#269">[ subject ]</a>
+              <a href="author.html#269">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+
+&gt;<i> &gt; Already did. But at that point I did a bit research with a completely
+</I>&gt;<i> &gt; different approach: <A HREF="http://treebuild.metux.de/index.php/Main_Page">http://treebuild.metux.de/index.php/Main_Page</A>
+</I>&gt;<i> &gt; It's actually a completely different paradigm: modeling the package's
+</I>&gt;<i> &gt; structure instead of build rules (model- instead of process-driven).
+</I>&gt;<i> &gt; Not an Ultime Solution (tm), but fine for simply structured packages.
+</I>&gt;<i> 
+</I>&gt;<i> Reading this, I understand that you don't know David Korn ;-)
+</I>
+Besides I know and had several talks about ksh w/ him, what does David
+have to do with my buildsystem ?
+ 
+&gt;<i> First, you should read this: 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/smake/PortableSoftware.ps.gz">ftp://ftp.berlios.de/pub/smake/PortableSoftware.ps.gz</A>
+</I>&gt;<i> 
+</I>&gt;<i> It explains how highly portable software may be build.
+</I>
+It explains *your* view. On a first look it seems quite fine, but I 
+already mentioned that you buildsystem isn't without problems.
+ 
+&gt;<i> Later, the FSF started with autoconf which usually does two jobs:
+</I>&gt;<i> 
+</I>&gt;<i> -	create a include file with config data that contain results from
+</I>&gt;<i> 	fine grained platform tests. This is an implemtation of the ideas
+</I>&gt;<i> 	of the pioneers of the openSource movement Larry Wall and Rich $alz
+</I>&gt;<i> 	from around 1980.
+</I>&gt;<i> 
+</I>&gt;<i> -	create modified makefiles. This is not a good idea.
+</I>
+In general: ack.
+
+But: the whole autotools stuff is anything but robust. You need to be
+very careful. Your paper already mentions several problems.
+
+&gt;<i> I believe that your idea of using xml for this task is &quot;inhumane&quot; ;-)
+</I>
+If you just don't like xml, you could also use any other way for storing
+hierachies, bracked expressions (lisp), C-struct style, filesystem, 
+whatever you like.
+
+The major idea behind is that you have an hierachy of classified objects.
+One object type, for example, is a library node. It consists of things 
+like source nodes (eg. .c), header nodes (which might be either public
+or private - that affects installing) or import nodes (import other libs). 
+Then it's up to the buildsystem only (!) how to pull things together.
+As the application developer, these details are completely out of your
+scope, intentionally.
+
+For lot's of packages this is approach is fine, for others not. Well,
+you've got the choice :P
+
+&gt;<i> BTW: bootstrapping my build system is simple as any even brain dead &quot;make&quot; 
+</I>&gt;<i> could build the bootstrap-smake and as there is even a way to compile the first
+</I>&gt;<i> stage of smake using portable shell scripts. 
+</I>
+I absolutely dislike the idea of some package bringing its own make tool,
+this causes a lot of headache, at least w/ crosscompiling.
+Instead just clearly state which tools are required and leave that job
+to the user.
+
+&gt;<i> How do you port your software to a new unknown platform?
+</I>
+Port the buildsystem to that platform and then just use it.
+In the treebuild model, there are no platform specifics visible to 
+the application (besides some symbols which might be set or not).
+For example, there is exactly one way to declare the structure of 
+certain package. Note: you just give the structure, the actual build
+process is out of scope then.
+
+&gt;<i> &gt; &gt; Gmake still did not fix a bug that I reported in 1997 although it has been 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; URL ?
+</I>&gt;<i> 
+</I>&gt;<i> There was a mail exchange 11 years ago. I know of no URLs, you may search for 
+</I>&gt;<i> it.
+</I>
+Could you please bounce these mails to me ?
+
+&gt;<i> GNU make has a design bug. It does not follow the rule &quot;try to 'make' anything
+</I>&gt;<i> before you try to use it&quot;. gmake does this for top the level &quot;makefile&quot; but not
+</I>&gt;<i> for included make files. As a result gmake prints error messages that should 
+</I>&gt;<i> never appear.
+</I>
+Could you please give an detailed example ?
+
+&gt;<i> In this area gmake is a piece of junk. It tries to hide this bug 
+</I>&gt;<i> with the following strategy:
+</I>&gt;<i> 
+</I>&gt;<i> -	start gmake and continue on failed include statements _although_ the 
+</I>&gt;<i> 	files are missing.
+</I>
+It runs through, even includes are missing ? ugh!
+
+&gt;<i> -	execute rules including the ones to create the include files
+</I>&gt;<i> -	restart (re-exec) gmake with the saved args
+</I>
+Ah, that's probably because it should be able to create certain includes 
+by itself, eg. autogenerated dependencies.
+Actually, I don't like that approach - better use separate makefiles, 
+a toplevel one which creates the deps and then calls the 2nd level one.
+
+&gt;<i> 3 years ago, I reported a bug in the way gmake examines it's environment. This 
+</I>&gt;<i> causes gmake to dump core under certain conditions. This bug could be fixed 
+</I>&gt;<i> with a 2 line change that I send. The bug is still present in recent gname 
+</I>&gt;<i> releases. I consider gmake to be an &quot;unmaintained program&quot; for this reason.
+</I>
+URL ?
+
+&gt;<i> &gt; Yep, the tab/whitespace issue is an ugly thing. Back when I was learning
+</I>&gt;<i> &gt; (g)make, it caused me some headache ;-o
+</I>&gt;<i> 
+</I>&gt;<i> There is no way to work around this gmake bug unless you like to make the 
+</I>&gt;<i> makefile to fail on correct make implementations.
+</I>
+More precisely ?
+ 
+&gt;<i> Rule of thumb: better try to fix the defective program instead of trying to 
+</I>&gt;<i> work around the bugs.
+</I>
+ACK. That's exactly why I prefer certain fixes to be done within the 
+toolchain instead of working around in each single app.
+
+For example, win32's (IMHO meanwhile deprecated behaviour) of using
+backlash instead of slash as directory delimiter can be handled 
+within libc, so no more thousands of #ifdef's are needed anymore.
+
+An more tricky example is the mmap() behaviour differing between
+OS'es. This can't really fixed, since there is no standard you can
+use as reference. IMHO, we should create one: 
+
+* write some &quot;libmmap&quot; (or at least an include file) which either 
+  sets appropriate symbols and maybe introduces some wrappers for
+  specific cases.
+* this lib has to be ported once per target platform
+* packages which want to use mmap then exclusively use that new
+  lib instead of the (then deprecated) mmap() call directly.
+
+This can also be done with lots of similar problems.
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000267.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+	<LI>Next message: <A HREF="000256.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#269">[ date ]</a>
+              <a href="thread.html#269">[ thread ]</a>
+              <a href="subject.html#269">[ subject ]</a>
+              <a href="author.html#269">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

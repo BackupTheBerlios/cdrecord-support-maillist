@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C4b79737f.X1ClovwApcHgAfJq%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000547.html">
+   <LINK REL="Next"  HREF="000548.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C4b79737f.X1ClovwApcHgAfJq%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Feb 15 17:17:03 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000547.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+        <LI>Next message: <A HREF="000548.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cia Watson &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ciamarie at my180.net</A>&gt; wrote:
+
+&gt;<i> I since upgraded to the 075 version (on CentOS 5.4) and it's very
+</I>&gt;<i> hit-or-miss, I've only managed to burn 2 good DVD's trying with both
+</I>&gt;<i> Sony DVD-R or Phillips DVD-R. Last weekend what worked was using the
+</I>&gt;<i> nautilus (desktop) copy cd or burn image to cd option; using the
+</I>&gt;<i> command-line 'cdrecord' worked but the dvd menu didn't work for a
+</I>&gt;<i> couple of them so the first part (title) of the dvd was unable to
+</I>&gt;<i> be viewed.
+</I>&gt;<i>
+</I>&gt;<i> Today and yesterday that method hasn't worked at all, so I used K9copy
+</I>&gt;<i> to make an iso and only 1 has burned correctly using the command-line,
+</I>&gt;<i> at least 3 others won't come up with anything in my DVD player. And one
+</I>&gt;<i> had an error burning, here's the output:
+</I>&gt;<i>
+</I>&gt;<i> Track 01:    0 of 3562 MB written.cdrecord: Input/output error.
+</I>&gt;<i> write_g1: scsi sendcmd: no error CDB:  2A 00 00 00 00 00 00 00 10 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 03 00 00 00 00 0A 32 38 03 0C 73 04 00 00
+</I>&gt;<i> Sense Key: 0x3 Medium Error, Segment 0
+</I>&gt;<i> Sense Code: 0x73 Qual 0x04 (program memory area update failure) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) 
+</I>&gt;<i> cmd finished after 16.169s timeout 200s
+</I>&gt;<i>
+</I>&gt;<i> write track data: error after 0 bytes
+</I>&gt;<i> cdrecord: A write error occured.
+</I>&gt;<i> cdrecord: Please properly read the error message above.
+</I>&gt;<i> Writing  time:   21.216s
+</I>&gt;<i> Average write speed 127.3x.
+</I>&gt;<i> Fixating...
+</I>&gt;<i> Fixating time:    0.003s
+</I>&gt;<i> cdrecord: fifo had 128 puts and 1 gets.
+</I>&gt;<i> cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+</I>
+This looks like your drive does not like the medium.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000547.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+	<LI>Next message: <A HREF="000548.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

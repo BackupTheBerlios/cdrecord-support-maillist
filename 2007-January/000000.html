@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs read performance with joliet option
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20read%20performance%20with%20joliet%20option&In-Reply-To=%3C45A08628.3060603%40verizon.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000001.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs read performance with joliet option</H1>
+    <B>Skunk Worx</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20read%20performance%20with%20joliet%20option&In-Reply-To=%3C45A08628.3060603%40verizon.net%3E"
+       TITLE="[Cdrecord-support] mkisofs read performance with joliet option">skunkworx at verizon.net
+       </A><BR>
+    <I>Sun Jan  7 06:33:28 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000001.html">[Cdrecord-support] mkisofs read performance with joliet option
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I use FC6 (Fedora Core 6) to master DVDs and have noticed if I add the 
+-J option to the mkisofs command line the read performance on the final 
+dvd is severely degraded.
+
+For example mastering a DVD image with RockRidge and ISO9660 alone 
+yields about 200 mb./minute read performance on my media.
+
+Adding the Joliet option to mkisofs command line degrades the read 
+performance on the final dvd to about 75 mb./minute.
+
+Is this expected behavior? I used the same media and drive (dvd-rw) and 
+blanked with /dev/zero between cycles then duplicated the test twice to 
+be sure.
+
+$ mkisofs -version
+mkisofs 2.01 (cpu-pc-linux-gnu)
+
+Thanks,
+John
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000001.html">[Cdrecord-support] mkisofs read performance with joliet option
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#0">[ date ]</a>
+              <a href="thread.html#0">[ thread ]</a>
+              <a href="subject.html#0">[ subject ]</a>
+              <a href="author.html#0">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

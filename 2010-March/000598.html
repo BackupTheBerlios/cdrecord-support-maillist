@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Checking drives for media compatibility?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C5bdc1c8b1003020659j2f1052cet9651ada62ccdc69%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000602.html">
+   <LINK REL="Next"  HREF="000605.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Checking drives for media compatibility?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C5bdc1c8b1003020659j2f1052cet9651ada62ccdc69%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Checking drives for media compatibility?">markknecht at gmail.com
+       </A><BR>
+    <I>Tue Mar  2 15:59:19 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000602.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+        <LI>Next message: <A HREF="000605.html">[Cdrecord-support] Dvd multi distro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ah! This is one place where -v is important!
+
+Without -v:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $ cdrecord dev=1,0,0 -media-info
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a76 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;&#65533;rg Schilling
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'Optiarc '
+Identifikation : 'DVD RW AD-7240S '
+Revision       : '1.03'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 3A 01 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x3A Qual 0x01 (medium not present - tray closed) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 40s
+cdrecord: No disk / Wrong disk!
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~
+
+But with -v
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $ cdrecord -v dev=1,0,0 -media-info
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a76 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'Optiarc '
+Identifikation : 'DVD RW AD-7240S '
+Revision       : '1.03'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: none
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 3A 01 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x3A Qual 0x01 (medium not present - tray closed) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 40s
+cdrecord: No disk / Wrong disk!
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $
+
+On Tue, Mar 2, 2010 at 6:52 AM, Richard Skelton
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>&gt; wrote:
+&gt;<i> Hi Mark,
+</I>&gt;<i> On my laptop running Solaris with no media loaded I see:-
+</I>&gt;<i>
+</I>&gt;<i> rts{rich}78: cdrecord -v dev=1,0,0 -media-info
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a53 (i386-pc-solaris2.11) Copyright
+</I>&gt;<i> (C) 1995-2008 J&#246;rg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Warning: Using USCSI interface.
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> SCSI buffer size: 512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'MATSHITA'
+</I>&gt;<i> Identifikation : 'DVD/CDRW UJDA775'
+</I>&gt;<i> Revision       : 'CB03'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-ROM.
+</I>&gt;<i> /bin/cdrecord.bin: Cannot load media with this drive!
+</I>&gt;<i> /bin/cdrecord.bin: Try to load media by hand.
+</I>&gt;<i> Current: none
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+</I>&gt;<i> Driver flags   : MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R96R
+</I>&gt;<i> /bin/cdrecord.bin: Cannot load media with this drive!
+</I>&gt;<i> /bin/cdrecord.bin: Try to load media by hand.
+</I>&gt;<i> /bin/cdrecord.bin: Cannot load media.
+</I>&gt;<i>
+</I>&gt;<i> And I think cdrecord can create with my drive:-
+</I>&gt;<i>
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Mark Knecht wrote:
+</I>&gt;<i>
+</I>&gt;<i> On Tue, Mar 2, 2010 at 4:20 AM, Richard Skelton
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Mark,
+</I>&gt;<i> Try:-
+</I>&gt;<i>
+</I>&gt;<i> cdrecord dev=1001,0,0 -media-info
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi guys,
+</I>&gt;<i>    Thanks for the responses. I think something must have gotten lost
+</I>&gt;<i> in the translation. I'm not so much asking about the media, which both
+</I>&gt;<i> of your answers seemed to focus on, but rather I'm asking about drive
+</I>&gt;<i> __specs__, and really only specs at the user level.
+</I>&gt;<i>
+</I>&gt;<i>    If I run the above command on this machine I get the data I post at
+</I>&gt;<i> the end. The drive is a Sony Optiarc 7240S as shown. Now, if I go back
+</I>&gt;<i> to NewEgg where I bought the drive and look at the specs tab for the
+</I>&gt;<i> drive it lists the following:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.newegg.com/Product/Product.aspx?Item=N82E16827118033&amp;cm_re=7240S-_-27-118-033-_-Product">http://www.newegg.com/Product/Product.aspx?Item=N82E16827118033&amp;cm_re=7240S-_-27-118-033-_-Product</A>
+</I>&gt;<i>
+</I>&gt;<i> WRITE Speed
+</I>&gt;<i> DVD+R 	24X
+</I>&gt;<i> DVD+RW 	8X
+</I>&gt;<i> DVD-R 	24X
+</I>&gt;<i> DVD-RW 	6X
+</I>&gt;<i> CD-R 	48X
+</I>&gt;<i> CD-RW 	32X
+</I>&gt;<i> DVD+R DL 	12X
+</I>&gt;<i> DVD-R DL 	12X
+</I>&gt;<i> DVD-RAM 	12X
+</I>&gt;<i>
+</I>&gt;<i> So when I bought this drive at least it claimed compatibility with the
+</I>&gt;<i> 9 types of media above. Note that I'm not talking about the speed it
+</I>&gt;<i> says it writes at, just compatibility - that presumably if I put any
+</I>&gt;<i> one of those 9 media types in the drive I have a chance of writing it
+</I>&gt;<i> at some speed.
+</I>&gt;<i>
+</I>&gt;<i>    My question is who do I get that list for an unknown drive in a
+</I>&gt;<i> random computer. I walk around the house here an I have 8 PCs. They
+</I>&gt;<i> all have different drives in them but I don't know what media types
+</I>&gt;<i> each can read and write.
+</I>&gt;<i>
+</I>&gt;<i>    In the case of the DVD-R that wasn't readable (and it was DVD-R)
+</I>&gt;<i> I'm pretty sure the drive just doesn't support DVD-R media but I don't
+</I>&gt;<i> know how to determine that. For instance, I could do DVD+R DL backups
+</I>&gt;<i> here but then wouldn't be able to read it there because that drive
+</I>&gt;<i> cannot do DL.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Mark
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cheers
+</I>&gt;<i>
+</I>&gt;<i> Richard Skelton
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>
+</I>&gt;<i> Infineon Technologies UK Ltd
+</I>&gt;<i> Infineon House
+</I>&gt;<i> Great Western Court
+</I>&gt;<i> Hunts Ground Road
+</I>&gt;<i> Stoke Gifford
+</I>&gt;<i> Bristol
+</I>&gt;<i> BS34 8HP
+</I>&gt;<i> Tel +44(0)117 9528808
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000602.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+	<LI>Next message: <A HREF="000605.html">[Cdrecord-support] Dvd multi distro
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#598">[ date ]</a>
+              <a href="thread.html#598">[ thread ]</a>
+              <a href="subject.html#598">[ subject ]</a>
+              <a href="author.html#598">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

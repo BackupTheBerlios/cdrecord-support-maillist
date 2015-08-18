@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Write new BIOS image to CD?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20new%20BIOS%20image%20to%20CD%3F&In-Reply-To=%3C20120805043936.69e70e2d%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000872.html">
+   <LINK REL="Next"  HREF="000874.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Write new BIOS image to CD?</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20new%20BIOS%20image%20to%20CD%3F&In-Reply-To=%3C20120805043936.69e70e2d%40bashir%3E"
+       TITLE="[Cdrecord-support] Write new BIOS image to CD?">list1 at michaelshell.org
+       </A><BR>
+    <I>Sun Aug  5 10:39:35 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000872.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+        <LI>Next message: <A HREF="000874.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#873">[ date ]</a>
+              <a href="thread.html#873">[ thread ]</a>
+              <a href="subject.html#873">[ subject ]</a>
+              <a href="author.html#873">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 4 Aug 2012 11:25:04 -0700
+Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i> Inside of BIOS it says it will read the new BIOS image off of a CD but
+</I>&gt;<i> I'm having trouble finding an example in man cdrecord to just write
+</I>&gt;<i> a single file.
+</I>
+
+There is an AFUDOS update utility for that motherboard:
+
+<A HREF="http://www.asus.com/Motherboards/Intel_Socket_1366/Rampage_II_Extreme/#download">http://www.asus.com/Motherboards/Intel_Socket_1366/Rampage_II_Extreme/#download</A>
+
+But it does require you make a boot disk. 
+
+However, you can just tell the BIOS to grab the ROM image from
+a USB drive:
+
+
+<A HREF="http://vip.asus.com/forum/view.aspx?id=20090516171056706&amp;board_id=1&amp;model=P6T">http://vip.asus.com/forum/view.aspx?id=20090516171056706&amp;board_id=1&amp;model=P6T</A>
+(post #4)
+
+
+Now, assuming that you want the BIOS can grab the file from the root
+directory of a CD, put your .rom file in a directory by itself (or with
+other files you want the BIOS to be able to access), say, in ROMS
+
+Then, make an ISO image of that directory:
+
+mkisofs -V myroms -R -J -v -o myroms.img ROMS
+
+I do not know how your BIOS handles long filenames and/or rockridge
+joliet extensions. So, you might have to rename the rom filename to
+8 characters or less (e.g., BIOS2101.ROM) and omit the -R and -J
+options. 
+
+Note that the *contents* of ROMS are placed on the root dir of
+the image - there won't be a ROMS subdirectory in the image.
+
+Then, use cdrecord to write that image to a CD-R:
+
+cdrecord -v -sao myroms.img
+
+Then, the BIOS should be able see it on the CD.
+
+
+  Cheers,
+
+  Mike Shell
+
+
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000872.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+	<LI>Next message: <A HREF="000874.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#873">[ date ]</a>
+              <a href="thread.html#873">[ thread ]</a>
+              <a href="subject.html#873">[ subject ]</a>
+              <a href="author.html#873">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20.cdrecord%3A%20Input/output%20error.%20write_g1%3A%0A%09scsi%20sendcmd%3A%20no%20error&In-Reply-To=%3C75107331003010858o7a58cbefse7c4f3d222820524%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000591.html">
+   <LINK REL="Next"  HREF="000593.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20.cdrecord%3A%20Input/output%20error.%20write_g1%3A%0A%09scsi%20sendcmd%3A%20no%20error&In-Reply-To=%3C75107331003010858o7a58cbefse7c4f3d222820524%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error">olivares14031 at gmail.com
+       </A><BR>
+    <I>Mon Mar  1 17:58:46 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000591.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+        <LI>Next message: <A HREF="000593.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#592">[ date ]</a>
+              <a href="thread.html#592">[ thread ]</a>
+              <a href="subject.html#592">[ subject ]</a>
+              <a href="author.html#592">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg,
+
+Thank you for your reply.  I guess I need to try better media or get
+another burner.  Both burners returned bad values:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at n6355-19136</A>:/home/olivares/Downloads# cdrecord -v -dao dev=4,1,0
+driveropts=burnproof -speed=8 fluxflux-sl-en_US-2009.2.iso
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a77 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '4,1,0'
+scsibus: 4 target: 1 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnproof'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ATAPI   '
+Identifikation : 'DVD DC 16X8X5   '
+Revision       : '100 '
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: none
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data   663 MB
+Total size:      762 MB (75:31.70) = 339878 sectors
+Lout start:      762 MB (75:33/53) = 339878 sectors
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 3A 00 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x3A Qual 0x00 (medium not present) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 200s
+cdrecord: No disk / Wrong disk!
+
+
+I will see if a DVD burns or not and report back.
+
+Regards,
+
+Antonio
+
+On 3/1/10, Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at n6355-19136</A>:/home/olivares/Downloads# cdrecord -v -dao dev=4,0,0
+</I>&gt;&gt;<i> driveropts=burnproof -speed=4 fluxflux-sl-en_US-2009.2.iso
+</I>&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a77 (x86_64-unknown-linux-gnu)
+</I>&gt;&gt;<i> Copyright (C) 1995-2010 J&#246;rg Schilling
+</I>&gt;&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;&gt;<i> scsidev: '4,0,0'
+</I>&gt;&gt;<i> scsibus: 4 target: 0 lun: 0
+</I>&gt;&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;&gt;<i> Driveropts: 'burnproof'
+</I>&gt;&gt;<i> SCSI buffer size: 64512
+</I>&gt;&gt;<i> atapi: 1
+</I>&gt;&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;&gt;<i> Version        : 5
+</I>&gt;&gt;<i> Response Format: 2
+</I>&gt;&gt;<i> Capabilities   :
+</I>&gt;&gt;<i> Vendor_info    : '        '
+</I>&gt;&gt;<i> Identifikation : '16X8 DVD DUAL   '
+</I>&gt;&gt;<i> Revision       : 'A070'
+</I>&gt;<i>
+</I>&gt;<i> a no-name writer.....
+</I>&gt;<i>
+</I>&gt;&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;&gt;<i> Current: CD-R
+</I>&gt;&gt;<i> Profile: DVD+R/DL
+</I>&gt;&gt;<i> Profile: DVD+R
+</I>&gt;&gt;<i> Profile: DVD+RW
+</I>&gt;&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;&gt;<i> Profile: DVD-ROM
+</I>&gt;&gt;<i> Profile: CD-RW
+</I>&gt;&gt;<i> Profile: CD-R (current)
+</I>&gt;&gt;<i> Profile: CD-ROM
+</I>&gt;&gt;<i> Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+</I>&gt;&gt;<i> Driver flags   : MMC-3 SWABAUDIO BURNFREE FORCESPEED
+</I>&gt;&gt;<i> Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R96R
+</I>&gt;&gt;<i> Drive buf size : 1310720 = 1280 KB
+</I>&gt;&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;&gt;<i> Track 01: data   663 MB
+</I>&gt;&gt;<i> Total size:      762 MB (75:31.70) = 339878 sectors
+</I>&gt;&gt;<i> Lout start:      762 MB (75:33/53) = 339878 sectors
+</I>&gt;&gt;<i> Current Secsize: 2048
+</I>&gt;&gt;<i> ATIP info from disk:
+</I>&gt;&gt;<i>   Indicated writing power: 5
+</I>&gt;&gt;<i> Disk Is not unrestricted
+</I>&gt;&gt;<i> Disk Is not erasable
+</I>&gt;&gt;<i>   Disk sub type: Medium Type A, high Beta category (A+) (3)
+</I>&gt;&gt;<i>   ATIP start of lead in:  -11634 (97:26/66)
+</I>&gt;&gt;<i>   ATIP start of lead out: 359846 (79:59/71)
+</I>&gt;&gt;<i> Disk type:    Short strategy type (Phthalocyanine or similar)
+</I>&gt;&gt;<i> Manuf. index: 3
+</I>&gt;&gt;<i> Manufacturer: CMC Magnetics Corporation
+</I>&gt;<i>
+</I>&gt;<i> and a low quality blank
+</I>&gt;<i>
+</I>&gt;&gt;<i>     Capacity  Blklen/Sparesz.  Format-type  Type
+</I>&gt;&gt;<i>       359846             2048         0x00  Unformated or Blank Media
+</I>&gt;&gt;<i> Blocks total: 359846 Blocks current: 359846 Blocks remaining: 19968
+</I>&gt;&gt;<i> Forcespeed is OFF.
+</I>&gt;&gt;<i> Starting to write CD/DVD/BD at speed 24 in real SAO mode for single
+</I>&gt;&gt;<i> session.
+</I>&gt;&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;&gt;<i> BURN-Free is ON.
+</I>&gt;&gt;<i> Performing OPC...
+</I>&gt;&gt;<i> Sending CUE sheet...
+</I>&gt;&gt;<i> cdrecord: WARNING: Drive returns wrong startsec (0) using -150
+</I>&gt;&gt;<i> Writing pregap for track 1 at -150
+</I>&gt;&gt;<i> Starting new track at sector: 0
+</I>&gt;&gt;<i> Track 01:    0 of  663 MB written.cdrecord: Input/output error.
+</I>&gt;&gt;<i> write_g1: scsi sendcmd: no error
+</I>&gt;&gt;<i> CDB:  2A 00 00 00 01 74 00 00 1F 00
+</I>&gt;&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;&gt;<i> Sense Bytes: 71 00 03 00 00 00 00 0E 00 00 00 00 0C 00 00 00
+</I>&gt;&gt;<i> Sense Key: 0x3 Medium Error, deferred error, Segment 0
+</I>&gt;&gt;<i> Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+</I>&gt;&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;&gt;<i> cmd finished after 4.844s timeout 200s
+</I>&gt;<i>
+</I>&gt;<i> Try to use speed=8 or try to use better media.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353
+</I>&gt;<i> Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog:
+</I>&gt;<i> <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000591.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+	<LI>Next message: <A HREF="000593.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#592">[ date ]</a>
+              <a href="thread.html#592">[ thread ]</a>
+              <a href="subject.html#592">[ subject ]</a>
+              <a href="author.html#592">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

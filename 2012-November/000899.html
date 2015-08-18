@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%20in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50B92569.40509%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000898.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB</H1>
+    <B>Omega Weapon</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%20in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50B92569.40509%40gmail.com%3E"
+       TITLE="[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB">omegaphil at gmail.com
+       </A><BR>
+    <I>Fri Nov 30 22:30:17 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000898.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#899">[ date ]</a>
+              <a href="thread.html#899">[ thread ]</a>
+              <a href="subject.html#899">[ subject ]</a>
+              <a href="author.html#899">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30/11/12 12:42, Joerg Schilling wrote:
+&gt;<i> First let me repeat that a test version is available since yesterday evening
+</I>&gt;<i> at:
+</I>&gt;<i>
+</I>&gt;<i> 	<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha/">ftp://ftp.berlios.de/pub/cdrecord/alpha/</A>
+</I>&gt;<i>
+</I>&gt;<i> please test and report....
+</I>
+Just reached this email now.
+
+=========================================================================
+
+$ /opt/schily/bin/mkisofs --version
+
+mkisofs 3.01a08 (x86_64-unknown-linux-gnu) Copyright (C) 1993-1997 Eric 
+Youngdale (C) 1997-2010 Joerg Schilling
+
+=========================================================================
+
+Confirmed that a09 is reporting a08 in cdrecord/version.h currently.
+
+Based on media info, the bad session is 3:
+
+============================================
+
+3     3 Data   3066496    3182943    116448
+
+============================================
+
+So the following commandline is hopefully a valid test:
+
+========================================================================
+
+$ /opt/schily/bin/mkisofs -volid &quot;ADN70&quot; -rational-rock 
+-full-iso9660-filenames -iso-level 3 -follow-links -C &quot;3066496,3182943&quot; 
+-M &quot;/dev/sr0&quot; -o &quot;/mnt/Storage_1/Temporary Storage Folder/Processing 
+Folder/ADN70-mkisofsa9.iso&quot; '/mnt/Storage_3/Anime Storage Folder 
+2/Nisemonogatari [N-S][Coalgirls]'
+
+Setting input-charset to 'UTF-8' from locale.
+ISO-9660 image includes checksum signature for correct inode numbers.
+SUSP signatures version 1 found
+Rock Ridge signatures version 1 found
+Rock Ridge id 'RRIP_1991A'
+BAD RR ATTRIBUTES: 11 A2 07 4A 3D 88 93 69 A5 CD 37 52 71 FD 97 71 B9 FE 
+78 BE 03 E4 FA B0 C1 26
+BAD RR ATTRIBUTES: ...J=..i..7Rq..q..x......&amp;
+mkisofs: **BAD RRVERSION (74) in '&#65533;' field (11 A2).
+mkisofs: Cannot parse Rock Ridge attributes for 
+'MERI_VEGETTOEX___EVA___OBL.MPEG;1RR&#65533;NMd'.
+
+
+========================================================================
+
+
+
+&gt;&gt;&gt;<i> Did you test this with a mount on Solaris?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> No, I don't use any Solaris flavour, and even if I set up an OpenSolaris
+</I>&gt;&gt;<i> (?) VM, apparently you can't mount anything but the last session (which
+</I>&gt;&gt;<i> is now a later working session).
+</I>&gt;<i>
+</I>&gt;<i> Well, the Linux isoo-9660 implementation is full of bugs and it does not even
+</I>&gt;<i> check the data using heuristics or whether some values are outside possible
+</I>&gt;<i> bounds. So it is simple to make Linux crash while reading an iso-9660 image.
+</I>
+Yes, I fully agree. A few months ago I was investigating a bad burn 
+(something like an image that didn't end on the last disc sector) and 
+dd'd off the last session, then mounted it to see what would happen. It 
+locked up mount with 100% kernel mode CPU usage, requiring a hard boot 
+to 'fix'. Seem to remember having this shocking failure occasionally 
+with discs that weren't purposefully malformed as well, but I haven't 
+come across another yet.
+
+
+&gt;<i> The related Solaris filesystem implemenation not only implements such a
+</I>&gt;<i> verification that prevents kernel panics but it also carefully falls back to
+</I>&gt;<i> ISO-9660 data in case that the RR metadata contains problems.
+</I>&gt;<i>
+</I>&gt;<i> Note that I added an option to the Solaris implementaion to mount any session
+</I>&gt;<i> of interest aprox. 6 years ago.
+</I>
+OK, I will look into what it takes to get a Solaris VM.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000898.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#899">[ date ]</a>
+              <a href="thread.html#899">[ thread ]</a>
+              <a href="subject.html#899">[ subject ]</a>
+              <a href="author.html#899">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

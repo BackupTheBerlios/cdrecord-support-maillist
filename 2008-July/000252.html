@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080708142310.GC12384%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000249.html">
+   <LINK REL="Next"  HREF="000255.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080708142310.GC12384%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] cdrecord">weigelt at metux.de
+       </A><BR>
+    <I>Tue Jul  8 16:23:10 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000249.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000255.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+
+&gt;<i> &gt; All the cases I've found there are only interested in whether some type has
+</I>&gt;<i> &gt; certain size. This can be easily checked with a trivial compile test.
+</I>&gt;<i> 
+</I>&gt;<i> I am not sure what you mean with a &quot;compile test&quot;, 
+</I>
+Try whether some piece of code compiles ;-P
+
+&gt;<i> but if you know a way that allows you to find the size of certain data 
+</I>&gt;<i> types _without_ running code, you are welcome!
+</I>
+Well, at least you can easily check whether some type has specific size 
+(which should be enough for int types), eg:
+
+    char [((sizeof(int)==2) ? 1 : -1];
+
+Obviously, if the size of int != 2, that code won't compile.
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;                         stick on old K&amp;R compiler ? ;-o
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Needed for e.g. HP-UX
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Why not just using an more recent compiler, eg. gcc ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; HP-UX comes with cc.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Does that prevent you from using another compiler there ?
+</I>&gt;<i> 
+</I>&gt;<i> cc is there and did always create _correct_ code. gcc on HP-UX (HPPA) did in 
+</I>&gt;<i> many cases have bugs in the optimizer that caused the code not to work 
+</I>&gt;<i> correctly.
+</I>
+Ok. Is gcc on HP-UX still buggy today ?
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; 			unless someone has an really broken libc. but then he should
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; 			fix his broken system instead of holding individual 
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; 			packages responsible for hacking around his buggy system.
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Needed for Mac OS X and *BSD. I have no idea how Apple managed to pass the POSIX
+</I>&gt;<i> &gt; &gt; &gt; &gt; compliance tests....
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Does that variable exist on osx+bsd, but doesnt work ? 
+</I>&gt;<i> &gt; &gt; &gt; Why not just fixing the build environment (system headers, etc) then ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; ???? Did you read the POSIX standard and the FreeBSD man pages?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; POSIX defixes extern long timezone; *BSD and SunOS-4.x have 
+</I>&gt;<i> &gt; &gt; char *timezone(zone, dst);
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; And that can't be checked by a compile test ?
+</I>&gt;<i> 
+</I>&gt;<i> The minimum you would need to do is to _link_ in order to find whether 
+</I>&gt;<i> tinezone is a function or a variable. 
+</I>
+Yep, when I'm talking about &quot;compile-test&quot;, linking is also included ;P
+
+&gt;<i> This test would still fail on HP-UX where the name space of functions 
+</I>&gt;<i> and variables is separated......
+</I>
+But the compiler (+linker) still fails if some variable or function is missing ?
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong: needed on some platforms.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; What about explicitly using &quot;signed char&quot; and &quot;unsigned char&quot; where it matters ?
+</I>&gt;<i> &gt; &gt; &gt; IMHO, an compiler which doesnt support it, is broken ;-P
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Not all compilers implement the &quot;signed&quot; keyword.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Which ones ? Anyone from this century ?
+</I>&gt;<i> 
+</I>&gt;<i> ??? Should I drop support for all platforms that do not match the criteria
+</I>&gt;<i> for &quot;this century&quot; like Linux which is still non-POSIX?
+</I>
+Isn't the signed/unsigned keyword included in ANSI-C ?
+ 
+&gt;<i> I support everything back to ~ 20 years.
+</I>
+IMHO, cd burners are only around for about 10 (max.15) years ;-P
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; 			use it at all.
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong: needed for *BSD and Mac OS X
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; It did some research on this issue and found many places which said, this is
+</I>&gt;<i> &gt; &gt; &gt; an internal function and should not be used directly. Why/where exactly is
+</I>&gt;<i> &gt; &gt; &gt; this required in cdrtools ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; You did read the wrong information.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; So you have a better source ?
+</I>&gt;<i> 
+</I>&gt;<i> Correct.
+</I>
+URL ?
+
+&gt;<i> &gt; &gt; &gt; Well, I didn't say, evrything's perfect w/ glibc. There're still too many bugs
+</I>&gt;<i> &gt; &gt; &gt; and standard violations. Please remind me in about 6 weeks, and I'll get back to
+</I>&gt;<i> &gt; &gt; &gt; this issue. Might be that it's time for a fork ;-P
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; You will not be able to get a fixed glibc.....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm sure you've already filed bug reports on that, so please give me some
+</I>&gt;<i> &gt; pointers to them. I'll try to fix them.
+</I>&gt;<i> 
+</I>&gt;<i> Drepper does not understand how to correctly use &quot;weak&quot; ELF symbols. 
+</I>&gt;<i> 
+</I>&gt;<i> If he insists in implementing gcvt() via sprintf() (which itself _uses_ gcvt()) 
+</I>&gt;<i> he creates a circular dependency as long as he does not use weak references to 
+</I>&gt;<i> glibc internals in order to implement gcvt().
+</I>
+Actually, weak symbols always caused me lot of headache (eg. gpm vs. ncurses issue),
+so I never use them. Do you have an pointer to appropriate bug reports ?
+
+BTW: Why not just using sprintf ?
+
+&gt;<i> &gt; &gt; &gt; No, but I think there're other ways to fix this. Right, as I already said, 
+</I>&gt;<i> &gt; &gt; &gt; this is not that trivial. Perhaps go the same way as I suggested with bit-order.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; You suggestet something for bitorder that does not work.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; An explicit configure option (with optional autodetect) does not work ?
+</I>&gt;<i> 
+</I>&gt;<i> ????  cdrtools _highly_ depend on bit-ordering as it implements SCSI.
+</I>&gt;<i> This is why a test exist.
+</I>
+Why does that prevent you from adding an explicit configure option 
+to get around the run-test ?
+ 
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_FUNC_SYS_SIGLIST:	can be checked by compile
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Why not exactly ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Check the include files for all important target platforms....
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; And BTW: How do you like to check for a non-existent external variable without 
+</I>&gt;<i> &gt; &gt; a failing compile/link run?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Just by compile (and link), not run. If a missing symbol doesn't break,
+</I>&gt;<i> &gt; you've got an really strange toolchain ... ;-o
+</I>&gt;<i> 
+</I>&gt;<i> No, you have lousy include files.
+</I>&gt;<i> 
+</I>&gt;<i> You need to understand that compile tests only work if there are correct 
+</I>&gt;<i> definitions in well known include files _and_ if the linker works correctly.
+</I>
+Of course - a working toolchain is vital. If it's broken, there's not much
+you can do, but fixing/replacing it.
+
+Why exactly (and in which cases) does an link+compile test not work this case ?
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_USER_MALLOC:	not needed at all
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong: Dou you like to drop Cygwin?
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Why exactly ? Doesn't cygwin have a working malloc() ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Some Cygwin versions dump core if you have your own malloc().
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Why do you need your own malloc() at all ?
+</I>&gt;<i> 
+</I>&gt;<i> Used by e.g. &quot;bsh&quot; and &quot;sh&quot;.
+</I>
+a) why exactly ?
+b) required within cdrtools ?
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong: needed for *BSD support
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; BSD doesn't have getpgpid ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Check the BSD and the POSIX man pages.....
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; BSD is NOT POSIX.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; getpgpid() is not the problem, the problem is getpgrp() -&gt; various man pages.
+</I>&gt;<i> &gt; &gt; POSIX did a really bad job here and ignored POSIX rules!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Where can I read more abotu that ?
+</I>&gt;<i> 
+</I>&gt;<i> Check my code.... bsh/bshconf.h:
+</I>&gt;<i> 
+</I>&gt;<i> /*
+</I>&gt;<i>  * FreeBSD (anything that is BSD-4.4 derived)
+</I>&gt;<i>  * does not conform to POSIX and is not old BSD conforming either.
+</I>&gt;<i>  * Note that this seems to have been changed between 1995 and 2000
+</I>&gt;<i>  *
+</I>&gt;<i>  * getpgrp()/setpgrp() are not POSIX on BSD-4.4
+</I>&gt;<i>  *
+</I>&gt;<i>  * setpgrp() is old BSD compliant,
+</I>&gt;<i>  * getpgrp() is not BSD compliant but it is POSIX compliant
+</I>&gt;<i>  *
+</I>&gt;<i>  * setpgid() is OK (POSIX compliant)
+</I>&gt;<i>  * getpgid() is missing!
+</I>&gt;<i>  *
+</I>&gt;<i>  * The builtin command 'pgrp' will not work correctly for this reason.
+</I>&gt;<i>  *
+</I>&gt;<i>  *      BSD:
+</I>&gt;<i>  *
+</I>&gt;<i>  *      getpgrp(pid)            -&gt; pgid for pid
+</I>&gt;<i>  *      setpgrp(pid, pgid)      -&gt; set pgid of pid
+</I>&gt;<i>  *
+</I>&gt;<i>  *      POSIX:
+</I>&gt;<i>  *
+</I>&gt;<i>  *      getpgid(pid)            -&gt; pgid for pid
+</I>&gt;<i>  *      setpgid(pid, pgid)      -&gt; set pgid of pid
+</I>&gt;<i>  *      getpgrp(void)           -&gt; pgid for $$
+</I>&gt;<i>  *      setpgrp(void)           -&gt; setpgid(0,0)
+</I>&gt;<i>  *
+</I>&gt;<i>  *      4.4-BSD:
+</I>&gt;<i>  *
+</I>&gt;<i>  *      getpgid(pid)            -&gt; is missing!
+</I>&gt;<i>  *      setpgid(pid, pgid)      -&gt; set pgid of pid
+</I>&gt;<i>  *      getpgrp(void)           -&gt; ????
+</I>&gt;<i>  *      setpgrp(pid, pgid)      -&gt; set pgid of pid
+</I>&gt;<i>  */
+</I>
+Aha, thx. 
+But: these functions don't seem to be used anywhere in cdrtools.
+
+&gt;<i> &gt; &gt; &gt; &gt; &gt; * AC_HARD_SYMLINKS:	not used anywhere
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;   AC_LINK_NOFOLLOW
+</I>&gt;<i> &gt; &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; &gt; Wrong, needed for star
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; At least in 2.01.01, nothing seems to use the symbols defined by that macros.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; There is no star-2.01.01
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm talking about cdrtools-2.01.01
+</I>&gt;<i> 
+</I>&gt;<i> I am not going to reduce the content of my source consolidation just to get
+</I>&gt;<i> questionable results for the rest.
+</I>
+Ah, the point is that you've got lot's code shared between several packages,
+but it's not split into several library packages. That explains a lot, eg.
+why there's lots of unused code laying around in cdrtools.
+
+IMHO, it's wise to make separte packages (eg. one per lib) out of it.
+cdrtools for example then would only import those packages it really needs,
+reducing unncessary code (including unnecessary checks).
+
+&gt;<i> &gt; Please read your own text again. You've got count error there ;-P
+</I>&gt;<i> 
+</I>&gt;<i> ????
+</I>
+Grmpf. You said &quot;2 sources&quot;, but listed 3 ;-P
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000249.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000255.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#252">[ date ]</a>
+              <a href="thread.html#252">[ thread ]</a>
+              <a href="subject.html#252">[ subject ]</a>
+              <a href="author.html#252">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

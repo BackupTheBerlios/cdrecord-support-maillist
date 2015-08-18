@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3CBAY170-W911E93B72F7B71775DD8438BC60%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000864.html">
+   <LINK REL="Next"  HREF="000867.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report</H1>
+    <B>Ady Ady</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3CBAY170-W911E93B72F7B71775DD8438BC60%40phx.gbl%3E"
+       TITLE="[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report">ady-sf at hotmail.com
+       </A><BR>
+    <I>Mon Jul 30 16:21:58 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000864.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+        <LI>Next message: <A HREF="000867.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#866">[ date ]</a>
+              <a href="thread.html#866">[ thread ]</a>
+              <a href="subject.html#866">[ subject ]</a>
+              <a href="author.html#866">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+&gt;<i> Date: Mon, 30 Jul 2012 12:54:53 +0200
+</I>&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrecord-support at lists.berlios.de</A>; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>
+</I>&gt;<i> Subject: Re: [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</I>&gt;<i> 
+</I>&gt;<i> Ady Ady &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; Thank you for the report, the problem was introduced when adding support for 
+</I>&gt;<i> &gt; &gt; Grub2 UUIDs. I removed one line that should stay.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; J&#246;rg
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; Thank you for your answer.
+</I>&gt;<i> &gt; During my tests and searches before reporting, I wasn't able to find anything about the bug (except users not knowing why the resulting ISO images were incompatible). Do you mean this was an already-known bug?
+</I>&gt;<i> 
+</I>&gt;<i> What do you mean with incompatible?
+</I>&gt;<i> 
+</I> 
+ As I said, &quot;incompatible&quot; in the sense that versions 3.01a05 to -a07  fail to comply with ECMA-119 in the mentioned data field (Creation Date and Time in Volume Descriptor).
+ 
+&gt;<i> I believe that nobody discovered the problem during 14 months is because no 
+</I>&gt;<i> software I am aware of depends on the missing date string.
+</I>&gt;<i> 
+</I>&gt;<i> How did you get aware of the problem?
+</I>&gt;<i> 
+</I> 
+ In fact, users indeed have seen this problem since 3.01a05, but nobody knew why or took the time to look into it. I have seen reports in different (forum) sites.
+ 
+Moreover, someone actually reported this here in this mailing list a few months ago, without knowing this was the problem. The way some users are seeing this behavior is by using 7-zip to try to open ISO images built with mkisofs latest alpha(s).
+7-zip requires from the ISO image to follow ECMA-119, and users have reported here and in 7-zip's forum (among other places) about 7-zip not being able to open ISO images built with mkisofs 3.01a05 or newer versions.
+ 
+SalixOS 13.37 use mkisofs 3.01a02, the same as Slackware 13.37 stable. Finally Slackware -current updated to cdrtools 3.01a07 two weeks ago, so I was able to reproduce the same behavior under Windows and also under SalixOS.
+Igor Pavlov, 7-zip's developer, was kind enough to look into it and he gave me enough info so I manually &quot;hexedited&quot; the ISO images at the relevant data field(s) (Creation Date and Time). After the hexedit, the ISO images are correctly opened by 7-zip.
+Other &quot;archive-related&quot; tools are able to open those ISO images anyway, just because they don't check them against ECMA-119, but many utilities are using 7z.dll or some other 7-zip's component to handle ISO images, so they also have the same difficulty to manage these ISO images originally built with mkisofs 3.01a05 to 3.01a07.
+Now you know the long boring story about how I got aware of this issue :). The only difference is that I tested enough cases, collected feedback and reported it, instead of moving to other alternatives.
+ 
+&gt;<i> &gt; I don't know which are the criteria to release new (alpha/beta) versions.
+</I>&gt;<i> &gt; More users are seeing this issue because cdrtools (mkisofs) 3.01a07 was recently added to Slackware -current, and the next release of Slackware stable seems to be relatively close. Also Debian is preparing its next stable release. As known, these 2 Linux distros are the based to many others.
+</I>&gt;<i> 
+</I>&gt;<i> I thought Debian is still OSS hostile and does not ship mkisofs...... Did this 
+</I>&gt;<i> change?
+</I>&gt;<i> 
+</I> 
+ No idea, but that doesn't mean that users can't / won't try to use mkisofs latest alpha in some Debian derivative o). Let's concentrate in solving this for users of the next approaching Slackware stable before its release (or for Slackware -current, which already has 3.01a07 ) or for any other OS if you'd rather not think about Debian derivatives users. IMHO, the specific distro is not important in this context. Don't forget that the issue exists already since version 3.01a05, not only for the recent 3.01a07.
+ 
+&gt;<i> &gt; Additionally, since the resulting ISO images (of mkisofs 3.01a05, -a06 and -a07 too) are incompatible to ECMA-119, some (few) tools will not accept (work) with those ISO images. One such software is 7-zip, which is in time also used by many other tools to expand ISO images (like for example multiboot USB-media related utilities).
+</I>&gt;<i> &gt; So, as I was saying, I don't know which criteria you use to release (or not) new alpha versions. Please consider releasing a bug-fix release, so the developers of relevant Linux distros would be able to update cdrtools too before their mayor next releases.
+</I>&gt;<i> 
+</I>&gt;<i> The software was tested against known problems, things like this may rarely 
+</I>&gt;<i> happen.
+</I>&gt;<i> 
+</I> Sorry; I don't exactly understand what you meant with &quot;things like this&quot;. It just isn't clear to me from your previous answer if this was an already-known bug, or if this bug is a valid reason for you to release a new alpha; or otherwise you are going to wait for other issues to be resolved first and only then release a new version. I guess this is my bottom-line question: would you be releasing a new  version in a short time (for example, before Slackware would go stable)? Or instead, are you going to wait for other potential issues to be resolved first before releasing a new bug-fix version?
+TIA. 		 	   		  
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000864.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+	<LI>Next message: <A HREF="000867.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#866">[ date ]</a>
+              <a href="thread.html#866">[ thread ]</a>
+              <a href="subject.html#866">[ subject ]</a>
+              <a href="author.html#866">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

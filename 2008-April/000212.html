@@ -1,0 +1,215 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord fails
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20fails&In-Reply-To=%3C48105f3e.UDxsaww7mbpHmbec%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000211.html">
+   <LINK REL="Next"  HREF="000213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord fails</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20fails&In-Reply-To=%3C48105f3e.UDxsaww7mbpHmbec%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord fails">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Apr 24 12:21:50 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000211.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+        <LI>Next message: <A HREF="000213.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Maslan &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">maslan10 at gmail.com</A>&gt; wrote:
+
+This may be of general interest, so let me forward it to the mailing ist.
+
+
+&gt;<i> I've a problem with burning CD/DVD on my hp pavilion dv6000 laptop.
+</I>&gt;<i> I don't know whether its hardware failure or software error, the
+</I>&gt;<i> device burns for like 80% then fails.
+</I>&gt;<i> It fails on Linux, FreeBSD but works on WinVista only even not WinXP.
+</I>&gt;<i> Any suggestions
+</I>
+How does it fail on Linux?
+Does it work with cdrecord on Vista?
+
+&gt;<i> # uname -a
+</I>&gt;<i> FreeBSD laptop.lab 7.0-BETA4 FreeBSD 7.0-BETA4 #0: Sun Dec  2 19:19:04
+</I>&gt;<i> UTC 2007     <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at logan.cse.buffalo.edu</A>:/usr/obj/usr/src/sys/GENERIC
+</I>&gt;<i> i386
+</I>&gt;<i>
+</I>&gt;<i> # /opt/schily/bin/cdrecord -scanbus
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i386-unknown-freebsd7.0)
+</I>&gt;<i> Copyright (C) 1995-2008 J???rg Schilling
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> scsibus1:
+</I>&gt;<i>        1,0,0   100) 'MATSHITA' 'DVD-RAM UJ-850S ' '1.05' Removable CD-ROM
+</I>&gt;<i>        1,1,0   101) *
+</I>&gt;<i>        1,2,0   102) *
+</I>&gt;<i>        1,3,0   103) *
+</I>&gt;<i>        1,4,0   104) *
+</I>&gt;<i>        1,5,0   105) *
+</I>&gt;<i>        1,6,0   106) *
+</I>&gt;<i>        1,7,0   107) *
+</I>&gt;<i>
+</I>&gt;<i> # /opt/schily/bin/cdrecord -v dev=1,0,0 debian-testing-i386-CD-1.iso
+</I>&gt;<i> /opt/schily/bin/cdrecord: No write mode specified.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Asuming -sao mode.
+</I>&gt;<i> /opt/schily/bin/cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Future versions of cdrecord may have
+</I>&gt;<i> different drive dependent defaults.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i386-unknown-freebsd7.0)
+</I>&gt;<i> Copyright (C) 1995-2008 J???rg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 0
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'MATSHITA'
+</I>&gt;<i> Identifikation : 'DVD-RAM UJ-850S '
+</I>&gt;<i> Revision       : '1.05'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: CD-R
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R (current)
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+</I>&gt;<i> Driver flags   : MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: TAO PACKET SAO
+</I>&gt;<i> Drive buf size : 1310720 = 1280 KB
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data   647 MB
+</I>&gt;<i> Total size:      744 MB (73:42.62) = 331697 sectors
+</I>&gt;<i> Lout start:      744 MB (73:44/47) = 331697 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> ATIP info from disk:
+</I>&gt;<i>  Indicated writing power: 5
+</I>&gt;<i> Disk Is not unrestricted
+</I>&gt;<i> Disk Is not erasable
+</I>&gt;<i>  Disk sub type: Medium Type B, low Beta category (B-) (4)
+</I>&gt;<i>  ATIP start of lead in:  -11607 (97:27/18)
+</I>&gt;<i>  ATIP start of lead out: 359849 (79:59/74)
+</I>&gt;<i> Disk type:    Short strategy type (Phthalocyanine or similar)
+</I>&gt;<i> Manuf. index: 18
+</I>&gt;<i> Manufacturer: Plasmon Data systems Ltd.
+</I>&gt;<i>
+</I>&gt;<i>    Capacity  Blklen/Sparesz.  Format-type  Type
+</I>&gt;<i>     4104234             2048         0x00  No Media Present or Unknown Capacity
+</I>&gt;<i> Blocks total: 359849 Blocks current: 359849 Blocks remaining: 28152
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 24 in real SAO mode for single session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is ON.
+</I>&gt;<i> Turning BURN-Free off
+</I>&gt;<i> Performing OPC...
+</I>&gt;<i> Sending CUE sheet...
+</I>&gt;<i> /opt/schily/bin/cdrecord: WARNING: Drive returns wrong startsec (0) using -150
+</I>&gt;<i> Writing pregap for track 1 at -150
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01:  615 of  647 MB written (fifo 100%) [buf  99%]
+</I>&gt;<i> 16.1x./opt/schily/bin/cdrecord: Input/output error. write_g1: scsi
+</I>&gt;<i> sendcmd: retryable error
+</I>&gt;<i> CDB:  2A 00 00 04 CF C4 00 00 1F 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: F1 00 03 00 04 CD 4C 0A 00 2B 00 00 0C 00 00 00 00 00 00
+</I>&gt;<i> 00 00 00 00 00 00 00 00 00 00 00 00 00
+</I>&gt;<i> Sense Key: 0x3 Medium Error, deferred error, Segment 0
+</I>&gt;<i> Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 314700 (valid)
+</I>&gt;<i> cmd finished after 6.209s timeout 200s
+</I>
+Let me asume that there is no bug in the kernel... and that the drive 
+is not lying about the cause, then the drive is unable to deal with the media.
+
+----&gt; Sense Key: 0x3 Medium Error
+----&gt; Sense Code: 0x0C Qual 0x00 (write error)
+
+Plasmon stampers are frequently used by cheap no-name manufacturers.
+Could you try a Verbatim medium?
+
+
+BTW:
+
+&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - MODE_SELECT_BIG ILLEGAL REQUEST asc=0x26 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - READ_BUFFER ILLEGAL REQUEST asc=0x24 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - READ_BUFFER ILLEGAL REQUEST asc=0x24 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - START_STOP ILLEGAL REQUEST asc=0x24 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - READ_TOC ILLEGAL REQUEST asc=0x24 ascq=0x00
+</I>&gt;<i> acd0: FAILURE - WRITE_BIG MEDIUM ERROR asc=0x0c ascq=0x00
+</I>
+I would call the visibility of these messages a kernel bug.
+
+Cdrecord sends RAW SCSI commands and SCSI is a complex protocol that 
+sometimes results in &quot;failing&quot; commands as a result of a test. Only the sender
+of the commands (cdrecord) may know whether it is expected that a specific
+command fails, so having this is the kernel messages is wrong as there
+could be millions of similar messages.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000211.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+	<LI>Next message: <A HREF="000213.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

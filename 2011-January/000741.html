@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord - 15 minute fixate?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C39E5005946A1ED418535F93C882A1C02B8F9F282C4%40006EX-MB1.wyo.gov%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000745.html">
+   <LINK REL="Next"  HREF="000742.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord - 15 minute fixate?</H1>
+    <B>Schmidt, Daniel</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C39E5005946A1ED418535F93C882A1C02B8F9F282C4%40006EX-MB1.wyo.gov%3E"
+       TITLE="[Cdrecord-support] cdrecord - 15 minute fixate?">DSchmi at wyo.gov
+       </A><BR>
+    <I>Thu Jan 13 21:13:27 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000745.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+        <LI>Next message: <A HREF="000742.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#741">[ date ]</a>
+              <a href="thread.html#741">[ thread ]</a>
+              <a href="subject.html#741">[ subject ]</a>
+              <a href="author.html#741">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks, I didn't think of that.  To answer your question, growisofs seems to work.  Strangely, I noticed that 3,0,0 seems suspiciously missing from scanbus now.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$ growisofs -Z /dev/dvdrw1=CentOS-5.5-x86_64-bin-DVD-2of2.iso
+Executing 'builtin_dd if=CentOS-5.5-x86_64-bin-DVD-2of2.iso of=/dev/dvdrw1 obs=32k seek=0'
+/dev/dvdrw1: &quot;Current Write Speed&quot; is 16.4x1352KBps.
+          0/432361472 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/432361472 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/432361472 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/432361472 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+          0/432361472 ( 0.0%) @0x, remaining ??:?? RBU 100.0% UBU   0.0%
+   21037056/432361472 ( 4.9%) @4.6x, remaining 7:10 RBU 100.0% UBU   8.3%
+   52690944/432361472 (12.2%) @6.9x, remaining 3:07 RBU  99.9% UBU  99.5%
+   84803584/432361472 (19.6%) @7.0x, remaining 1:58 RBU 100.0% UBU  99.5%
+  117440512/432361472 (27.2%) @7.1x, remaining 1:25 RBU 100.0% UBU  99.5%
+  150568960/432361472 (34.8%) @7.2x, remaining 1:07 RBU 100.0% UBU  99.5%
+  184188928/432361472 (42.6%) @7.3x, remaining 0:52 RBU 100.0% UBU  99.5%
+  218333184/432361472 (50.5%) @7.4x, remaining 0:41 RBU 100.0% UBU  99.5%
+  252936192/432361472 (58.5%) @7.5x, remaining 0:32 RBU 100.0% UBU  99.5%
+  288030720/432361472 (66.6%) @7.6x, remaining 0:24 RBU 100.0% UBU  99.5%
+  323649536/432361472 (74.9%) @7.7x, remaining 0:17 RBU 100.0% UBU  99.5%
+  359759872/432361472 (83.2%) @7.8x, remaining 0:11 RBU 100.0% UBU  99.5%
+  396361728/432361472 (91.7%) @7.9x, remaining 0:05 RBU 100.0% UBU  99.5%
+builtin_dd: 211120*2KB out @ average 5.0x1352KBps
+/dev/dvdrw1: flushing cache
+/dev/dvdrw1: closing track
+/dev/dvdrw1: closing session
+:<i>-( unable to reload tray: No such file or directory
+</I><A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$ sudo cdrecord --scanbus
+[sudo] password for dans:
+scsibus2:
+        2,0,0   200) 'HL-DT-ST' 'DVD-ROM DH20N   ' 'A102' Removable CD-ROM
+        2,1,0   201) *
+        2,2,0   202) *
+        2,3,0   203) *
+        2,4,0   204) *
+        2,5,0   205) *
+        2,6,0   206) *
+        2,7,0   207) *
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$
+
+
+-----Original Message-----
+From: Michael Shell [mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">list1 at michaelshell.org</A>]
+Sent: Wednesday, January 12, 2011 6:13 PM
+To: Schmidt, Daniel
+Subject: Re: [Cdrecord-support] cdrecord - 15 minute fixate?
+
+On Wed, 12 Jan 2011 16:12:47 -0700
+&quot;Schmidt, Daniel&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">DSchmi at wyo.gov</A>&gt; wrote:
+
+&gt;<i> Why is it taking so long to fixate?  Kernel bug?
+</I>
+
+  Daniel,
+
+I haven't seen such a problem and maybe you will get a good answer
+from somebody else, but just in case you don't, I have found that
+in cases like this it can help to try an alternative burn application
+to try to isolate the problem and see if there might be a possible
+media/firmware/hardware problem.
+
+You can try the dvd+rw-tools:
+
+<A HREF="http://fy.chalmers.se/~appro/linux/DVD+RW/">http://fy.chalmers.se/~appro/linux/DVD+RW/</A>
+
+<A HREF="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/?M=D">http://fy.chalmers.se/~appro/linux/DVD+RW/tools/?M=D</A>
+
+and see if they work OK. e.g.,
+
+growisofs -dvd-compat -Z /dev/dvd=file.iso
+
+If growisofs stalls fixating like cdrecord, you're probably looking
+at a media, kernel, firmware or hardware issue. However, if the
+problem still happens, then cdrecord might be more of a suspect.
+
+
+  Cheers,
+
+  Mike Shell
+
+ E-Mail to and from me, in connection with the transaction of public business, is subject to the Wyoming Public Records Act and may be disclosed to third parties.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000745.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+	<LI>Next message: <A HREF="000742.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#741">[ date ]</a>
+              <a href="thread.html#741">[ thread ]</a>
+              <a href="subject.html#741">[ subject ]</a>
+              <a href="author.html#741">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

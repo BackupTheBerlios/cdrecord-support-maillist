@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a73 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b66a80e.UBWZciBHbKHRlRpz%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000523.html">
+   <LINK REL="Next"  HREF="000525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a73 ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a73%20ready&In-Reply-To=%3C4b66a80e.UBWZciBHbKHRlRpz%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a73 ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Feb  1 11:08:14 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000523.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+        <LI>Next message: <A HREF="000525.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#524">[ date ]</a>
+              <a href="thread.html#524">[ thread ]</a>
+              <a href="subject.html#524">[ subject ]</a>
+              <a href="author.html#524">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i> Hello Jorg,
+</I>&gt;<i>    I've been trying to get the readcd command to work correctly but I
+</I>&gt;<i> don't understand what makes up the right sector 'range' on the last
+</I>&gt;<i> track.
+</I>&gt;<i>
+</I>&gt;<i>    Here's the -toc on the disc I'm trying to copy:
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a73 (x86_64-unknown-linux-gnu)
+</I>&gt;<i> Copyright (C) 1995-2010 J??????rg Schilling
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'Optiarc '
+</I>&gt;<i> Identifikation : 'DVD RW AD-7240S '
+</I>&gt;<i> Revision       : '1.03'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+</I>&gt;<i> Driver flags   : MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: TAO PACKET SAO SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> first: 1 last 8
+</I>&gt;<i> track:   1 lba:         0 (        0) 00:02:00 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   2 lba:     33819 (   135276) 07:32:69 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   3 lba:     52244 (   208976) 11:38:44 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   4 lba:     88201 (   352804) 19:38:01 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   5 lba:    108417 (   433668) 24:07:42 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   6 lba:    137983 (   551932) 30:41:58 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   7 lba:    171364 (   685456) 38:06:64 adr: 1 control: 0 mode: -1
+</I>&gt;<i> track:   8 lba:    225994 (   903976) 50:15:19 adr: 1 control: 4 mode: 2
+</I>&gt;<i> track:lout lba:    278706 (  1114824) 61:58:06 adr: 1 control: 4 mode: -1
+</I>&gt;<i> firefly MyMultimedia #
+</I>
+225994 is the first sector of the data track
+278706 is the first sector of the lead out
+
+call &quot;readcd sectors=225994-278705 ...&quot;
+
+&gt;<i> If 278706 is the first sector of the last data track then what is the
+</I>&gt;<i> last sector to make up the range?
+</I>&gt;<i>
+</I>&gt;<i> Or is what's listed here as track 7 with mode=2 and all the tracks
+</I>&gt;<i> with mode = -1 are the real audio tracks?
+</I>
+Control 4 is data
+mode 2 means CD-ROM XA2
+
+&gt;<i> Also, this CD seems to be mis-identified in the MusicBrainz database
+</I>&gt;<i> although not in whatever database iTunes uses. Should I possibly be
+</I>&gt;<i> pointing cddb2wav to some other database to get the right names?
+</I>
+cdda2wav uses the freedb database, did you try cdda2wav cddb=0
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000523.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+	<LI>Next message: <A HREF="000525.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#524">[ date ]</a>
+              <a href="thread.html#524">[ thread ]</a>
+              <a href="subject.html#524">[ subject ]</a>
+              <a href="author.html#524">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

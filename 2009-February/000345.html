@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unreadable discs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unreadable%20discs&In-Reply-To=%3C499c2da7.D3oM3zxHhaT5vlzI%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000344.html">
+   <LINK REL="Next"  HREF="000346.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unreadable discs</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unreadable%20discs&In-Reply-To=%3C499c2da7.D3oM3zxHhaT5vlzI%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Unreadable discs">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Feb 18 16:47:51 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000344.html">[Cdrecord-support] Unreadable discs
+</A></li>
+        <LI>Next message: <A HREF="000346.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#345">[ date ]</a>
+              <a href="thread.html#345">[ thread ]</a>
+              <a href="subject.html#345">[ subject ]</a>
+              <a href="author.html#345">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Phil Rhodes&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">phil_rhodes at rocketmail.com</A>&gt; wrote:
+
+&gt;<i> I've been using the following command to produce DVDs:
+</I>&gt;<i>
+</I>&gt;<i> C:\elphaba\helper&gt;mkisofs -J -R -V Session1 f:\session1 | cdrecord\cdrecord.exe -dao -dev=6,0,0 -v -tsize=1179926 -
+</I>&gt;<i>
+</I>&gt;<i> I'm getting discs which look like they have files on them - windows reports the files, name and size correctly - but if I try to copy them from the CD onto a hard disk, I get &quot;cannot copy [filename] - the parameter is incorrect&quot;.
+</I>&gt;<i>
+</I>&gt;<i> The output looks like this (I can give the entire output if necessary, but it looks normal and is very verbose, so I didn't want to post it all to the list):
+</I>&gt;<i>
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 4 in real SAO mode for single session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is OFF.
+</I>&gt;<i> cdrecord/cdrecord: Input/Output error. reserve_track_rzone: scsi sendcmd: no err
+</I>&gt;<i> or
+</I>&gt;<i> CDB:  53 00 00 00 00 00 00 02 41 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 24 00 00 C0 00 03
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x24 Qual 0x00 (invalid field in cdb) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) error refers to command part, bit ptr 0 (not vali
+</I>&gt;<i> d) field ptr 3
+</I>&gt;<i> cmd finished after 0.002s timeout 200s
+</I>&gt;<i> cdrecord/cdrecord: Cannot open next track.
+</I>&gt;<i> Writing  time:    0.038s
+</I>&gt;<i> Average write speed  85.3x.
+</I>&gt;<i> Fixating...
+</I>&gt;<i> Fixating time:    0.002s
+</I>&gt;<i> cdrecord/cdrecord: fifo had 37 puts and 0 gets.
+</I>&gt;<i> cdrecord/cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+</I>&gt;<i> mkisofs: Broken pipe. cannot fwrite 32768*1
+</I>&gt;<i>
+</I>&gt;<i> I've tried this on two different drives with both DVD-R and DVD-RW discs. Any ideas?
+</I>
+If you remove parts of the output, it is impossible to help.
+
+If you like help, please send the output from cdecord -v -minfo
+and the result from a cdrecord -v write attempt
+
+In any case, your tsize= parameter is wrong. Read the man pages for help on 
+hos the parameter works.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000344.html">[Cdrecord-support] Unreadable discs
+</A></li>
+	<LI>Next message: <A HREF="000346.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#345">[ date ]</a>
+              <a href="thread.html#345">[ thread ]</a>
+              <a href="subject.html#345">[ subject ]</a>
+              <a href="author.html#345">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

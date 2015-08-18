@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C5284cbda.A%2BlHxLSkqZxHCzSD%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000956.html">
+   <LINK REL="Next"  HREF="000963.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C5284cbda.A%2BlHxLSkqZxHCzSD%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Nov 14 14:10:50 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000956.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open	audio sample file.....
+</A></li>
+        <LI>Next message: <A HREF="000963.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>andrew &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew.david.strong at gmail.com</A>&gt; wrote:
+
+&gt;<i> I am having difficulty ripping an audio cd to HDD using:
+</I>&gt;<i>
+</I>&gt;<i> ---------------
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at skamandros</A>~$ cdda2wav --version
+</I>&gt;<i> cdda2wav 3.01a18 (x86_64-unknown-linux-gnu) Copyright (C) 1993-2004 Heiko Eissfeldt (C) 2004-2013 Joerg Schilling
+</I>&gt;<i>
+</I>&gt;<i> Defaults: stereo, 16 bit, 44100.00 Hz, track 1, no offset, one track,
+</I>&gt;<i>           type: wav filename: 'audio', don't wait for signal, not quiet,
+</I>&gt;<i>           use: 'generic_scsi', device: 'yourSCSI_Bus,yourSCSI_ID,yourSCSI_LUN', aux: '/dev/cdrom'
+</I>&gt;<i> --------------
+</I>&gt;<i>
+</I>&gt;<i> under Slackware 14.1 and kernel 3.10.17. The error is:
+</I>&gt;<i>
+</I>&gt;<i> --------------
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at skamandros</A>/home/andrew/tmp# cdda2wav -vall cddb=0 -paranoia -B
+</I>&gt;<i> No target specified, trying to find one...
+</I>&gt;<i> Using dev=1,0,0.
+</I>&gt;<i> Type: ROM, Vendor 'Optiarc ' Model 'DVD RW AD-7590A ' Revision '1.52' MMC+CDDA
+</I>&gt;<i> 176128 bytes buffer memory requested, transfer size 32768 bytes, 4 buffers, 13 sectors
+</I>&gt;<i> #Cdda2wav version <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">3.01a18_linux_3.10.17_x86_64_intel-r--core-tm-2-cpu---------t5500-- at -1.66ghz</A>, real time sched., soundcard, libparanoia support
+</I>&gt;<i> 5 entries found:
+</I>&gt;<i> 00: data 360afc06 PINK FLOYD / Meddle (RM 1992)
+</I>&gt;<i> 01: folk 360afc06 Pink Floyd / Meddle
+</I>&gt;<i> 02: misc 360afc06 Pink Floyd / Meddle [Remaster]
+</I>&gt;<i> 03: rock 360afc06 Pink Floyd / Meddle
+</I>&gt;<i> 04: blues 360afc06 Pink floyd / Meddle
+</I>&gt;<i> 05: ignore
+</I>&gt;<i> 0
+</I>&gt;<i> please choose one (0-5): 33 sectors of audio data before track #0
+</I>&gt;<i> AUDIOtrack pre-emphasis  copy-permitted tracktype channels
+</I>&gt;<i>       1- 6           no              no     audio    2
+</I>&gt;<i> Table of Contents: total tracks:6, (total time 46:51.47)
+</I>&gt;<i>   1.( 5:58.55),  2.( 5:11.12),  3.( 6:09.15),  4.( 3:44.30),  5.( 2:16.48),
+</I>&gt;<i>   6.(23:31.37)
+</I>
+How is this binary installed?
+
+Is it installed suid root or with fcaps?
+
+&gt;<i> Table of Contents: starting sectors
+</I>&gt;<i>   1.(      33),  2.(   26938),  3.(   50275),  4.(   77965),  5.(   94795),
+</I>&gt;<i>   6.(  105043), lead-out(  210905)
+</I>&gt;<i> CDINDEX discid: Vb4OGUrNFuZOVs5yOjDkmEJ6ifk-
+</I>&gt;<i> CDDB discid: 0x360afc06 CDDBP titles: resolved
+</I>&gt;<i> CD-Text: not detected
+</I>&gt;<i> CD-Extra: not detected
+</I>&gt;<i> Album title: 'Meddle (RM 1992)' [from PINK FLOYD]
+</I>&gt;<i> Track  1: 'One Of These Days'
+</I>&gt;<i> Track  2: 'A Pillow Of Winds'
+</I>&gt;<i> Track  3: 'Fearless'
+</I>&gt;<i> Track  4: 'San Tropez'
+</I>&gt;<i> Track  5: 'Seamus'
+</I>&gt;<i> Track  6: 'Echoes'
+</I>&gt;<i> No media catalog number present.
+</I>&gt;<i> scanning for ISRCs: 6 ...
+</I>&gt;<i> index scan: 6...
+</I>&gt;<i> cdda2wav: Permission denied. Could not open audio sample file audio_01.wav.
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at skamandros</A>/home/andrew/tmp# 
+</I>&gt;<i> -------------------
+</I>
+Does the curent directory allow you to create new files?
+
+&gt;<i> Interestingly enough I am prompted to make a selection from the cddb
+</I>&gt;<i> choices only _after_ I have actually made the selection. 
+</I>
+This seems to be a bug in your libc: stderr is unbuffered, so it should show up 
+output immediately.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000956.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open	audio sample file.....
+</A></li>
+	<LI>Next message: <A HREF="000963.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#957">[ date ]</a>
+              <a href="thread.html#957">[ thread ]</a>
+              <a href="subject.html#957">[ subject ]</a>
+              <a href="author.html#957">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

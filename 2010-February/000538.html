@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C4b6d7443.QkYdiz1UE2UGysn3%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000537.html">
+   <LINK REL="Next"  HREF="000539.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%20force%20a%20burn&In-Reply-To=%3C4b6d7443.QkYdiz1UE2UGysn3%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat Feb  6 14:53:07 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000537.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force	a burn
+</A></li>
+        <LI>Next message: <A HREF="000539.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to	force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;G. Atwood&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">gordon at cs.ualberta.ca</A>&gt; wrote:
+
+&gt;<i> I'm having an issue with a new Bluray writer that we've purchased and hoping
+</I>&gt;<i> you can identify what the issue is.  The whole Bluray media is brand new to
+</I>&gt;<i> me so perhaps this is so common no one mentions it.
+</I>&gt;<i>
+</I>&gt;<i> I'll give a summary first and then details.  
+</I>&gt;<i>
+</I>&gt;<i> I downloaded the latest cdrecord (now slightly out of date) and tried to 
+</I>&gt;<i> burn my first BD.  I also just downloaded the latest (cdrtools-2.01.01a72)
+</I>&gt;<i> and I still get the same problem with -minfo as described below.
+</I>&gt;<i>
+</I>&gt;<i> First problem, which it appears to be a known issue, is that I can't do a
+</I>&gt;<i> dummy write.  This is how I usually determine if my iso image is the right
+</I>&gt;<i> size.
+</I>
+BluRay writers do not support dummy writes
+
+&gt;<i> So I moved on to the actual burn:
+</I>&gt;<i>   # /opt/schily/bin/cdrecord -v  -dev=2,0,0 data.raw
+</I>&gt;<i>   ...
+</I>&gt;<i>   /opt/schily/bin/cdrecord: Disk capacity is unknown.
+</I>&gt;<i>   /opt/schily/bin/cdrecord: Data will not fit on any CD.
+</I>&gt;<i>   /opt/schily/bin/cdrecord: DVD/BD capacity is unknown.
+</I>&gt;<i>   /opt/schily/bin/cdrecord: Cannot write more than remaining DVD/BD capacity.
+</I>&gt;<i>
+</I>&gt;<i>   and exits.
+</I>&gt;<i>
+</I>&gt;<i> After some digging around I determined that it appears that cdrecord can't
+</I>&gt;<i> get media info and so declines to write:
+</I>&gt;<i>   
+</I>&gt;<i>   # cdrecord -dev=2,0,0 -minfo
+</I>&gt;<i>   Disk type: DVD, HD-DVD or BD
+</I>&gt;<i>
+</I>&gt;<i>   Track  Sess Type   Start Addr End Addr   Size
+</I>&gt;<i>   ==============================================
+</I>&gt;<i>       1     1 Data   0          -1         0
+</I>&gt;<i>   
+</I>&gt;<i>   Last session start address:         0
+</I>&gt;<i>   Last session leadout start address: 0
+</I>
+This is a result from a firmware bug in your writer.
+
+&gt;<i> But it reads DVD media fine and senses that there is media there (or not)
+</I>&gt;<i> so at some level things are working correctly.
+</I>&gt;<i>
+</I>&gt;<i> So...  Tried to force the burn (as it turns out, successfully):
+</I>&gt;<i>   # /opt/schily/bin/cdrecord -ignsize -dev=2,0,0 -speed=3 data.raw
+</I>&gt;<i>   ...
+</I>&gt;<i>   Track 01: Total bytes read/written: 25023391744/25023391744 (12218453
+</I>&gt;<i>    sectors).
+</I>&gt;<i>
+</I>&gt;<i> I've read the data back on the same writer and two different Bluray readers
+</I>&gt;<i> and all the checksums match.
+</I>&gt;<i>
+</I>&gt;<i> So at this point I'd like to determine where/what the problem is so that I
+</I>&gt;<i> don't have to go thru the extra hoop of blindly burning the data and hoping
+</I>&gt;<i> it works.
+</I>&gt;<i>
+</I>&gt;<i> Is it the media, the drive or cdrecord?  Is it fixable?  And if so by whom?
+</I>
+The writer family from this manufacturer unfortumately has the same firmware bug
+for DVD, DVD+ and BluRay.
+
+&gt;<i> As I said, read the data back on this writer and two different readers and
+</I>&gt;<i> everything checksums.  So I conclude the data was written successfully.
+</I>&gt;<i>
+</I>&gt;<i> Other info:
+</I>&gt;<i>
+</I>&gt;<i> # cdrecord -dev=2,0,0 -minfo
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a72 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#239;&#191;?rg Schilling
+</I>&gt;<i> scsidev: '2,0,0'
+</I>&gt;<i> scsibus: 2 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   : 
+</I>&gt;<i> Vendor_info    : 'HL-DT-ST'
+</I>&gt;<i> Identifikation : 'BD-RE  BH10LS30 '
+</I>&gt;<i> Revision       : '1.00'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;<i> Driver flags   : NO-CD BD MMC-3 BURNFREE 
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Mounted media class:      BD
+</I>&gt;<i> Mounted media type:       BD-R sequential recording
+</I>&gt;<i> Disk Is not erasable
+</I>&gt;<i> data type:                standard
+</I>&gt;<i> disk status:              empty
+</I>&gt;<i> session status:           empty
+</I>&gt;<i> BG format status:         none
+</I>&gt;<i> first track:              1
+</I>&gt;<i> number of sessions:       1
+</I>&gt;<i> first track in last sess: 1
+</I>&gt;<i> last track in last sess:  1
+</I>&gt;<i> Disk Is unrestricted
+</I>&gt;<i> Disk type: DVD, HD-DVD or BD
+</I>&gt;<i>
+</I>&gt;<i> Track  Sess Type   Start Addr End Addr   Size
+</I>&gt;<i> ==============================================
+</I>&gt;<i>     1     1 Data   0          -1         0
+</I>&gt;<i>
+</I>&gt;<i> Last session start address:         0
+</I>&gt;<i> Last session leadout start address: 0
+</I>&gt;<i>
+</I>&gt;<i> ---
+</I>&gt;<i>
+</I>&gt;<i> #/opt/schily/bin/cdrecord  -dev=2,0,0 -atip
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a72 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#239;&#191;?rg Schilling
+</I>&gt;<i> scsidev: '2,0,0'
+</I>&gt;<i> scsibus: 2 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   : 
+</I>&gt;<i> Vendor_info    : 'HL-DT-ST'
+</I>&gt;<i> Identifikation : 'BD-RE  BH10LS30 '
+</I>&gt;<i> Revision       : '1.00'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;<i> Driver flags   : NO-CD BD MMC-3 BURNFREE 
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Disk type:          'BDR' (BD-R)
+</I>&gt;<i> Disk class:         01
+</I>&gt;<i> Manufacturer:       'VERBAT'
+</I>&gt;<i> Media type:         'IMc'
+</I>&gt;<i> Disk:               is not in cartridge
+</I>&gt;<i> Media cartrige:     write protect is off
+</I>&gt;<i> Free Spare Blocks:  0
+</I>&gt;<i> Alloc Spare Blocks: 0
+</I>&gt;<i>
+</I>&gt;<i>     Capacity  Blklen/Sparesz.  Format-type  Type
+</I>&gt;<i>     12219392           151552         0x00  Unformated or Blank Media
+</I>&gt;<i>     11826176            12288         0x00  Reserved (0)
+</I>&gt;<i>     11826176            12288         0x32  Reserved (0)
+</I>&gt;<i>      7369728           151552         0x32  Reserved (0)
+</I>&gt;<i>     12088320             4096         0x32  Reserved (0)
+</I>
+You already desrcibe a workaround.....
+
+While the drive does not return useful data for the official way to
+retrieve the media capacity, there is a useful result for the &quot;read formatted
+capacity&quot; command.
+
+I'll need to write a workaround similar to the one I did already introduce for
+HL-DT-ST drives.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000537.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force	a burn
+</A></li>
+	<LI>Next message: <A HREF="000539.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to	force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

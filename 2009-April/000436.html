@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to	install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%20to%0A%09install&In-Reply-To=%3C75107330904191015k4bb100admfc8cc4617b92baff%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000435.html">
+   <LINK REL="Next"  HREF="000437.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to	install</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%20to%0A%09install&In-Reply-To=%3C75107330904191015k4bb100admfc8cc4617b92baff%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to	install">olivares14031 at gmail.com
+       </A><BR>
+    <I>Sun Apr 19 19:15:32 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000435.html">[Cdrecord-support] cdrtools-2.01.01a59 ready
+</A></li>
+        <LI>Next message: <A HREF="000437.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear fellow cdrecord users,
+
+Since the new release of cdrtools a59, I tried to install on Fedora 10
+and I can't update it to latest.  I am still running a58 which is OK,
+but I try to keep up with the releases:
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at localhost</A> ~]# /opt/schily/bin/cdrecord --version
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a58 (i686-pc-linux-gnu) Copyright
+(C) 1995-2009 J&#65533;rg Schilling
+
+
+
+ ==&gt; COMPILING &quot;OBJ/i686-linux-cc/scgcheck.o&quot;
+In file included from /usr/include/stdlib.h:321,
+                 from ../include/schily/stdlib.h:29,
+                 from scgcheck.c:30:
+/usr/include/sys/types.h:228: error: two or more data types in
+declaration specifiers
+gmake[1]: *** [OBJ/i686-linux-cc/scgcheck.o] Error 1
+gmake[1]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/scgcheck'
+	==&gt; MAKING &quot;install&quot; ON SUBDIRECTORY &quot;SRCROOT/scgskeleton&quot;
+gmake[1]: Entering directory
+`/home/olivares/Download/cdrtools-2.01.01/scgskeleton'
+ ==&gt; COMPILING &quot;OBJ/i686-linux-cc/skel.o&quot;
+In file included from ../include/schily/types.h:29,
+                 from ../include/schily/unistd.h:31,
+                 from skel.c:29:
+/usr/include/sys/types.h:228: error: two or more data types in
+declaration specifiers
+gmake[1]: *** [OBJ/i686-linux-cc/skel.o] Error 1
+gmake[1]: Leaving directory
+`/home/olivares/Download/cdrtools-2.01.01/scgskeleton'
+	==&gt; MAKING &quot;install&quot; ON SUBDIRECTORY &quot;SRCROOT/man&quot;
+gmake[1]: Entering directory `/home/olivares/Download/cdrtools-2.01.01/man'
+	==&gt; MAKING &quot;install&quot; ON SUBDIRECTORY &quot;SRCROOT/man/man4&quot;
+gmake[2]: Entering directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+	==&gt; MAKING &quot;install&quot; ON SUBCOMPONENT &quot;SRCROOT/man/man4/makefiles.mk&quot;
+gmake[3]: Entering directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+gmake[3]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+	==&gt; MAKING &quot;install&quot; ON SUBCOMPONENT &quot;SRCROOT/man/man4/makerules.mk&quot;
+gmake[3]: Entering directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+gmake[3]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+gmake[2]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/man/man4'
+gmake[1]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/man'
+
+
+I tried compiling and installing with smake and it fails to install
+new version.  I also try with the the trick to use Gmake copying Gmake
+to /usr/bin/Gmake and calling it
+with
+/usr/bin/Gmake
+su -
+password:
+then
+# /usrbin/Gmake install
+
+I encounter the error above.  Any advice as to how to fix this or
+should I try to see what is different from a58 to a59 and make some
+necessary adjustments?
+
+Information that might be needed?:
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares at localhost</A> cdrtools-2.01.01]$ which gcc
+/usr/lib/ccache/gcc
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares at localhost</A> cdrtools-2.01.01]$ gcc --version
+gcc (GCC) 4.3.2 20081105 (Red Hat 4.3.2-7)
+Copyright (C) 2008 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares at localhost</A> cdrtools-2.01.01]$ cat /etc/fedora-release
+Fedora release 10 (Cambridge)
+
+
+BTW,
+I have successfully compiled and installed cdrtools-a58 on Fedora
+rawhide with gcc.4.4.  in case it is relevant here.
+
+Thanks,
+
+Antonio
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000435.html">[Cdrecord-support] cdrtools-2.01.01a59 ready
+</A></li>
+	<LI>Next message: <A HREF="000437.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#436">[ date ]</a>
+              <a href="thread.html#436">[ thread ]</a>
+              <a href="subject.html#436">[ subject ]</a>
+              <a href="author.html#436">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

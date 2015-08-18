@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C5287c40a.XOah%2BHOQaN0Y1bbF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000964.html">
+   <LINK REL="Next"  HREF="000966.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C5287c40a.XOah%2BHOQaN0Y1bbF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat Nov 16 20:14:18 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000964.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+        <LI>Next message: <A HREF="000966.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#965">[ date ]</a>
+              <a href="thread.html#965">[ thread ]</a>
+              <a href="subject.html#965">[ subject ]</a>
+              <a href="author.html#965">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>andrew &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew.david.strong at gmail.com</A>&gt; wrote:
+
+&gt;<i> Thanks for your reply:
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Nov 14, 2013 at 02:10:50PM +0100, Joerg Schilling wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; How is this binary installed?
+</I>&gt;<i>
+</I>&gt;<i> I have installed the latest source using a standard Slackware build
+</I>&gt;<i> script:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/</A>
+</I>&gt;<i>
+</I>&gt;<i> and the actual script:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild</A>
+</I>&gt;<i>
+</I>&gt;<i> simply using the latest source instead of the version in that
+</I>&gt;<i> location.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Is it installed suid root or with fcaps?
+</I>&gt;<i>
+</I>&gt;<i> After installation I have manually altered the permissions as
+</I>&gt;<i> suggested in Slackware docs:
+</I>&gt;<i>
+</I>&gt;<i> chown root:cdrom /usr/bin/cdrecord /usr/bin/cdda2wav
+</I>&gt;<i> chmod 4750 /usr/bin/cdrecord /usr/bin/cdda2wav
+</I>&gt;<i>
+</I>&gt;<i> although cdda2wav is not included in the formal docs for these
+</I>&gt;<i> changes. Permissions are:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at skamandros</A>~$ ls -l /usr/bin/cdrecord /usr/bin/cdda2wav                                
+</I>&gt;<i> -rwsr-x--- 1 root cdrom 326856 Nov 16 12:16 /usr/bin/cdda2wav
+</I>&gt;<i> -rwsr-x--- 1 root cdrom 470408 Nov 16 12:16 /usr/bin/cdrecord
+</I>
+??? The actual documentation says that cdrecord, cdda2wac and readcd all need 
+enhanced privileges.
+
+&gt;<i> and there is no difference with the error when I make it root:root.
+</I>&gt;<i>
+</I>&gt;<i> &gt; Does the curent directory allow you to create new files?
+</I>&gt;<i>
+</I>&gt;<i> Indeed both root and myself as ordinary user can write in this
+</I>&gt;<i> directory.
+</I>
+who is the owner of this direcroty and what are the permissions?
+
+The general problem with cdrtools is that the prgrams need enhanced privileges 
+and that for this reason, there need to be methods to raise privileges.
+
+While OpenSolaris and FreeBSD allow to ask if the current privileges are a 
+result of calling a set uid program (by calling ssetugid()), Linux does not 
+support this.
+
+There are also two competing mechanisms: suid root and fine grained privs.
+The binaries (not being able to detect whether one or the other methos was in 
+use, try to give back unused privileges for both methods. Given the fact that 
+in contrary to modern OS (like e.g. OpenSolaris) fine grained privs on Linux  
+only allow to raise privileges compared to a standard process, there is no
+official way that could reault in losing the privilege to create a new file.
+
+So there is a high probability that you detected a kernel bug.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000964.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+	<LI>Next message: <A HREF="000966.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#965">[ date ]</a>
+              <a href="thread.html#965">[ thread ]</a>
+              <a href="subject.html#965">[ subject ]</a>
+              <a href="author.html#965">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrtools-3.00-final is ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTinrv5tXY4r1h2wQpBAkCv7YDGSEliQlWyk6Mt7w%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000658.html">
+   <LINK REL="Next"  HREF="000660.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrtools-3.00-final is ready</H1>
+    <B>Eric Shattow</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTinrv5tXY4r1h2wQpBAkCv7YDGSEliQlWyk6Mt7w%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Cdrtools-3.00-final is ready">lucent at gmail.com
+       </A><BR>
+    <I>Thu Jun 10 03:25:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000658.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+        <LI>Next message: <A HREF="000660.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>P.P.S I spelled the name &quot;J&#246;rg&quot; incorrectly, I realize that and sorry.
+
+On Wed, Jun 9, 2010 at 7:24 PM, Eric Shattow &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">lucent at gmail.com</A>&gt; wrote:
+&gt;<i> Congrats, J&#246;erg, on the release.
+</I>&gt;<i>
+</I>&gt;<i> As my current OS of choice is Ubuntu Linux 10.04 LTS, I've made some
+</I>&gt;<i> of cdrtools-3.00 available as a Launchpad PPA:
+</I>&gt;<i>
+</I>&gt;<i> sudo add-apt-repository ppa:eshattow/cdrtools-stable
+</I>&gt;<i> sudo aptitude update
+</I>&gt;<i> sudo aptitude install cdrecord mkisofs cdda2wav
+</I>&gt;<i>
+</I>&gt;<i> This is a bit of a hack based on Brandon Snider's PPA existing for
+</I>&gt;<i> earlier versions of smake and cdrtools. What is missing are btcflash
+</I>&gt;<i> and I do not want cdrecord installed suid. The problem without suid is
+</I>&gt;<i> that 'cdrecord -scanbus' bails out when any of the /dev/sg? devices
+</I>&gt;<i> are not accessible.
+</I>&gt;<i>
+</I>&gt;<i> **
+</I>&gt;<i> Question about 3.00, on Ubuntu Linux 10.04 LTS Lucid: &#160; Is it possible
+</I>&gt;<i> to warn-and-skip permissions errors accessing /dev/sg? devices?
+</I>&gt;<i> **
+</I>&gt;<i>
+</I>&gt;<i> &quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ cdrecord -scanbus
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.00 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2010 J&#65533;rg Schilling
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> cdrecord: Permission denied. Cannot open '/dev/sg1'. Cannot open or
+</I>&gt;<i> use SCSI driver.
+</I>&gt;<i> cdrecord: For possible targets try 'cdrecord -scanbus'. Make sure you are root.
+</I>&gt;<i> cdrecord: For possible transport specifiers try 'cdrecord dev=help'.
+</I>&gt;<i> &quot;&quot;
+</I>&gt;<i>
+</I>&gt;<i> I don't want to scan /dev/sg1 anyways because it is not a CD device.
+</I>&gt;<i> Startup scripts for my OS decide the ownership of /dev/sg? and so I do
+</I>&gt;<i> have access to /dev/sg0 (my CD device).
+</I>&gt;<i>
+</I>&gt;<i> &quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ ls -l /dev/sg?
+</I>&gt;<i> crw-rw---- 1 root cdrom 21, 0 2010-06-03 22:52 /dev/sg0
+</I>&gt;<i> crw-rw---- 1 root disk &#160;21, 1 2010-06-03 22:52 /dev/sg1
+</I>&gt;<i> &quot;&quot;
+</I>&gt;<i>
+</I>&gt;<i> and also
+</I>&gt;<i>
+</I>&gt;<i> &quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ cat /proc/scsi/scsi
+</I>&gt;<i> Attached devices:
+</I>&gt;<i> Host: scsi0 Channel: 00 Id: 00 Lun: 00
+</I>&gt;<i> &#160;Vendor: HL-DT-ST Model: DVD+-RW GSA-T21N Rev: A100
+</I>&gt;<i> &#160;Type: &#160; CD-ROM &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; ANSI &#160;SCSI revision: 05
+</I>&gt;<i> Host: scsi2 Channel: 00 Id: 00 Lun: 00
+</I>&gt;<i> &#160;Vendor: ATA &#160; &#160; &#160;Model: WDC WD1200BEVS-7 Rev: 01.0
+</I>&gt;<i> &#160;Type: &#160; Direct-Access &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;ANSI &#160;SCSI revision: 05
+</I>&gt;<i> &quot;&quot;
+</I>&gt;<i>
+</I>&gt;<i> I think that behavior should be to skip with a warning any /dev/sg?
+</I>&gt;<i> devices the user does not have permissions for. Why would we bail out
+</I>&gt;<i> completely?
+</I>&gt;<i>
+</I>&gt;<i> -Eric
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On Wed, Jun 2, 2010 at 4:45 PM, Michael Shell &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">list1 at michaelshell.org</A>&gt; wrote:
+</I>&gt;&gt;<i> On Wed, 02 Jun 2010 18:08:57 +0200
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> cdrtools-3.00-final is ready for download at:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/cdrecord/">ftp://ftp.berlios.de/pub/cdrecord/</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> more than 50% of the current code was written after
+</I>&gt;&gt;&gt;<i> September 2004, when the last &quot;stable&quot; release (2.01)
+</I>&gt;&gt;&gt;<i> came out.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Congratulations and thank you J&#246;rg!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Cdrecord-support mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000658.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+	<LI>Next message: <A HREF="000660.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#659">[ date ]</a>
+              <a href="thread.html#659">[ thread ]</a>
+              <a href="subject.html#659">[ subject ]</a>
+              <a href="author.html#659">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

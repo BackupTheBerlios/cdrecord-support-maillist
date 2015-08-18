@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 1:1 audio cd copy, clone mode problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C4cb83450.GEaXcoytD0PilmLK%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000705.html">
+   <LINK REL="Next"  HREF="000707.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 1:1 audio cd copy, clone mode problem</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C4cb83450.GEaXcoytD0PilmLK%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] 1:1 audio cd copy, clone mode problem">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Oct 15 13:00:32 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000705.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+        <LI>Next message: <A HREF="000707.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#706">[ date ]</a>
+              <a href="thread.html#706">[ thread ]</a>
+              <a href="subject.html#706">[ subject ]</a>
+              <a href="author.html#706">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tobias Deiminger &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">tobias.deiminger at t-online.de</A>&gt; wrote:
+
+&gt;<i> Hi J&#246;rg, thanks for your quick reply!
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; readcd dev=5,0,0 -clone f=readcd.img
+</I>&gt;<i> &gt; &gt; cdrecord dev=5,0,0 -raw96r -clone -v readcd.img
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; This is to copy CDs with unknown format and to copy CDs that try to prevent 
+</I>&gt;<i> &gt; copying by introducing specific defects.
+</I>&gt;<i>
+</I>&gt;<i> This play protected non-CDDA discs are a bad thing. But I own a few and
+</I>
+You seem to missunderstand things.
+
+I am definitely not talking about disks with audio data in this context.
+
+&gt;<i> would backup them too. Just tried cdda2wav for one of them, and it
+</I>&gt;<i> worked fine (except cdda2wav complaining about atom, edge and drop
+</I>&gt;<i> issues some times). So I guess readcd -clone is not always required,
+</I>&gt;<i> even in such a case. Only noticeable thing is that cdda2wav produces an
+</I>&gt;<i> 16th empty .wav track of 35MB, while on the original there are only 15
+</I>&gt;<i> tracks and one data track (it is a CD-extra). May the 16th track be the
+</I>&gt;<i> data?
+</I>
+This may happen if the disk has an intentionally defective TOC or in case you 
+player fools you. If the track was marked as data, cdda2wav would ignore it.
+
+
+&gt;<i> &gt; This copy mode does not repair any defect and thus is a bad idea for copying audio data.
+</I>&gt;<i>
+</I>&gt;<i> But in case of good original audio cd without any errors, clone mode
+</I>&gt;<i> should copy them, right? My test results are somewhat unexpected then.
+</I>
+??? I did never write that it makes to even think about using the -clone mode 
+for audio. You will lose information as there is absolutely no error correction 
+on data that is recorded without forward error correction.
+
+If you like to have high quality copies, follow the man pages. Then the 
+unprotected meta data is recreated from scratch resulting in error recovery.
+
+
+&gt;<i> I will provide you with any debug information I can retrieve, starting
+</I>&gt;<i> with command line output below. What else is of use?
+</I>
+I need the exact reason why these players don't like the medium.
+
+&gt;<i> &gt; For CD-extra, extract the second data session separately with readcd and
+</I>&gt;<i> &gt; append a session with this data.
+</I>
+&gt;<i> Sounds good. So I just need a way to automatically determine whether it
+</I>&gt;<i> is CD-extra and do the additional stuff, but I can figure this out I
+</I>&gt;<i> think. There are lots of CDs, and examining each single one by hand
+</I>&gt;<i> would catch me in front of PC all night long. Being there at work the
+</I>&gt;<i> whole day is enough:-)
+</I>
+Use xcdroast. There is a patch from me that makes it work with the current  
+cdrtools version.
+
+&gt;<i> What about the gapless issue? Might cdrecord -dao be useful?
+</I>
+Please read the man pages
+
+&gt;<i> Here are example command line outputs of my clone-mode trials:
+</I>&gt;<i>
+</I>&gt;<i> $ readcd dev=1,1,0 -clone f=cd.img
+</I>&gt;<i> Read  speed:  7056 kB/s (CD  40x, DVD  5x, BD  1x).
+</I>&gt;<i> Write speed:  8467 kB/s (CD  48x, DVD  6x, BD  1x).
+</I>&gt;<i> TOC len: 191. First Session: 1 Last Session: 1.
+</I>&gt;<i> 01 10 00 A0 00 00 00 00 01 00 00 
+</I>&gt;<i> 01 10 00 A1 00 00 00 00 0E 00 00 
+</I>&gt;<i> 01 10 00 A2 00 00 00 00 1B 1A 31 
+</I>&gt;<i> 01 10 00 01 00 00 00 00 00 02 00 
+</I>&gt;<i> 01 10 00 02 00 00 00 00 01 04 00 
+</I>&gt;<i> 01 10 00 03 00 00 00 00 03 10 48 
+</I>&gt;<i> 01 10 00 04 00 00 00 00 05 1D 27 
+</I>&gt;<i> 01 10 00 05 00 00 00 00 07 0F 12 
+</I>&gt;<i> 01 10 00 06 00 00 00 00 09 20 18 
+</I>&gt;<i> 01 10 00 07 00 00 00 00 0B 12 24 
+</I>&gt;<i> 01 10 00 08 00 00 00 00 0C 2D 3F 
+</I>&gt;<i> 01 10 00 09 00 00 00 00 0F 1F 2A 
+</I>&gt;<i> 01 10 00 0A 00 00 00 00 11 0C 33 
+</I>&gt;<i> 01 10 00 0B 00 00 00 00 14 02 24 
+</I>&gt;<i> 01 10 00 0C 00 00 00 00 15 0F 24 
+</I>&gt;<i> 01 10 00 0D 00 00 00 00 16 39 2A 
+</I>&gt;<i> 01 10 00 0E 00 00 00 00 18 34 0C 
+</I>&gt;<i> 00 00 00 00 00 00 00 00 00 00 00 
+</I>
+The last line does not look OK, it seems that your drive does not return correct
+TOC data
+
+&gt;<i> Lead out 1: 123349
+</I>&gt;<i> Capacity: 123349 Blocks = 246698 kBytes = 240 MBytes = 252 prMB
+</I>&gt;<i> Sectorsize: 2048 Bytes
+</I>&gt;<i> readcd: Input/output error. read_cd: scsi sendcmd: no error
+</I>&gt;<i> CDB:  BE 00 00 00 00 00 00 00 00 F8 01 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 21 00 00 00
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x21 Qual 0x00 (logical block address out of range) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) 
+</I>&gt;<i> cmd finished after 0.000s timeout 40s
+</I>&gt;<i> readcd: read 2448 failed
+</I>&gt;<i> readcd: Input/output error. read_cd: scsi sendcmd: no error
+</I>&gt;<i> CDB:  BE 00 00 00 00 00 00 00 00 F8 02 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 21 00 00 00
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x21 Qual 0x00 (logical block address out of range) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) 
+</I>&gt;<i> cmd finished after 0.000s timeout 40s
+</I>&gt;<i> Copy from SCSI (1,1,0) disk to file 'cd.img'
+</I>&gt;<i> end:    123349
+</I>&gt;<i> addr:   123349 cnt: 18
+</I>&gt;<i> Time total: 138.530sec
+</I>&gt;<i> Read 294881.20 kB at 2128.6 kB/sec.
+</I>
+It looks like a firmware problem in your drive. This is from the test whether 
+the drive support 96 or 16 bytes of sub-channel data. Both tests fail, so 
+anything past that test may be incorrect.
+
+
+But as mentioned before, -clone is a really bad idea for audio.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000705.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+	<LI>Next message: <A HREF="000707.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#706">[ date ]</a>
+              <a href="thread.html#706">[ thread ]</a>
+              <a href="subject.html#706">[ subject ]</a>
+              <a href="author.html#706">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

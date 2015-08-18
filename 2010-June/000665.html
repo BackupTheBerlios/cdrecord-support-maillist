@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrtools-3.00-final is ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3C4c1206db.LmUbPpSafMZ2l4yx%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000664.html">
+   <LINK REL="Next"  HREF="000667.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrtools-3.00-final is ready</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3C4c1206db.LmUbPpSafMZ2l4yx%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Cdrtools-3.00-final is ready">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Jun 11 11:50:19 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000664.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+        <LI>Next message: <A HREF="000667.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#665">[ date ]</a>
+              <a href="thread.html#665">[ thread ]</a>
+              <a href="subject.html#665">[ subject ]</a>
+              <a href="author.html#665">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Eric Shattow &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">lucent at gmail.com</A>&gt; wrote:
+
+&gt;<i> @ J&#246;rg, I would like to know where this is documented about the way of
+</I>&gt;<i> &quot;Linux kernel folks&quot;. An example:
+</I>&gt;<i>
+</I>&gt;<i> $ ls -l /dev/sr? /dev/sg?
+</I>&gt;<i> crw-rw----  1 root cdrom 21, 0 2010-06-03 22:52 /dev/sg0
+</I>&gt;<i> crw-rw----  1 root disk  21, 1 2010-06-03 22:52 /dev/sg1
+</I>&gt;<i> brw-rw----+ 1 root cdrom 11, 0 2010-06-03 22:52 /dev/sr0
+</I>&gt;<i>
+</I>&gt;<i> These device names and permissions are automagically made at boot and
+</I>&gt;<i> init (Linux 2.6.32-22 on an Ubuntu system).
+</I>&gt;<i>
+</I>&gt;<i> $ groups
+</I>&gt;<i> emigrate adm dialout fax cdrom floppy tape audio dip video plugdev
+</I>&gt;<i> fuse lpadmin netdev admin sambashare libvirtd
+</I>&gt;<i>
+</I>&gt;<i> I do have permission to /dev/sg0 (a CD device) but not to /dev/sg1
+</I>&gt;<i> (SATA hard disk).  That is what I want as an administrator / user.
+</I>&gt;<i>
+</I>&gt;<i> What prevents cdrtools &quot;Auto Target&quot; from ignoring /dev/sg? on Linux
+</I>&gt;<i> when permissions are refused, and processing only /dev/sg? that it
+</I>&gt;<i> does have permissions to use? Is this unique to Linux?
+</I>
+Didn't I explain this already?
+
+Being able to open a /dev/ entry is no longer sufficient in Linux.
+There was an incompatible Linux Kernel interface change ragarding to SCSI
+in September 2004 and after that change, you need to be root _after_
+opening the devices in order to send all needed SCSI commands.
+
+Once there is a Linux distro that supports to give cdrecord fine grained 
+privileges _witout_ the need to make cdrecord run under root, ther eis a chance
+to enhance cdrecord to support this method. Currently there is none of the
+wide spread Linux distros that would allow to do this. As a resuld, cdrecord,
+cdda2wav, readcd and rscsi need to be installed suid root.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000664.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+	<LI>Next message: <A HREF="000667.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#665">[ date ]</a>
+              <a href="thread.html#665">[ thread ]</a>
+              <a href="subject.html#665">[ subject ]</a>
+              <a href="author.html#665">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

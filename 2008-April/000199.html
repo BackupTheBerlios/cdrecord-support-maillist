@@ -1,0 +1,699 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical	drive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20to%20SATA%20Asus%20DRW-2014L1T%20optical%0A%09drive&In-Reply-To=%3CMTAwMDA0NC5zZXJ2YW50cw.1208219699%40quikprotect%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000200.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical	drive</H1>
+    <B>Bruce Hill, Jr.</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20to%20SATA%20Asus%20DRW-2014L1T%20optical%0A%09drive&In-Reply-To=%3CMTAwMDA0NC5zZXJ2YW50cw.1208219699%40quikprotect%3E"
+       TITLE="[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical	drive">servants at cotse.net
+       </A><BR>
+    <I>Tue Apr 15 02:34:36 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000200.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The Asus DRW-2014L1T SATA drive recently purchased will read
+CD/VCD/DVD, but will not write to them using cdrecord, cdrdao, or
+growisofs. The latest version of all three apps are installed.
+
+I have tried many different kernels, and burned using K3B, also,
+with basically the same results.
+
+The same computer has an IDE DVD+/-RW, which burns successfully with
+the following commands. I've tried 4 different types/brands of media
+with the same results.
+
+Here is cdrecord info:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:~# cdrecord -v -dummy  dev=0,0,0 driveropts=burnfree
+-data /home/mingdao/slackware-current-install1.iso
+cdrecord: No write mode specified.
+cdrecord: Asuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-2014L1T     '
+Revision       : '1.02'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-R
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R (current)
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R
+Drive buf size : 1484032 = 1449 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data   689 MB
+Total size:      791 MB (78:26.32) = 352974 sectors
+Lout start:      792 MB (78:28/24) = 352974 sectors
+Current Secsize: 2048
+ATIP info from disk:
+   Indicated writing power: 6
+Disk Is not unrestricted
+Disk Is not erasable
+   Disk sub type: Medium Type C, low Beta category (C-) (6)
+   ATIP start of lead in:  -11231 (97:32/19)
+   ATIP start of lead out: 359846 (79:59/71)
+Disk type:    Short strategy type (Phthalocyanine or similar)
+Manuf. index: 27
+Manufacturer: Prodisc Technology Inc.
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+     16763814             2048         0x00  No Media Present or
+Unknown Capacity
+Blocks total: 359846 Blocks current: 359846 Blocks remaining: 6872
+Starting to write CD/DVD/BD at speed 48 in dummy SAO mode for single
+session.
+Last chance to quit, starting dummy write    0 seconds. Operation
+starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is ON.
+Sending CUE sheet...
+cdrecord: WARNING: Drive returns wrong startsec (0) using -150
+Writing pregap for track 1 at -150
+Starting new track at sector: 0
+Track 01:  689 of  689 MB written (fifo 100%) [buf 100%]  50.0x.
+Track 01: Total bytes read/written: 722890752/722890752 (352974
+sectors).
+Writing  time:  151.489s
+Average write speed  31.1x.
+Min drive buffer fill was 99%
+Fixating...
+WARNING: Some drives don't like fixation in dummy mode.
+Fixating time:    6.816s
+BURN-Free was never needed.
+cdrecord: fifo had 11387 puts and 11387 gets.
+cdrecord: fifo was 0 times empty and 6800 times full, min fill was 75%.
+
+Then removing the -dummy option produces the same error about the
+Cue sheet, and an unsuccessful burn:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# cdrecord -v dev=0,0,0 driveropts=burnfree
+-data slackware-current-install1.iso
+cdrecord: No write mode specified.
+cdrecord: Asuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-2014L1T     '
+Revision       : '1.02'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-R
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R (current)
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R
+Drive buf size : 1484032 = 1449 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data   689 MB
+Total size:      791 MB (78:26.32) = 352974 sectors
+Lout start:      792 MB (78:28/24) = 352974 sectors
+Current Secsize: 2048
+ATIP info from disk:
+   Indicated writing power: 6
+Disk Is not unrestricted
+Disk Is not erasable
+   Disk sub type: Medium Type C, low Beta category (C-) (6)
+   ATIP start of lead in:  -11231 (97:32/19)
+   ATIP start of lead out: 359846 (79:59/71)
+Disk type:    Short strategy type (Phthalocyanine or similar)
+Manuf. index: 27
+Manufacturer: Prodisc Technology Inc.
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+     16763814             2048         0x00  No Media Present or
+Unknown Capacity
+Blocks total: 359846 Blocks current: 359846 Blocks remaining: 6872
+Starting to write CD/DVD/BD at speed 48 in real SAO mode for single
+session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is ON.
+Performing OPC...
+Sending CUE sheet...
+cdrecord: CUE sheet not accepted. Retrying with minimum pregapsize = 1.
+cdrecord: Input/output error. send_cue_sheet: scsi sendcmd: no error
+CDB:  5D 00 00 00 00 00 00 00 20 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 26 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.000s timeout 200s
+cdrecord: CUE sheet still not accepted. Please try to write in RAW
+(-raw96r) mode.
+cdrecord: Cannot send CUE sheet.
+cdrecord: Could not write Lead-in.
+Writing  time:   11.228s
+BURN-Free was never needed.
+cdrecord: fifo had 64 puts and 0 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+
+(fwiw this iso image was created with mkisofs)
+
+Information about the system:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mingdao at silas</A>:~$ uname -a
+Linux silas 2.6.24.4-thomer #2 Fri Apr 11 14:01:09 CST 2008 i686 AMD
+Athlon(tm) 64 Processor 3200+ AuthenticAMD GNU/Linux
+(built kernel using options suggested here:
+<A HREF="http://thomer.com/howtos/dma_on_sata_dvd.html">http://thomer.com/howtos/dma_on_sata_dvd.html</A>
+and in his .config file)
+
+lspci -v output for controllers:
+Uniform Multi-Platform E-IDE driver Revision: 7.00alpha2
+ide: Assuming 33MHz system bus speed for PIO modes; override with
+idebus=xx
+VP_IDE: IDE controller (0x1106:0x0571 rev 0x06) at  PCI slot
+0000:00:0f.1
+ACPI: PCI Interrupt 0000:00:0f.1[A] -&gt; GSI 20 (level, low) -&gt; IRQ 17
+VP_IDE: not 100% native mode: will probe irqs later
+VP_IDE: VIA vt8237 (rev 00) IDE UDMA133 controller on pci0000:00:0f.1
+     ide0: BM-DMA at 0xfc00-0xfc07, BIOS settings: hda:DMA, hdb:pio
+     ide1: BM-DMA at 0xfc08-0xfc0f, BIOS settings: hdc:DMA, hdd:pio
+Probing IDE interface ide0...
+Switched to high resolution mode on CPU 0
+hda: TSSTcorpCD/DVDW TS-H552U, ATAPI CD/DVD-ROM drive
+hda: host max PIO5 wanted PIO255(auto-tune) selected PIO4
+hda: UDMA/33 mode selected
+ide0 at 0x1f0-0x1f7,0x3f6 on irq 14
+Probing IDE interface ide1...
+hdd: IRQ probe failed (0xfffebdfe)
+hdd: IRQ probe failed (0xfffebdfe)
+hdc: ST3802110A, ATA DISK drive
+hdc: host max PIO5 wanted PIO255(auto-tune) selected PIO4
+hdc: UDMA/100 mode selected
+ide1 at 0x170-0x177,0x376 on irq 15
+hda: ATAPI 48X DVD-ROM DVD-R CD-R/RW drive, 2048kB Cache
+Uniform CD-ROM driver Revision: 3.20
+Driver 'sd' needs updating - please use bus_type methods
+Driver 'sr' needs updating - please use bus_type methods
+sata_via 0000:00:0f.0: version 2.3
+ACPI: PCI Interrupt 0000:00:0f.0[B] -&gt; GSI 20 (level, low) -&gt; IRQ 17
+sata_via 0000:00:0f.0: routed to hard irq line 11
+scsi0 : sata_via
+scsi1 : sata_via
+ata1: SATA max UDMA/133 cmd 0xe400 ctl 0xe000 bmdma 0xd000 irq 17
+ata2: SATA max UDMA/133 cmd 0xd800 ctl 0xd400 bmdma 0xd008 irq 17
+ata1: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+ata1.00: ATAPI: ASUS    DRW-2014L1T, 1.02, max UDMA/66
+ata1.00: configured for UDMA/66
+ata2: SATA link up 1.5 Gbps (SStatus 113 SControl 300)
+ata2.00: ATA-6: WDC WD740GD-00FLC0, 33.08F33, max UDMA/133
+ata2.00: 145226112 sectors, multi 16: LBA48
+ata2.00: configured for UDMA/133
+scsi 0:0:0:0: CD-ROM            ASUS     DRW-2014L1T      1.02 PQ: 0
+ANSI: 5
+sr0: scsi3-mmc drive: 40x/40x writer dvd-ram cd/rw xa/form2 cdda tray
+sr 0:0:0:0: Attached scsi CD-ROM sr0
+sr 0:0:0:0: Attached scsi generic sg0 type 5
+scsi 1:0:0:0: Direct-Access     ATA      WDC WD740GD-00FL 33.0 PQ: 0
+ANSI: 5
+sd 1:0:0:0: [sda] 145226112 512-byte hardware sectors (74356 MB)
+sd 1:0:0:0: [sda] Write Protect is off
+sd 1:0:0:0: [sda] Mode Sense: 00 3a 00 00
+sd 1:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't
+support DPO or FUA
+sd 1:0:0:0: [sda] 145226112 512-byte hardware sectors (74356 MB)
+sd 1:0:0:0: [sda] Write Protect is off
+sd 1:0:0:0: [sda] Mode Sense: 00 3a 00 00
+sd 1:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't
+support DPO or FUA
+  sda: sda1 sda2 sda3 sda4 &lt; sda5 sda6 &gt;
+sd 1:0:0:0: [sda] Attached SCSI disk
+sd 1:0:0:0: Attached scsi generic sg1 type 0
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mingdao at silas</A>:~$ cdrecord -scanbus
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+scsibus0:
+         0,0,0     0) 'ASUS    ' 'DRW-2014L1T     ' '1.02' Removable
+CD-ROM
+         0,1,0     1) *
+         0,2,0     2) *
+         0,3,0     3) *
+         0,4,0     4) *
+         0,5,0     5) *
+         0,6,0     6) *
+         0,7,0     7) *
+scsibus1:
+         1,0,0   100) 'ATA     ' 'WDC WD740GD-00FL' '33.0' Disk
+         1,1,0   101) *
+         1,2,0   102) *
+         1,3,0   103) *
+         1,4,0   104) *
+         1,5,0   105) *
+         1,6,0   106) *
+         1,7,0   107) *
+scsibus1000:
+         1000,0,0 100000) 'TSSTcorp' 'CD/DVDW TS-H552U' 'US06'
+Removable CD-ROM
+         1000,1,0 100001) *
+         1000,2,0 100002) *
+         1000,3,0 100003) *
+         1000,4,0 100004) *
+         1000,5,0 100005) *
+         1000,6,0 100006) *
+         1000,7,0 100007) *
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mingdao at silas</A>:~$ cdrecord -prcap -atip dev=0,0,0
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-2014L1T     '
+Revision       : '1.02'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+
+Drive capabilities, per MMC-3 page 2A:
+
+   Does read CD-R media
+   Does write CD-R media
+   Does read CD-RW media
+   Does write CD-RW media
+   Does read DVD-ROM media
+   Does read DVD-R media
+   Does write DVD-R media
+   Does read DVD-RAM media
+   Does write DVD-RAM media
+   Does support test writing
+
+   Does read Mode 2 Form 1 blocks
+   Does read Mode 2 Form 2 blocks
+   Does read digital audio blocks
+   Does restart non-streamed digital audio reads accurately
+   Does support Buffer-Underrun-Free recording
+   Does read multi-session CDs
+   Does read fixed-packet CD media using Method 2
+   Does not read CD bar code
+   Does read R-W subcode information
+   Does not return R-W subcode de-interleaved and error-corrected
+   Does read raw P-W subcode data from lead in
+   Does return CD media catalog number
+   Does return CD ISRC information
+   Does support C2 error pointers
+   Does not deliver composite A/V data
+
+   Does play audio CDs
+   Number of volume control levels: 256
+   Does support individual volume control setting for each channel
+   Does support independent mute setting for each channel
+   Does not support digital output on port 1
+   Does not support digital output on port 2
+
+   Loading mechanism type: tray
+   Does support ejection of CD via START/STOP command
+   Does not lock media on power up via prevent jumper
+   Does allow media to be locked in the drive via PREVENT/ALLOW command
+   Is not currently in a media-locked state
+   Does not support changing side of disk
+   Does not have load-empty-slot-in-changer feature
+   Does not support Individual Disk Present feature
+
+   Maximum read  speed:  7056 kB/s (CD  40x, DVD  5x, BD  1x)
+   Current read  speed:  7056 kB/s (CD  40x, DVD  5x, BD  1x)
+   Maximum write speed:  8467 kB/s (CD  48x, DVD  6x, BD  1x)
+   Current write speed:  8467 kB/s (CD  48x, DVD  6x, BD  1x)
+   Rotational control selected: CLV/PCAV
+   Buffer size in KB: 2048
+   Copy management revision supported: 1
+   Number of supported write speeds: 9
+   Write speed # 0:  8467 kB/s CLV/PCAV (CD  48x, DVD  6x, BD  1x)
+   Write speed # 1:  7056 kB/s CLV/PCAV (CD  40x, DVD  5x, BD  1x)
+   Write speed # 2:  5644 kB/s CLV/PCAV (CD  32x, DVD  4x, BD  1x)
+   Write speed # 3:  4233 kB/s CLV/PCAV (CD  24x, DVD  3x, BD  0x)
+   Write speed # 4:  2822 kB/s CLV/PCAV (CD  16x, DVD  2x, BD  0x)
+   Write speed # 5:  1411 kB/s CLV/PCAV (CD   8x, DVD  1x, BD  0x)
+   Write speed # 6:  1411 kB/s CLV/PCAV (CD   8x, DVD  1x, BD  0x)
+   Write speed # 7:  1411 kB/s CLV/PCAV (CD   8x, DVD  1x, BD  0x)
+   Write speed # 8:  1411 kB/s CLV/PCAV (CD   8x, DVD  1x, BD  0x)
+
+Current performance according to MMC get performance:
+
+Maximum performance according to MMC get performance:
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    8448 == 48x CD
+
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    7040 == 40x CD
+
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    5632 == 32x CD
+
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    4224 == 24x CD
+
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    2816 == 16x CD
+
+End LBA:      359834
+Read Speed:     1408 == 8x CD
+Write Speed:    1408 == 8x CD
+
+
+Supported profiles according to MMC-4 feature list:
+Current: CD-R
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R (current)
+Profile: CD-ROM
+Profile: Removable Disk
+
+Supported features according to MMC-4 feature list:
+Feature: 'Profile List' (current) (persistent)
+Feature: 'Core' (current) (persistent)
+Feature: 'Morphing' (current) (persistent)
+Feature: 'Removable Medium' (current) (persistent)
+Feature: 'Write Protect'
+Feature: 'Random Readable'
+Feature: 'Multi Read'
+Feature: 'CD Read'
+Feature: 'DVD Read'
+Feature: 'Random Writable'
+Feature: 'Incremental Streaming Writable' (current)
+Feature: 'Formattable'
+Feature: 'Defect Management'
+Feature: 'Restricted Overwrite'
+Feature: 'DVD+RW'
+Feature: 'DVD+R'
+Feature: 'Rigid Restricted Overwrite'
+Feature: 'CD Track at Once' (current)
+Feature: 'CD Mastering' (current)
+Feature: 'DVD-R/-RW Write'
+Feature: 'Layer Jump Recording'
+Feature: 'DVD+R/DL Read'
+Feature: 'Power Management' (current) (persistent)
+Feature: 'S.M.A.R.T.'
+Feature: 'CD Audio analog play'
+Feature: 'Microcode Upgrade' (current) (persistent)
+Feature: 'Time-out' (current) (persistent)
+Feature: 'DVD-CSS'
+Feature: 'Real Time Streaming'
+Feature: 'Logical Unit Serial Number' (current) (persistent)
+Serial: '0001                '
+Feature: 'Disk Control Blocks'
+Feature: 'DVD CPRM'
+Feature: 0xFF33
+
+I've tried burning in -raw and -raw96r modes also, but can't even
+figure out those commands. These commands:
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R -quiet -print-size
+slackware-current-install1.iso
+353149
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R slackware-current-install1.iso
+|<i> cdrecord -v -dummy speed=2 dev=0,0,0 tsize=353149s
+</I>slackware-current-install1.iso
+give me the same cue sheet error message.
+
+This command:
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R slackware-current-install1.iso
+|<i> cdrecord -v -dummy speed=2 dev=0,0,0 -raw96r tsize=353149s
+</I>slackware-current-install1.iso
+
+has the following output:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R slackware-current-install1.iso
+|<i> cdrecord -v -dummy speed=2 dev=0,0,0 -raw96r tsize=353149s
+</I>slackware-current-install1.iso
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Setting input-charset to 'UTF-8' from locale.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-2014L1T     '
+Revision       : '1.02'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-R
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R (current)
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R
+Drive buf size : 1484032 = 1449 KB
+FIFO size      : 4194304 = 4096 KB
+Encoding speed : 618x (46348 sectors/s) for libedc from Heiko Ei&#65533;feldt
+Track 01: data   689 MB
+Total size:      792 MB (78:28.65) = 353149 sectors
+Lout start:      792 MB (78:30/49) = 353149 sectors
+Current Secsize: 2048
+ATIP info from disk:
+   Indicated writing power: 6
+Disk Is not unrestricted
+Disk Is not erasable
+   Disk sub type: Medium Type C, low Beta category (C-) (6)
+   ATIP start of lead in:  -11231 (97:32/19)
+   ATIP start of lead out: 359846 (79:59/71)
+Disk type:    Short strategy type (Phthalocyanine or similar)
+Manuf. index: 27
+Manufacturer: Prodisc Technology Inc.
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+     16763814             2048         0x00  No Media Present or
+Unknown Capacity
+Blocks total: 359846 Blocks current: 359846 Blocks remaining: 6697
+Starting to write CD/DVD/BD at speed 8 in dummy RAW/RAW96R mode for
+single session.
+Last chance to quit, starting dummy write    0 seconds. Operation
+starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+cdrecord: WARNING: Drive returns wrong startsec (0) using -11231
+from ATIP
+Writing lead-in at sector -11231
+Lead-in write time:   19.107s
+Writing pregap for track 1 at -150
+Starting new track at sector: 0
+Track 01:  824 of  824 MB written (fifo 100%) [buf 100%]   8.2x.
+Track 01: Total bytes read/written: 864080352/864080352 (352974
+sectors).
+Writing  time:  607.064s
+Average write speed   8.0x.
+Min drive buffer fill was 99%
+Writing Leadout...
+Fixating...
+WARNING: Some drives don't like fixation in dummy mode.
+Fixating time:   20.765s
+cdrecord: fifo had 13577 puts and 13577 gets.
+cdrecord: fifo was 0 times empty and 13512 times full, min fill was 98%.
+
+Then when I remove the -dummy option:
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R slackware-current-install1.iso
+|<i> cdrecord -v speed=2 dev=0,0,0 tsize=353149s
+</I>slackware-current-install1.iso
+&lt;snip&gt;
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Performing OPC...
+Sending CUE sheet...
+cdrecord: CUE sheet not accepted. Retrying with minimum pregapsize = 1.
+cdrecord: Input/output error. send_cue_sheet: scsi sendcmd: no error
+CDB:  5D 00 00 00 00 00 00 00 20 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 26 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.000s timeout 200s
+cdrecord: CUE sheet still not accepted. Please try to write in RAW
+(-raw96r) mode.
+cdrecord: Cannot send CUE sheet.
+cdrecord: Could not write Lead-in.
+Writing  time:    7.366s
+cdrecord: fifo had 64 puts and 0 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+
+The mkisofs1.log file for this iso image has the following ending:
+&lt;snip&gt;
+Total translation table size: 2048
+Total rockridge attributes bytes: 145922
+Total directory bytes: 235520
+Path table size(bytes): 226
+Done with: The File(s)                             Block(s)    352605
+Writing:   Ending Padblock                         Start Block 352824
+Done with: Ending Padblock                         Block(s)    150
+Max brk space used 100000
+352974 extents written (689 MB)
+
+So I tried 352974 for the track size:
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# mkisofs -R slackware-current-install1.iso
+|<i> cdrecord -v speed=2 dev=0,0,0 tsize=352974s
+</I>slackware-current-install1.iso
+&lt;snip&gt;
+Starting to write CD/DVD/BD at speed 8 in real SAO mode for single
+session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Performing OPC...
+Sending CUE sheet...
+cdrecord: CUE sheet not accepted. Retrying with minimum pregapsize = 1.
+cdrecord: Input/output error. send_cue_sheet: scsi sendcmd: no error
+CDB:  5D 00 00 00 00 00 00 00 20 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 26 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.000s timeout 200s
+cdrecord: CUE sheet still not accepted. Please try to write in RAW
+(-raw96r) mode.
+cdrecord: Cannot send CUE sheet.
+cdrecord: Could not write Lead-in.
+Writing  time:    0.018s
+cdrecord: fifo had 64 puts and 0 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+-- 
+May the Lamb that was slain receive the reward of His suffering!
+Bruce Hill, Jr. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">sata-dvd at servants.cotse.net</A>&gt;
+Please don't top post:
+<A HREF="http://www.catb.org/~esr/jargon/html/T/top-post.html">http://www.catb.org/~esr/jargon/html/T/top-post.html</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000200.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#199">[ date ]</a>
+              <a href="thread.html#199">[ thread ]</a>
+              <a href="subject.html#199">[ subject ]</a>
+              <a href="author.html#199">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

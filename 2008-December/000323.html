@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] How to get the dev=bus/target/lun for cdrecord	cygwin version?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20How%20to%20get%20the%20dev%3Dbus/target/lun%20for%20cdrecord%0A%09cygwin%20version%3F&In-Reply-To=%3C939795fb0812230713u4dc4a0a6se8539a402a4a1d25%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000322.html">
+   <LINK REL="Next"  HREF="000324.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] How to get the dev=bus/target/lun for cdrecord	cygwin version?</H1>
+    <B>Bo Xie</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20How%20to%20get%20the%20dev%3Dbus/target/lun%20for%20cdrecord%0A%09cygwin%20version%3F&In-Reply-To=%3C939795fb0812230713u4dc4a0a6se8539a402a4a1d25%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] How to get the dev=bus/target/lun for cdrecord	cygwin version?">xiebopublic at gmail.com
+       </A><BR>
+    <I>Tue Dec 23 16:13:24 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000322.html">[Cdrecord-support] refresh options and the best GUI
+</A></li>
+        <LI>Next message: <A HREF="000324.html">[Cdrecord-support] How to get the dev=bus/target/lun for	cdrecord cygwin version?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#323">[ date ]</a>
+              <a href="thread.html#323">[ thread ]</a>
+              <a href="subject.html#323">[ subject ]</a>
+              <a href="author.html#323">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I know I can use &quot;cdrecord -scanbus&quot; to get dev=bus/target/lun, but it
+can not map the CD driver (e.g., E:) to dev=bus/target/lun.
+e.g., dev=E: is dev=1,0,0
+
+I know I can use DeviceIoControl API with IOCTL_SCSI_GET_ADDRESS, but
+it does not work for USB CD-RW. :-(
+
+Any suggestions are welcome! Thanks in advance!
+
+-Bo
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000322.html">[Cdrecord-support] refresh options and the best GUI
+</A></li>
+	<LI>Next message: <A HREF="000324.html">[Cdrecord-support] How to get the dev=bus/target/lun for	cdrecord cygwin version?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#323">[ date ]</a>
+              <a href="thread.html#323">[ thread ]</a>
+              <a href="subject.html#323">[ subject ]</a>
+              <a href="author.html#323">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

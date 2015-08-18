@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Trying cdrecord to write data to DVD+R?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160843o574aa49cmf3750833e17bcb40%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000567.html">
+   <LINK REL="Next"  HREF="000570.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Trying cdrecord to write data to DVD+R?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160843o574aa49cmf3750833e17bcb40%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Trying cdrecord to write data to DVD+R?">markknecht at gmail.com
+       </A><BR>
+    <I>Tue Feb 16 17:43:30 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000567.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+        <LI>Next message: <A HREF="000570.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#568">[ date ]</a>
+              <a href="thread.html#568">[ thread ]</a>
+              <a href="subject.html#568">[ subject ]</a>
+              <a href="author.html#568">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Feb 16, 2010 at 8:14 AM, Lucas Levrel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">llevrel at yahoo.fr</A>&gt; wrote:
+&gt;<i> Le 16 f&#233;vrier 2010, Mark Knecht a &#233;crit :
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> cdrecord *.wav &#160; works and plays.
+</I>&gt;&gt;<i> cdrecord File.iso works and loads.
+</I>&gt;&gt;<i> cdrecord Data.File works but doesn't load
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> and then user is left scratching their heads?
+</I>&gt;<i>
+</I>&gt;<i> The way I understand it is: cdrecord writes the given data onto disc,
+</I>&gt;<i> whatever they are. With *.wav you get a TOC and tracks of audio data: that's
+</I>&gt;<i> enough for a player to play it. With File.iso you get a TOC and a track
+</I>&gt;<i> containing a filesystem+data: that's enough for an OS to recover the files.
+</I>&gt;<i> With Data.file you get a TOC and a track of raw data (the contents of
+</I>&gt;<i> Data.file): an OS has no clue on what these data are (I think even the
+</I>&gt;<i> filename isn't on the disc)! But if you know what the data are, I guess you
+</I>&gt;<i> can recover the file with any tool able to read raw stuff, like dd.
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Lucas Levrel
+</I>&gt;<i>
+</I>Lucas,
+   Thanks. So it sounds like the TOC is the key. Let's assume I've
+done the backup as I did:
+
+cdrecord dev=1001,0,0 backup.tar.bz2
+
+and it completed successfully. I take this DVD out and I write on the
+DVD using a Sharpie
+
+Backup.tar.bz2 2010_02_15
+
+and file it away for safe keeping.
+
+Now the machine has crashed and I grab my trusty DVD and I read it on
+a different machine:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $ cdrecord -toc
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a75 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;&#65533;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'Optiarc '
+Identifikation : 'DVD RW AD-7240S '
+Revision       : '1.03'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+first: 1 last 1
+track:   1 lba:         0 (        0) 00:02:00 adr: 1 control: 7 mode: -1
+track:lout lba:   1912400 (  7649600) -1:59:74 adr: 1 control: 7 mode: -1
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $
+
+So I know the name (it's written on the disc) and I can see the TOC.
+What's the next step to recover my file?
+
+(((I get this isn't the best way to do this but I think it's useful
+for me in terms of learning how the disc is constructed.)))
+
+cd-info isn't real happy since there's no file system ala the last 2 lines:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $ cd-info
+cd-info version 0.80 x86_64-pc-linux-gnu
+Copyright (c) 2003, 2004, 2005, 2007, 2008 R. Bernstein
+This is free software; see the source for copying conditions.
+There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE.
+CD location   : /dev/cdrom
+CD driver name: GNU/Linux
+   access mode: ioctl
+
+Vendor                      : Optiarc
+Model                       : DVD RW AD-7240S
+Revision                    : 1.03
+Hardware                                  : CD-ROM or DVD
+Can eject                                 : Yes
+Can close tray                            : Yes
+Can disable manual eject                  : Yes
+Can select juke-box disc                  : No
+
+Can set drive speed                       : No
+Can read multiple sessions (e.g. PhotoCD) : Yes
+Can hard reset device                     : Yes
+
+Reading....
+  Can read Mode 2 Form 1                  : Yes
+  Can read Mode 2 Form 2                  : Yes
+  Can read (S)VCD (i.e. Mode 2 Form 1/2)  : Yes
+  Can read C2 Errors                      : Yes
+  Can read IRSC                           : Yes
+  Can read Media Channel Number (or UPC)  : Yes
+  Can play audio                          : Yes
+  Can read CD-DA                          : Yes
+  Can read CD-R                           : Yes
+  Can read CD-RW                          : Yes
+  Can read DVD-ROM                        : Yes
+
+Writing....
+  Can write CD-RW                         : Yes
+  Can write DVD-R                         : Yes
+  Can write DVD-RAM                       : Yes
+  Can write DVD-RW                        : No
+  Can write DVD+RW                        : No
+__________________________________
+
+Disc mode is listed as: Unknown/unclassified DVD
+CD-ROM Track List (1 - 1)
+  #: MSF       LSN    Type   Green? Copy?
+  1: 00:02:00  000000 data   true   yes
+170: 95:59:74  431849 leadout (968 MB raw, 843 MB formatted)
+__________________________________
+CD Analysis Report
+CD-ROM with unknown filesystem
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at firefly</A> ~ $
+
+I'm not even sure that the disc is good as it's implying roughly 1GB
+of storage but the backup.tar.bz2 file was 4GB.
+
+I'm off to the store to get some more DVDs. I only had 2 left when I
+started this experiment and they are now used.
+
+Thanks,
+Mark
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000567.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+	<LI>Next message: <A HREF="000570.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#568">[ date ]</a>
+              <a href="thread.html#568">[ thread ]</a>
+              <a href="subject.html#568">[ subject ]</a>
+              <a href="author.html#568">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

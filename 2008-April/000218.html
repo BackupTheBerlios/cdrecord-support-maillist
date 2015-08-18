@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord 2.01.01a37 segfault
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200804241433.50449.mg%40fork.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000217.html">
+   <LINK REL="Next"  HREF="000220.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord 2.01.01a37 segfault</H1>
+    <B>Marcin Gryszkalis</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200804241433.50449.mg%40fork.pl%3E"
+       TITLE="[Cdrecord-support] cdrecord 2.01.01a37 segfault">mg at fork.pl
+       </A><BR>
+    <I>Thu Apr 24 14:33:50 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000217.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+        <LI>Next message: <A HREF="000220.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday of April 24 2008, you wrote:
+&gt;<i> I have never seen any such a problem during the past 10 years.
+</I>
+Not sure if it's good or bad :)
+
+&gt;<i> &gt; #0  0x080bb000 in fmtab ()
+</I>&gt;<i> &gt; #1  0x0804d7b6 in fill_buf (f=4, trackp=0xbfbfc870, secno=2066367,
+</I>&gt;<i> &gt; bp=0x28511000 &quot;cvS???b???&quot;..., size=32768) at cdrecord.c:2058
+</I>&gt;<i> &gt; #2  0x08055ad0 in faio_read_segment (fd=4, f=0x28300294,
+</I>&gt;<i> &gt; trackp=0xbfbfc870, secno=2066367, len=32768) at fifo.c:724
+</I>&gt;<i> &gt; #3  0x080558c6 in faio_read_track (trackp=0xbfbfc870) at fifo.c:657
+</I>&gt;<i> &gt; #4  0x080556e1 in faio_reader (trackp=0xbfbfc814) at fifo.c:595
+</I>&gt;<i> &gt; #5  0x080554d4 in init_faio (trackp=0xbfbfc814, bufsize=65536) at
+</I>&gt;<i> &gt; fifo.c:502 #6  0x0804b5c3 in main (ac=7, av=0xbfbfed0c) at
+</I>&gt;<i> &gt; cdrecord.c:1132
+</I>&gt;<i>
+</I>&gt;<i> There is no function called &quot;fmtab&quot; in cdrecord.
+</I>
+./libschily/stdio/fcons.c:LOCAL char    *fmtab[] = {
+./libschily/stdio/fcons.c:                      fmtab[flag&amp;(FI_READ|FI_WRITE|
+FI_BINARY | FI_APPEND)]);
+./libschily/stdio/filereopen.c:LOCAL    char    *fmtab[] = {
+./libschily/stdio/filereopen.c:         fmtab[flag &amp; (FI_READ | FI_WRITE | 
+FI_BINARY | FI_APPEND)], fp);
+
+somthing messed with symbol table?
+
+&gt;<i> Given the fact, that there have recently been some bug reports on optimizer
+</I>&gt;<i> bugs in gcc-4.2.3 that cause fillbytes() to be compiled incorrectly, I
+</I>&gt;<i> would recommend to either use an older GCC or the latest GCC which seems to
+</I>&gt;<i> be gcc-4.3.
+</I>
+# gcc -v
+Using built-in specs.
+Target: i386-undermydesk-freebsd
+Configured with: FreeBSD/i386 system compiler
+Thread model: posix
+gcc version 4.2.1 20070719  [FreeBSD]
+
+greetings
+-- 
+Marcin Gryszkalis, PGP 0x9F183FA3 
+jabber jid:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mg at fork.pl</A>, gg:2532994
+<A HREF="http://the.fork.pl">http://the.fork.pl</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000217.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+	<LI>Next message: <A HREF="000220.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#218">[ date ]</a>
+              <a href="thread.html#218">[ thread ]</a>
+              <a href="subject.html#218">[ subject ]</a>
+              <a href="author.html#218">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

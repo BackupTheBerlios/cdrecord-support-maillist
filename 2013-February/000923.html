@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] errors after first burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C5120dac5.qfz3THdPv6/bH6SM%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000922.html">
+   <LINK REL="Next"  HREF="000924.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] errors after first burn</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C5120dac5.qfz3THdPv6/bH6SM%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] errors after first burn">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Feb 17 14:27:33 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000922.html">[Cdrecord-support] errors after first burn
+</A></li>
+        <LI>Next message: <A HREF="000924.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#923">[ date ]</a>
+              <a href="thread.html#923">[ thread ]</a>
+              <a href="subject.html#923">[ subject ]</a>
+              <a href="author.html#923">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Noel Butler &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">noel.butler at ausics.net</A>&gt; wrote:
+
+&gt;<i> Hi Joerg,
+</I>&gt;<i>
+</I>&gt;<i> Have a niggling problem, just changed the (IDE) burner recently which
+</I>&gt;<i> worked well for some 8 years until it decided to go nite nite and not
+</I>&gt;<i> wake up again, but with the replacement (SATA) burner - 
+</I>&gt;<i>     3,1,0	301) 'TSSTcorp' 'CDDVDW SH-S223C ' 'SB04' Removable CD-ROM
+</I>&gt;<i>
+</I>&gt;<i> I can burn one disc successfully, try to burn another and it fails,
+</I>&gt;<i> every time, giving me several new beer coasters.
+</I>
+What do you mean with bone one and then it fails?
+
+One disk after reboot?
+
+If so, this sounds like a bug in the Linux kernel driver for the related 
+interface.
+
+&gt;<i> The only way I can get a new burn to succeed is to reboot &lt;gulp&gt; the
+</I>&gt;<i> box, and then its groundhog day all over again, more beer coasters,
+</I>&gt;<i> reboot......so on
+</I>
+OK, so this looks like a linux kernel bug if there is state that id not reset 
+from just opening the tray.
+
+
+&gt;<i> I have additionally upgraded the kernel (3.7 series) and cdrecord which
+</I>&gt;<i> was  a11  to   a12  with no change.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a11 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2012 Joerg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '3,1,0'
+</I>&gt;<i> scsibus: 3 target: 1 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   : 
+</I>&gt;<i> Vendor_info    : 'TSSTcorp'
+</I>&gt;<i> Identifikation : 'CDDVDW SH-S223C '
+</I>&gt;<i> Revision       : 'SB04'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD+R/DL 
+</I>&gt;<i> Profile: DVD+R 
+</I>&gt;<i> Profile: DVD+RW 
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording 
+</I>&gt;<i> Profile: DVD-R/DL sequential recording 
+</I>&gt;<i> Profile: DVD-RW sequential recording 
+</I>&gt;<i> Profile: DVD-RW restricted overwrite 
+</I>&gt;<i> Profile: DVD-RAM 
+</I>&gt;<i> Profile: DVD-R sequential recording (current)
+</I>&gt;<i> Profile: DVD-ROM 
+</I>&gt;<i> Profile: CD-RW 
+</I>&gt;<i> Profile: CD-R 
+</I>&gt;<i> Profile: CD-ROM 
+</I>&gt;<i> Profile: Removable Disk 
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE 
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1048576 = 1024 KB
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i>
+</I>&gt;<i> ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  This always used to occur on my
+</I>&gt;<i> previous sony drive which worked.
+</I>&gt;<i>
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is ON.
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01:    0 of 3285 MB written.cdrecord: Input/output error.
+</I>&gt;<i> write_g1: scsi sendcmd: no error
+</I>&gt;<i> CDB:  2A 00 00 00 01 A0 00 00 10 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 03 00 00 00 00 0A 00 00 00 00 0C 81 00 00
+</I>&gt;<i> Sense Key: 0x3 Medium Error, Segment 0
+</I>&gt;<i> Sense Code: 0x0C Qual 0x81 (write error) [No matching qualifier] Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;<i> cmd finished after 0.923s timeout 200s
+</I>&gt;<i>
+</I>&gt;<i> write track data: error after 851968 bytes
+</I>
+This is a write error after just filling up the RAM in the drive, so I assume 
+no previous successful media write before.
+
+What you should do is to call
+
+cdrecord -atip 
+
+to get the media manufacturer and retry with original Verbatim media and to call
+
+cdrecord -minfo 
+
+before writing to get the apparen media state before starting to write.
+
+&gt;<i> PS:
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone   isnt it time we changed that now to
+</I>&gt;<i> Cdrecord-ProDVD-ProBD  :)
+</I>
+Do you belive that cdrecord is no longer capable of doing clone writes?
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000922.html">[Cdrecord-support] errors after first burn
+</A></li>
+	<LI>Next message: <A HREF="000924.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#923">[ date ]</a>
+              <a href="thread.html#923">[ thread ]</a>
+              <a href="subject.html#923">[ subject ]</a>
+              <a href="author.html#923">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

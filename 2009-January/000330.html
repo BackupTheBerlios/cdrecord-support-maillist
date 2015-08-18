@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem fixating svn 105
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C496F2418.30309%40infineon.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000331.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem fixating svn 105</H1>
+    <B>Richard Skelton</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C496F2418.30309%40infineon.com%3E"
+       TITLE="[Cdrecord-support] Problem fixating svn 105">Richard.Skelton at infineon.com
+       </A><BR>
+    <I>Thu Jan 15 12:55:04 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000331.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+I am using cdrecord which comes with svn 104 on my laptop and with a new 
+LG burner (GE20LU10)
+I see some problems with fixating the latest svn 105 disk.
+Do I need to dos something special to stop these message.
+The burnt disk seem to work fine as I am building a system with is now :-)
+
+
+
+
+rts{root}46: cdrecord dev=1,0,0 -v sol-nv-b105-x86-dvd.iso
+/bin/cdrecord.bin: No write mode specified.
+/bin/cdrecord.bin: Asuming -sao mode.
+/bin/cdrecord.bin: If your drive does not accept -sao, try -tao.
+/bin/cdrecord.bin: Future versions of cdrecord may have different drive
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i386-pc-solaris2.11) Copyright
+(C) 1995-2008 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 0
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'DVDRAM GE20LU10 '
+Revision       : 'FE05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-R sequential recording
+Profile: DVD-RAM
+Profile: DVD-R sequential recording (current)
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RW/DL
+Profile: DVD-RW sequential recording
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD+R/DL
+Profile: DVD-ROM
+Profile: CD-R
+Profile: CD-RW
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1114112 = 1088 KB
+Drive pbuf size: 1966080 = 1920 KB
+Drive DMA Speed: 15002 kB/s 85x CD 10x DVD 3x BD
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  3248 MB
+Total size:     3248 MB = 1663360 sectors
+Current Secsize: 2048
+Total power on  hours: 0
+Blocks total: 2298496 Blocks current: 2298496 Blocks remaining: 635136
+Starting to write CD/DVD/BD at speed 8 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is ON.
+Turning BURN-Free off
+Starting new track at sector: 0
+Track 01: 3248 of 3248 MB written (fifo 100%) [buf  97%]   6.1x.
+Track 01: Total bytes read/written: 3406561280/3406561280 (1663360 sectors).
+Writing  time:  434.222s
+Average write speed   5.7x.
+Min drive buffer fill was 12%
+Fixating...
+/bin/cdrecord.bin: I/O error. flush cache: scsi sendcmd: no error
+CDB:  35 00 00 00 00 00 00 00 00 00
+status: 0x0 (GOOD STATUS)
+cmd finished after 6.040s timeout 1000s
+Trouble flushing the cache
+/bin/cdrecord.bin: Cannot fixate disk.
+Fixating time:    6.040s
+/bin/cdrecord.bin: fifo had 53657 puts and 53657 gets.
+/bin/cdrecord.bin: fifo was 42 times empty and 11098 times full, min
+fill was 0%.
+rts{root}47:
+
+
+-- 
+
+
+
+Cheers
+
+Richard Skelton
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>
+Infineon Technologies UK Ltd
+Infineon House
+Great Western Court
+Hunts Ground Road
+Stoke Gifford
+Bristol
+BS34 8HP
+Tel +44(0)117 9528808
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000331.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

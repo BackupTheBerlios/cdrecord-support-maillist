@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] readcd -dev=ATAPI:0, 0,	0 -sectors=0-0 -f=&gt;/dev/null
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20readcd%20-dev%3DATAPI%3A0%2C%200%2C%0A%090%20-sectors%3D0-0%20-f%3D%3E/dev/null&In-Reply-To=%3C46FB4238.5070702%40unlimitedmail.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000098.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] readcd -dev=ATAPI:0, 0,	0 -sectors=0-0 -f=&gt;/dev/null</H1>
+    <B>JOYDEEP</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20readcd%20-dev%3DATAPI%3A0%2C%200%2C%0A%090%20-sectors%3D0-0%20-f%3D%3E/dev/null&In-Reply-To=%3C46FB4238.5070702%40unlimitedmail.org%3E"
+       TITLE="[Cdrecord-support] readcd -dev=ATAPI:0, 0,	0 -sectors=0-0 -f=&gt;/dev/null">j.bakshi at unlimitedmail.org
+       </A><BR>
+    <I>Thu Sep 27 07:40:08 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000099.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+        <LI>Next message: <A HREF="000098.html">[Cdrecord-support] readcd -dev=ATAPI:0, 0,	0 -sectors=0-0 -f=&gt;/dev/null
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Joerg Schilling and list,
+
+I have tested &quot;readcd -dev=ATAPI:0,0,0 -speed=12 -sectors=0-0 -f=&gt;/dev/null&quot; to check the drive status if empty or not.
+
+when the drive has a Cd in it, shows as below
+
+=================================
+Read  speed:  7056 kB/s (CD  40x, DVD  5x).
+Write speed:  1764 kB/s (CD  10x, DVD  1x).
+Capacity: 291971 Blocks = 583942 kBytes = 570 MBytes = 597 prMB
+Sectorsize: 2048 Bytes
+Copy from SCSI (0,0,0) disk to file '1'
+end:         0
+addr:        0
+Time total: 0.000sec
+Read 0.00 kB at 0.0 kB/sec.
+==========================================
+
+So it proves the drive has a disk.
+
+but with empty drive the above command displays
+
+=========================================
+Read  speed:  8467 kB/s (CD  48x, DVD  6x).
+Write speed:  8467 kB/s (CD  48x, DVD  6x).
+=========================================
+
+and simply wait there. It needs ctrl+c to exit from the command. How can I then check from a shell-script that the drive is empty ?
+thanks
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000099.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+	<LI>Next message: <A HREF="000098.html">[Cdrecord-support] readcd -dev=ATAPI:0, 0,	0 -sectors=0-0 -f=&gt;/dev/null
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

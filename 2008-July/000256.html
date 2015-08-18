@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] possible buildsystem bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080708110813.436d6bb4%40dax%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000269.html">
+   <LINK REL="Next"  HREF="000257.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] possible buildsystem bug</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080708110813.436d6bb4%40dax%3E"
+       TITLE="[Cdrecord-support] possible buildsystem bug">list1 at michaelshell.org
+       </A><BR>
+    <I>Tue Jul  8 17:08:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000269.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+        <LI>Next message: <A HREF="000257.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 8 Jul 2008 15:41:49 +0200
+Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> * Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; You are on Linux and this is a well known bash bug :-(
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 	bash sometimes ignores the &quot;-e&quot; option.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; It is unfortunately even impossible to find a workaround for _this_ bug.
+</I>&gt;<i> 
+</I>&gt;<i> Meanwhile I've fixed it. It's caused by those lines:
+</I>&gt;<i> 
+</I>&gt;<i>     echo ... ; gcc ...
+</I>&gt;<i>     
+</I>&gt;<i> The trick is to just replace ; by &amp;.
+</I>&gt;<i> Works fine for me.
+</I>
+
+ I think Joerg is referring to:
+
+<A HREF="http://www.faqs.org/docs/bashman/bashref_76.html">http://www.faqs.org/docs/bashman/bashref_76.html</A>
+
+specifically &quot;28. Subshells spawned to execute command substitutions
+inherit the value of the `-e' option from the parent shell. When not
+in POSIX mode, Bash clears the `-e' option in such subshells.&quot;
+
+It is possible to enable bash's POSIX mode at run time.
+
+But, I can see some reasons why POSIX mode of bash can be such a
+problem with existing systems:
+
+&quot;7. The POSIX 1003.2 startup files are executed ($ENV) rather than the
+    normal Bash files.&quot;
+
+Although I can't say the /etc/profile and .bashrc approach is totally
+sane.
+
+Which UNIXes use bash in POSIX mode by default?
+
+Or, is there a bug with bash in that it does not follow its own
+documentation? That most certainly would be a bug.
+
+Why is that &amp;&amp; isn't what is required rather than &amp; to be able
+to see an exit 1 status?
+
+
+  Mike Shell
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000269.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+	<LI>Next message: <A HREF="000257.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#256">[ date ]</a>
+              <a href="thread.html#256">[ thread ]</a>
+              <a href="subject.html#256">[ subject ]</a>
+              <a href="author.html#256">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

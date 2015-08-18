@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%0A%20disk%20under%20RHEL%206.3&In-Reply-To=%3CCAPrcKXKKrHmpJehBTa5rmDMVOkW-GrxuDksxM7JncM73ui2tEw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000913.html">
+   <LINK REL="Next"  HREF="000915.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3</H1>
+    <B>Andrew Z</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%0A%20disk%20under%20RHEL%206.3&In-Reply-To=%3CCAPrcKXKKrHmpJehBTa5rmDMVOkW-GrxuDksxM7JncM73ui2tEw%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3">formisc at gmail.com
+       </A><BR>
+    <I>Tue Jan  8 18:45:38 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000913.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+        <LI>Next message: <A HREF="000915.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#914">[ date ]</a>
+              <a href="thread.html#914">[ thread ]</a>
+              <a href="subject.html#914">[ subject ]</a>
+              <a href="author.html#914">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg,
+ thank you very much for your reply.
+ I stopped the haldaemon, but got nowhere - still the same error.
+I do not have a problem burning single layer DVDs (DVD+RW, DVD+R) ( only
+dual layer DVD+RDL). I'm not sure why HAL is to blame, since burning fails
+exactly 1/2 a disk into the process? Does HAL operates on time basis? ( i
+just don't know enough ).
+
+Re padding - this particular file is 7.5GB long. Is it not big enough?
+I'm trying to figure out the layer break point meantime...
+
+
+Another thought, please bare with me:
+Device type    : Removable CD-ROM
+&lt;skip&gt;
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD+R/DL
+Profile: DVD+R/DL (current)
+&lt;skip&gt;
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+
+i vaguely remember that some years ago ( 2003? - 2006?) i had to specify a
+different driver in order to burn disks . I really don't remember
+specifics. maybe it was to enable burning of DVD over CDRW, maybe to enable
+dual layer vs single layer.
+
+But the above got me thinking maybe the drive is not recognized correctly?
+
+Thank you
+Andrew
+
+
+On Tue, Jan 8, 2013 at 10:18 AM, Joerg Schilling &lt;
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+
+&gt;<i> Joerg
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130108/08a6805c/attachment-0001.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130108/08a6805c/attachment-0001.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000913.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+	<LI>Next message: <A HREF="000915.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#914">[ date ]</a>
+              <a href="thread.html#914">[ thread ]</a>
+              <a href="subject.html#914">[ subject ]</a>
+              <a href="author.html#914">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord: 'Cannot open next track'
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%3A%20%27Cannot%20open%20next%20track%27&In-Reply-To=%3C45c11917.NyZ1UBGt4C5z6dyu%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000014.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord: 'Cannot open next track'</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%3A%20%27Cannot%20open%20next%20track%27&In-Reply-To=%3C45c11917.NyZ1UBGt4C5z6dyu%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord: 'Cannot open next track'">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Jan 31 23:32:55 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000014.html">[Cdrecord-support] cdrecord: 'Cannot open next track'
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;A.Tietje - FLYnet&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">a.tietje at flynet.de</A>&gt; wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> I have used cdrecord-ProDVD to burn DVD images. That worked well until my
+</I>&gt;<i> license key (<A HREF="ftp://ftp.berlios.de/pub/cdrecord/ProDVD/OLD/cdrecord-wrapper.sh">ftp://ftp.berlios.de/pub/cdrecord/ProDVD/OLD/cdrecord-wrapper.sh</A>)
+</I>&gt;<i> expired on 2007/01/28.
+</I>
+So just use a recent source....
+
+&gt;<i> I learned that I have to use a newer version that needs no key any more. I tried
+</I>&gt;<i> several versions, errors are always the same:
+</I>&gt;<i>
+</I>&gt;<i> pub:~ # /opt/schily/bin/cdrecord -eject speed=4 -dao dev=/dev/hdc /tmp/test_0*
+</I>&gt;<i> Cdrecord-ProDVD-Clone 2.01.01a09 (i686-pc-linux-gnu) Copyright (C) 1995-2006
+</I>&gt;<i> J&#195;&#182;rg Schilling
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: Running on Linux-2.6.8-24.10-smp
+</I>
+A very old version....
+
+&gt;<i> /opt/schily/bin/cdrecord: There are unsettled issues with Linux-2.5 and newer.
+</I>&gt;<i> /opt/schily/bin/cdrecord: If you have unexpected problems, please try Linux-2.4
+</I>&gt;<i> or Solaris.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: Linux-2.6.8 introduced incompatible interface
+</I>&gt;<i> changes.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: SCSI transport does no longer work for suid
+</I>&gt;<i> root programs.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: if cdrecord fails, try to run it from a root
+</I>&gt;<i> account.
+</I>&gt;<i> scsidev: '/dev/hdc'
+</I>&gt;<i> devname: '/dev/hdc'
+</I>&gt;<i> scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> Warning: Open by 'devname' is unintentional and not supported.
+</I>&gt;<i> Linux sg driver version: 3.5.27
+</I>&gt;<i> Using libscg version 'schily-0.8'.
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : '_NEC    '
+</I>&gt;<i> Identifikation : 'DVD_RW ND-3500AG'
+</I>&gt;<i> Revision       : '2.16'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW.
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO
+</I>&gt;<i> resid: 16
+</I>&gt;<i> Starting to write CD/DVD at speed 6 in real SAO mode for single session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Success. reserve_track_rzone: scsi sendcmd: no error
+</I>&gt;<i> CDB:  53 00 00 00 00 00 1F 4C EC 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 30 05 00 00
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x30 Qual 0x05 (cannot write medium - incompatible format) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;<i> cmd finished after 0.000s timeout 100s
+</I>&gt;<i> /opt/schily/bin/cdrecord: Cannot open next track.
+</I>&gt;<i>
+</I>&gt;<i> Can anyone give me a hint?
+</I>
+Did you call this as root or install suid root?
+
+Did you try a media that us supported by the drive?
+
+
+What do you get from cdrecord -atip, what do you get from cdrecord -minfo?
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000014.html">[Cdrecord-support] cdrecord: 'Cannot open next track'
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

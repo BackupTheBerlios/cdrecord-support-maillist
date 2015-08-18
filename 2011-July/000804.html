@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E282848.1060907%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000800.html">
+   <LINK REL="Next"  HREF="000792.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E282848.1060907%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Jul 21 15:23:20 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000800.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000792.html">[Cdrecord-support] question searchfileinpath.c
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#804">[ date ]</a>
+              <a href="thread.html#804">[ thread ]</a>
+              <a href="subject.html#804">[ subject ]</a>
+              <a href="author.html#804">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I am sorry to apparently having created a wrong impression. These
+changes that I made are not meant to correct any errors in your code or
+rules or other files. I just wanted to document and present my findings
+under what circumstances I was able to compile the final smake. I see
+it as a start of discussion. Some issues are already resolved, some are
+not (yet). I believe that discussing issues openly will reveal the best
+technical solution. Any solution has, of course, to be supervised and
+accepted by you since you are the package maintainer.
+
+Best regards,
+
+Johannes
+
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Partly Success!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I am able to compile smake under the MinGW environment. Based on
+</I>&gt;&gt;<i> version smake-1.2.1 with following changes the build process is
+</I>&gt;&gt;<i> successful:
+</I>&gt;&gt;<i> - in RULES/i?86-mingw32_nt-gcc.rul:
+</I>&gt;&gt;<i>     replace -lmgw32 with -lmingw32 (as discussed previously)
+</I>&gt;<i>
+</I>&gt;<i> This has been done 8 days ago.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - in psmake/MAKE-sh:
+</I>&gt;&gt;<i>     add line test -h xxzzy.123 || lnfiles=&quot;sh cpfiles&quot; after the line
+</I>&gt;&gt;<i>     test -r xxzzy.123 || lnfiles=&quot;sh cpfiles&quot;
+</I>&gt;&gt;<i>     (as discussed previously)
+</I>&gt;<i>
+</I>&gt;<i> I did not jet have the time to think  about this.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> - in RULES/r-smake.dep:
+</I>&gt;&gt;<i>     replace the single quotes with double quotes in the sed ... lines
+</I>&gt;&gt;<i>     (as mentioned earlier)
+</I>&gt;<i>
+</I>&gt;<i> If calling sh -c cmd would work correctly, there was no need to change
+</I>&gt;<i> quoting. We need to come to a state where this works out of the box.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - in RULES/r-smake.obj:
+</I>&gt;&gt;<i>     replace -o O/$@ with -o $(ARCHDSIR)/$@ in line45
+</I>&gt;<i>
+</I>&gt;<i> NO, the file is correct as it is.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - in include/schily/ccomdefs.h:
+</I>&gt;&gt;<i>     add a check !defined __MINGW32__ to the conditional definition of
+</I>&gt;&gt;<i>     macro UConst so that Uconst will be defined to const
+</I>&gt;&gt;<i>     (as discussed previously)
+</I>&gt;&gt;<i>     Note: this is not strictly necessary but prevents the generation of
+</I>&gt;&gt;<i>       a lot of warnings.
+</I>&gt;<i>
+</I>&gt;<i> I am still waiting for the requested information.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - in smake/make.c:
+</I>&gt;&gt;<i>     in docmd():
+</I>&gt;&gt;<i>     - add a sectionfor __MINGW32__
+</I>&gt;&gt;<i>     - quote the command which shall be executed in sh with single quotes
+</I>&gt;&gt;<i>     - call spawnl()
+</I>&gt;<i>
+</I>&gt;<i> The qoting nightmare is not specific to mingw, but it is a bug from Microsoft.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000800.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000792.html">[Cdrecord-support] question searchfileinpath.c
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#804">[ date ]</a>
+              <a href="thread.html#804">[ thread ]</a>
+              <a href="subject.html#804">[ subject ]</a>
+              <a href="author.html#804">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

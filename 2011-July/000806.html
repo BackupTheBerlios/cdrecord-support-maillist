@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e283dc9.wZCeHSqU1mK9lJXd%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000805.html">
+   <LINK REL="Next"  HREF="000808.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e283dc9.wZCeHSqU1mK9lJXd%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 21 16:55:05 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000805.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000808.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#806">[ date ]</a>
+              <a href="thread.html#806">[ thread ]</a>
+              <a href="subject.html#806">[ subject ]</a>
+              <a href="author.html#806">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i>  &gt; -	What is the exact version of GCC you are using?
+</I>&gt;<i> gcc (GCC) 3.2.3 (mingw special 20030504-1)
+</I>&gt;<i>
+</I>&gt;<i>  &gt; -	What is the exact message from GCC when compikleing the sources?
+</I>&gt;<i> make.c:4: warning: `__used__? attribute ignored
+</I>&gt;<i> This is repeated a lot of times (for each file where the __used__
+</I>&gt;<i> attribute is used)
+</I>
+OK, I just scanned the sourcecode as the Changelog file is just junk :-(
+
+We need to change ccomdefs.h to 
+
+#if __GNUC__ &gt; 3 || __GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 2
+
+as GCC-3.3 was the first release that introduced &quot;attribute used&quot;.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+,.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000805.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000808.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#806">[ date ]</a>
+              <a href="thread.html#806">[ thread ]</a>
+              <a href="subject.html#806">[ subject ]</a>
+              <a href="author.html#806">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

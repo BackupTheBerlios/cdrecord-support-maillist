@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%09build%20with%20gmake&In-Reply-To=%3C51a49f92.89eGWdUqsuJoWgUE%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000929.html">
+   <LINK REL="Next"  HREF="000931.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%09build%20with%20gmake&In-Reply-To=%3C51a49f92.89eGWdUqsuJoWgUE%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue May 28 14:14:10 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000929.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build	with gmake
+</A></li>
+        <LI>Next message: <A HREF="000931.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#930">[ date ]</a>
+              <a href="thread.html#930">[ thread ]</a>
+              <a href="subject.html#930">[ subject ]</a>
+              <a href="author.html#930">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear sir,
+</I>&gt;<i>
+</I>&gt;<i> I am trying to build schily-2013-05-10.tar.bz2 which has cdrtools and
+</I>&gt;<i> other tools integrated.  I am running DragonFlyBSD version 3.4.1 and I
+</I>&gt;<i> run gmake to build :
+</I>&gt;<i>
+</I>&gt;<i> Mostly everything builds but it stops in cdda2wav with the following:
+</I>&gt;<i>
+</I>&gt;<i> creating lconfig.h
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;cdda2wav.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;interface.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;semshm.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;resample.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;toc.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;wav.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;sun.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;raw.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;setuid.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;ringbuff.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;sndconfig.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;scsi_cmds.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;aiff.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;aifc.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;ioctl.d&quot;
+</I>&gt;<i>     ==&gt; MAKING DEPENDENCIES &quot;base64.d&quot;
+</I>&gt;<i>     ==&gt; COMPILING &quot;cdda2wav.o&quot;
+</I>&gt;<i> In file included from /usr/local/include/cdda_paranoia.h:37:0,
+</I>&gt;<i>                  from global.h:21,
+</I>&gt;<i>                  from cdda2wav.c:120:
+</I>&gt;<i> /usr/local/include/cdda_interface.h:48:6: error: conflicting types for
+</I>&gt;<i> 'SetupInterface'
+</I>&gt;<i> In file included from cdda2wav.c:113:0:
+</I>&gt;<i> interface.h:137:13: note: previous declaration of 'SetupInterface' was here
+</I>&gt;<i> In file included from /usr/local/include/cdda_paranoia.h:37:0,
+</I>&gt;<i>                  from global.h:21,
+</I>&gt;<i>                  from cdda2wav.c:120:
+</I>&gt;<i> /usr/local/include/cdda_interface.h:145:13: error: conflicting types
+</I>
+You have defective include files installed in /usr/local/include/. You need to 
+remove these files, as they are outdated and in conflict with the portable 
+current versions of the interfaces.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000929.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build	with gmake
+</A></li>
+	<LI>Next message: <A HREF="000931.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#930">[ date ]</a>
+              <a href="thread.html#930">[ thread ]</a>
+              <a href="subject.html#930">[ subject ]</a>
+              <a href="author.html#930">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

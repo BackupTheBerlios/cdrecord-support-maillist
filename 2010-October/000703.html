@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 1:1 audio cd copy, clone mode problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C4cb783cd.3wqOl6bcI3B%2BvA2o%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000702.html">
+   <LINK REL="Next"  HREF="000704.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 1:1 audio cd copy, clone mode problem</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C4cb783cd.3wqOl6bcI3B%2BvA2o%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] 1:1 audio cd copy, clone mode problem">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Oct 15 00:27:25 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000702.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+        <LI>Next message: <A HREF="000704.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Tobias Deiminger &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">tobias.deiminger at t-online.de</A>&gt; wrote:
+
+&gt;<i> I'd like to create as close as possible 1:1 backups of my audio CDs,
+</I>&gt;<i> meaning:
+</I>&gt;<i> 1) Backup in a lossless audio format, .wav or whatever
+</I>&gt;<i> 2) Preserve all meta data of the original CD
+</I>&gt;<i> 3) No gaps in original shall result in no gaps in backup
+</I>&gt;<i> 4) If the original CD was some CD Extra, backup both audio and data
+</I>&gt;<i> 5) Error correction if possible (but of less importance for me, as most
+</I>&gt;<i> originals are in quite good condition)
+</I>&gt;<i> would be nice: 6) do all this stuff as automated as possible, maybe
+</I>&gt;<i> shell script
+</I>&gt;<i>
+</I>&gt;<i> I saw that k3b has &quot;Clone Copy&quot; mode, which sounded just like what I
+</I>&gt;<i> want and it uses readcd -clone for this (well, it uses the forked tools,
+</I>&gt;<i> but I now use cdrtools 3.00). So, at command line I started with:
+</I>&gt;<i> readcd dev=5,0,0 -clone f=readcd.img
+</I>&gt;<i> cdrecord dev=5,0,0 -raw96r -clone -v readcd.img
+</I>
+This is to copy CDs with unknown format and to copy CDs that try to prevent 
+copying by introducing specific defects. This copy mode does not repair any 
+defect and thus is a bad idea for copying audio data.
+
+&gt;<i> Read and write process went fine, but the resulting CD sadly was not
+</I>&gt;<i> playable in all CD Players (e.g. my old Technics standalone player liked
+</I>&gt;<i> it, while my car radio reported CD ERROR for the same CD). I tried
+</I>&gt;<i> several combinations of source CDs, blank CD-Rs, and two CD writers
+</I>&gt;<i> (TSSTcorp CDDVDW SH-S223C and HL-DT-ST DVDRAM GSA-4081B). But even after
+</I>&gt;<i> about 20 trials I could not manage to create only one CD that plays in
+</I>&gt;<i> all players here.
+</I>
+Without information on why this happened, I cannot help.
+
+&gt;<i> I found this
+</I>&gt;<i> <A HREF="http://www.mail-archive.com/gentoo-user@lists.gentoo.org/msg86945.html">http://www.mail-archive.com/gentoo-user@lists.gentoo.org/msg86945.html</A>
+</I>&gt;<i> discussion, which seems to be related to my problem. One statement there
+</I>&gt;<i> is:
+</I>&gt;<i> &quot;The clone copy mode of cdrecord is definitely worse for audio CDs than
+</I>&gt;<i> using cdda2wav -vall cddb=0 -paranoia and writing using cdrecord.&quot;
+</I>&gt;<i>
+</I>&gt;<i> Could you please clarify this? Is it true, and if so, why is clone mode
+</I>&gt;<i> bad for audio CDs?
+</I>
+See the man pages.....
+
+cdda2wav -vall -B cddb=0 paraopts=proof
+
+is the best choice. It even extracts hidden tracks.
+
+&gt;<i> Is my issue described above known or confirmed to be a general problem?
+</I>&gt;<i> Is there any solution or workaround?
+</I>&gt;<i>
+</I>&gt;<i> I would be happy if I can realize my intention somehow else. For example
+</I>&gt;<i> with cdda2wav -vall cddb=0 -paranoia as suggested in above discussion.
+</I>&gt;<i> But I'm not sure whether all points of my &quot;what I want to do&quot; list can
+</I>&gt;<i> be done this way. Could you explain if and how 3) and 4) are possible?
+</I>
+For CD-extra, extract the second data session separately with readcd and
+append a session with this data.
+
+&gt;<i> Btw: Ubuntu 10.04, Linux 2.6.31-11-rt, x86-64 here
+</I>
+Did you replace the broken fork that comes with Ubuntu by the original software?
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000702.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+	<LI>Next message: <A HREF="000704.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090227030114.65d9d52a%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000366.html">
+   <LINK REL="Next"  HREF="000368.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090227030114.65d9d52a%40bashir%3E"
+       TITLE="[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5">list1 at michaelshell.org
+       </A><BR>
+    <I>Fri Feb 27 09:01:14 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000366.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+        <LI>Next message: <A HREF="000368.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#367">[ date ]</a>
+              <a href="thread.html#367">[ thread ]</a>
+              <a href="subject.html#367">[ subject ]</a>
+              <a href="author.html#367">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 26 Feb 2009 10:26:42 +0100
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+
+
+&gt;<i> I am sorry, you are using a 4 year old version and the version you are
+</I>&gt;<i> using does not run well on Linux because the Linux kernel people
+</I>&gt;<i> introduced an incompatible kernel interface change that broke all
+</I>&gt;<i> applications that were using SCSI generic in the way itwas documented.
+</I>
+
+I checked my notes and this happened with 2.6.8.1 (I don't know if
+newer kernels have a working ide-scsi system again) at which point
+I went to dev=ATA:. After upgrading to the latest cdrecord, the
+dev=ATA: is no longer needed as J&#246;rg said (it automatically goes
+to ATA if one does not use the hda=scsi ide-scsi stuff).
+
+BTW, why is 1000 prefixed to the scsibus number now? It's OK, I'm 
+just curious.
+
+
+To Aaron: make sure you have SCSI generic support and SCSI CDROM
+support in the kernel.
+
+
+  Cheers and thank you,
+
+  Mike Shell
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000366.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+	<LI>Next message: <A HREF="000368.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#367">[ date ]</a>
+              <a href="thread.html#367">[ thread ]</a>
+              <a href="subject.html#367">[ subject ]</a>
+              <a href="author.html#367">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

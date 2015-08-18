@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] DVD writing failure
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20DVD%20writing%20failure&In-Reply-To=%3C676855.34508.qm%40web53205.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000190.html">
+   <LINK REL="Next"  HREF="000196.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] DVD writing failure</H1>
+    <B>ehab aziz</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20DVD%20writing%20failure&In-Reply-To=%3C676855.34508.qm%40web53205.mail.re2.yahoo.com%3E"
+       TITLE="[Cdrecord-support] DVD writing failure">ehab_aziz2001 at yahoo.com
+       </A><BR>
+    <I>Sat Mar 29 16:28:24 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000190.html">[Cdrecord-support]  How to compile cdrtools for win32 ?
+</A></li>
+        <LI>Next message: <A HREF="000196.html">[Cdrecord-support] DVD writing failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#195">[ date ]</a>
+              <a href="thread.html#195">[ thread ]</a>
+              <a href="subject.html#195">[ subject ]</a>
+              <a href="author.html#195">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I download the source code of last version of cdrtool
+to write on my
+DVD/RW. I download cdrtools-2.01.01a38.tar.gz.
+I gunzip and untar the file and call make and then
+make install so I
+found that messages when I failed to write on my DVD :
+
+Cdrecord-Clone 2.01 (i386-pc-solaris2.10) Copyright
+(C) 1995-2004 J&#65533;rg
+Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,1,0'
+scsibus: 1 target: 1 lun: 0
+Warning: Using USCSI interface.
+Warning: Volume management is running, medialess
+managed drives are
+invisible.
+Using libscg version 'schily-0.8'.
+SCSI buffer size: 57344
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'DVDRAM GSA-H42N '
+Revision       : 'RL00'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW.
+Current: 0x0014
+Profile: 0x0012
+Profile: 0x0011
+Profile: 0x0015
+Profile: 0x0016
+Profile: 0x0014 (current)
+Profile: 0x0013 (current)
+Profile: 0x001A
+Profile: 0x001B
+Profile: 0x002B
+Profile: 0x0010
+Profile: 0x0009
+Profile: 0x000A
+Profile: 0x0008
+Profile: 0x0002
+cdrecord: Found DVD media but DVD-R/DVD-RW support
+code is missing.
+cdrecord: If you need DVD-R/DVD-RW support, ask the
+Author for
+cdrecord-ProDVD.
+cdrecord: Free test versions and free keys for
+personal use are at
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/ProDVD/">ftp://ftp.berlios.de/pub/cdrecord/ProDVD/</A>
+cdrecord: This version of cdrecord does not include
+DVD-R/DVD-RW
+support code.
+cdrecord: If you need DVD-R/DVD-RW support, ask the
+Author for
+cdrecord-ProDVD.
+cdrecord: Free test versions and free keys for
+personal use are at
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/ProDVD/">ftp://ftp.berlios.de/pub/cdrecord/ProDVD/</A>
+Using generic SCSI-3/mmc   CD/DVD driver (checks
+media) (mmc_cd_dvd).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R
+RAW/R16 RAW/R96P RAW/
+R96R
+Drive buf size : 1114112 = 1088 KB
+Drive DMA Speed: 2994 kB/s 17x CD 2x DVD
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  unknown length
+Total size:        0 MB (00:00.00) = 0 sectors
+Lout start:        0 MB (00:02/00) = 0 sectors
+Current Secsize: 2048
+cdrecord: WARNING: Total disk size unknown. Data may
+not fit on disk.
+Starting to write CD/DVD at speed 7 in real TAO mode
+for single
+session.
+Last chance to quit, starting real write    0 seconds.
+Operation
+starts.
+Waiting for reader process to fill input buffer ...
+input buffer
+ready.
+cdrecord: Unspecified command not implemented for this
+drive.
+cdrecord: Cannot get next writable address.
+Writing  time:    0.017s
+Fixating...
+Fixating time:    0.000s
+cdrecord: fifo had 73 puts and 0 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min
+fill was 100%.
+
+
+
+      ____________________________________________________________________________________
+You rock. That's why Blockbuster's offering you one month of Blockbuster Total Access, No Cost.  
+<A HREF="http://tc.deals.yahoo.com/tc/blockbuster/text5.com">http://tc.deals.yahoo.com/tc/blockbuster/text5.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000190.html">[Cdrecord-support]  How to compile cdrtools for win32 ?
+</A></li>
+	<LI>Next message: <A HREF="000196.html">[Cdrecord-support] DVD writing failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#195">[ date ]</a>
+              <a href="thread.html#195">[ thread ]</a>
+              <a href="subject.html#195">[ subject ]</a>
+              <a href="author.html#195">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

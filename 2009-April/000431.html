@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Can%20cdrecord%20and%20mkisofs%20run%20on%20native%2064%0A%20windows%20OS%3F&In-Reply-To=%3C49ea0107.t2EyjfhXb1aPIfh0%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000428.html">
+   <LINK REL="Next"  HREF="000434.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Can%20cdrecord%20and%20mkisofs%20run%20on%20native%2064%0A%20windows%20OS%3F&In-Reply-To=%3C49ea0107.t2EyjfhXb1aPIfh0%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sat Apr 18 18:34:15 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000428.html">[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?
+</A></li>
+        <LI>Next message: <A HREF="000434.html">[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>QQCandy &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">zhaoxd at cn.ibm.com</A>&gt; wrote:
+
+&gt;<i> cdrecord and mkisofs tools(windows version) rely on the 'cygwin1.dll' to run
+</I>&gt;<i> on Windows OS.
+</I>&gt;<i> But the cygwin1.dll can only work on 32 bit windows os and 64bit windows os
+</I>&gt;<i> which has WOW64 32 bit environment. 
+</I>
+Is there a 64 bit cygwin environment?
+
+&gt;<i> Is there any possible for me to run cdrecord and mkisofs tools on an native
+</I>&gt;<i> 64 bit Windows OS with WOW64 support disabled?
+</I>&gt;<i>
+</I>&gt;<i> e.g.,Windows 2008 R2 supports user to disable the WOW64 support.
+</I>
+Cdrtools is 64 bit clean. Everything depends on the features of the 
+environment...
+
+-	You need a 64 bit POSIX compile/run environemt
+
+-	You need a 64 bit capable SCSI OS interface
+
+	-	Either a 64 bit ASPI
+
+	-	Or a 64 bit IOCTL_SCSI_PASS_THROUGH_DIRECT
+
+If the above constraints are true, I see no problem. We may need to create some
+new files for the RULES/ directory.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000428.html">[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?
+</A></li>
+	<LI>Next message: <A HREF="000434.html">[Cdrecord-support] Can cdrecord and mkisofs run on native 64 windows OS?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#431">[ date ]</a>
+              <a href="thread.html#431">[ thread ]</a>
+              <a href="subject.html#431">[ subject ]</a>
+              <a href="author.html#431">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

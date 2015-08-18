@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] upgrading firmware
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20upgrading%20firmware&In-Reply-To=%3CAANLkTinq%2B8H_OSugmJHtJgzZ1sWUH1tbKUJ1%3DuzZX4XM%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000735.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] upgrading firmware</H1>
+    <B>Jorge Almeida</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20upgrading%20firmware&In-Reply-To=%3CAANLkTinq%2B8H_OSugmJHtJgzZ1sWUH1tbKUJ1%3DuzZX4XM%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] upgrading firmware">jjalmeida at gmail.com
+       </A><BR>
+    <I>Mon Jan 10 19:22:52 CET 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000735.html">[Cdrecord-support] upgrading firmware
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#734">[ date ]</a>
+              <a href="thread.html#734">[ thread ]</a>
+              <a href="subject.html#734">[ subject ]</a>
+              <a href="author.html#734">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm thinking of upgrading the firmware of my drive and I could use
+some advise before doing something irreversible. The distro is
+Archlinux. cdrtools was compiled from source
+
+# cdrecord -version
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i686-pc-linux-gnu) Copyright (C)
+1995-2010 J&#65533;g Schilling
+
+ $lshw
+(...)
+
+           *-cdrom
+                description: DVD-RAM writer
+                product: CDDVDW SH-S223C
+                vendor: TSSTcorp
+                physical id: 1
+                bus info: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">scsi at 1</A>:0.0.0
+                logical name: /dev/cdrom
+                logical name: /dev/cdrom0
+                logical name: /dev/cdrw
+                logical name: /dev/cdrw0
+                logical name: /dev/dvd
+                logical name: /dev/dvd0
+                logical name: /dev/dvdrw
+                logical name: /dev/dvdrw0
+                logical name: /dev/scd0
+                logical name: /dev/sr0
+                version: SB01
+                capabilities: removable audio cd-r cd-rw dvd dvd-r dvd-ram
+                configuration: ansiversion=5 status=nodisc
+
+# cdrecord -minfo
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i686-pc-linux-gnu) Copyright (C)
+1995-2010 J&#65533;g Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 3A 01 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x3A Qual 0x01 (medium not present - tray closed) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.002s timeout 40s
+cdrecord: No disk / Wrong disk!
+
+Googling &quot;SH-S223C&quot;, I found drivers from Samsung (not &quot;TSSTcorp&quot;):
+<A HREF="http://drivers.top4download.com/samsung-sh-s223c-odd-firmware-sb06/duchf.html">http://drivers.top4download.com/samsung-sh-s223c-odd-firmware-sb06/duchf.html</A>
+
+I suppose sb06 means it is an upgrade compared with SB01...
+
+* Question: is it safe to use a driver from Samsung? *
+
+Another question would be how to to the install, as I don't have any
+OS besides linux. I'm thinking of FreeDOS...But one thing at a time :)
+
+TIA
+
+Jorge Almeida
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000735.html">[Cdrecord-support] upgrading firmware
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#734">[ date ]</a>
+              <a href="thread.html#734">[ thread ]</a>
+              <a href="subject.html#734">[ subject ]</a>
+              <a href="author.html#734">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

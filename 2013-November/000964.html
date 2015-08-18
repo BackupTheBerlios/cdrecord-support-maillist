@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C4186e6c596b4272a4e2a7b0caf9b9734%40ausics.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000963.html">
+   <LINK REL="Next"  HREF="000965.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....</H1>
+    <B>Noel Butler</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C4186e6c596b4272a4e2a7b0caf9b9734%40ausics.net%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....">noel.butler at ausics.net
+       </A><BR>
+    <I>Sat Nov 16 08:07:19 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000963.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+        <LI>Next message: <A HREF="000965.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#964">[ date ]</a>
+              <a href="thread.html#964">[ thread ]</a>
+              <a href="subject.html#964">[ subject ]</a>
+              <a href="author.html#964">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Why use the slackbuilds script?  They are only handy for building stuff 
+that needs 150 options
+with cdrtools, simply grab source, extract and
+
+make INS_BASE=/usr/local
+make INS_BASE=/usr/local install
+
+and be done with it. works fine
+
+
+
+On 16/11/2013 13:39, andrew wrote:
+&gt;<i> Thanks for your reply:
+</I>&gt;<i> 
+</I>&gt;<i> On Thu, Nov 14, 2013 at 02:10:50PM +0100, Joerg Schilling wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> How is this binary installed?
+</I>&gt;<i> 
+</I>&gt;<i> I have installed the latest source using a standard Slackware build
+</I>&gt;<i> script:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/</A>
+</I>&gt;<i> 
+</I>&gt;<i> and the actual script:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild">http://slackware.osuosl.org/slackware64-14.1/source/ap/cdrtools/cdrtools.SlackBuild</A>
+</I>&gt;<i> 
+</I>&gt;<i> simply using the latest source instead of the version in that
+</I>&gt;<i> location.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Is it installed suid root or with fcaps?
+</I>&gt;<i> 
+</I>&gt;<i> After installation I have manually altered the permissions as
+</I>&gt;<i> suggested in Slackware docs:
+</I>&gt;<i> 
+</I>&gt;<i> chown root:cdrom /usr/bin/cdrecord /usr/bin/cdda2wav
+</I>&gt;<i> chmod 4750 /usr/bin/cdrecord /usr/bin/cdda2wav
+</I>&gt;<i> 
+</I>&gt;<i> although cdda2wav is not included in the formal docs for these
+</I>&gt;<i> changes. Permissions are:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at skamandros</A>~$ ls -l /usr/bin/cdrecord /usr/bin/cdda2wav
+</I>&gt;<i> 
+</I>&gt;<i> -rwsr-x--- 1 root cdrom 326856 Nov 16 12:16 /usr/bin/cdda2wav
+</I>&gt;<i> -rwsr-x--- 1 root cdrom 470408 Nov 16 12:16 /usr/bin/cdrecord
+</I>&gt;<i> 
+</I>&gt;<i> and there is no difference with the error when I make it root:root.
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Does the curent directory allow you to create new files?
+</I>&gt;<i> 
+</I>&gt;<i> Indeed both root and myself as ordinary user can write in this
+</I>&gt;<i> directory.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks again,
+</I>&gt;<i> 
+</I>&gt;<i> Andrew
+</I>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000963.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+	<LI>Next message: <A HREF="000965.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#964">[ date ]</a>
+              <a href="thread.html#964">[ thread ]</a>
+              <a href="subject.html#964">[ subject ]</a>
+              <a href="author.html#964">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

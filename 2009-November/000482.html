@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] -scanbus broken with hardware raid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4af98955.sGCQbETL2zKddFlF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000481.html">
+   <LINK REL="Next"  HREF="000484.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] -scanbus broken with hardware raid</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4af98955.sGCQbETL2zKddFlF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] -scanbus broken with hardware raid">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Nov 10 16:40:05 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000481.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+        <LI>Next message: <A HREF="000484.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#482">[ date ]</a>
+              <a href="thread.html#482">[ thread ]</a>
+              <a href="subject.html#482">[ subject ]</a>
+              <a href="author.html#482">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Feise &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">jfeise at feise.com</A>&gt; wrote:
+
+&gt;<i> I have a SCSI hardware RAID system, using an Adaptec 2200S dual channel card.
+</I>&gt;<i> Channel 1 has a RAID 1 and a RAID 0 disk, channel 2 has a CD-ROM drive.
+</I>&gt;<i> cdrecord -scanbus shows this output:
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a67 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2009 J&#246;rg Schilling
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> scsibus0:
+</I>&gt;<i>         0,0,0     0) 'Adaptec ' '2200S Legacy    ' 'V1.0' Disk
+</I>&gt;<i>         0,1,0     1) 'Adaptec ' 'Media           ' 'V1.0' Disk
+</I>&gt;<i>         0,2,0     2) *
+</I>&gt;<i>         0,3,0     3) 'MAXTOR  ' 'ATLAS10K5_147WLS' 'GVV0' Disk
+</I>&gt;<i>         0,4,0     4) *
+</I>&gt;<i>         0,5,0     5) 'YAMAHA  ' 'CRW-F1S         ' '1.0g' Removable CD-ROM
+</I>&gt;<i>         0,6,0     6) *
+</I>&gt;<i>         0,7,0     7) *
+</I>&gt;<i>
+</I>&gt;<i> However, sgdiag (from <A HREF="http://scsirastools.sourceforge.net/">http://scsirastools.sourceforge.net/</A>) shows the correct
+</I>&gt;<i> output:
+</I>&gt;<i> -- sgdiag v1.60 log started at Fri Nov  6 08:32:13 2009
+</I>&gt;<i>  0 /dev/sg0 [0:0:0:0] Disk Adaptec  2200S Legacy     V1.0  [em]
+</I>&gt;<i>  1 /dev/sg1 [0:0:1:0] Disk Adaptec  Media            V1.0  [em]
+</I>&gt;<i>  2 /dev/sg2 [0:1:0:0] Disk ModusLnk                                 [em]
+</I>&gt;<i>  3 /dev/sg3 [0:1:1:0] Disk ModusLnk MXJ3300SC800600W M108   ML0001  [em]
+</I>&gt;<i>  4 /dev/sg4 [0:1:3:0] Disk MAXTOR   ATLAS10K5_147WLS GVV0 D4Y00QYK  [em]
+</I>&gt;<i>  5 /dev/sg5 [0:2:5:0] CDRM YAMAHA   CRW-F1S          1.0g 16/04/03  [em]
+</I>&gt;<i>
+</I>&gt;<i> In other words, the RAID disks are listed at channel 0, the physical disks on
+</I>&gt;<i> channel 1 are listed at channel 1, and the cdrom on channel 2 is listed on
+</I>&gt;<i> channel 2, which is the correct layout.
+</I>
+Linux drivers make a strange assumptions by calling the different SCSI busses 
+on a single card &quot;channels&quot; but without implementing a kernel interface that
+allows to ask about the number of busses on that card. This makes it impossible
+to implement a mapping from the Linux Scheme to what the SCSI standard defines 
+for the CAM interface.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000481.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+	<LI>Next message: <A HREF="000484.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#482">[ date ]</a>
+              <a href="thread.html#482">[ thread ]</a>
+              <a href="subject.html#482">[ subject ]</a>
+              <a href="author.html#482">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

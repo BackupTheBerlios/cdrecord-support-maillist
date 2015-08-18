@@ -1,0 +1,327 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20with%20media%20sony%20and%20drive%20LG%20BD-RE%20BH14NS40&In-Reply-To=%3CCAEc04coSMg0zixS-BZwNU_TGay%2By%2BxKiheuvLNgeP2BJS_hMGw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000927.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40</H1>
+    <B>Miguel Beltran R.</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20with%20media%20sony%20and%20drive%20LG%20BD-RE%20BH14NS40&In-Reply-To=%3CCAEc04coSMg0zixS-BZwNU_TGay%2By%2BxKiheuvLNgeP2BJS_hMGw%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40">yourpadre at gmail.com
+       </A><BR>
+    <I>Mon Mar 25 05:33:47 CET 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000927.html">[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Helo list
+I bought a LG BD-RE  BH14NS40 bluray burner and I tried to burn an DVD ISO
+with k3b but it gave me an error (1) .
+
+But all work fine if a choose my another burner, and LG DVDRAM GH22NS5, the
+ISO is burned perfectly. Here is the output (2).
+
+My system is a slackware 14 without customs.
+
+Also I tried in Windows 7 with Nero 11 and it burn right using the
+BH14NS40.
+
+what is the problem?
+
+Thanks
+
+
+(1):
+
+Devices
+-----------------------
+HL-DT-ST BD-RE  BH14NS40 1.00 (/dev/sr1, CD-R, CD-RW, CD-ROM, DVD-ROM,
+DVD-R, DVD-RW, DVD-R DL, BD-ROM, BD-R, BD-RE, DVD+R, DVD+RW, DVD+R DL)
+[DVD-ROM, DVD-R Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer
+Jump, DVD-RAM, DVD-RW Restricted Overwrite, DVD-RW Sequential, DVD+RW,
+DVD+R, DVD+R Dual Layer, CD-ROM, CD-R, CD-RW, BD-ROM, BD-R Sequential
+(SRM), BD-R Random (RRM), BD-RE] [SAO, TAO, RAW, SAO/R96P, SAO/R96R,
+RAW/R16, RAW/R96P, RAW/R96R, Restricted Overwrite, Layer Jump, Random
+Recording, Sequential Recording, Sequential Recording + POW] [%7]
+HL-DT-ST DVDRAM GH22NS50 TN01 (/dev/sr0, CD-R, CD-RW, CD-ROM, DVD-ROM,
+DVD-R, DVD-RW, DVD-R DL, DVD+R, DVD+RW, DVD+R DL) [DVD-ROM, DVD-R
+Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer Jump, DVD-RAM,
+DVD-RW Restricted Overwrite, DVD-RW Sequential, DVD+RW, DVD+R, DVD+R Dual
+Layer, CD-ROM, CD-R, CD-RW] [SAO, TAO, RAW, SAO/R96P, SAO/R96R, RAW/R96R,
+Restricted Overwrite, Layer Jump] [%7]
+
+System
+-----------------------
+K3b Version: 2.0.2
+KDE Version: 4.8.5 (4.8.5)
+QT Version:  4.8.2
+Kernel:      3.2.29
+
+Used versions
+-----------------------
+cdrecord: 3.1a13
+
+cdrecord
+-----------------------
+scsidev: '/dev/sr1'
+devname: '/dev/sr1'
+scsibus: -2 target: -2 lun: -2
+Warning: Open by 'devname' is unintentional and not supported.
+Linux sg driver version: 3.5.27
+SCSI buffer size: 64512
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+Cdrecord-ProDVD-ProBD-Clone 3.01a13 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2012 Joerg Schilling
+TOC Type: 1 = CD-ROM
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'BD-RE  BH14NS40 '
+Revision       : '1.00'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-R sequential recording
+Profile: BD-RE
+Profile: BD-R random recording
+Profile: BD-R sequential recording
+Profile: BD-ROM
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording (current)
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 2916352 = 2848 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  3315 MB
+Total size:     3315 MB = 1697610 sectors
+Current Secsize: 2048
+WARNING: Phys disk size 2298496 differs from rzone size 2297888!
+Prerecorded disk?
+WARNING: Phys start: 196608 Phys end 2495103
+Blocks total: 2297888 Blocks current: 2297888 Blocks remaining: 600278
+Reducing transfer size from 64512 to 32768 bytes.
+Starting to write CD/DVD/BD at speed 16 in real SAO mode for single session.
+Last chance to quit, starting real write in 3 seconds.
+   2 seconds.
+   1 seconds.
+   0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Turning BURN-Free on
+Starting new track at sector: 0
+Track 01:    0 of 3315 MB written.
+cdrecord: Error de entrada/salida. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 00 00 00 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 71 00 03 00 00 00 00 0A 00 00 00 00 0C 00 00 00
+Sense Key: 0x3 Medium Error, deferred error, Segment 0
+Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 16.303s timeout 200s
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+write track data: error after 0 bytes
+Writing  time:   21.317s
+Average write speed 117,8x.
+Fixating...
+Fixating time:    0.000s
+cdrecord: fifo had 128 puts and 1 gets.
+cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+BURN-Free was not used.
+
+cdrecord command:
+-----------------------
+/usr/bin/cdrecord -v gracetime=2 dev=/dev/sr1 speed=16 -sao
+driveropts=burnfree -data -tsize=1697610s -
+
+
+:::::::::::::::::::::::::::::::::<i>
+</I>:::::::::::::::::::::::::::::::::<i>
+</I>
+
+
+(2):
+Devices
+-----------------------
+HL-DT-ST BD-RE  BH14NS40 1.00 (/dev/sr1, CD-R, CD-RW, CD-ROM, DVD-ROM,
+DVD-R, DVD-RW, DVD-R DL, BD-ROM, BD-R, BD-RE, DVD+R, DVD+RW, DVD+R DL)
+[DVD-ROM, DVD-R Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer
+Jump, DVD-RAM, DVD-RW Restricted Overwrite, DVD-RW Sequential, DVD+RW,
+DVD+R, DVD+R Dual Layer, CD-ROM, CD-R, CD-RW, BD-ROM, BD-R Sequential
+(SRM), BD-R Random (RRM), BD-RE] [SAO, TAO, RAW, SAO/R96P, SAO/R96R,
+RAW/R16, RAW/R96P, RAW/R96R, Restricted Overwrite, Layer Jump, Random
+Recording, Sequential Recording, Sequential Recording + POW] [%7]
+HL-DT-ST DVDRAM GH22NS50 TN01 (/dev/sr0, CD-R, CD-RW, CD-ROM, DVD-ROM,
+DVD-R, DVD-RW, DVD-R DL, DVD+R, DVD+RW, DVD+R DL) [DVD-ROM, DVD-R
+Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer Jump, DVD-RAM,
+DVD-RW Restricted Overwrite, DVD-RW Sequential, DVD+RW, DVD+R, DVD+R Dual
+Layer, CD-ROM, CD-R, CD-RW] [SAO, TAO, RAW, SAO/R96P, SAO/R96R, RAW/R96R,
+Restricted Overwrite, Layer Jump] [%7]
+
+K3b::DataTrackReader
+-----------------------
+reading sectors 0 to 1697609 with sector size 2048. Length: 1697610
+sectors, 3476705280 bytes.
+using buffer size of 128 blocks.
+Read a total of 1697610 sectors (3476705280 bytes)
+
+System
+-----------------------
+K3b Version: 2.0.2
+KDE Version: 4.8.5 (4.8.5)
+QT Version:  4.8.2
+Kernel:      3.2.29
+
+Used versions
+-----------------------
+cdrecord: 3.1a13
+
+cdrecord
+-----------------------
+scsidev: '/dev/sr0'
+devname: '/dev/sr0'
+scsibus: -2 target: -2 lun: -2
+Warning: Open by 'devname' is unintentional and not supported.
+Linux sg driver version: 3.5.27
+SCSI buffer size: 64512
+cdrecord: Warning: DMA resid 0 for 'read buffer', actual data is too short.
+cdrecord: Warning: The DMA speed test has been skipped.
+Cdrecord-ProDVD-ProBD-Clone 3.01a13 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2012 Joerg Schilling
+TOC Type: 1 = CD-ROM
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'DVDRAM GH22NS50 '
+Revision       : 'TN01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-R sequential recording
+Profile: DVD-RAM
+Profile: DVD-R sequential recording (current)
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD+R/DL
+Profile: DVD-ROM
+Profile: CD-R
+Profile: CD-RW
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1048576 = 1024 KB
+Drive pbuf size: 1966080 = 1920 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  3315 MB
+Total size:     3315 MB = 1697610 sectors
+Current Secsize: 2048
+Total power on  hours: 0
+Blocks total: 2298496 Blocks current: 2298496 Blocks remaining: 600886
+Reducing transfer size from 64512 to 32768 bytes.
+Starting to write CD/DVD/BD at speed 18 in real SAO mode for single session.
+Last chance to quit, starting real write in 3 seconds.
+   2 seconds.
+   1 seconds.
+   0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Turning BURN-Free on
+Starting new track at sector: 0
+Track 01:    0 of 3315 MB written.
+Track 01:    1 of 3315 MB written (fifo 100%)   0,0x.
+Track 01:    2 of 3315 MB written (fifo  96%) [buf 100%]   7,6x.
+....
+....REMOVED
+....
+Track 01: 3314 of 3315 MB written (fifo 100%) [buf  96%]  16,6x.
+Track 01: 3315 of 3315 MB written (fifo 100%) [buf 100%]  16,6x.
+Track 01: Total bytes read/written: 3476705280/3476705280 (1697610 sectors).
+Writing  time:  248.801s
+Average write speed  10,1x.
+Min drive buffer fill was 84%
+Fixating...
+Fixating time:    8.246s
+cdrecord: fifo had 106101 puts and 106101 gets.
+cdrecord: fifo was 0 times empty and 9804 times full, min fill was 85%.
+
+cdrecord command:
+-----------------------
+/usr/bin/cdrecord -v gracetime=2 dev=/dev/sr0 speed=18 -sao
+driveropts=burnfree -data -tsize=1697610s -
+
+-- 
+________________________________________
+Lo bueno de vivir un dia mas
+es saber que nos queda un dia menos de vida
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130324/24cb3e15/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130324/24cb3e15/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000927.html">[Cdrecord-support] Error with media sony and drive LG BD-RE BH14NS40
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#926">[ date ]</a>
+              <a href="thread.html#926">[ thread ]</a>
+              <a href="subject.html#926">[ subject ]</a>
+              <a href="author.html#926">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

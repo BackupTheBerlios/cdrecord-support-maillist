@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E266AE9.1080604%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000791.html">
+   <LINK REL="Next"  HREF="000794.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E266AE9.1080604%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Wed Jul 20 07:43:05 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000791.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000794.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>One thing I forgot to mention:
+When building the real smake I have to start the bootstrap with the
+complete absolute path, e.g. C:\smake-1.2.1\psmake\smake -r all
+Johannes
+
+
+Johannes Hausensteiner wrote:
+&gt;<i> Partly Success!
+</I>&gt;<i>
+</I>&gt;<i> I am able to compile smake under the MinGW environment. Based on
+</I>&gt;<i> version smake-1.2.1 with following changes the build process is
+</I>&gt;<i> successful:
+</I>&gt;<i> - in RULES/i?86-mingw32_nt-gcc.rul:
+</I>&gt;<i> replace -lmgw32 with -lmingw32 (as discussed previously)
+</I>&gt;<i> - in psmake/MAKE-sh:
+</I>&gt;<i> add line test -h xxzzy.123 || lnfiles=&quot;sh cpfiles&quot; after the line
+</I>&gt;<i> test -r xxzzy.123 || lnfiles=&quot;sh cpfiles&quot;
+</I>&gt;<i> (as discussed previously)
+</I>&gt;<i> - in RULES/r-smake.dep:
+</I>&gt;<i> replace the single quotes with double quotes in the sed ... lines
+</I>&gt;<i> (as mentioned earlier)
+</I>&gt;<i> - in RULES/r-smake.obj:
+</I>&gt;<i> replace -o O/$@ with -o $(ARCHDSIR)/$@ in line45
+</I>&gt;<i> - in include/schily/ccomdefs.h:
+</I>&gt;<i> add a check !defined __MINGW32__ to the conditional definition of
+</I>&gt;<i> macro UConst so that Uconst will be defined to const
+</I>&gt;<i> (as discussed previously)
+</I>&gt;<i> Note: this is not strictly necessary but prevents the generation of
+</I>&gt;<i> a lot of warnings.
+</I>&gt;<i> - in smake/make.c:
+</I>&gt;<i> in docmd():
+</I>&gt;<i> - add a sectionfor __MINGW32__
+</I>&gt;<i> - quote the command which shall be executed in sh with single quotes
+</I>&gt;<i> - call spawnl()
+</I>&gt;<i>
+</I>&gt;<i> I have attached an archive of the changed files.
+</I>&gt;<i> Unfortunately I only discovered when trying to build 'schily-dist' (and
+</I>&gt;<i> this did not work) that the files in smake-1.2.1 are very different from
+</I>&gt;<i> within schily-dist-pre5. Applying similar changes is not sufficient for
+</I>&gt;<i> producing a working smake from schily-dist-pre5... So there is still a
+</I>&gt;<i> lot to do.
+</I>&gt;<i>
+</I>&gt;<i> I am currently trying to build the cdrtools package with my brandnew
+</I>&gt;<i> smake. I get still errors. More information will follow.
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i> Johannes
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Johannes Hausensteiner wrote:
+</I>&gt;&gt;<i> I make small steps forward. Quoting the cmd in single quotes before
+</I>&gt;&gt;<i> the spanwl() call is the key. Subsequently I had to change the single
+</I>&gt;&gt;<i> quotes to double quotes in the &quot;sed .... &quot; lines in RULES/r-smake.dep.
+</I>&gt;&gt;<i> I do not know whether this breaks the process on a different platform.
+</I>&gt;&gt;<i> This has to be investigated.
+</I>&gt;&gt;<i> The problem I am currently trying to find is that the implicit O macro
+</I>&gt;&gt;<i> (capital letter 'O') is not always defined to the value of .OBJDIR
+</I>&gt;&gt;<i> but rather to the default &quot;.&quot;
+</I>&gt;&gt;<i> Thus the object files after compilation end up in the same directory
+</I>&gt;&gt;<i> as the source files and thus linking fails. I have attached several
+</I>&gt;&gt;<i> logs with different -d and -D options running ../psmake/smake -f
+</I>&gt;&gt;<i> align_test.mk from within inc.
+</I>&gt;&gt;<i> I am not sure when .OBJDIR during the smake run is set (it is assigned
+</I>&gt;&gt;<i> in RULES/r-smake.obj) and when this is transferred to O, which is then
+</I>&gt;&gt;<i> referred in RULES/r-smake.obj
+</I>&gt;&gt;<i> At this point it is totally unclear why this behaves differently on
+</I>&gt;&gt;<i> MinGW but I am sure there is a simple explanation, once you know..
+</I>&gt;&gt;<i> Any hint where to look?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Best regards,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Johannes
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Joerg Schilling wrote:
+</I>&gt;&gt;&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Yesterday I made some progress with smake. I had partly success by
+</I>&gt;&gt;&gt;&gt;<i> putting the command line between quotes before the call to spawnl(). It
+</I>&gt;&gt;&gt;&gt;<i> still chokes on the multi-line commands from RULES/rules1.dir . I do
+</I>&gt;&gt;&gt;&gt;<i> not
+</I>&gt;&gt;&gt;&gt;<i> know yet why. I have to investigate further.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I mentioned already that I did try to implement native M$ support
+</I>&gt;&gt;&gt;<i> without
+</I>&gt;&gt;&gt;<i> success as WIN-DOS violates the C standard by not forwarding the arg
+</I>&gt;&gt;&gt;<i> vector
+</I>&gt;&gt;&gt;<i> to sub processes.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> On the other side, it seems that cygwin is able to deal with the
+</I>&gt;&gt;&gt;<i> problems.
+</I>&gt;&gt;&gt;<i> So my question still is: how is Cygwin able to do this even though
+</I>&gt;&gt;&gt;<i> WIN-DOS
+</I>&gt;&gt;&gt;<i> does not include any known feature to do this correctly.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Do you have a gmake MinGW32 binary that behaves better in this area?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Did you in the meantime decide on the other missing system calls, like
+</I>&gt;&gt;&gt;&gt;<i> getuid(), etc.?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> This code is available since a week.
+</I>&gt;&gt;&gt;<i> J&#246;rg
+</I>&gt;&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000791.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000794.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

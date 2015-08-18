@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrtools-3.00-final is ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTilhVoo7OR5Gb_aHdv9-0A7ol_k6OEIzWhqIfnUR%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000657.html">
+   <LINK REL="Next"  HREF="000659.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrtools-3.00-final is ready</H1>
+    <B>Eric Shattow</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTilhVoo7OR5Gb_aHdv9-0A7ol_k6OEIzWhqIfnUR%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Cdrtools-3.00-final is ready">lucent at gmail.com
+       </A><BR>
+    <I>Thu Jun 10 03:24:32 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000657.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+        <LI>Next message: <A HREF="000659.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Congrats, J&#246;erg, on the release.
+
+As my current OS of choice is Ubuntu Linux 10.04 LTS, I've made some
+of cdrtools-3.00 available as a Launchpad PPA:
+
+sudo add-apt-repository ppa:eshattow/cdrtools-stable
+sudo aptitude update
+sudo aptitude install cdrecord mkisofs cdda2wav
+
+This is a bit of a hack based on Brandon Snider's PPA existing for
+earlier versions of smake and cdrtools. What is missing are btcflash
+and I do not want cdrecord installed suid. The problem without suid is
+that 'cdrecord -scanbus' bails out when any of the /dev/sg? devices
+are not accessible.
+
+**
+Question about 3.00, on Ubuntu Linux 10.04 LTS Lucid:   Is it possible
+to warn-and-skip permissions errors accessing /dev/sg? devices?
+**
+
+&quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ cdrecord -scanbus
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i686-pc-linux-gnu) Copyright (C)
+1995-2010 J&#65533;rg Schilling
+Linux sg driver version: 3.5.34
+cdrecord: Permission denied. Cannot open '/dev/sg1'. Cannot open or
+use SCSI driver.
+cdrecord: For possible targets try 'cdrecord -scanbus'. Make sure you are root.
+cdrecord: For possible transport specifiers try 'cdrecord dev=help'.
+&quot;&quot;
+
+I don't want to scan /dev/sg1 anyways because it is not a CD device.
+Startup scripts for my OS decide the ownership of /dev/sg? and so I do
+have access to /dev/sg0 (my CD device).
+
+&quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ ls -l /dev/sg?
+crw-rw---- 1 root cdrom 21, 0 2010-06-03 22:52 /dev/sg0
+crw-rw---- 1 root disk  21, 1 2010-06-03 22:52 /dev/sg1
+&quot;&quot;
+
+and also
+
+&quot;&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">emigrate at zontar</A>:~$ cat /proc/scsi/scsi
+Attached devices:
+Host: scsi0 Channel: 00 Id: 00 Lun: 00
+  Vendor: HL-DT-ST Model: DVD+-RW GSA-T21N Rev: A100
+  Type:   CD-ROM                           ANSI  SCSI revision: 05
+Host: scsi2 Channel: 00 Id: 00 Lun: 00
+  Vendor: ATA      Model: WDC WD1200BEVS-7 Rev: 01.0
+  Type:   Direct-Access                    ANSI  SCSI revision: 05
+&quot;&quot;
+
+I think that behavior should be to skip with a warning any /dev/sg?
+devices the user does not have permissions for. Why would we bail out
+completely?
+
+-Eric
+
+
+On Wed, Jun 2, 2010 at 4:45 PM, Michael Shell &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">list1 at michaelshell.org</A>&gt; wrote:
+&gt;<i> On Wed, 02 Jun 2010 18:08:57 +0200
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> cdrtools-3.00-final is ready for download at:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/cdrecord/">ftp://ftp.berlios.de/pub/cdrecord/</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> more than 50% of the current code was written after
+</I>&gt;&gt;<i> September 2004, when the last &quot;stable&quot; release (2.01)
+</I>&gt;&gt;<i> came out.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Congratulations and thank you J&#246;rg!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000657.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+	<LI>Next message: <A HREF="000659.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#658">[ date ]</a>
+              <a href="thread.html#658">[ thread ]</a>
+              <a href="subject.html#658">[ subject ]</a>
+              <a href="author.html#658">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

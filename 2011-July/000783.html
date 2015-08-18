@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E1DF8D9.7000704%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000781.html">
+   <LINK REL="Next"  HREF="000785.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E1DF8D9.7000704%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Wed Jul 13 21:58:17 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000781.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000785.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> &gt; BTW: what's up with the smake changes, do they work?
+I have tried a few things so far but with no access. The call to
+sh.exe as you pointed out in a previous mail is the key point. But
+I could not yet find out how to put this right.
+
+I tried to build with a cygwin-smake but this does not work, too.
+
+I am working on this.
+
+Best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I found out that mbrtowc() is in the library libmsvcp60.a, so adding
+</I>&gt;&gt;<i> -lmsvc60 to RULES/i?86-mingw32_nt-gcc.rul solves the issue.
+</I>&gt;<i>
+</I>&gt;<i> It may hide the issue but cannot be seens as a solution.
+</I>&gt;<i>
+</I>&gt;&gt;<i> The check in configure passes probably because the compiler optimizes
+</I>&gt;&gt;<i> the code away. Here is the relevant part of autoconf/configure:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &lt;snip&gt;
+</I>&gt;&gt;<i> .
+</I>&gt;&gt;<i> echo $ac_n &quot;checking if mbrtowc is defined or function&quot;&quot;... $ac_c&quot; 1&gt;&amp;6
+</I>&gt;&gt;<i> echo &quot;configure:15289: checking if mbrtowc is defined or function&quot;&gt;&amp;5
+</I>&gt;&gt;<i> if eval &quot;test \&quot;`echo '$''{'ac_cv_have_mbrtowc'+set}'`\&quot; = set&quot;; then
+</I>&gt;&gt;<i>     echo $ac_n &quot;(cached) $ac_c&quot; 1&gt;&amp;6
+</I>&gt;&gt;<i> else
+</I>&gt;&gt;<i>     cat&gt;  conftest.$ac_ext&lt;&lt;EOF
+</I>&gt;&gt;<i> #line 15294 &quot;configure&quot;
+</I>&gt;&gt;<i> #include &quot;confdefs.h&quot;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #ifdef	HAVE_WCHAR_H
+</I>&gt;&gt;<i> #include&lt;wchar.h&gt;
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i> #ifdef	HAVE_WCTYPE_H
+</I>&gt;&gt;<i> #include&lt;wctype.h&gt;
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> int main() {
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #ifndef mbrtowc
+</I>&gt;&gt;<i>     char *p = (char *) mbrtowc;
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i> ; return 0; }
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> int main() {
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> #ifndef mbrtowc
+</I>&gt;&gt;<i>     char *p = (char *) mbrtowc;
+</I>&gt;&gt;<i>     printf(&quot;mbrtowc not defined! p=%p\n&quot;, p);
+</I>&gt;&gt;<i> #endif
+</I>&gt;&gt;<i> ; return 0; }
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> OK, then the right way to deal with this problem would be to use:
+</I>&gt;<i>
+</I>&gt;<i> int main() {
+</I>&gt;<i>
+</I>&gt;<i> #ifndef mbrtowc
+</I>&gt;<i>     char *p = (char *) mbrtowc;
+</I>&gt;<i> return (p != 0);
+</I>&gt;<i> #endif
+</I>&gt;<i> ; return 0;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> BTW: what's up with the smake changes, do they work?
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000781.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000785.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

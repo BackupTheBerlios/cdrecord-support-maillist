@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a38 and BD-RE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a38%20and%20BD-RE&In-Reply-To=%3C21630432.1205619172404.JavaMail.root%40ps20%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000187.html">
+   <LINK REL="Next"  HREF="000189.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a38 and BD-RE</H1>
+    <B>stefanovesa at tiscali.it</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a38%20and%20BD-RE&In-Reply-To=%3C21630432.1205619172404.JavaMail.root%40ps20%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a38 and BD-RE">stefanovesa at tiscali.it
+       </A><BR>
+    <I>Sat Mar 15 23:12:52 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000187.html">[Cdrecord-support] DVD resfresh backup
+</A></li>
+        <LI>Next message: <A HREF="000189.html">[Cdrecord-support] How to compile cdrtool for windows ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi.
+I'm testing latest alpha with a Pioneer BDR-202.
+I'm under Windows via cygwin.
+I've already tried with a BD-R disc and a 11 GB UDF image created 
+with mkisofs: some problems in finalizing the disk but the burning 
+was readable.
+If instead I try to burn the same image on a BD-RE I get the 
+folowing error (see last lines):
+
+C:\Users\ludwig\Downloads\cdrtools-2.01.01a38-win32-bin&gt;cdrecord.
+exe -vv speed=2 ..\..\Music\blu.iso
+cdrecord: No write mode specified.
+cdrecord: Asuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive 
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-cygwin) Copyright 
+(C) 1995-2008 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+Using libscg version 'schily-0.9'.
+Using libscg transport code version 'schily-SPTI-scsi-wnt.c-1.46'
+SCSI buffer size: 64512
+No target specified, trying to find one...
+Using dev=0,1,0.
+atapi: -1
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'BD-RW   BDR-202 '
+Revision       : '1.06'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-RE
+Profile: BD-RE (current)
+Profile: BD-R random recording
+Profile: BD-R sequential recording
+Profile: BD-ROM
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Feature: 'Profile List' (current) (persistent)
+Feature: 'Core' (current) (persistent)
+Feature: 'Morphing' (current) (persistent)
+Feature: 'Removable Medium' (current) (persistent)
+Feature: 'Write Protect' (current)
+Feature: 'Random Readable'
+Feature: 'Multi Read'
+Feature: 'CD Read'
+Feature: 'DVD Read'
+Feature: 'Random Writable'
+Feature: 'Incremental Streaming Writable'
+Feature: 'Formattable' (current)
+Feature: 'Defect Management'
+Feature: 'Restricted Overwrite'
+Feature: 'DVD+RW'
+Feature: 'DVD+R'
+Feature: 'Rigid Restricted Overwrite'
+Feature: 'CD Track at Once'
+Feature: 'CD Mastering'
+Feature: 'DVD-R/-RW Write'
+Feature: 'Layer Jump Recording'
+Feature: 'BD-R Pseudo-Overwrite (POW)'
+Feature: 'DVD+R/DL Read'
+Feature: 'BD Read'
+Feature: 'BD Write'
+Feature: 'Power Management' (current) (persistent)
+Feature: 'S.M.A.R.T.'
+Feature: 'CD Audio analog play'
+Feature: 'Microcode Upgrade'
+Feature: 'Time-out' (current) (persistent)
+Feature: 'DVD-CSS'
+Feature: 'Real Time Streaming'
+Feature: 'Logical Unit Serial Number' (current) (persistent)    
+Serial: 'GKTO001846WL    '
+Feature: 'Disk Control Blocks'
+Feature: 'DVD CPRM'
+Feature: 'AACS' (current)
+Drive current speed: 2
+Drive default speed: 4
+Drive max speed    : 4
+Selected speed     : 2
+Using generic SCSI-3/mmc-3 BD-RE driver (mmc_bdre).
+Driver flags   : NO-CD BD MMC-3 BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1572864 = 1536 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  11166 MB
+track: 1 start: 0 pregap: 0
+Total size:     11166 MB = 5717240 sectors
+Track 1 start 0
+Track 2 start 5717240
+ 41 00 A0 00 00 00 00 01 00 00 00 00
+ 41 00 A1 00 00 00 00 01 00 00 00 00
+ 41 00 A2 00 00 00 00 F0 31 65 00 00
+ 41 00 01 00 00 00 00 00 02 00 00 00
+Current Secsize: 2048
+Supported BD (readable) structures: 00 09 C0 FF
+Page 00 read        (40) len 4100
+Page 08 read        (40) len 2052
+Page 09 read        (40) len 8
+Page 0A read        (40) len 16
+Page 0F      write  (80) len 22
+Page 12 read        (40) len 32772
+Page 30 read        (40) len 63492
+Page C0 read        (40) len 8
+Page FF read        (40) len 40
+Disk type:          'BDW' (BD-RE)
+Disk class:         02
+Manufacturer:       'SONY'
+Media type:         'ES1'
+Disk:               is not in cartridge
+Media cartrige:     write protect is off
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+    12219392            20480         0x00  Unformated or Blank 
+Media
+    11826176            12288         0x00  Reserved (0)
+    11826176            12288         0x30  Reserved (0)
+    11564032            20480         0x30  Reserved (0)
+    12088320             4096         0x30  Reserved (0)
+    12219392             2048         0x31  Reserved (0)
+CD write parameter: 37 00 00 00 05 32 61 C4 08 10 00 00 00 00 00 
+00 00 00 00 96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00
+CD write parameter: 37 00 00 00 05 32 62 C4 08 10 00 00 00 00 00 
+00 00 00 00 96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00
+Format was needed.
+Starting to write CD/DVD/BD at speed 2 in real FORMAT mode for 
+single session.
+Last chance to quit, starting real write    0 seconds. Operation 
+starts.
+cdrecord: DVD+RW Full format capacity not found.
+cdrecord: Cannot format medium.
+
+Best Regards,
+Stefano
+
+
+
+
+
+______________________________________________
+Tiscali.Fax: ricevi gratis sulla tua email e invii a 12 cent 
+per pagina senza scatto alla risposta
+
+<A HREF="http://vas.tiscali.it/fax//">http://vas.tiscali.it/fax//</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000187.html">[Cdrecord-support] DVD resfresh backup
+</A></li>
+	<LI>Next message: <A HREF="000189.html">[Cdrecord-support] How to compile cdrtool for windows ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#188">[ date ]</a>
+              <a href="thread.html#188">[ thread ]</a>
+              <a href="subject.html#188">[ subject ]</a>
+              <a href="author.html#188">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

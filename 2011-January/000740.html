@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord - 15 minute fixate?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C39E5005946A1ED418535F93C882A1C02B8F9DD469D%40006EX-MB1.wyo.gov%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000738.html">
+   <LINK REL="Next"  HREF="000743.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord - 15 minute fixate?</H1>
+    <B>Schmidt, Daniel</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C39E5005946A1ED418535F93C882A1C02B8F9DD469D%40006EX-MB1.wyo.gov%3E"
+       TITLE="[Cdrecord-support] cdrecord - 15 minute fixate?">DSchmi at wyo.gov
+       </A><BR>
+    <I>Thu Jan 13 00:12:47 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000738.html">[Cdrecord-support] Cdrecord-support Digest, Vol 53, Issue 1
+</A></li>
+        <LI>Next message: <A HREF="000743.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#740">[ date ]</a>
+              <a href="thread.html#740">[ thread ]</a>
+              <a href="subject.html#740">[ subject ]</a>
+              <a href="author.html#740">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I couldn't find anybody else with this issue; I apologize if it has been asked before!
+
+Why is it taking so long to fixate?  Kernel bug?
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; sudo /opt/schily/bin/cdrecord dev=3,0,0 -v driveropts=burnfree CentOS-5.5-x86_64-bin-DVD-2of2.iso
+cdrecord: No write mode specified.
+cdrecord: Assuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 3.01a02 (i686-pc-linux-gnu) Copyright (C) 1995-2010 Joerg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '3,0,0'
+scsibus: 3 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PLDS    '
+Identifikation : 'DVD+-RW DH-16AAS'
+Revision       : 'JD11'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD+R
+Profile: DVD+R/DL
+Profile: DVD+R (current)
+Profile: DVD+RW
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE FORCESPEED
+Supported modes: PACKET SAO
+Drive buf size : 393216 = 384 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data   412 MB
+Total size:      412 MB = 211114 sectors
+Current Secsize: 2048
+Blocks total: 2295104 Blocks current: 2295104 Blocks remaining: 2083990
+Reducing transfer size from 64512 to 32768 bytes.
+Forcespeed is OFF.
+Starting to write CD/DVD/BD at speed 16 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01:  412 of  412 MB written (fifo 100%) [buf  99%]   6.0x.
+Track 01: Total bytes read/written: 432361472/432361472 (211114 sectors).
+Writing  time:   80.530s
+Average write speed   3.9x.
+Min drive buffer fill was 99%
+Fixating...
+Fixating time:  953.708s
+BURN-Free was 23 times used.
+cdrecord: fifo had 13195 puts and 13195 gets.
+cdrecord: fifo was 0 times empty and 2521 times full, min fill was 90%.
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; !ej
+eject /media/cdrom
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt;
+
+
+Some basic info:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; uname -a
+Linux dans-desktop 2.6.32-27-generic-pae #49-Ubuntu SMP Thu Dec 2 00:07:52 UTC 2010 i686 GNU/Linux
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; /opt/schily/bin/cdrecord -version
+Cdrecord-ProDVD-ProBD-Clone 3.01a02 (i686-pc-linux-gnu) Copyright (C) 1995-2010 Joerg Schilling
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; cat /etc/issue
+Ubuntu 10.04.1 LTS \n \l
+
+Thank you for your time!
+
+
+Dan Schmidt
+Sr. Network Engineer
+Division of Information Technology
+Department of Administration and Information
+State of Wyoming
+307-777-8589 Office
+307-286-8495 Cell
+307-777-6855 Fax
+307-777-5000 ITD Help Desk
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dschmidt at wyo.gov</A>&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dschmidt at wyo.gov</A>&gt;
+
+No good dead goes unpunished.
+-Gore Vidal
+
+
+________________________________
+E-Mail to and from me, in connection with the transaction of public business, is subject to the Wyoming Public Records Act and may be disclosed to third parties.
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110112/a9ff5341/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110112/a9ff5341/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000738.html">[Cdrecord-support] Cdrecord-support Digest, Vol 53, Issue 1
+</A></li>
+	<LI>Next message: <A HREF="000743.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#740">[ date ]</a>
+              <a href="thread.html#740">[ thread ]</a>
+              <a href="subject.html#740">[ subject ]</a>
+              <a href="author.html#740">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

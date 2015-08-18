@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080702194847.GA25356%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000240.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080702194847.GA25356%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] cdrecord">weigelt at metux.de
+       </A><BR>
+    <I>Wed Jul  2 21:48:47 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000240.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+
+&gt;<i> Nearly 100% of today's software depends on &quot;confidure&quot; and thus depends 
+</I>&gt;<i> on the ability to run tests _on_ the target platform. 
+</I>
+That's not entirely true:
+
+a) the amount of packages built on autotools is far beyond 100%
+   (those I'm maintaining in my embedded distros, about 75%)
+
+b) it normally affects only those misdesigned packages which use 
+   really obsoleted macros like AC_TRY_RUN, AC_CHECK_FILE or even
+   hand-written tests. In several hundreds of packages I had to 
+   cope with in recent years, there were just a few ones where it
+   wasn't easy to get around this, but not a single one where it's 
+   really impossible.
+   
+&gt;<i> It is not possible to cross-compile such software unless you _manually_ 
+</I>&gt;<i> create _all_ expected auto-configuration results for the target platform.
+</I>
+No, you just have to learn living without that voodo stuff and instead
+define *clear* configure options. And you also have to learn to properly
+use the toolchain for doing the dirty work.
+
+For example:
+
+* AC_CHECK_SIZEOF:  	a) there is sizeof()
+			b) checking for a specific size is possible by compile-only
+
+* AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+                        stick on old K&amp;R compiler ? ;-o
+		       
+* AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+			unless someone has an really broken libc. but then he should
+			fix his broken system instead of holding individual 
+			packages responsible for hacking around his buggy system.
+
+* AC_C_BITFIELDS:	IMHO not needed at all. sane libc's provide proper bytesex
+			macros ;-P
+
+* AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+
+* AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+			use it at all.
+
+* AC_FUNC_ECVT:		same as w/ AC_VAR_TIMEZONE - if it exists, it can be assumed 
+  AC_FUNC_FCVT		to work - don't try to hack around certain people's broken libc.
+  AC_FUNC_GCVT
+  			
+* AC_FUNC_MLOCK:	same. HP-UX folks should fix their system or at least make the
+  AC_FUNC_MLOCKALL:	compiling mlock() call fail.
+			
+* jsAC_FUNC_MMAP:	nearly the same (okay, requires a bit more magic ;-o)
+
+* AC_FUNC_SYS_SIGLIST:	can be checked by compile
+
+* AC_HEADER_MAKEDEV:	IMHO not needed at all - use the proper libc types/macros
+
+* AC_USER_MALLOC:	not needed at all
+
+* AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+
+* AC_HARD_SYMLINKS:	not used anywhere
+  AC_LINK_NOFOLLOW
+
+* AC_ACCESS_E_OK:	not needed, fix the broken libc.
+
+
+BTW: most of these things are just hacks for a handful broken targets. Those things 
+could also be done via some --with-oshacks= swich.
+
+&gt;<i> See above: no recent software allows cross-compilation unless you manually
+</I>&gt;<i> create the auto-configuration results or fetch them from a native compilation
+</I>&gt;<i> run on a machine of the same architecture and sub-architecture.
+</I>
+As said above: not true if the sw engineers did their homeworks ;-P
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000240.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

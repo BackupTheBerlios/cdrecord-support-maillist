@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%09in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50b8a99f.wEH3NYpBSkBCPPjz%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000897.html">
+   <LINK REL="Next"  HREF="000899.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%09in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50b8a99f.wEH3NYpBSkBCPPjz%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Nov 30 13:42:07 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000897.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+        <LI>Next message: <A HREF="000899.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#898">[ date ]</a>
+              <a href="thread.html#898">[ thread ]</a>
+              <a href="subject.html#898">[ subject ]</a>
+              <a href="author.html#898">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>First let me repeat that a test version is available since yesterday evening 
+at:
+
+	<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha/">ftp://ftp.berlios.de/pub/cdrecord/alpha/</A>
+
+please test and report....
+
+Omega Weapon &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt; wrote:
+
+&gt;<i> I will be moving to xorrisofs for image generation (along with using 
+</I>&gt;<i> cdrskin currently) - I have sent this mail to the list so that at least 
+</I>&gt;<i> the bugs are known and the investigation not wasted.
+</I>
+I cannot recommend to do that move as this xorriso does not implement RR 
+completely enough and as there is no support for the required UDF format.
+
+Also note that while mkisofs comes with a complete build-in find(1) command via 
+libfind, xorriso comes with an attempt to misslead the users in order not to 
+realize that there is no find demantic in xorriso.
+
+Note that during the last 6 years, there have been only two bugs oin mkisofs 
+(including the one you reported) and both have been fixed within a few hours.
+
+
+&gt;<i> xorriso has successfully fixed the invalid session - it is tolerant of 
+</I>&gt;<i> the issue, so allows for further sessions to be created - and I'm told 
+</I>&gt;<i> that a fresh directory structure is prepared when a new session is made.
+</I>
+This &quot;being tolerant&quot; is not what people like to have here as it hides problems 
+instead of identifying them.
+
+&gt;<i> For reference, cdrskin 1.2.2 was used to burn all sessions, the 
+</I>&gt;<i> aforementioned mkisofs was used to create the initial and appended 
+</I>&gt;<i> images. When you say read the old image, that would be cdrskin to read 
+</I>&gt;<i> for the burn, or mkisofs to then be able to generate an appropriate 
+</I>&gt;<i> appended session?
+</I>
+???
+
+&gt;<i> The session 3 metadata is attached. To extract the metadata, I was 
+</I>&gt;<i> instructed to:
+</I>&gt;<i>
+</I>&gt;<i> ========================================================
+</I>&gt;<i>
+</I>&gt;<i> dd if=/dev/sr0 of='/mnt/Storage_1/Temporary Storage 
+</I>&gt;<i> Folder/session3_metadata' bs=2048 skip=3066496 count=40
+</I>&gt;<i>
+</I>&gt;<i> ========================================================
+</I>
+Thank you, it seems that it would make sense to add an option to isoinfo to 
+skip over read problems in some kind of debug mode....
+
+
+&gt;<i>
+</I>&gt;<i> &gt; What do you get from cdrecord -minfo?
+</I>&gt;<i>
+</I>&gt;<i> ========================================================
+</I>&gt;<i>
+</I>&gt;<i> $ /opt/schily/bin/cdrecord -minfo dev=0,0,0
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a07 (x86_64-unknown-linux-gnu) Copyright 
+</I>&gt;<i> (C) 1995-2012 Joerg Schilling
+</I>&gt;<i> scsidev: '0,0,0'
+</I>&gt;<i> scsibus: 0 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'ATAPI   '
+</I>&gt;<i> Identifikation : 'iHBS112   2     '
+</I>&gt;<i> Revision       : 'PL05'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;<i> Driver flags   : NO-CD BD MMC-3 BURNFREE FORCESPEED
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> WARNING: Phys disk size 4452354 differs from rzone size 2899360! 
+</I>&gt;<i> Prerecorded disk?
+</I>&gt;<i> WARNING: Phys start: 25088 Phys end 4477441
+</I>&gt;<i> Mounted media class:      BD
+</I>&gt;<i> Mounted media type:       BD-R sequential recording
+</I>&gt;<i> Disk Is not erasable
+</I>&gt;<i> data type:                standard
+</I>&gt;<i> disk status:              incomplete/appendable
+</I>&gt;<i> session status:           empty
+</I>&gt;<i> BG format status:         none
+</I>&gt;<i> first track:              1
+</I>&gt;<i> number of sessions:       8
+</I>&gt;<i> first track in last sess: 8
+</I>&gt;<i> last track in last sess:  8
+</I>&gt;<i> Disk Is unrestricted
+</I>&gt;<i> Disk type: DVD, HD-DVD or BD
+</I>&gt;<i>
+</I>&gt;<i> Track  Sess Type   Start Addr End Addr   Size
+</I>&gt;<i> ==============================================
+</I>&gt;<i>      1     1 Data   0          2899359    2899360
+</I>&gt;<i>      2     2 Data   2899360    3066495    167136
+</I>&gt;<i>      3     3 Data   3066496    3182943    116448
+</I>&gt;<i>      4     4 Data   3182944    3183135    192
+</I>&gt;<i>      5     5 Data   3183136    3183327    192
+</I>&gt;<i>      6     6 Data   3183328    3183519    192
+</I>&gt;<i>      7     7 Data   3183520    10652511   7468992
+</I>&gt;<i>      8     8 Blank  10652512   12219391   1566880
+</I>&gt;<i>
+</I>&gt;<i> Last session start address:         3183520
+</I>&gt;<i> Last session leadout start address: 10652512
+</I>&gt;<i> Next writable address:              10652512
+</I>&gt;<i> Remaining writable size:            1566880
+</I>&gt;<i>
+</I>&gt;<i> ========================================================
+</I>&gt;<i>
+</I>&gt;<i> By session 4 the filename is fixed, but I didn't realise at that point 
+</I>&gt;<i> as I was trying to rename it with xorriso (thinking that you needed to 
+</I>&gt;<i> fiddle with the file to update the record). Session 7 is a successful 
+</I>&gt;<i> burn of a xorrisofs iso, just completed.
+</I>
+This is not about content but about the logial structure.
+
+
+&gt;<i> &gt; Did you test this with a mount on Solaris?
+</I>&gt;<i>
+</I>&gt;<i> No, I don't use any Solaris flavour, and even if I set up an OpenSolaris 
+</I>&gt;<i> (?) VM, apparently you can't mount anything but the last session (which 
+</I>&gt;<i> is now a later working session).
+</I>
+Well, the Linux isoo-9660 implementation is full of bugs and it does not even 
+check the data using heuristics or whether some values are outside possible 
+bounds. So it is simple to make Linux crash while reading an iso-9660 image.
+
+The related Solaris filesystem implemenation not only implements such a 
+verification that prevents kernel panics but it also carefully falls back to 
+ISO-9660 data in case that the RR metadata contains problems.
+
+Note that I added an option to the Solaris implementaion to mount any session 
+of interest aprox. 6 years ago. 
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000897.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+	<LI>Next message: <A HREF="000899.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#898">[ date ]</a>
+              <a href="thread.html#898">[ thread ]</a>
+              <a href="subject.html#898">[ subject ]</a>
+              <a href="author.html#898">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

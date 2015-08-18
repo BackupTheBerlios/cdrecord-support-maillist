@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E187D69.2000100%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000773.html">
+   <LINK REL="Next"  HREF="000765.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E187D69.2000100%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Sat Jul  9 18:10:17 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000773.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000765.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#774">[ date ]</a>
+              <a href="thread.html#774">[ thread ]</a>
+              <a href="subject.html#774">[ subject ]</a>
+              <a href="author.html#774">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I tried the passive command but this did not help. FileZilla seems to
+send it as default. Today it works. I did not change anything on my
+router/firewall because all other FTP servers worked OK. I do not know
+what makes the difference since I did not change anything. Strange.
+
+Thanks anyway for the hints.
+
+Johannes
+
+
+Michael Shell wrote:
+&gt;<i> On Fri, 08 Jul 2011 19:29:26 +0200
+</I>&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> BTW I still have problems with the FTP server. I investigated this a
+</I>&gt;&gt;<i> little with the cmdline ftp client. I can connect can 'cd' into
+</I>&gt;&gt;<i> directories, can do 'pwd'. But I cannot do 'ls', 'get' or similar.
+</I>&gt;&gt;<i> I can download files with the 'wget' utility. But for this I have
+</I>&gt;&gt;<i> to know the excdat name and location of the file I want to download.
+</I>&gt;&gt;<i> I did not notice problems with FTP with other sites. -
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I am able to reproduce the problem, or something much like it,
+</I>&gt;<i> on my Linux box. My system uses a firewall that blocks all incoming
+</I>&gt;<i> connections except those related to established connections.
+</I>&gt;<i>
+</I>&gt;<i> Ftp is a strange protocol that historically requires two connections
+</I>&gt;<i> (in &quot;active&quot; mode). The first one, on port 21, is established by the
+</I>&gt;<i> client. The ftp server then initiates a new connection on its port 20
+</I>&gt;<i> for the data transfers. This latter connection will be blocked by a
+</I>&gt;<i> firewall that disallows any new connections initiated from the outside.
+</I>&gt;<i>
+</I>&gt;<i> To get around this, invoke passive mode which uses only the first
+</I>&gt;<i> connection by entering &quot;passive&quot; on the ftp command line:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> [mshell]: ftp ftp.berlios.de
+</I>&gt;<i> Connected to snake.berlios.de.
+</I>&gt;<i> 220 ProFTPD 1.3.3d Server (BerliOS) [::ffff:195.37.77.141]
+</I>&gt;<i> Name (ftp.berlios.de:mshell): anonymous
+</I>&gt;<i> 331 Anonymous login ok, send your complete email address as your password
+</I>&gt;<i> Password:
+</I>&gt;<i> 230-Hello ::ffff:208.100.228.166, there are 2 (max 40) users logged in at the moment.
+</I>&gt;<i>   Local time is: Sat Jul 09 11:09:00 2011
+</I>&gt;<i>
+</I>&gt;<i>   Please use your email address as password and NOT silly words
+</I>&gt;<i>   like &quot;mozilla@&quot; or &quot;WWWuser@&quot;, as some Web browsers do!
+</I>&gt;<i>
+</I>&gt;<i>   If you have any questions concerning this ftp archive or would
+</I>&gt;<i>   like to announce your uploads, please send a mail to the ftp-admin
+</I>&gt;<i>   of this server: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">berlios-admin at berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i>   All transfers are logged. If you don't like this, disconnect now.
+</I>&gt;<i> 230 Anonymous access granted, restrictions apply
+</I>&gt;<i> Remote system type is UNIX.
+</I>&gt;<i> Using binary mode to transfer files.
+</I>&gt;<i> ftp&gt;  passive
+</I>&gt;<i> Passive mode on.
+</I>&gt;<i> ftp&gt;  ls
+</I>&gt;<i> 227 Entering Passive Mode (195,37,77,141,209,222).
+</I>&gt;<i> 150 Opening ASCII mode data connection for file list
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> ----
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Some Windows clients use different names for the passive command, and
+</I>&gt;<i> some do not support passive mode at all:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.windowskb.com/Uwe/Forum.aspx/windowsxp/264689/How-to-configure-ftp-exe-to-use-passive-mode-PASV">http://www.windowskb.com/Uwe/Forum.aspx/windowsxp/264689/How-to-configure-ftp-exe-to-use-passive-mode-PASV</A>
+</I>&gt;<i>
+</I>&gt;<i> If your ftp client does not support passive mode, then you will need to get
+</I>&gt;<i> one that does (there are many). This is yet another reason to dislike
+</I>&gt;<i> Microsoft products.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>    Cheers,
+</I>&gt;<i>
+</I>&gt;<i>    Mike Shell
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000773.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000765.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#774">[ date ]</a>
+              <a href="thread.html#774">[ thread ]</a>
+              <a href="subject.html#774">[ subject ]</a>
+              <a href="author.html#774">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

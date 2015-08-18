@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Corrupt image for projects &gt;4GB
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Corrupt%20image%20for%20projects%20%3E4GB&In-Reply-To=%3C506d96ed.CDhGphEG5yEIs8p4%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000881.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Corrupt image for projects &gt;4GB</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Corrupt%20image%20for%20projects%20%3E4GB&In-Reply-To=%3C506d96ed.CDhGphEG5yEIs8p4%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Corrupt image for projects &gt;4GB">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Oct  4 16:02:21 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000881.html">[Cdrecord-support] Corrupt image for projects &gt;4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;dE .&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">de.techno at gmail.com</A>&gt; wrote:
+
+&gt;<i> On 09/23/12 21:11, Joerg Schilling wrote:
+</I>&gt;<i> &gt; &quot;dE .&quot;&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">de.techno at gmail.com</A>&gt;  wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; Hi!
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; I joined this list to notify that this bug --
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; <A HREF="../2010-November/000721.html">http://lists.berlios.de/pipermail/cdrecord-support/2010-November/000721.html</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; is back in 3.01_alpha08 and it does not persist 3.00 with the same scenario.
+</I>&gt;<i> &gt; ???
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It has been verified that the only related bug report that allows me to repeat
+</I>&gt;<i> &gt; the scenario is not triggering a bug in mkisofs - the mkisofs image output for
+</I>&gt;<i> &gt; that scenario has been verified to be correct.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; J&#246;rg
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> Here, mkisofs appears to be the culprit. Write an image, loop mount it, 
+</I>&gt;<i> do shasums and I (or we) see i/o errors.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://bugs.gentoo.org/show_bug.cgi?id=394553">https://bugs.gentoo.org/show_bug.cgi?id=394553</A>
+</I>&gt;<i>
+</I>&gt;<i> Also notice, we don't use the same kernels. The original bug reports of 
+</I>&gt;<i> the above bug uses 2.6.39 and I use 3.4. And probably everyone else uses 
+</I>&gt;<i> different kernels.
+</I>
+In any case, if you believe that you found a bug, you need to give enough 
+information so I am able to repeat the problem.
+
+In all previous cases where people reported problems and send instructions on 
+how to repeat the case, I could verify that the ISO image created by mkisofs 
+was OK.
+
+The problem seems to be that there is currently no OS that has a 
+known-to-be-correct implementation of ISO-9660 multi-extent files.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000881.html">[Cdrecord-support] Corrupt image for projects &gt;4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#880">[ date ]</a>
+              <a href="thread.html#880">[ thread ]</a>
+              <a href="subject.html#880">[ subject ]</a>
+              <a href="author.html#880">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e28158f.sFoatC9manBBNGiF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000807.html">
+   <LINK REL="Next"  HREF="000797.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e28158f.sFoatC9manBBNGiF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 21 14:03:27 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000807.html">[Cdrecord-support] question searchfileinpath.c
+</A></li>
+        <LI>Next message: <A HREF="000797.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#799">[ date ]</a>
+              <a href="thread.html#799">[ thread ]</a>
+              <a href="subject.html#799">[ subject ]</a>
+              <a href="author.html#799">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> I make small steps forward. Quoting the cmd in single quotes before
+</I>&gt;<i> the spanwl() call is the key. Subsequently I had to change the single
+</I>&gt;<i> quotes to double quotes in the &quot;sed .... &quot; lines in RULES/r-smake.dep.
+</I>&gt;<i> I do not know whether this breaks the process on a different platform.
+</I>&gt;<i> This has to be investigated.
+</I>
+See my previous mail.....
+
+If you like to know more, search in the WIN-DOS directory &quot;Program Files&quot;
+for the sources of the microsoft C runtime.
+
+&gt;<i> The problem I am currently trying to find is that the implicit O macro
+</I>&gt;<i> (capital letter 'O') is not always defined to the value of .OBJDIR
+</I>&gt;<i> but rather to the default &quot;.&quot;
+</I>&gt;<i> Thus the object files after compilation end up in the same directory
+</I>&gt;<i> as the source files and thus linking fails. I have attached several
+</I>&gt;<i> logs with different -d and -D options running ../psmake/smake -f 
+</I>&gt;<i> align_test.mk from within inc.
+</I>&gt;<i> I am not sure when .OBJDIR during the smake run is set (it is assigned
+</I>&gt;<i> in RULES/r-smake.obj) and when this is transferred to O, which is then
+</I>&gt;<i> referred in RULES/r-smake.obj
+</I>&gt;<i> At this point it is totally unclear why this behaves differently on
+</I>&gt;<i> MinGW but I am sure there is a simple explanation, once you know..
+</I>&gt;<i> Any hint where to look?
+</I>
+The rule file RULES/r-smake.obj makes an assignement to .OBJDIR
+
+	.OBJDIR:                $(ARCHDIR)
+
+and this affects the implicit variable $O
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000807.html">[Cdrecord-support] question searchfileinpath.c
+</A></li>
+	<LI>Next message: <A HREF="000797.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#799">[ date ]</a>
+              <a href="thread.html#799">[ thread ]</a>
+              <a href="subject.html#799">[ subject ]</a>
+              <a href="author.html#799">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

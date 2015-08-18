@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%0A%20disk%20under%20RHEL%206.3&In-Reply-To=%3C50ec38d6.XowGj78LKSm/ob1e%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000912.html">
+   <LINK REL="Next"  HREF="000914.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%0A%20disk%20under%20RHEL%206.3&In-Reply-To=%3C50ec38d6.XowGj78LKSm/ob1e%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jan  8 16:18:46 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000912.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+        <LI>Next message: <A HREF="000914.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+
+&gt;<i> Andrew Z &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">formisc at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hello,
+</I>&gt;<i> &gt;  this is my first post here. I hope that i provided all information needed.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Problem:
+</I>&gt;<i> &gt;  cdrecord fails to burn images/files more the 4Gb on DL DVD while burning
+</I>&gt;<i> &gt; DL DVD on 'iHAS124   D' device under Scientific Linux 6.3 with:
+</I>&gt;<i> &gt; cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+</I>&gt;<i> &gt; CDB:  2A 00 00 1E CD D0 00 00 10 00
+</I>&gt;<i> &gt; status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> &gt; Sense Bytes: 71 00 03 00 00 00 00 0A 00 00 00 00 0C 00 00 00
+</I>&gt;<i> &gt; Sense Key: 0x3 Medium Error, deferred error, Segment 0
+</I>&gt;<i> &gt; Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+</I>&gt;<i> &gt; Sense flags: Blk 0 (not valid)
+</I>&gt;<i> &gt; cmd finished after 0.001s timeout 200s
+</I>
+Another note that may help to understand the problem:
+
+if you write less than the whole capacity of a dual layer disk, it may help to 
+define a useful layer break value (see man page of cdrecord) in order to 
+prevent the drive from trying to write padding to the end of the real disk 
+(which may take a long time) after your data has been transferred to the disk.
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000912.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+	<LI>Next message: <A HREF="000914.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#913">[ date ]</a>
+              <a href="thread.html#913">[ thread ]</a>
+              <a href="subject.html#913">[ subject ]</a>
+              <a href="author.html#913">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

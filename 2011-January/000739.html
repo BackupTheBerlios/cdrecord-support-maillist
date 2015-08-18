@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] upgrading firmware
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20upgrading%20firmware&In-Reply-To=%3C20110111210342.61fc3dc3%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000735.html">
+   <LINK REL="Next"  HREF="000736.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] upgrading firmware</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20upgrading%20firmware&In-Reply-To=%3C20110111210342.61fc3dc3%40bashir%3E"
+       TITLE="[Cdrecord-support] upgrading firmware">list1 at michaelshell.org
+       </A><BR>
+    <I>Wed Jan 12 03:03:42 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000735.html">[Cdrecord-support] upgrading firmware
+</A></li>
+        <LI>Next message: <A HREF="000736.html">[Cdrecord-support] [Fwd: [Fwd: Re: Remastersys.]]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 11 Jan 2011 19:58:45 -0500
+grarpamp &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">grarpamp at gmail.com</A>&gt; wrote:
+
+&gt;<i> <A HREF="http://www.samsungoms.com/eng/Firmware/FWDownload/FWDownload.asp">http://www.samsungoms.com/eng/Firmware/FWDownload/FWDownload.asp</A>
+</I>&gt;<i> Go here, punch in your model, unpack and put the newest version on the
+</I>&gt;<i> floppy.
+</I>&gt;<i>
+</I>&gt;<i> Boot floppy, flash, boot back linux.
+</I>&gt;<i> No windows, wine, dos emu, or binary blobs needed.
+</I>
+
+I know where you're coming from here, but machines these days don't
+even have floppies anymore. Another option would be to boot to a
+USB drive. I laughed when I first heard of this (What next?! Boot
+to the parallel port? Boot to the monitor? Boot to the sound card? LOL!),
+but I can see good uses such as rescue drives, etc.
+
+FWIW, for those of you in the market for a SD card USB reader as opposed
+to a USB flash drive that cannot be upgraded, you might as well get the
+newer SDXC ones that can handle at least 64GB SD cards. Some of these
+readers are going for as little as four bucks on Ebay:
+
+<A HREF="http://cgi.ebay.com/ws/eBayISAPI.dll?ViewItem&amp;item=260702383137">http://cgi.ebay.com/ws/eBayISAPI.dll?ViewItem&amp;item=260702383137</A>
+
+
+Anyway, are there any problems with SATA drives and FreeDOS? Any Microsoft
+OS boot disks aren't going to have SATA support prior to Win2000. If the
+computer is using the motherboard SATA hardware, the BIOS should support
+that, but I don't know if there are any other potential issues here with
+a modern BIOS SATA API presented to an older OS (e.g., 200GB+ drives).
+
+I've never used Wine yet myself, but it is an interesting option.
+Looking at the FAQ:
+
+<A HREF="http://wiki.winehq.org/FAQ">http://wiki.winehq.org/FAQ</A>
+
+It does NOT require Windows. It is an independent Unix reimplementation
+of the Windows API! It is is a set of Unix libraries that map Windows
+system calls to those of the Unix host system. So, a Windows binary will
+think it is running under Windows when in fact it is actually calling a
+Unix library that maps the calls to the kernel and X. The wine source
+tar ball download is only about 11MB, so if the setup is not too much,
+it might be fun to try:
+
+<A HREF="http://sourceforge.net/projects/wine/files/">http://sourceforge.net/projects/wine/files/</A>
+
+For those of you that know how to configure PATH, /etc/ld.so.conf and
+/etc/man.conf could install the whole thing in /opt/wine, add the
+/opt/wine/bin, /opt/wine/lib and /opt/win/man paths and try it out. If
+you don't like it, tis easy enough to yank out without touching the
+rest of the system. Note cdrtools likes to use a similar approach with
+/opt/schily.
+
+Beware that any Windows malware running under wine can touch the Unix
+filesystem. For this reason, run only trusted applications, do not run
+wine as root, and perhaps use a different user account. However, you
+might have to run under root for a flasher utility. Anyway, although
+Windows malware might be able to alter or delete files, it probably
+would not be able to &quot;infect&quot; the Unix system because the files it
+would have to target would be totally different from Windows.
+
+I'm almost totally free of Windows except for one or two applications.
+One of these is stuff like firmware flashers and another is tax software.
+
+Here in the USA, tax time is coming up again and I think I might try to
+see if Wine will run Taxact:
+
+<A HREF="http://www.taxact.com/">http://www.taxact.com/</A>
+
+If so, I really would be totally free of the awful MS windows. I'd love it
+if GNU came out with some tax software. Even better would tax reform that
+would get rid of the ludicrous and embarrassing complexity of our
+income tax system ... but I digress.
+
+
+  Cheers,
+
+  Mike
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000735.html">[Cdrecord-support] upgrading firmware
+</A></li>
+	<LI>Next message: <A HREF="000736.html">[Cdrecord-support] [Fwd: [Fwd: Re: Remastersys.]]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

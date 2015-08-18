@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20.cdrecord%3A%20Input/output%20error.%20write_g1%3A%0A%09scsi%20sendcmd%3A%20no%20error&In-Reply-To=%3C4b951b18.fdPrbHO9mCtnxfIu%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000600.html">
+   <LINK REL="Next"  HREF="000599.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20.cdrecord%3A%20Input/output%20error.%20write_g1%3A%0A%09scsi%20sendcmd%3A%20no%20error&In-Reply-To=%3C4b951b18.fdPrbHO9mCtnxfIu%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Mar  8 16:43:20 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000600.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+        <LI>Next message: <A HREF="000599.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#603">[ date ]</a>
+              <a href="thread.html#603">[ thread ]</a>
+              <a href="subject.html#603">[ subject ]</a>
+              <a href="author.html#603">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> On one positive note, I did manage to burn one DVD using an external
+</I>&gt;<i> burner, but somehow the media is not very good(TDK), unless I managed
+</I>&gt;<i> to screw it?
+</I>&gt;<i>
+</I>&gt;<i> Here's what I got:
+</I>...
+&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> cdrecord: Input/output error. get performance: scsi sendcmd: no error
+</I>&gt;<i> CDB:  AC 00 00 00 00 00 00 00 00 01 03 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 02 00 00 00 00 0E 00 00 00 00 30 00 00 00
+</I>&gt;<i> Sense Key: 0x2 Not Ready, Segment 0
+</I>&gt;<i> Sense Code: 0x30 Qual 0x00 (incompatible medium installed) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;<i> resid: 24
+</I>&gt;<i> cmd finished after 0.002s timeout 200s
+</I>&gt;<i> Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1409024 = 1376 KB
+</I>&gt;<i> cdrecord: Warning: Drive returned invalid buffer size.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data  4437 MB
+</I>&gt;<i> Total size:     4437 MB = 2271949 sectors
+</I>&gt;<i> Current Secsize: 0
+</I>&gt;<i> cdrecord: Input/output error. read disk info: scsi sendcmd: no error
+</I>&gt;<i> CDB:  51 00 00 00 00 00 00 00 04 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 03 00 00 00 00 0E 00 00 00 00 57 00 00 00
+</I>&gt;<i> Sense Key: 0x3 Medium Error, Segment 0
+</I>&gt;<i> Sense Code: 0x57 Qual 0x00 (unable to recover table-of-contents) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;<i> resid: 4
+</I>&gt;<i> cmd finished after 0.002s timeout 240s
+</I>&gt;<i> cdrecord: Cannot get disk type.
+</I>
+If this is not a result of a drive/media incompatibility, it always makes sense 
+on Linux to kill hald before writing as a test. Hald may cause strange problems. 
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000600.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1:	scsi sendcmd: no error
+</A></li>
+	<LI>Next message: <A HREF="000599.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#603">[ date ]</a>
+              <a href="thread.html#603">[ thread ]</a>
+              <a href="subject.html#603">[ subject ]</a>
+              <a href="author.html#603">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

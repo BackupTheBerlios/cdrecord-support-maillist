@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using	TERMINALSERVICES_SESSION000.MAN
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%28Win7_x64Pro%29%20-%3E%20Using%0A%09TERMINALSERVICES_SESSION000.MAN&In-Reply-To=%3Cr2n5bdc1c8b1004201835q41dbd9e4z9b9dce06049c1890%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000621.html">
+   <LINK REL="Next"  HREF="000626.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using	TERMINALSERVICES_SESSION000.MAN</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%28Win7_x64Pro%29%20-%3E%20Using%0A%09TERMINALSERVICES_SESSION000.MAN&In-Reply-To=%3Cr2n5bdc1c8b1004201835q41dbd9e4z9b9dce06049c1890%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using	TERMINALSERVICES_SESSION000.MAN">markknecht at gmail.com
+       </A><BR>
+    <I>Wed Apr 21 03:35:46 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000621.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+        <LI>Next message: <A HREF="000626.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Apr 20, 2010 at 12:58 PM, Michael Shell &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">list1 at michaelshell.org</A>&gt; wrote:
+&gt;<i> On Tue, 20 Apr 2010 16:57:23 +0200
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &gt; &gt; Is there any reason to use two contradicting options (-r and -R)?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; My reading of the man page (and a number of online examples in Google)
+</I>&gt;&gt;<i> &gt; doesn't read like -r and -R are contradicting. What's contradicting
+</I>&gt;&gt;<i> &gt; about creating a Rock Ridge file system (-R) and creating one where
+</I>&gt;&gt;<i> &gt; all the files are owned by root? (-r)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Well, one tells mkisofs to uave all files owned by root, the other
+</I>&gt;&gt;<i> tells not to make all files owned by root.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &#160;J&#246;rg,
+</I>&gt;<i>
+</I>&gt;<i> I see what he means. Tis an English thing. In the man page of my
+</I>&gt;<i> older cdrecord (so this may have been changed) it says about
+</I>&gt;<i> -r:
+</I>&gt;<i>
+</I>&gt;<i> &quot;This is like the -R option, but file ownership and modes are set
+</I>&gt;<i> &#160;to more useful values.&quot;
+</I>&gt;<i>
+</I>&gt;<i> &quot;like the -R option&quot; can be confusing because it is not clear in
+</I>&gt;<i> what way something is like something else. In the extreme case,
+</I>&gt;<i> all options are &quot;like&quot; each other because they are all command
+</I>&gt;<i> options. LOL.
+</I>&gt;<i>
+</I>&gt;<i> Better to say something such as &quot;The same as the -R option, except
+</I>&gt;<i> file ownership and modes are set to more useful values.&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &#160;Cheers,
+</I>&gt;<i>
+</I>&gt;<i> &#160;Mike Shell
+</I>&gt;<i>
+</I>
+This may just be the fact that I'm lazy, and now officially getting
+not just older but actually old, but I think sometimes there's a real
+problem with folks writing documents wherein some feel that more
+written somehow imparts more knowledge. It's not the case, at least in
+my opinion. I can accept that many of our Linux docs come from folks
+all around the world. Some are not native English speakers and I don't
+expect everything to be written like we speak in California. Heck,
+many people think we don't speak English anyway.
+
+What is really needed but seldom seems to exist is a very small
+document that lists commands by specific task. In the case of the
+cdrecord family of programs it might look a bit like:
+
+Copy a data CD to iso
+Burn a dataCD from iso
+Rip an audio CD to files
+Burn an audio CD from files
+Create an iso of a Windows program that's bootable from VMWare
+Rip a movie from DVD to disk
+
+etc., etc., etc.
+
+I truly appreciate the work that everyone does in Open Source, but I'm
+not sure many developers have a clue what it's like ot be a user. I
+don't think it's realistic to think that anyone should have to study
+and memorize a 2000 line man page doc or dig around on their PCs for
+text file documents to find the answer to a simple question. That said
+I respect anyone telling me that's what I should do, and it's my right
+to listen or not.
+
+Cheers,
+Mark
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000621.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+	<LI>Next message: <A HREF="000626.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#625">[ date ]</a>
+              <a href="thread.html#625">[ thread ]</a>
+              <a href="subject.html#625">[ subject ]</a>
+              <a href="author.html#625">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E3B0274.8050304%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000819.html">
+   <LINK REL="Next"  HREF="000821.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E3B0274.8050304%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Aug  4 22:35:00 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000819.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000821.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#820">[ date ]</a>
+              <a href="thread.html#820">[ thread ]</a>
+              <a href="subject.html#820">[ subject ]</a>
+              <a href="author.html#820">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks, J&#246;rg, for providing a new package. I downloaded and tested
+schily-dist-pre2.tar.bz2.
+
+These steps are necessary to successfully build a bootstrap smake:
+- add the &quot;test -h ..&quot; line to psmake/MAKE-sh.
+- add the line
+   $cp ${incsrc}/include/schily/io.h include/schily/io.h
+   to psmake/cpfiles
+Furthermore I replace smake/make.c with the version I was successful
+with ins schily-2011-07-26.
+
+When I start 'make' it builds the bootstrap smake successfully but
+when running the bootstrap smake to build the whole package I had to
+change file libschily/searchinpath.c: in line 206 remove the condition
+(!plain_file || S_ISREG(sb.st_mode)). Otherwise the shell (sh.exe)
+is not found in the system search path and the default (/bin/sh) is
+used. I am not sure what the meaning of the plain_file flag is and
+why the S_ISREG check is not true (sh.exe should be a regular file,
+shouldn't it?). Maybe the MinGW stat() function is deficient. This
+change in searchinpath.c is in addition to schily-2011-07-26 (replace
+'xn' with 'NULL' in line 148).
+
+following modules still fail to build:
+- libshedit
+- bsh
+- ved
+- calltree
+- copy
+- label
+- lndir
+- mkisofs/diag/dump
+- mkisofs/diag/isodump
+- mkisofs/diag/isoinfo
+- mountcd
+- mt
+- p
+- patch
+- sccs/sccs/cmd/src/sccs
+- sccs/sccs/cmd/src/admin
+- sccs/sccs/cmd/src/comb
+- sccs/sccs/cmd/src/delta
+- sccs/sccs/cmd/src/get
+- sccs/sccs/cmd/src/help2
+- sccs/sccs/cmd/src/prs
+- sccs/sccs/cmd/src/rmchg
+- sccs/sccs/cmd/src/sccsdiff
+- sccs/sccs/cmd/src/unget
+- sccs/sccs/cmd/src/bdiff
+- sccs/sccs/cmd/src/diff
+- sccs/sccs/cmd/src/xpg4/sccs
+- sccs/sccs/cmd/src/xpg4/get
+- sformat
+- sh
+- star
+- star_sym
+
+I hope this information helps.
+This all was under plain cmd.exe running make; with MSYS and MinGW
+being in the %PATH% in the first positions.
+
+Best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I found  a callback function implementation from the russion guy that made the
+</I>&gt;&gt;<i> mingw port 6-7 years ago.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Now I can see that it did compile on Cygwin because the #ifdef bracketing seems
+</I>&gt;&gt;<i> to be wrong - the wave open function is not called on cygwin.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Heiko is willing to check....
+</I>&gt;<i>
+</I>&gt;<i> A new preliminary release has been put put at:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000819.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000821.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#820">[ date ]</a>
+              <a href="thread.html#820">[ thread ]</a>
+              <a href="subject.html#820">[ subject ]</a>
+              <a href="author.html#820">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

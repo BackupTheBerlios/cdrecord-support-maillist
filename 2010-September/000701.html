@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cygwin and 2.01.01a80, smake fails on scgskeleton
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cygwin%20and%202.01.01a80%2C%0A%20smake%20fails%20on%20scgskeleton&In-Reply-To=%3C4c88bcf6.Zsp8tBeP%2BP2hMkjU%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000700.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cygwin and 2.01.01a80, smake fails on scgskeleton</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cygwin%20and%202.01.01a80%2C%0A%20smake%20fails%20on%20scgskeleton&In-Reply-To=%3C4c88bcf6.Zsp8tBeP%2BP2hMkjU%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cygwin and 2.01.01a80, smake fails on scgskeleton">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Sep  9 12:54:46 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000700.html">[Cdrecord-support] cygwin and 2.01.01a80, smake fails on scgskeleton
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Henry &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">defsyn at gmail.com</A>&gt; wrote:
+
+&gt;<i> Cygwin on Windows XP 32
+</I>&gt;<i>
+</I>&gt;<i> Latest version of smake (1.2.1) compiles 2.01.01a79 but not 2.01.01a80.
+</I>&gt;<i> The following should be the relevant messages showing where it fails to
+</I>&gt;<i> compile:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> smake: Default commandline target: 'all'
+</I>&gt;<i> smake: Doing                       exit(1)
+</I>&gt;<i>         ==&gt; MAKING &quot;all&quot; ON SUBDIRECTORY &quot;SRCROOT/scgskeleton&quot;
+</I>&gt;<i>         ==&gt; MAKING DIRECTORY &quot;OBJ/i686-cygwin32_nt-gcc&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;skel.d&quot;
+</I>&gt;<i>         ==&gt; MAKING SYMLINKS in .
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;io.d&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;cd_misc.d&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;scsi_cdr.d&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;scsi_scan.d&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;misc.d&quot;
+</I>&gt;<i>         ==&gt; MAKING DEPENDENCIES &quot;io.d&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;skel.o&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;io.o&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;cd_misc.o&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;scsi_cdr.o&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;scsi_scan.o&quot;
+</I>&gt;<i>         ==&gt; COMPILING &quot;misc.o&quot;
+</I>&gt;<i>         ==&gt; LINKING &quot;OBJ/i686-cygwin32_nt-gcc/scgskeleton.exe&quot;
+</I>&gt;<i> /usr/lib/gcc/i686-pc-cygwin/4.3.4/../../../../i686-pc-cygwin/bin/ld: cannot
+</I>&gt;<i> find
+</I>&gt;<i>  -lrscg
+</I>
+If you like to get help, you need to send informations related to your problem.
+
+2.01.01a80 is outdated, but cdrtools-3.00 is nearly identical.
+
+librscg did not change since more than a year and if the make call did not stop
+as librscg, you are using a defective shell that does not follow POSIX standards
+and the rules how UNIX shells behave since 1977.
+
+In any case, it is most unlikely that the difference between a79 and a80 is the 
+cause for your problem.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000700.html">[Cdrecord-support] cygwin and 2.01.01a80, smake fails on scgskeleton
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

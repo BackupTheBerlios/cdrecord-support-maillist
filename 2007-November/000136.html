@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] burning iso image with cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20burning%20iso%20image%20with%20cdrecord&In-Reply-To=%3C200711021143.57693.trueg%40k3b.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000135.html">
+   <LINK REL="Next"  HREF="000137.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] burning iso image with cdrecord</H1>
+    <B>Sebastian Tr&#252;g</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20burning%20iso%20image%20with%20cdrecord&In-Reply-To=%3C200711021143.57693.trueg%40k3b.org%3E"
+       TITLE="[Cdrecord-support] burning iso image with cdrecord">trueg at k3b.org
+       </A><BR>
+    <I>Fri Nov  2 11:43:57 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000135.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000137.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#136">[ date ]</a>
+              <a href="thread.html#136">[ thread ]</a>
+              <a href="subject.html#136">[ subject ]</a>
+              <a href="author.html#136">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 02 November 2007 05:28:32 JOYDEEP wrote:
+&gt;<i> Joerg Schilling wrote:
+</I>&gt;<i> &gt; JOYDEEP &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">j.bakshi at unlimitedmail.org</A>&gt; wrote:
+</I>&gt;<i> &gt;&gt; Hi all,
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; cdrecord can burn the CD iso image.
+</I>&gt;<i> &gt;&gt; But if there is already a boot able CD-RW and you like to burn another
+</I>&gt;<i> &gt;&gt; iso image; then cdrecord just write 2nd iso image on it and the resultan
+</I>&gt;<i> &gt;&gt; CD-RW just boots with the previous image exists before burning it with
+</I>&gt;<i> &gt;&gt; the 2nd iso image  .
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; K3b has a feature which check the CD before burning with an iso ; if
+</I>&gt;<i> &gt;&gt; there is any bootable image K3b asked to erase it before burning with
+</I>&gt;<i> &gt;&gt; the iso. How is it possible to check the same with cdrecord ? Means how
+</I>&gt;<i> &gt;&gt; to check if the Cd already has a boot image ? or is there any option in
+</I>&gt;<i> &gt;&gt; cdrecord which over write the existing boot image with the new iso ?
+</I>&gt;<i> &gt;&gt; kindly enlighten me. Thanks
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; What is your problem?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The way cdrecord behaves is documented in the man page and there is the
+</I>&gt;<i> &gt; blank=xxxx option.
+</I>&gt;<i>
+</I>&gt;<i> That means I have failed to describe the problem. Yes blank option is
+</I>&gt;<i> there to erase the CD. But I am trying implement a checking which will
+</I>&gt;<i> check if the cd under iso burn already have something in it or totally a
+</I>&gt;<i> blank CD. which K3b does but I don't know how it does it.
+</I>
+K3b does it using libk3bdevice which implements MMC commands. But I think you 
+could do it using &quot;cdrecord -minfo&quot;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000135.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000137.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#136">[ date ]</a>
+              <a href="thread.html#136">[ thread ]</a>
+              <a href="subject.html#136">[ subject ]</a>
+              <a href="author.html#136">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

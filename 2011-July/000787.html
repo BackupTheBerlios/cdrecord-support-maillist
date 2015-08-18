@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E1F459B.5010502%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000786.html">
+   <LINK REL="Next"  HREF="000796.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E1F459B.5010502%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Jul 14 21:38:03 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000786.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000796.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#787">[ date ]</a>
+              <a href="thread.html#787">[ thread ]</a>
+              <a href="subject.html#787">[ subject ]</a>
+              <a href="author.html#787">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I tested it and the missing mbrtowc() and wcrtomb() are correctly
+</I>&gt;&gt;<i> detected. mbsinit() is still detected as present although it is part
+</I>&gt;&gt;<i> of library mingwex.
+</I>&gt;<i>
+</I>&gt;<i> mbsinit() is present by default, so this result os correct
+</I>OK.
+
+&gt;&gt;<i> Please add the additional line
+</I>&gt;&gt;<i>     test -h xxzzy.345 || lnfiles=&quot;sh cpfiles&quot;
+</I>&gt;&gt;<i> to psmake/MAKE-sh after line 75 to cope with the behaviour of MinGW
+</I>&gt;&gt;<i> ln.exe.
+</I>&gt;<i>
+</I>&gt;<i> I have to think about this in order to be sure that it will not cause problems.
+</I>&gt;<i> &quot;test -h&quot; is not supported by all platforms....
+</I>OK. If MinGW is still considered as supported something has to be done
+in this area. It does not build the way it is now.
+
+&gt;&gt;<i> Please change &quot;-lmgw32&quot; to &quot;-lmingw32&quot; in RULES/i?86-mingw32_nt-gcc.rul
+</I>&gt;<i>
+</I>&gt;<i> done
+</I>Thank you!
+
+&gt;&gt;<i> Why don't you want to add a check for __MINGW32__ in
+</I>&gt;&gt;<i> include/schily/ccomdefs.h line 64 to avoid the warnings about __used__
+</I>&gt;&gt;<i> attribute? I cannot see any problem on other platforms with that.
+</I>&gt;<i>
+</I>&gt;<i> I need to support 30+ platforms and I will not add something that looks wrong.
+</I>&gt;<i>
+</I>&gt;<i> You have been asked three times to describe the exact problem you have and why
+</I>&gt;<i> you belive that there  is a need for a fix and why this is the correct
+</I>&gt;<i> solution.
+</I>&gt;<i>
+</I>&gt;<i> You did never send the required information, so I am forced to judge from just
+</I>&gt;<i> the patch that looks wrong.
+</I>I am sorry; I seem to have missed that. Here is the description of my
+findings:
+In include/schily/ccomdefs.h there is the macro UConst defined.
+Depending on GCC version and platform this definition is different.
+When GCC is version later than 3.1 the definition looks like this:
+
+#define UConst  __attribute__ ((__used__)) const
+
+Although GCC of the recommended MinGW version is 3.2.3 it seems that it
+does not recognize the __used__ attribute. Therefore there are a lot of
+warnings produced during the compilation. My suggestion was in order to
+prevent these warnings, to add to the check of the GCC version another
+check to see whether the used GCC is a MinGW variant. If so the UConst
+macro would be defined like for GCC versions 3.1 and earlier or like
+for the PPC platform:
+
+#define UConst  const
+
+If my previous suggestion is likely to break successful compilation on
+other platforms, which I cannot see at the moment, maybe a better way to
+implement the check is similar to the PPC platform by adding these lines
+after line 73:
+
+#ifdef __MINGW32__
+/*
+  * Hack until mingw supports __attribute__ ((__used__))
+  */
+#ifdef UConst
+#undef UConst
+#endif
+#define UConst const
+#endif  /* __MINGW32__ */
+
+I am sorry to have upset you with this issue.
+
+Best regards,
+
+Johannes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000786.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000796.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#787">[ date ]</a>
+              <a href="thread.html#787">[ thread ]</a>
+              <a href="subject.html#787">[ subject ]</a>
+              <a href="author.html#787">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

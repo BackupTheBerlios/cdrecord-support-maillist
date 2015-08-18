@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E260AF1.8090100%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000790.html">
+   <LINK REL="Next"  HREF="000793.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E260AF1.8090100%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Wed Jul 20 00:53:37 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000790.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000793.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#791">[ date ]</a>
+              <a href="thread.html#791">[ thread ]</a>
+              <a href="subject.html#791">[ subject ]</a>
+              <a href="author.html#791">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Partly Success!
+
+I am able to compile smake under the MinGW environment. Based on
+version smake-1.2.1 with following changes the build process is
+successful:
+- in RULES/i?86-mingw32_nt-gcc.rul:
+   replace -lmgw32 with -lmingw32 (as discussed previously)
+- in psmake/MAKE-sh:
+   add line test -h xxzzy.123 || lnfiles=&quot;sh cpfiles&quot; after the line
+   test -r xxzzy.123 || lnfiles=&quot;sh cpfiles&quot;
+   (as discussed previously)
+- in RULES/r-smake.dep:
+   replace the single quotes with double quotes in the sed ... lines
+   (as mentioned earlier)
+- in RULES/r-smake.obj:
+   replace -o O/$@ with -o $(ARCHDSIR)/$@ in line45
+- in include/schily/ccomdefs.h:
+   add a check !defined __MINGW32__ to the conditional definition of
+   macro UConst so that Uconst will be defined to const
+   (as discussed previously)
+   Note: this is not strictly necessary but prevents the generation of
+     a lot of warnings.
+- in smake/make.c:
+   in docmd():
+   - add a sectionfor __MINGW32__
+   - quote the command which shall be executed in sh with single quotes
+   - call spawnl()
+
+I have attached an archive of the changed files.
+Unfortunately I only discovered when trying to build 'schily-dist' (and
+this did not work) that the files in smake-1.2.1 are very different from
+within schily-dist-pre5. Applying similar changes is not sufficient for
+producing a working smake from schily-dist-pre5... So there is still a
+lot to do.
+
+I am currently trying to build the cdrtools package with my brandnew
+smake. I get still errors. More information will follow.
+
+Best regards,
+
+Johannes
+
+
+Johannes Hausensteiner wrote:
+&gt;<i> I make small steps forward. Quoting the cmd in single quotes before
+</I>&gt;<i> the spanwl() call is the key. Subsequently I had to change the single
+</I>&gt;<i> quotes to double quotes in the &quot;sed .... &quot; lines in RULES/r-smake.dep.
+</I>&gt;<i> I do not know whether this breaks the process on a different platform.
+</I>&gt;<i> This has to be investigated.
+</I>&gt;<i> The problem I am currently trying to find is that the implicit O macro
+</I>&gt;<i> (capital letter 'O') is not always defined to the value of .OBJDIR
+</I>&gt;<i> but rather to the default &quot;.&quot;
+</I>&gt;<i> Thus the object files after compilation end up in the same directory
+</I>&gt;<i> as the source files and thus linking fails. I have attached several
+</I>&gt;<i> logs with different -d and -D options running ../psmake/smake -f
+</I>&gt;<i> align_test.mk from within inc.
+</I>&gt;<i> I am not sure when .OBJDIR during the smake run is set (it is assigned
+</I>&gt;<i> in RULES/r-smake.obj) and when this is transferred to O, which is then
+</I>&gt;<i> referred in RULES/r-smake.obj
+</I>&gt;<i> At this point it is totally unclear why this behaves differently on
+</I>&gt;<i> MinGW but I am sure there is a simple explanation, once you know..
+</I>&gt;<i> Any hint where to look?
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i>
+</I>&gt;<i> Johannes
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Joerg Schilling wrote:
+</I>&gt;&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Yesterday I made some progress with smake. I had partly success by
+</I>&gt;&gt;&gt;<i> putting the command line between quotes before the call to spawnl(). It
+</I>&gt;&gt;&gt;<i> still chokes on the multi-line commands from RULES/rules1.dir . I do not
+</I>&gt;&gt;&gt;<i> know yet why. I have to investigate further.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I mentioned already that I did try to implement native M$ support without
+</I>&gt;&gt;<i> success as WIN-DOS violates the C standard by not forwarding the arg
+</I>&gt;&gt;<i> vector
+</I>&gt;&gt;<i> to sub processes.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> On the other side, it seems that cygwin is able to deal with the
+</I>&gt;&gt;<i> problems.
+</I>&gt;&gt;<i> So my question still is: how is Cygwin able to do this even though
+</I>&gt;&gt;<i> WIN-DOS
+</I>&gt;&gt;<i> does not include any known feature to do this correctly.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Do you have a gmake MinGW32 binary that behaves better in this area?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Did you in the meantime decide on the other missing system calls, like
+</I>&gt;&gt;&gt;<i> getuid(), etc.?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> This code is available since a week.
+</I>&gt;&gt;<i> J&#246;rg
+</I>&gt;&gt;<i>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: smake-1.2.1_changes.tar.gz
+Type: application/x-gzip
+Size: 24590 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110720/c2e7c789/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110720/c2e7c789/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000790.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000793.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#791">[ date ]</a>
+              <a href="thread.html#791">[ thread ]</a>
+              <a href="subject.html#791">[ subject ]</a>
+              <a href="author.html#791">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

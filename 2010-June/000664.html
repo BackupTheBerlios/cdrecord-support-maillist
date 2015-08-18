@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrtools-3.00-final is ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTik59K9LUERObw2vilhSyg__kDRBeiXDG0TXy4S_%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000663.html">
+   <LINK REL="Next"  HREF="000665.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrtools-3.00-final is ready</H1>
+    <B>Eric Shattow</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-3.00-final%20is%20ready&In-Reply-To=%3CAANLkTik59K9LUERObw2vilhSyg__kDRBeiXDG0TXy4S_%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Cdrtools-3.00-final is ready">lucent at gmail.com
+       </A><BR>
+    <I>Fri Jun 11 11:14:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000663.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+        <LI>Next message: <A HREF="000665.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jun 10, 2010 at 4:35 AM, Robert Grimm &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">lists at news.robgri.de</A>&gt; wrote:
+&gt;<i> On Thu, 10 June 2010, Eric Shattow wrote:
+</I>&gt;&gt;<i> Which cdrtools executables are safe to install suid root? &#160; Is
+</I>&gt;&gt;<i> cdrecord the only one?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Does i.e. cdda2wav require suid root?
+</I>&gt;<i>
+</I>&gt;<i> cdda2wav, readcd and cdrecord, i.e. all that have to send SCSI commands
+</I>&gt;<i> to the drive need the sufficient rights to do so, e.g. by setting suid
+</I>&gt;<i> root.
+</I>&gt;<i>
+</I>&gt;<i> I would recommend to use dpkg-statoverride in
+</I>&gt;<i> {cdrecord,cdda2wav}.postinst with a corresponding
+</I>&gt;<i> {cdrecord,cdda2wav}.postrm.
+</I>&gt;<i>
+</I>&gt;<i> Rob
+</I>
+Rob, thank you for the suggestion. I'm looking into dpkg-statoverride
+and I think that is strictly for system administrator use to modify
+package installation to be compliant with system permissions policy.
+Take for example the package for sudo, debian/rules:
+binary-arch: build install
+...snip...
+dh_fixperms
+chmod 4755 debian/sudo/usr/bin/sudo debian/sudo-ldap/usr/bin/sudo
+
+@ J&#246;rg, I would like to know where this is documented about the way of
+&quot;Linux kernel folks&quot;. An example:
+
+$ ls -l /dev/sr? /dev/sg?
+crw-rw----  1 root cdrom 21, 0 2010-06-03 22:52 /dev/sg0
+crw-rw----  1 root disk  21, 1 2010-06-03 22:52 /dev/sg1
+brw-rw----+ 1 root cdrom 11, 0 2010-06-03 22:52 /dev/sr0
+
+These device names and permissions are automagically made at boot and
+init (Linux 2.6.32-22 on an Ubuntu system).
+
+$ groups
+emigrate adm dialout fax cdrom floppy tape audio dip video plugdev
+fuse lpadmin netdev admin sambashare libvirtd
+
+I do have permission to /dev/sg0 (a CD device) but not to /dev/sg1
+(SATA hard disk).  That is what I want as an administrator / user.
+
+What prevents cdrtools &quot;Auto Target&quot; from ignoring /dev/sg? on Linux
+when permissions are refused, and processing only /dev/sg? that it
+does have permissions to use? Is this unique to Linux?
+
+I would be happy to follow a link to previous discussion if that is best.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000663.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+	<LI>Next message: <A HREF="000665.html">[Cdrecord-support] Cdrtools-3.00-final is ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#664">[ date ]</a>
+              <a href="thread.html#664">[ thread ]</a>
+              <a href="subject.html#664">[ subject ]</a>
+              <a href="author.html#664">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

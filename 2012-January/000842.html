@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs and 7zip problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20and%207zip%20problem&In-Reply-To=%3C4f173aa6.5EVSsb%2BrDnagYjoH%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000841.html">
+   <LINK REL="Next"  HREF="000843.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs and 7zip problem</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20and%207zip%20problem&In-Reply-To=%3C4f173aa6.5EVSsb%2BrDnagYjoH%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs and 7zip problem">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Jan 18 22:33:26 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000841.html">[Cdrecord-support] mkisofs and 7zip problem
+</A></li>
+        <LI>Next message: <A HREF="000843.html">[Cdrecord-support] mkisofs and 7zip problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Joe Feise&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">jfeise at feise.com</A>&gt; wrote:
+
+&gt;<i> &gt; What is your problem? 7zip is completely unrelated to mkisofs or ISO
+</I>&gt;<i> &gt; filesystem
+</I>&gt;<i> &gt; images....
+</I>&gt;<i>
+</I>&gt;<i> It seems 7zip can open ISO images, according to their website.
+</I>&gt;<i> <A HREF="http://www.7-zip.org/">http://www.7-zip.org/</A>
+</I>&gt;<i> &quot;Supported formats:
+</I>&gt;<i>     Packing / unpacking: 7z, XZ, BZIP2, GZIP, TAR, ZIP and WIM
+</I>&gt;<i>     Unpacking only: ARJ, CAB, CHM, CPIO, CramFS, DEB, DMG, FAT, HFS, ISO,
+</I>&gt;<i> LZH, LZMA, MBR, MSI, NSIS, NTFS, RAR, RPM, SquashFS, UDF, VHD, WIM,
+</I>&gt;<i> XAR and Z.&quot;
+</I>&gt;<i>
+</I>&gt;<i> The OP seems to be saying that 7zip doesn't seem to be able to open ISO
+</I>&gt;<i> images created with mkisofs.
+</I>&gt;<i> This may or may not be an issue with mkisofs. It could also be a bug in 7zip.
+</I>
+So this is the win-dos version of 7-zip or does this also apply to the OSS UNIX 
+variant?
+
+with the UNIX variant I checked unpacking of tar archives some weeks ago and it 
+turned out, that the TAR support is very rudimentary.
+
+Regadring the ISO-9660, Rock Ridge and UDF, recent versions of mkisofs are 
+definitely much better in standard compliance than previous versions have been.
+
+In general: If you have repeatable problems with a specific program, make a bug 
+report gainst this program - in your case this is 7-zip.
+
+The 7-zip author should know why you have problems and in case he believes that 
+is caused by a mkisofs bug, he should describe the problem. I then could have a 
+look at it and tell you whether there is a bug in mkisofs or a bug / 
+missinterpretation of the standard in 7-zip.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000841.html">[Cdrecord-support] mkisofs and 7zip problem
+</A></li>
+	<LI>Next message: <A HREF="000843.html">[Cdrecord-support] mkisofs and 7zip problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

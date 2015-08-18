@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] RH 7.1 System Advice Please
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20RH%207.1%20System%20Advice%20Please&In-Reply-To=%3C45ABCE2D.7010106%40kensnet.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000007.html">
+   <LINK REL="Next"  HREF="000011.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] RH 7.1 System Advice Please</H1>
+    <B>Ken Smith</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20RH%207.1%20System%20Advice%20Please&In-Reply-To=%3C45ABCE2D.7010106%40kensnet.org%3E"
+       TITLE="[Cdrecord-support] RH 7.1 System Advice Please">kens at kensnet.org
+       </A><BR>
+    <I>Mon Jan 15 19:55:41 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000007.html">[Cdrecord-support] mkisofs read performance with joliet option
+</A></li>
+        <LI>Next message: <A HREF="000011.html">[Cdrecord-support] RH 7.1 System Advice Please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+This is my first post to this list and I would value a little assistance 
+with cdrecord v1.9 on a RH7.1 system, kernel 2.4.2. I know this is old, 
+but it is a legacy platform in the environment we are working in at the 
+moment.
+
+On bootup the system finds the CD drive and calls it hda.
+
+The machine boots from a raid 1 arrangement running from a Promise 
+controller. The device appears as sda to the system even though the 
+drives are actually ide.
+
+cdrecord -scanbus gives the following output...
+
+Cdrecord 1.9 (i686-pc-linux-gnu) Copyright (C) 1995-2000 J&#246;rg Schilling
+Linux sg driver version: 3.1.17
+Using libscg version 'schily-0.1'
+scsibus0:
+    0,0,0      0) 'Promise ' '1X2 Mirror/RAID1' '1.10' Disk
+    0,1,0      1) *
+    0,2,0      2) *
+    0,3,0      3) *
+    0,4,0      4) *
+    0,5,0      5) *
+    0,6,0      6) *
+    0,7,0      7) *
+
+
+It finds the promise controller but not the CD drive on the 
+motherboards' IDE controller.
+
+Any ideas how to make it 'see' the CD device? If we put a regular data 
+cd in the drive it mounts as hda perfectly. Is the presence of the 
+promise controller causing confusion?
+
+I attach selected output from /var/log/messages
+
+Thank you in advance
+
+Ken
+
+
+
+
+{snip}
+Jan 11 21:30:21 raidstar kernel: Linux version 2.4.2-2 
+(<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at porky.devel.redhat.com</A>) (gcc version 2.96 20000731 (Red Hat Linux 
+7.1 2.96-79)) #1 Sun Apr 8 20:41:30 EDT 2001
+{snip}
+Jan 11 21:30:21 raidstar kernel: Kernel command line: auto 
+BOOT_IMAGE=linux ro root=806 BOOT_FILE=/boot/vmlinuz-2.4.2-2 
+ide0=0x1f0,0x3f6,14 ide1=0x170,0x376,15 ide2=0 ide3=0 ide4=0 ide5=0 
+ide6=0 ide7=0 ide8=0 ide9=0
+Jan 11 21:30:21 raidstar keytable: Loading keymap:
+Jan 11 21:30:21 raidstar rpc.statd[518]: Version 0.3.1 Starting
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide0=0x1f0,0x3f6,14
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide1=0x170,0x376,15
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide2=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide3=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide4=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide5=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide6=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide7=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide8=0
+Jan 11 21:30:21 raidstar kernel:
+Jan 11 21:30:21 raidstar kernel: ide_setup: ide9=0
+{snip}
+Jan 11 21:30:21 raidstar kernel: Uniform Multi-Platform E-IDE driver 
+Revision: 6.31
+Jan 11 21:30:21 raidstar kernel: ide: Assuming 33MHz system bus speed 
+for PIO modes; override with idebus=xx
+Jan 11 21:30:21 raidstar kernel: SIS5513: IDE controller on PCI bus 00 
+dev 15
+Jan 11 21:30:21 raidstar kernel: SIS5513: chipset revision 0
+Jan 11 21:30:21 raidstar kernel: SIS5513: not 100%% native mode: will 
+probe irqs later
+Jan 11 21:30:21 raidstar kernel:     ide0: BM-DMA at 0xff00-0xff07, BIOS 
+settings: hda:DMA, hdb:DMA
+Jan 11 21:30:21 raidstar kernel:     ide1: BM-DMA at 0xff08-0xff0f, BIOS 
+settings: hdc:DMA, hdd:DMA
+Jan 11 21:30:21 raidstar kernel: hda: ASUS DRW-1608P3S, ATAPI CD/DVD-ROM 
+drive
+Jan 11 21:30:21 raidstar kernel: ide2: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide3: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide4: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide5: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide6: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide7: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide8: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide9: ports already in use, skipping probe
+Jan 11 21:30:21 raidstar kernel: ide0 at 0x1f0-0x1f7,0x3f6 on irq 14
+Jan 11 21:30:21 raidstar kernel: Floppy drive(s): fd0 is 1.44M
+Jan 11 21:30:21 raidstar kernel: FDC 0 is a post-1991 82077
+{snip}
+Jan 11 21:30:21 raidstar kernel: SCSI subsystem driver Revision: 1.00
+Jan 11 21:30:21 raidstar kernel: Promise FastTrak Series Linux Driver 
+Version 1.2.0.14
+Jan 11 21:30:21 raidstar kernel: scsi0 : FASTTRAK
+Jan 11 21:30:21 raidstar random: Initializing random number generator:  
+succeeded
+Jan 11 21:30:21 raidstar kernel:   Vendor: Promise   Model: 1X2 
+Mirror/RAID1  Rev: 1.10
+Jan 11 21:30:21 raidstar kernel:   Type:   
+Direct-Access                      ANSI SCSI revision: 02
+Jan 11 21:30:21 raidstar kernel: Attached scsi disk sda at scsi0, 
+channel 0, id 0, lun 0
+Jan 11 21:30:21 raidstar kernel: SCSI device sda: 78125000 512-byte hdwr 
+sectors (40000 MB)
+Jan 11 21:30:21 raidstar kernel: Partition check:
+Jan 11 21:30:21 raidstar kernel:  sda: sda1 sda2 &lt; sda5 sda6 &gt;
+Jan 11 21:30:21 raidstar kernel: VFS: Mounted root (ext2 filesystem) 
+readonly.
+Jan 11 21:30:21 raidstar kernel: change_root: old root has d_count=3
+Jan 11 21:30:21 raidstar kernel: Trying to unmount old root ... okay
+Jan 11 21:30:21 raidstar kernel: Freeing unused kernel memory: 236k freed
+Jan 11 21:30:21 raidstar kernel: Adding Swap: 530104k swap-space 
+(priority -1)
+{snip}
+Jan 11 21:30:21 raidstar kernel: SiS pirq: advanced IDE/ACPI/DAQ mapping 
+not yet implemented
+{snip}
+
+
+
+-- 
+This message has been scanned for viruses and
+dangerous content by MailScanner, and is
+believed to be clean.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000007.html">[Cdrecord-support] mkisofs read performance with joliet option
+</A></li>
+	<LI>Next message: <A HREF="000011.html">[Cdrecord-support] RH 7.1 System Advice Please
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e3bc3a0.Vg4Oyc%2B3%2BsWQPv2I%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000820.html">
+   <LINK REL="Next"  HREF="000822.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e3bc3a0.Vg4Oyc%2B3%2BsWQPv2I%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Aug  5 12:19:12 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000820.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000822.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> Thanks, J&#246;rg, for providing a new package. I downloaded and tested
+</I>&gt;<i> schily-dist-pre2.tar.bz2.
+</I>&gt;<i>
+</I>&gt;<i> These steps are necessary to successfully build a bootstrap smake:
+</I>&gt;<i> - add the &quot;test -h ..&quot; line to psmake/MAKE-sh.
+</I>
+As mentioned, there are more scripts that create symlinks and there 
+was a need to implement a more general method that also works if we compile
+with MSAC cl.exe from Cygwin
+
+&gt;<i> - add the line
+</I>&gt;<i>    $cp ${incsrc}/include/schily/io.h include/schily/io.h
+</I>&gt;<i>    to psmake/cpfiles
+</I>
+thank you for this hint.
+
+&gt;<i> Furthermore I replace smake/make.c with the version I was successful
+</I>&gt;<i> with ins schily-2011-07-26.
+</I>
+As there is uname(), smake now looks much nicer - I am still not sure on 
+whether a &quot;native&quot; smake binary makes sense at all as there is no:
+
+        -       sed
+        -       rm
+        -       egrep
+        -       grep
+        -       tr
+        -       uname   
+        -       chmod
+        -       expr
+        -       false
+        -       cat
+        -       echo
+        -       cp
+        -       cmp
+        -       mv
+        -       ls
+        -       [
+        -       test
+
+
+&gt;<i> When I start 'make' it builds the bootstrap smake successfully but
+</I>&gt;<i> when running the bootstrap smake to build the whole package I had to
+</I>&gt;<i> change file libschily/searchinpath.c: in line 206 remove the condition
+</I>&gt;<i> (!plain_file || S_ISREG(sb.st_mode)). Otherwise the shell (sh.exe)
+</I>&gt;<i> is not found in the system search path and the default (/bin/sh) is
+</I>&gt;<i> used. I am not sure what the meaning of the plain_file flag is and
+</I>&gt;<i> why the S_ISREG check is not true (sh.exe should be a regular file,
+</I>&gt;<i> shouldn't it?). Maybe the MinGW stat() function is deficient. This
+</I>&gt;<i> change in searchinpath.c is in addition to schily-2011-07-26 (replace
+</I>&gt;<i> 'xn' with 'NULL' in line 148).
+</I>
+Your change is not correct - just because it seems to do what you expect in 
+your case does not help in all other cases.
+
+&gt;<i> following modules still fail to build:
+</I>&gt;<i> - libshedit
+</I>&gt;<i> - bsh
+</I>&gt;<i> - ved
+</I>&gt;<i> - calltree
+</I>&gt;<i> - copy
+</I>&gt;<i> - label
+</I>
+Only 24 programs do not yet compile/link.
+
+This is mostly a result from missing fork() or from the fact that there is 
+no standard terminal mode handling.
+
+Getting an executable however does not mean that this executable works as 
+expected. Note that the OS behaves badly in many cases (violates POSIX on 
+nearly any place) and thus many of the commands still may not make something 
+useful.
+
+I need help from people who like to test and who are willing to debug in case 
+that a program does not work.
+
+I also need help from people wo are willing to find a solution for:
+
+	-	Terminal mode handling
+
+	-	fork().... Is there a way to implement a cheap vfork() like
+		on VMS? This could be done via CreateThread if the following
+		exec() call does not overwrite the whole process but just the
+		current thread.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000820.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000822.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

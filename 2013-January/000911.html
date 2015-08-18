@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk	under RHEL 6.3
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%20disk%0A%09under%20RHEL%206.3&In-Reply-To=%3CCAPrcKX%2B4q6-3VTc1vqGdhNfd8%3DfxuhWyphu33QbSG2O30K-hgw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000912.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk	under RHEL 6.3</H1>
+    <B>Andrew Z</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%203.01a10%20%3A%20fails%20to%20burn%20over%204gb%20on%20dual%20disk%0A%09under%20RHEL%206.3&In-Reply-To=%3CCAPrcKX%2B4q6-3VTc1vqGdhNfd8%3DfxuhWyphu33QbSG2O30K-hgw%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk	under RHEL 6.3">formisc at gmail.com
+       </A><BR>
+    <I>Tue Jan  8 15:44:14 CET 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000912.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+ this is my first post here. I hope that i provided all information needed.
+
+Problem:
+ cdrecord fails to burn images/files more the 4Gb on DL DVD while burning
+DL DVD on 'iHAS124   D' device under Scientific Linux 6.3 with:
+cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 1E CD D0 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 71 00 03 00 00 00 00 0A 00 00 00 00 0C 00 00 00
+Sense Key: 0x3 Medium Error, deferred error, Segment 0
+Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 200s
+
+write track data: error after 4134436864 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 04 08 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x04 Qual 0x08 (logical unit not ready, long write in progress)
+Fru 0x0
+Sense flags: Blk 0 (not valid)
+
+All information i can think of:
+id
+uid=500(az) gid=500(az)
+groups=500(az),11(cdrom),39(video),63(audio),100(users),502(vboxusers)
+
+ls -l /dev/dvd
+lrwxrwxrwx 1 root root 3 Jan  7 23:12 /dev/dvd -&gt; sr0
+
+ls -l /dev/sr0
+brw-rw---- 1 root cdrom 11, 0 Jan  7 23:12 /dev/sr0
+
+uname -a
+Linux server.home 2.6.32-279.5.1.el6.x86_64 #1 SMP Tue Aug 14 16:11:42 CDT
+2012 x86_64 x86_64 x86_64 GNU/Linux
+
+cdrecord -version
+Cdrecord-ProDVD-ProBD-Clone 3.01a10 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2012 Joerg Schilling
+
+mkisofs -version
+mkisofs 3.01a10 (x86_64-unknown-linux-gnu) Copyright (C) 1993-1997 Eric
+Youngdale (C) 1997-2012 Joerg Schilling
+
+mkisofs -R -J -o dvd1.iso ./*.avi
+Setting input-charset to 'UTF-8' from locale.
+  0.13% done, estimate finish Mon Jan  7 22:48:51 2013
+  0.26% done, estimate finish Mon Jan  7 22:42:25 2013
+&lt;skip&gt;
+99.97% done, estimate finish Mon Jan  7 22:40:19 2013
+Total translation table size: 0
+Total rockridge attributes bytes: 1122
+Total directory bytes: 0
+Path table size(bytes): 10
+Max brk space used 0
+3866211 extents written (7551 MB)
+
+isovfy -version
+isovfy 3.01a10 (x86_64-unknown-linux-gnu) Copyright (C) 1993-1999 Eric
+Youngdale (C) 1999-2012 Joerg Schilling
+
+isovfy -i ./dvd1.iso
+Root at extent 1c, 2048 bytes
+[0 0]
+No errors found
+
+cdrecord -v -dev=/dev/dvd -dao ./dvd1.iso
+Cdrecord-ProDVD-ProBD-Clone 3.01a10 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2012 Joerg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '/dev/dvd'
+devname: '/dev/dvd'
+scsibus: -2 target: -2 lun: -2
+Warning: Open by 'devname' is unintentional and not supported.
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ATAPI   '
+Identifikation : 'iHAS124   D     '
+Revision       : '8L03'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD+R/DL
+Profile: DVD+R/DL (current)
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE FORCESPEED
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1048576 = 1024 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  7551 MB
+Total size:     7551 MB = 3866211 sectors
+Current Secsize: 2048
+Blocks total: 4173824 Blocks current: 4173824 Blocks remaining: 307613
+Reducing transfer size from 64512 to 32768 bytes.
+Forcespeed is OFF.
+Starting to write CD/DVD/BD at speed 2 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01: 3942 of 7551 MB written (fifo 100%) [buf  99%]   2.4x.cdrecord:
+Input/output error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 1E CD D0 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 71 00 03 00 00 00 00 0A 00 00 00 00 0C 00 00 00
+Sense Key: 0x3 Medium Error, deferred error, Segment 0
+Sense Code: 0x0C Qual 0x00 (write error) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 200s
+
+write track data: error after 4134436864 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: no error
+CDB:  00 00 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 04 08 00 00
+Sense Key: 0x2 Not Ready, Segment 0
+Sense Code: 0x04 Qual 0x08 (logical unit not ready, long write in progress)
+Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.001s timeout 200s
+Writing  time: 1531.188s
+Average write speed   3.7x.
+Min drive buffer fill was 95%
+Fixating...
+cdrecord: faio_wait_on_buffer for writer timed out.
+Fixating time:  172.996s
+cdrecord: fifo had 126301 puts and 126174 gets.
+cdrecord: fifo was 0 times empty and 60916 times full, min fill was 71%.
+
+/var/log/messages:
+Jan  7 22:23:30 server kernel: cdrom: This disc doesn't have any tracks I
+recognize!
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Result: hostbyte=DID_OK
+driverbyte=DRIVER_SENSE
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Sense Key : Illegal
+Request [current]
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Add. Sense: Logical block
+address out of range
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] CDB: Read(10): 28 00 00 00
+00 00 00 00 01 00
+Jan  7 22:23:30 server kernel: Buffer I/O error on device sr0, logical
+block 0
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Result: hostbyte=DID_OK
+driverbyte=DRIVER_SENSE
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Sense Key : Illegal
+Request [current]
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Add. Sense: Logical block
+address out of range
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] CDB: Read(10): 28 00 00 00
+00 00 00 00 01 00
+Jan  7 22:23:30 server kernel: Buffer I/O error on device sr0, logical
+block 0
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Result: hostbyte=DID_OK
+driverbyte=DRIVER_SENSE
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Sense Key : Illegal
+Request [current]
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] Add. Sense: Logical block
+address out of range
+Jan  7 22:23:30 server kernel: sr 4:0:0:0: [sr0] CDB: Read(10): 28 00 00 00
+00 00 00 00 01 00
+Jan  7 22:23:30 server kernel: Buffer I/O error on device sr0, logical
+block 0
+Jan  7 23:09:34 server kernel: cdrom: This disc doesn't have any tracks I
+recognize!
+Jan  7 23:12:22 server kernel: cdrom: This disc doesn't have any tracks I
+recognize!
+
+
+Please advise. I'm pretty much out of ideas and the error is consistent - i
+already made 5 bad disks...
+
+Thank you
+AZ
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130108/bc5dc5bd/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130108/bc5dc5bd/attachment.html</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000912.html">[Cdrecord-support] 3.01a10 : fails to burn over 4gb on dual disk under RHEL 6.3
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

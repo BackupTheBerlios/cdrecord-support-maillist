@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Checking drives for media compatibility?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C5bdc1c8b1003010946u1e471732jf7688d35dc86579e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000604.html">
+   <LINK REL="Next"  HREF="000595.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Checking drives for media compatibility?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C5bdc1c8b1003010946u1e471732jf7688d35dc86579e%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Checking drives for media compatibility?">markknecht at gmail.com
+       </A><BR>
+    <I>Mon Mar  1 18:46:23 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000604.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+</A></li>
+        <LI>Next message: <A HREF="000595.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#594">[ date ]</a>
+              <a href="thread.html#594">[ thread ]</a>
+              <a href="subject.html#594">[ subject ]</a>
+              <a href="author.html#594">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+   What is the best way to determine what media works in a specific
+drive? I'm trying -checkdrive but that's not very clear. Is there a
+command which produces output that might say DVD-R supported, DVD+RW
+not supported for writing, supported for reading, etc.?
+
+   The rest is just background attempting to demonstrate I read the
+200 line man page and tried a few things before writing. ;-)
+
+Cheers,
+Mark
+
+BACKGROUND:
+
+   I did a backup to DVD sometime ago. I have a DVD drive in the
+machine I backed up but I had a hard time writing the DVD so I moved
+all the data to a second machine and did the backup there. The DVD is
+readable on the machine that made it, and also on a 3rd machine, but
+it's not readable (so far) on the machine where I need to now restore
+the data. Is this because the drive in the machine is bad, or is it
+because the drive is not compatible with the media I wrote the backup
+on? (DVD-R)
+
+   I'm focused for now on the commands
+
+cdrecord -scanbus
+cdrecord dev=x,y,z -checkdrive
+
+Is there a better one?
+
+   Generically I want to query the drive without loading any media to
+determine what the drive can read.
+
+   The original machine that was backed up but won't read the disc:
+
+dragonfly ~ # cdrecord dev=1001,0,0 -checkdrive
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a76 (i686-pc-linux-gnu) Copyright
+(C) 1995-2010 J&#65533;&#65533;rg Schilling
+scsidev: '1001,0,0'
+scsibus: 1001 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : '_NEC    '
+Identifikation : 'DVD_RW ND-2500A '
+Revision       : '1.06'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96R RAW/R96R
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+dragonfly ~ #
+
+
+The machine where I made the actually DVD backup I'm using now for restore:
+
+firefly ~ # cdrecord dev=1,0,0 -checkdrive
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a76 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;&#65533;rg Schilling
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'Optiarc '
+Identifikation : 'DVD RW AD-7240S '
+Revision       : '1.03'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+firefly ~ #
+
+The 3rd machine (Mac Mini) which will read the disc:
+
+MacMini ~ # cdrecord dev=1000,1,0 -checkdrive
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a76 (powerpc-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;&#65533;rg Schilling
+scsidev: '1000,1,0'
+scsibus: 1000 target: 1 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'MATSHITA'
+Identifikation : 'DVD-R   UJ-845  '
+Revision       : 'D8PB'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+cdrecord: Cannot load media with this drive!
+cdrecord: Try to load media by hand.
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+MacMini ~ #
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000604.html">[Cdrecord-support] .cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+</A></li>
+	<LI>Next message: <A HREF="000595.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#594">[ date ]</a>
+              <a href="thread.html#594">[ thread ]</a>
+              <a href="subject.html#594">[ subject ]</a>
+              <a href="author.html#594">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

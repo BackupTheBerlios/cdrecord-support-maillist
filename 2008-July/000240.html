@@ -1,0 +1,229 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C486ce36a.qmsgHrGEJ2myvdKM%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000239.html">
+   <LINK REL="Next"  HREF="000241.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C486ce36a.qmsgHrGEJ2myvdKM%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul  3 16:34:18 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000239.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000241.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#240">[ date ]</a>
+              <a href="thread.html#240">[ thread ]</a>
+              <a href="subject.html#240">[ subject ]</a>
+              <a href="author.html#240">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> * Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Nearly 100% of today's software depends on &quot;confidure&quot; and thus depends 
+</I>&gt;<i> &gt; on the ability to run tests _on_ the target platform. 
+</I>&gt;<i>
+</I>&gt;<i> That's not entirely true:
+</I>&gt;<i>
+</I>&gt;<i> a) the amount of packages built on autotools is far beyond 100%
+</I>&gt;<i>    (those I'm maintaining in my embedded distros, about 75%)
+</I>&gt;<i>
+</I>&gt;<i> b) it normally affects only those misdesigned packages which use 
+</I>&gt;<i>    really obsoleted macros like AC_TRY_RUN, AC_CHECK_FILE or even
+</I>&gt;<i>    hand-written tests. In several hundreds of packages I had to 
+</I>&gt;<i>    cope with in recent years, there were just a few ones where it
+</I>&gt;<i>    wasn't easy to get around this, but not a single one where it's 
+</I>&gt;<i>    really impossible.
+</I>
+If you believe that there are better methods, you would need to explain them.
+
+    
+&gt;<i> &gt; It is not possible to cross-compile such software unless you _manually_ 
+</I>&gt;<i> &gt; create _all_ expected auto-configuration results for the target platform.
+</I>&gt;<i>
+</I>&gt;<i> No, you just have to learn living without that voodo stuff and instead
+</I>&gt;<i> define *clear* configure options. And you also have to learn to properly
+</I>&gt;<i> use the toolchain for doing the dirty work.
+</I>
+I am not sure about your experiences in portability. I am doing this since 25 
+years. If you like to make a better proposal, I would of course be 
+interested but you would need to prove that your method it still works for 
+least the following platforms:
+
+SunOS-4.x
+SunOS-5.x (Solaris)
+Linux-2.2-Linux-2.6
+AIX
+HP-UX
+BeOS
+*BSD (all flavors)
+Interix (WIN-32 + SFU)
+IRIX
+Mac OS X
+SCO OpenServer
+SCO UnixWare
+Win-32 + Cygwin
+Hurd
+True-64
+
+&gt;<i> For example:
+</I>&gt;<i>
+</I>&gt;<i> * AC_CHECK_SIZEOF:  	a) there is sizeof()
+</I>&gt;<i> 			b) checking for a specific size is possible by compile-only
+</I>
+sizeof does not work for CPP, If you don't like this you cannot support Linux 
+include file bugs.
+
+
+&gt;<i> * AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+</I>&gt;<i>                         stick on old K&amp;R compiler ? ;-o
+</I>
+Needed for e.g. HP-UX
+ 		
+       
+&gt;<i> * AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+</I>&gt;<i> 			unless someone has an really broken libc. but then he should
+</I>&gt;<i> 			fix his broken system instead of holding individual 
+</I>&gt;<i> 			packages responsible for hacking around his buggy system.
+</I>
+Needed for Mac OS X and *BSD. I have no idea how Apple managed to pass the POSIX
+compliance tests....
+
+
+&gt;<i> * AC_C_BITFIELDS:	IMHO not needed at all. sane libc's provide proper bytesex
+</I>&gt;<i> 			macros ;-P
+</I>
+Try to inform you about C-compilers. Byte-order is independent from Bitorder in 
+bitfields. Even the byteorder macros are not compatible across platforms.
+
+
+&gt;<i> * AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+</I>
+Wrong: needed on some platforms.
+
+
+&gt;<i> * AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+</I>&gt;<i> 			use it at all.
+</I>
+Wrong: needed for *BSD and Mac OS X
+
+
+&gt;<i> * AC_FUNC_ECVT:		same as w/ AC_VAR_TIMEZONE - if it exists, it can be assumed 
+</I>&gt;<i>   AC_FUNC_FCVT		to work - don't try to hack around certain people's broken libc.
+</I>&gt;<i>   AC_FUNC_GCVT
+</I>
+It would be fun to see how you try to explain Ulrich Drepper how to fix 
+the related bugs in glibc..... The last time I tried to do this, he anathematized 
+like Rumpelstiltskin and I received a menacing mail from RedHat lawyers 3 hours 
+later. David Korn had to calm down Mr. Drepper....
+
+ 			
+&gt;<i> * AC_FUNC_MLOCK:	same. HP-UX folks should fix their system or at least make the
+</I>&gt;<i>   AC_FUNC_MLOCKALL:	compiling mlock() call fail.
+</I>
+You cannot even get the bugs in glibs fixed. How do you expect this to happen 
+for old versions of HP-UX?
+			
+&gt;<i> * jsAC_FUNC_MMAP:	nearly the same (okay, requires a bit more magic ;-o)
+</I>
+Do you really like to drop support for Linux-2.4?
+
+
+&gt;<i> * AC_FUNC_SYS_SIGLIST:	can be checked by compile
+</I>
+Wrong
+
+
+&gt;<i> * AC_HEADER_MAKEDEV:	IMHO not needed at all - use the proper libc types/macros
+</I>
+Wrong: there is no standard for this feature!!!!!!
+
+&gt;<i> * AC_USER_MALLOC:	not needed at all
+</I>
+Wrong: Dou you like to drop Cygwin?
+
+&gt;<i> * AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+</I>
+Wrong: needed for *BSD support
+
+
+&gt;<i> * AC_HARD_SYMLINKS:	not used anywhere
+</I>&gt;<i>   AC_LINK_NOFOLLOW
+</I>
+Wrong, needed for star
+
+&gt;<i> * AC_ACCESS_E_OK:	not needed, fix the broken libc.
+</I>
+Wrong: needed for many platforms. There is no standard for this!!!!!
+
+
+&gt;<i> BTW: most of these things are just hacks for a handful broken targets. Those things 
+</I>&gt;<i> could also be done via some --with-oshacks= swich.
+</I>
+BTW: the target that includes the biggest number of bugs that need workarounds 
+if Linux. Do you like me to drop Linux from the supported target platforms?
+
+
+&gt;<i> &gt; See above: no recent software allows cross-compilation unless you manually
+</I>&gt;<i> &gt; create the auto-configuration results or fetch them from a native compilation
+</I>&gt;<i> &gt; run on a machine of the same architecture and sub-architecture.
+</I>&gt;<i>
+</I>&gt;<i> As said above: not true if the sw engineers did their homeworks ;-P
+</I>
+See above, you still have to prove your claim as you did not show me how to
+live without tests that are run on the target platform. 
+
+BTW: I know two software sources for highly portable software. One is David Korn 
+and Glenn Fowler and the other is me. Both sources use the same basic ideas for 
+making the software highly portable. 
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000239.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000241.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#240">[ date ]</a>
+              <a href="thread.html#240">[ thread ]</a>
+              <a href="subject.html#240">[ subject ]</a>
+              <a href="author.html#240">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

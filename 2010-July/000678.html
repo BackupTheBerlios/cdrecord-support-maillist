@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3CAANLkTimqLLDFpM2oWD%2BGavrPGu24WufaMGSSoxNrgMsA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000677.html">
+   <LINK REL="Next"  HREF="000679.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE</H1>
+    <B>Eric Shattow &quot;Eprecocious&quot;</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3CAANLkTimqLLDFpM2oWD%2BGavrPGu24WufaMGSSoxNrgMsA%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE">lucent at gmail.com
+       </A><BR>
+    <I>Sat Jul 31 06:15:04 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000677.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+        <LI>Next message: <A HREF="000679.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Try raw96 mode?  Tell us if that works.
+
+Apparently, the default mode was changed to something which fails on
+*many* writers / &quot;The hardware is buggy&quot;
+
+On Fri, Jul 30, 2010 at 7:09 PM, Murray Blakeman
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mblakeman at netspace.net.au</A>&gt; wrote:
+&gt;<i> I recently purchased a Pioneer Bluray Writer BDR-205BKRP. &#160;I'm trying to do
+</I>&gt;<i> some testing to ensure it works correctly.
+</I>&gt;<i>
+</I>&gt;<i> I'm running Solaris 10u8 and have installed cdrtools 3.0.0.
+</I>&gt;<i>
+</I>&gt;<i> Trying to burn an ISO image to a BD-RE but get the following error.
+</I>&gt;<i>
+</I>&gt;<i> Maybe I'm doing something wrong.
+</I>&gt;<i>
+</I>&gt;<i> $ cdrecord dev=0,0,0 driveropts=burnfree gracetime=20 -verbose image.iso
+</I>&gt;<i> cdrecord: No write mode specified.
+</I>&gt;<i> cdrecord: Assuming -sao mode.
+</I>&gt;<i> cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> cdrecord: Future versions of cdrecord may have different drive dependent
+</I>&gt;<i> defaults.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.10) Copyright (C)
+</I>&gt;<i> 1995-2010 J&#246;rg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '0,0,0'
+</I>&gt;<i> scsibus: 0 target: 0 lun: 0
+</I>&gt;<i> Warning: Using USCSI interface.
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 0
+</I>&gt;<i> Device type &#160; &#160;: Removable CD-ROM
+</I>&gt;<i> Version &#160; &#160; &#160; &#160;: 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities &#160; :
+</I>&gt;<i> Vendor_info &#160; &#160;: 'PIONEER '
+</I>&gt;<i> Identifikation : 'BD-RW &#160; BDR-205 '
+</I>&gt;<i> Revision &#160; &#160; &#160; : '1.04'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: BD-RE
+</I>&gt;<i> Profile: BD-RE (current)
+</I>&gt;<i> Profile: BD-R random recording
+</I>&gt;<i> Profile: BD-R sequential recording
+</I>&gt;<i> Profile: BD-ROM
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Using generic SCSI-3/mmc-3 BD-RE driver (mmc_bdre).
+</I>&gt;<i> Driver flags &#160; : NO-CD BD MMC-3 BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1572864 = 1536 KB
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size &#160; &#160; &#160;: 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data &#160;7411 MB
+</I>&gt;<i> Total size: &#160; &#160; 7411 MB = 3794608 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160;Capacity &#160;Blklen/Sparesz. &#160;Format-type &#160;Type
+</I>&gt;<i> &#160; &#160;12219392 &#160; &#160; &#160; &#160; &#160; &#160;20480 &#160; &#160; &#160; &#160; 0x00 &#160;Unformated or Blank Media
+</I>&gt;<i> &#160; &#160;11826176 &#160; &#160; &#160; &#160; &#160; &#160;12288 &#160; &#160; &#160; &#160; 0x00 &#160;Reserved (0)
+</I>&gt;<i> &#160; &#160;11826176 &#160; &#160; &#160; &#160; &#160; &#160;12288 &#160; &#160; &#160; &#160; 0x30 &#160;Reserved (0)
+</I>&gt;<i> &#160; &#160;11564032 &#160; &#160; &#160; &#160; &#160; &#160;20480 &#160; &#160; &#160; &#160; 0x30 &#160;Reserved (0)
+</I>&gt;<i> &#160; &#160;12088320 &#160; &#160; &#160; &#160; &#160; &#160; 4096 &#160; &#160; &#160; &#160; 0x30 &#160;Reserved (0)
+</I>&gt;<i> &#160; &#160;12219392 &#160; &#160; &#160; &#160; &#160; &#160; 2048 &#160; &#160; &#160; &#160; 0x31 &#160;Reserved (0)
+</I>&gt;<i> Format was needed.
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 2 in real FORMAT mode for single
+</I>&gt;<i> session.
+</I>&gt;<i> Last chance to quit, starting real write i &#160; 0 seconds. Operation starts.
+</I>&gt;<i> Formatting media
+</I>&gt;<i> cdrecord: I/O error. format unit: scsi sendcmd: no error
+</I>&gt;<i> CDB: &#160;04 11 00 00 00 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 26 00 00 89 00 08
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) error refers to data part, bit ptr 1 (valid)
+</I>&gt;<i> field ptr 8
+</I>&gt;<i> resid: 12
+</I>&gt;<i> cmd finished after 0.009s timeout 5300s
+</I>&gt;<i> cdrecord: Cannot format medium.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000677.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+	<LI>Next message: <A HREF="000679.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#678">[ date ]</a>
+              <a href="thread.html#678">[ thread ]</a>
+              <a href="subject.html#678">[ subject ]</a>
+              <a href="author.html#678">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

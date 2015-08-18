@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%20build%20with%20gmake&In-Reply-To=%3CCAJ5UdcO4CAwuEqEe767u1C3qs6e9shpPjm8edswsG1hymjmi%2BA%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000936.html">
+   <LINK REL="Next"  HREF="000933.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%0A%20build%20with%20gmake&In-Reply-To=%3CCAJ5UdcO4CAwuEqEe767u1C3qs6e9shpPjm8edswsG1hymjmi%2BA%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build with gmake">olivares14031 at gmail.com
+       </A><BR>
+    <I>Tue May 28 16:42:02 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000936.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+        <LI>Next message: <A HREF="000933.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#937">[ date ]</a>
+              <a href="thread.html#937">[ thread ]</a>
+              <a href="subject.html#937">[ subject ]</a>
+              <a href="author.html#937">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Sir,
+
+Shell is default shell:
+
+$ echo $SHELL
+/bin/sh
+
+I saw that dragonflybsd had cdrtools-a14 and freebsd still has
+cdrtools-3.00 and they(dragonfly) built it with pkgsrc.  I wanted to
+have latest cdrtools on FreeBSD as well so I compiled it.  On
+dragonfly I wanted to test pkg.  pkg is a binary system vs compiling
+from source to test it.  I decided to use pkg vs pkgsrc and the copy
+of cdrtools became the one on FreeBSD which is the 3.00 version.  I
+wanted the new 3.01a14 and now I have it installed thanks to your
+help.
+
+On FreeBSD I am trying to build schily tools so you can see what is
+going on.  Using smake, I get the following:
+
+    ==&gt; MAKING DEPENDENCIES &quot;ttymodes.d&quot;
+    ==&gt; COMPILING &quot;edit.o&quot;
+    ==&gt; COMPILING &quot;inputc.o&quot;
+In file included from ../include/schily/wchar.h:58,
+                 from inputc.c:60:
+/usr/include/wchar.h:102: error: two or more data types in declaration
+specifiers
+/opt/schily/bin/smake: Operation not permitted. *** Code 1 from
+command line for target 'inputc.o'.
+/opt/schily/bin/smake: The following command caused the error:
+echo &quot;    ==&gt; COMPILING \&quot;inputc.o\&quot;&quot;; gcc   -O   -DSCHILY_BUILD
+-IOBJ/amd64-freebsd-cc -I../incs/amd64-freebsd-cc -I../include
+-I/usr/local/include   -DBSH     -DUSE_LARGEFILES     -DINTERACTIVE
+     -DDO_SUID         -DVFORK -DOLD_PWORD         -DFAST_MALLOC
+  -DTESTMAIL         -DBOURNE -DLIB_SHEDIT -Iinclude  -c -o
+OBJ/amd64-freebsd-cc/inputc.o inputc.c
+/opt/schily/bin/smake: Couldn't make 'all'.
+/opt/schily/bin/smake: Leaving  '/opt/schily/bin/smake'[1] from
+directory '/usr/home/olivares/Downloads/schily-2013-05-10/libshedit'
+/opt/schily/bin/smake: Default commandline target: 'all'
+/opt/schily/bin/smake: Doing                       exit(1)
+/opt/schily/bin/smake: Operation not permitted. *** Code 1 from
+command line for target 'all'.
+/opt/schily/bin/smake: The following command caused the error:
+list=&quot;&quot;;                            \
+    if [ -d TARGETS -a -f TARGETS/__slot ]; then                \
+        list=`echo TARGETS/[0123456789][0123456789]* |            \
+            sed -e 's;TARGETS/[0123456789][0123456789];;g' | sed -e
+'s;!@!;/;g'`;\
+    fi;                                    \
+    for DIR in ${list} ;                            \
+    do                                    \
+        (                                \
+        echo &quot;    ==&gt; MAKING \&quot;all\&quot; ON SUBDIRECTORY \&quot;SRCROOT/$DIR\&quot;&quot;;\
+        if [ -d ./$DIR -a -r ./$DIR/Makefile ] ; then            \
+            cd ./$DIR &amp;&amp; &quot;/opt/schily/bin/smake&quot;
+XARCH=amd64-freebsd-cc DIRNAME=SRCROOT/$DIR all;        \
+        else                                \
+            echo &quot;NOTICE: Partial source (SRCROOT/$DIR) missing&quot;;\
+        fi                                \
+        );                                \
+    done
+/opt/schily/bin/smake: Couldn't make 'all'.
+
+
+I could not build it on dragonflybsd either, but cdrecord did build :)
+
+$ uname -a
+FreeBSD E-213-3W 9.1-RELEASE-p3 FreeBSD 9.1-RELEASE-p3 #0: Mon Apr 29
+18:27:25 UTC 2013
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at amd64-builder.daemonology.net</A>:/usr/obj/usr/src/sys/GENERIC  amd64
+$ /opt/schily/bin/cdrecord --version
+Cdrecord-ProDVD-ProBD-Clone 3.01a14 (amd64-unknown-freebsd9.1)
+Copyright (C) 1995-2013 Joerg Schilling
+$
+
+If you have a suggestion or two for building schily-2013-05-10 then I
+am all ears :)
+
+
+Best Regards,
+
+
+Antonio
+
+On Tue, May 28, 2013 at 9:10 AM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Dear Sir,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I moved the offending files to a temporary folder and I got cdrecord
+</I>&gt;&gt;<i> to compile :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ cdrecord --version
+</I>&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a14 (amd64-unknown-freebsd8.3)
+</I>&gt;&gt;<i> Copyright (C) 1995-2013 Joerg Schilling
+</I>&gt;&gt;<i> $
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> But the code in schily-2013-05-10.tar.bz2 fails to compile.  In that
+</I>&gt;&gt;<i> case some other header files get in the way :(
+</I>&gt;<i>
+</I>&gt;<i> schily-2013-05-10.tar.bz2 is known to fail if your system shell is bash, as
+</I>&gt;<i> smake then contains an assignement to a no longe rexisting variable. There is a
+</I>&gt;<i> preliminary archive with a fix.
+</I>&gt;<i>
+</I>&gt;<i> If you have a different problem, please report!
+</I>&gt;<i>
+</I>&gt;&gt;<i> Thanks for the help.  I could not get cdrtools from source to compile
+</I>&gt;&gt;<i> on BSD* systems, and I hesitated to ask for help :(
+</I>&gt;&gt;<i> Now it is working!
+</I>&gt;<i>
+</I>&gt;<i> Well, your problem seems to be an unfriendly project that installed outdated
+</I>&gt;<i> local definitions into a global include directory. Please make a bug report
+</I>&gt;<i> against your distro managing.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I></PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000936.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+	<LI>Next message: <A HREF="000933.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#937">[ date ]</a>
+              <a href="thread.html#937">[ thread ]</a>
+              <a href="subject.html#937">[ subject ]</a>
+              <a href="author.html#937">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

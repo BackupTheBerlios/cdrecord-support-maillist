@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E252C27.8070404%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000789.html">
+   <LINK REL="Next"  HREF="000791.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E252C27.8070404%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Tue Jul 19 09:03:03 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000789.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000791.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I make small steps forward. Quoting the cmd in single quotes before
+the spanwl() call is the key. Subsequently I had to change the single
+quotes to double quotes in the &quot;sed .... &quot; lines in RULES/r-smake.dep.
+I do not know whether this breaks the process on a different platform.
+This has to be investigated.
+The problem I am currently trying to find is that the implicit O macro
+(capital letter 'O') is not always defined to the value of .OBJDIR
+but rather to the default &quot;.&quot;
+Thus the object files after compilation end up in the same directory
+as the source files and thus linking fails. I have attached several
+logs with different -d and -D options running ../psmake/smake -f 
+align_test.mk from within inc.
+I am not sure when .OBJDIR during the smake run is set (it is assigned
+in RULES/r-smake.obj) and when this is transferred to O, which is then
+referred in RULES/r-smake.obj
+At this point it is totally unclear why this behaves differently on
+MinGW but I am sure there is a simple explanation, once you know..
+Any hint where to look?
+
+Best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Yesterday I made some progress with smake. I had partly success by
+</I>&gt;&gt;<i> putting the command line between quotes before the call to spawnl(). It
+</I>&gt;&gt;<i> still chokes on the multi-line commands from RULES/rules1.dir . I do not
+</I>&gt;&gt;<i> know yet why. I have to investigate further.
+</I>&gt;<i>
+</I>&gt;<i> I mentioned already that I did try to implement native M$ support without
+</I>&gt;<i> success as WIN-DOS violates the C standard by not forwarding the arg vector
+</I>&gt;<i> to sub processes.
+</I>&gt;<i>
+</I>&gt;<i> On the other side, it seems that cygwin is able to deal with the problems.
+</I>&gt;<i> So my question still is: how is Cygwin able to do this even though WIN-DOS
+</I>&gt;<i> does not include any known feature to do this correctly.
+</I>&gt;<i>
+</I>&gt;<i> Do you have a gmake MinGW32 binary that behaves better in this area?
+</I>&gt;<i>
+</I>&gt;&gt;<i> Did you in the meantime decide on the other missing system calls, like
+</I>&gt;&gt;<i> getuid(), etc.?
+</I>&gt;<i>
+</I>&gt;<i> This code is available since a week.
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: align_test_log.zip
+Type: application/zip
+Size: 8935 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110719/81a8ce2c/attachment.zip">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110719/81a8ce2c/attachment.zip</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000789.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000791.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

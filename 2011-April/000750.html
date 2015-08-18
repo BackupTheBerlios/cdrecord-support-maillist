@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] problem with multisession continuation on DVD-R disk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20problem%20with%20multisession%20continuation%20on%0A%20DVD-R%20disk&In-Reply-To=%3C4DBAE00A.1070003%40interia.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000749.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] problem with multisession continuation on DVD-R disk</H1>
+    <B>froff</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20problem%20with%20multisession%20continuation%20on%0A%20DVD-R%20disk&In-Reply-To=%3C4DBAE00A.1070003%40interia.pl%3E"
+       TITLE="[Cdrecord-support] problem with multisession continuation on DVD-R disk">froff at interia.pl
+       </A><BR>
+    <I>Fri Apr 29 17:58:02 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000749.html">[Cdrecord-support] problem with multisession continuation on DVD-R disk
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#750">[ date ]</a>
+              <a href="thread.html#750">[ thread ]</a>
+              <a href="subject.html#750">[ subject ]</a>
+              <a href="author.html#750">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 29.04.2011 11:18, Joerg Schilling wrote:
+ &gt; This looks OK, however I would need the cdrecord -minfo output from before and
+ &gt; after that write and it would help to know the output from cdrecord -atip
+
+Thanks for reply. Requested logs as follows:
+
+for the blank dist:
+
+===================================
+minfo:
+
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-212 '
+Revision       : '1.28'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+/opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+/opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+Mounted media class:      DVD
+Mounted media type:       DVD-R sequential recording
+Disk Is not erasable
+data type:                standard
+disk status:              empty
+session status:           empty
+BG format status:         none
+first track:              1
+number of sessions:       1
+first track in last sess: 1
+last track in last sess:  1
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+     1     1 Blank  0          2298495    2298496
+
+Next writable address:              0
+Remaining writable size:            2298496
+
+
+===================================
+atip:
+
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-212 '
+Revision       : '1.28'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+/opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+/opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+book type:       DVD-R, Version 2.0x -&gt; 2.1 (2.5)
+disc size:       120mm (0)
+maximum rate:    Not specified (15)
+number of layers:1
+track path:      Parallel Track Path (0)
+layer type:      Rewritable Area (2)
+linear density:  0.267 &#318;m/bit (0)
+track density:   0.74 &#318;m/track (0)
+phys start:      196608 (0x30000)
+phys end:        0
+end layer 0:     0
+bca:             0
+phys size:...    -196607
+copyr prot type: 0
+region mgt info: 0
+last rma sector: 0
+application code:64
+physical code:   193
+last rec address:16621272
+part v./ext code:5/2
+ind wr. power:   133
+wavelength code: 13
+write str. code: 0E 88 9A 80
+Manufacturer:   'MCC 03RG20  '
+rzone size:         36
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         4 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        2298496
+blocking factor:    16
+rzone size:         2298496
+last recorded addr: 0
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+      4101552             2048         0x00  No Media Present or Unknown Capacity
+
+
+
+
+
+===================================
+
+and after first session:
+
+===================================
+minfo:
+
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-212 '
+Revision       : '1.28'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+/opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+/opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+WARNING: Phys disk size 500123 differs from rzone size 0! Prerecorded disk?
+WARNING: Phys start: 196608 Phys end 696730
+WARNING: Drive returns zero media size. Using media size from ADIP.
+Mounted media class:      DVD
+Mounted media type:       DVD-R sequential recording
+Disk Is not erasable
+data type:                standard
+disk status:              incomplete/appendable
+session status:           empty
+BG format status:         none
+first track:              1
+number of sessions:       2
+first track in last sess: 2
+last track in last sess:  2
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+     1     1 Data   0          500127     500128
+     2     2 Blank  528816     2297887    1769072
+
+Last session start address:         0
+Last session leadout start address: 500128
+Next writable address:              528816
+Remaining writable size:            1769072
+
+===================================
+atip:
+
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1,0,0.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-212 '
+Revision       : '1.28'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+/opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+/opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+book type:       DVD-R, Version 2.0x -&gt; 2.1 (2.5)
+disc size:       120mm (0)
+maximum rate:    Not specified (15)
+number of layers:1
+track path:      Parallel Track Path (0)
+layer type:      Rewritable Area (2)
+linear density:  0.267 &#318;m/bit (0)
+track density:   0.74 &#318;m/track (0)
+phys start:      196608 (0x30000)
+phys end:        696730
+end layer 0:     0
+bca:             0
+phys size:...    500123
+copyr prot type: 0
+region mgt info: 0
+cpm:             0
+cgms:            0
+last rma sector: 0
+application code:64
+physical code:   193
+last rec address:16621272
+part v./ext code:5/2
+ind wr. power:   133
+wavelength code: 13
+write str. code: 0E 88 9A 80
+Manufacturer:   'MCC 03RG20  '
+rzone size:         36
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         4 copy: 0
+damage:             0
+reserved track:     0 blank: 0 incremental: 1 fp: 0
+data mode:          1
+lra valid:          1
+nwa valid:          0
+rzone start:        0
+next wr addr:       0
+free blocks:        0
+blocking factor:    16
+rzone size:         500128
+last recorded addr: 500122
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+       500128             2048         0x00  Formatted Media
+WARNING: Phys disk size 500123 differs from rzone size 0! Prerecorded disk?
+WARNING: Phys start: 196608 Phys end 696730
+WARNING: Drive returns zero media size. Using media size from ADIP.
+
+
+
+-----------------------------------------
+Oblicz, ile kredytu dostanie Twoja firma!
+<A HREF="http://linkint.pl/f2989">http://linkint.pl/f2989</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000749.html">[Cdrecord-support] problem with multisession continuation on DVD-R disk
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#750">[ date ]</a>
+              <a href="thread.html#750">[ thread ]</a>
+              <a href="subject.html#750">[ subject ]</a>
+              <a href="author.html#750">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

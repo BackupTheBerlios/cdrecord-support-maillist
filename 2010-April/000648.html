@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20CD%20Audio%20extraction%20with%0A%20sample%20offset&In-Reply-To=%3C4bd43c69.0kvdfjhZnC46J/iF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000647.html">
+   <LINK REL="Next"  HREF="000649.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Feature Request: CD Audio extraction with sample offset</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20CD%20Audio%20extraction%20with%0A%20sample%20offset&In-Reply-To=%3C4bd43c69.0kvdfjhZnC46J/iF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Feature Request: CD Audio extraction with sample offset">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Apr 25 14:58:17 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000647.html">[Cdrecord-support] Feature Request: CD Audio extraction with	sample offset
+</A></li>
+        <LI>Next message: <A HREF="000649.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#648">[ date ]</a>
+              <a href="thread.html#648">[ thread ]</a>
+              <a href="subject.html#648">[ subject ]</a>
+              <a href="author.html#648">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Eric Shattow &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">lucent at gmail.com</A>&gt; wrote:
+
+&gt;<i> On Sat, Apr 24, 2010 at 3:39 AM, Joerg Schilling
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+</I>&gt;<i> ...
+</I>&gt;<i> &gt; Are you sure that cdparanoia has this feature? Cdparanoia is based
+</I>&gt;<i> ...
+</I>&gt;<i> From &quot;cdparanoia III release 10.2 (September 11, 2008)&quot; cdparanoia
+</I>&gt;<i> --help output:
+</I>&gt;<i>   -O --sample-offset &lt;n&gt;          : Add &lt;n&gt; samples to the offset when
+</I>&gt;<i> reading data.  May be negative.
+</I>
+For a simple program like cdparanoia, this is easy to implement. For one 
+firection, you just first write a few zero samples into the output file
+and then continue with normal operation. For the other direction, it is a bit
+more complex but still relatively simple.
+
+Cdda2wav by default puts every track into a separate file for better usability 
+of the result. This makes things nuch harder to implement.
+
+
+&gt;<i> &gt; It is most unlikely that this program will help you. It is based on libcdio
+</I>&gt;<i> &gt; and libcdio was created from an outdated version of cdda2wav and is even
+</I>&gt;<i>
+</I>&gt;<i> I thought it was based on other vcdimager, is the information wrong?:
+</I>&gt;<i> <A HREF="http://www.gnu.org/software/libcdio/libcdio.html">http://www.gnu.org/software/libcdio/libcdio.html</A>
+</I>
+The READMEs in the libcdio project explain that it is based on cdda2wav
+and it is even possible to identify code that was taken from cdda2wav.
+Cdda2wav from 1993 up to April 2006 was under GPLv2 _only_ and newer releases
+are under CDDL. It is not possible to relicense the code under GPLv2 &quot;or any
+later&quot; or even GPLv3.
+
+Cdparanoia is based on a cdda2wav version from 1987. Even vcdimager
+is based on code from cdrtools and vcdimater (similar to libcdio) is in 
+license violations with the code taken from cdrtools. Vcdimager did take code
+from cdrtools that was not published under GPL and but claims it is under GPL.
+The author of the related code did never give permission to put this code under 
+GPL.
+
+It is unfortunate to see tha in special the &quot;Free software foundation&quot; did 
+take a lot of code from cdrtools but does not honor it's licens and the 
+Copyright law.
+
+
+&gt;<i> I like the attention to features and quality in cdrtools, and also portability.
+</I>
+I am writing OpenSource Software since 1982 and an important feature of OSS 
+code from the early times was the ability to use the code on any platform.
+I am still following this goal. If you do a reality check, you will find that 
+e.g. GNOME is used on many platforms but unfortunately many authors for GNOME
+sub projects only case about their home platform resulting in non-prtable code.
+This is something that harms the OSS community...
+
+
+&gt;<i> &gt; Note that the typical audio read offset is less than 20ms and you will need to
+</I>&gt;<i> &gt; create a 20th or 50th stage copy in order to be able to notice the offset at
+</I>&gt;<i> &gt; all.
+</I>&gt;<i>
+</I>&gt;<i> Very true, it's not noticeable by the ears. I am also interested in
+</I>&gt;<i> checksumming the audio data to compare with others on a 3rd party
+</I>&gt;<i> database. This requires a reference for zero (or, the first sample),
+</I>&gt;<i> and is most consistent if the audio output by the extractor program
+</I>&gt;<i> (i.e. cued / cdparanoia / cdda2wav) is aligned to &quot;zero&quot;. Zero can be
+</I>&gt;<i> anything but it does differ between drives. It is simplest from the
+</I>&gt;<i> view of a checksumming process to have the data aligned instead of
+</I>&gt;<i> adding metadata about which drive was used and missing audio samples
+</I>&gt;<i> used as data in the checksum.
+</I>
+What 3rd party data base do you like to use?
+
+If you use cdda2wav paraopts=proof, you will get an optimized set of paranoia 
+options and (in contrary to cdparanoia) you will get a summary for every track 
+that informs you whether the extraction was successful and without audible 
+deviations from the original.
+
+BTW, the idea behind some of the checksum data bases is to avoid paranoia code 
+and to only check whether the extraction result is the same as from other users.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000647.html">[Cdrecord-support] Feature Request: CD Audio extraction with	sample offset
+</A></li>
+	<LI>Next message: <A HREF="000649.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#648">[ date ]</a>
+              <a href="thread.html#648">[ thread ]</a>
+              <a href="subject.html#648">[ subject ]</a>
+              <a href="author.html#648">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Burning Blu-Ray-disks: many failures
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Burning%20Blu-Ray-disks%3A%20many%20failures&In-Reply-To=%3Cop.wysdozygif5leg%40hans-dimension-8300%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Burning Blu-Ray-disks: many failures</H1>
+    <B>hans kaper</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Burning%20Blu-Ray-disks%3A%20many%20failures&In-Reply-To=%3Cop.wysdozygif5leg%40hans-dimension-8300%3E"
+       TITLE="[Cdrecord-support] Burning Blu-Ray-disks: many failures">spakyelj at xs4all.nl
+       </A><BR>
+    <I>Sun Jun 16 21:28:01 CEST 2013</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#938">[ date ]</a>
+              <a href="thread.html#938">[ thread ]</a>
+              <a href="subject.html#938">[ subject ]</a>
+              <a href="author.html#938">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have problems burning Blu-Ray-disks. I installed cdrecord version
+3.01a13 on a dedicated partition with Linux Mint-13. I disabled the
+distro's cdrecord.  The cd-burner is from LiteOn, type iHBS112.
+Blu-Rray-disks are from Verbatim, type IMe. Details are at the end of this
+post. Burning cd's and dvd's goes all-right (1 failure out of 11 tries),
+burning Blu-Ray-disks is the other way round: 1 hit and 5 failures. So the
+system is able to burn Blu-Ray-disks, but something is bothering it.
+
+My question is: how critical is burning BR-disks: is it very critical or
+is it very, very, very critical. Has anybody experience with the above
+mentioned combination?
+Is it likely to be a hardware or a software problem or a combination of
+both? Will a simpler distro help?: a bare version of Gentoo or even Linux
+   From Scratch?
+
+What is the meaning of: &quot;WARNING: Phys disk size 4452354 differs from
+rzone size 12219392! Prerecorded disk?&quot; in the output. I have seen this
+mentioned in other posts.
+
+The command to burn a disk:
+cdrecord -v speed=0 -sao $outfile
+($outfile is an iso-image by: mkisofs -R -iso-level 3 -joliet-long -V
+$label -o $outfile $intree )
+
+I will be grateful for any suggestion.
+
+
+Hans Kaper.
+
+The errors were more or less the same as this last one:
+------------------------------------------------------------------------------------
+Output burning BluRay-disk:
+
+Linux sg driver version: 3.5.34
+SCSI buffer size: 32768
+No target specified, trying to find one...
+Using dev=1,0,0.
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+Cdrecord-ProDVD-ProBD-Clone 3.01a13 (i686-pc-linux-gnu) Copyright (C)
+1995-2012 Joerg Schilling
+TOC Type: 1 = CD-ROM
+Using libscg version 'schily-0.9'.
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ATAPI   '
+Identifikation : 'iHBS112   2     '
+Revision       : 'PL05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-R sequential recording
+Profile: CD-ROM
+..............
+Profile: Removable Disk
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE FORCESPEED
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 6094848 = 5952 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  21691 MB
+Total size:     21691 MB = 11105972 sectors
+Current Secsize: 2048
+WARNING: Phys disk size 4452354 differs from rzone size 12219392!
+Prerecorded disk?
+WARNING: Phys start: 25088 Phys end 4477441
+Blocks total: 12219392 Blocks current: 12219392 Blocks remaining: 1113420
+Forcespeed is OFF.
+Starting to write CD/DVD/BD at speed 0 in real SAO mode for single session.
+Last chance to quit, starting real write in 9 seconds.. 0 seconds.
+Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+
+Track 01:    0 of 21691 MB written.
+Track 01:    1 of 21691 MB written (fifo  94%)   0,0x.
+Track 01:    2 of 21691 MB written (fifo  96%)   3,3x.
+Track 01:    3 of 21691 MB written (fifo  98%)   3,2x.
+Track 01:    4 of 21691 MB written (fifo  94%)   3,0x.
+Track 01:    5 of 21691 MB written (fifo  96%)   3,2x.
+Track 01:    6 of 21691 MB written (fifo  92%) [buf  93%]   0,1x.
+.........
+.........
+Track 01: 11764 of 21691 MB written (fifo  99%) [buf  75%]   0,5x.
+Track 01: 11765 of 21691 MB written (fifo  96%) [buf  64%]   3,7x.
+Track 01: 11766 of 21691 MB written (fifo  98%) [buf  54%]   3,8x.
+Track 01: 11767 of 21691 MB written (fifo  96%) [buf  40%]   3,3x.
+Track 01: 11768 of 21691 MB written (fifo  96%) [buf  29%]   3,6x.
+Track 01: 11769 of 21691 MB written (fifo  93%) [buf   1%]   3,8x.
+Track 01: 11770 of 21691 MB written (fifo  94%) [buf  18%]   1,9x.
+Track 01: 11771 of 21691 MB written (fifo  98%) [buf  35%]   2,6x.
+Track 01: 11772 of 21691 MB written (fifo  98%) [buf  52%]   2,8x.
+Track 01: 11773 of 21691 MB written (fifo  96%) [buf  69%]   2,6x.
+Track 01: 11774 of 21691 MB written (fifo  96%) [buf  87%]
+2,8x.cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 5B FD E0 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 72 0B 00 00 00 00 00 0E 09 0C 00 00 00 03 00 00
+Sense Key: 0x0 No Additional Sense, Segment 11
+Sense Code: 0x00 Qual 0x03 (setmark detected) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 201.015s timeout 200s
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+
+write track data: error after 12346916864 bytes
+Writing  time: 1443.902s
+Average write speed   3,5x.
+Min drive buffer fill was 1%
+Total of 920 possible drive buffer underruns predicted.
+Fixating...
+operation 99% done
+...........
+Fixating time:   16.038s
+cdrecord: fifo had 376926 puts and 376799 gets.
+cdrecord: fifo was 0 times empty and 41638 times full, min fill was 78%.
+
+-------------------------------------------------------------------------------------
+output -checkdrive:
+
+Cdrecord-ProDVD-ProBD-Clone 3.01a13 (i686-pc-linux-gnu) Copyright (C)
+1995-2012 Joerg Schilling
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ATAPI   '
+Identifikation : 'iHBS112   2     '
+Revision       : 'PL05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE FORCESPEED
+Supported modes: PACKET SAO LAYER_JUMP
+------------------------------------------------------------------------------------------
+output atip:
+
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+Cdrecord-ProDVD-ProBD-Clone 3.01a13 (i686-pc-linux-gnu) Copyright (C)
+1995-2012 Joerg Schilling
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ATAPI   '
+Identifikation : 'iHBS112   2     '
+Revision       : 'PL05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE FORCESPEED
+Supported modes: PACKET SAO LAYER_JUMP
+Disk type:          'BDR' (BD-R)
+Disk class:         01
+Manufacturer:       'VERBAT'
+Media type:         'IMe'
+Disk:               is not in cartridge
+Media cartrige:     write protect is off
+Free Spare Blocks:  0
+Alloc Spare Blocks: 0
+rzone size:         48
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         4 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 1 fp: 0
+data mode:          1
+lra valid:          1
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        12219392
+blocking factor:    32
+rzone size:         12219392
+last recorded addr: 0
+read compat lba:    0
+next layerjmp addr: 0
+last layerjmp addr: 0
+
+       Capacity  Blklen/Sparesz.  Format-type  Type
+       12219392           200704         0x00  Unformated or Blank Media
+       11826176            12288         0x00  Reserved (0)
+       11826176                0         0x32  Reserved (0)
+        5796864                0         0x32  Reserved (0)
+       12088320                0         0x32  Reserved (0)
+WARNING: Phys disk size 4452354 differs from rzone size 12219392!
+Prerecorded disk?
+WARNING: Phys start: 25088 Phys end 4477441
+-------------------------------------------------------------------------------
+Hardware-info:
+
+Processor	: 2x Intel(R) Pentium(R) 4 CPU 2.60GHz
+Memory		: 2579MB
+Operating System: Linux Mint 13 Maya
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#938">[ date ]</a>
+              <a href="thread.html#938">[ thread ]</a>
+              <a href="subject.html#938">[ subject ]</a>
+              <a href="author.html#938">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

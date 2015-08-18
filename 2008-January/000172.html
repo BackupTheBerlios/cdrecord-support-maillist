@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs: path-list in win32 issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%3A%20path-list%20in%20win32%20issues&In-Reply-To=%3C478CD3E1.60808%40cybertheque.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000171.html">
+   <LINK REL="Next"  HREF="000173.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs: path-list in win32 issues</H1>
+    <B>Michael Grigoni</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%3A%20path-list%20in%20win32%20issues&In-Reply-To=%3C478CD3E1.60808%40cybertheque.org%3E"
+       TITLE="[Cdrecord-support] mkisofs: path-list in win32 issues">michael.grigoni at cybertheque.org
+       </A><BR>
+    <I>Tue Jan 15 16:40:17 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000171.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+        <LI>Next message: <A HREF="000173.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+
+&gt;<i> Michael Grigoni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">michael.grigoni at cybertheque.org</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Joerg Schilling wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>&lt;snip&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Happens for me on versions 2.01, 1.11a12 and 1.15a12 compiled for
+</I>&gt;&gt;&gt;&gt;<i>cygwin. The blank line issue is trivial, but the -path-list file
+</I>&gt;&gt;&gt;&gt;<i>not located in the source root problem is troublesome.
+</I>&gt;&gt;&gt;<i>
+</I>
+Built 2.01.01a37 (default download from 'alpha', labeled 'beta') on
+Cygwin (dll 1.3.22), Win2k Server SP3, GCC 3.2:
+
+1. libsiconv build fails:
+      sic_nls.c:44:9: missing binary operator before '('
+    -- commented out lines 44 -&gt; 48
+
+2. tested 'mkisofs':
+      ./mkisofs -J -r -o foobar.iso -graft-points -path-list foobar.lst
+      ./mkisofs: Warning: Cannot add inode hints with -no-cache-inodes.
+      '.mkisofs: No such file or directory. Invalid node - 'dir1
+    (NOTE: superfluous single quotes, not present in output from older
+     builds of mkisofs)
+
+3. determined that &quot;Invalid node&quot; error is due to presence of 'CR LF'
+    EOL delimiters vs. LF-only delimiters in pathlist file.
+    NOTE: this is also the reason for the error seen in earlier builds
+    of mkisofs.
+
+I am reporting this FWIW and apologize for not studying the code and
+submitting a patch (due to time constraints).  I feel that being able
+to use cdrtools such as mkisofs and cdrecord on Win32 without needing
+to install the cygwin environment is useful; one need only move
+cygwin1.dll and the tool binary to a target machine. In these cases
+it would be necessary to permit creating and editing control files
+such as 'pathlist' in native editors (or even 'copy con filename')
+so CR/LF should be permitted.
+
+Regards,
+
+Michael
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000171.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+	<LI>Next message: <A HREF="000173.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

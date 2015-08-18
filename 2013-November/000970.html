@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C528b51c5.YCuC2Py2Mjti7vKR%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000969.html">
+   <LINK REL="Next"  HREF="000971.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdda2wav%3A%20Permission%20denied.%20Could%20not%20open%0A%20audio%20sample%20file.....&In-Reply-To=%3C528b51c5.YCuC2Py2Mjti7vKR%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Nov 19 12:55:49 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000969.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+        <LI>Next message: <A HREF="000971.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#970">[ date ]</a>
+              <a href="thread.html#970">[ thread ]</a>
+              <a href="subject.html#970">[ subject ]</a>
+              <a href="author.html#970">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>andrew &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew.david.strong at gmail.com</A>&gt; wrote:
+
+&gt;<i> On Mon, Nov 18, 2013 at 10:46:50AM +0100, Joerg Schilling wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; If you did call cdda2wav as root, then you are a victim of the
+</I>&gt;<i> &gt; problem, that cdda2wav does not know whether it gained fine grained
+</I>&gt;<i> &gt; privileges from facps or suid root or whether it has been called by
+</I>&gt;<i> &gt; root. It always drops special local file privileges making root a
+</I>&gt;<i> &gt; normal non-privileged user.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If you did not call cdda2wav as root and cdda2wav did gain it's
+</I>&gt;<i> &gt; privileges from suid root, you need to make a bug report against the
+</I>&gt;<i> &gt; Linux kernel as cdda2wav restores the real user id to be the
+</I>&gt;<i> &gt; effective user id before creating the files.
+</I>&gt;<i>
+</I>&gt;<i> Thank you for looking at this issue. I have upgraded kernel to 3.12 to
+</I>&gt;<i> see if the issue has resolved but the results are the same. I do not
+</I>&gt;<i> have the skills to investigate further so I shall continue to use
+</I>&gt;<i> cdda2wav with a simple script to manipulate the permissions. Thanks
+</I>&gt;<i> again for looking at this and for the great software :)
+</I>
+Well, I am suspecting that you did call cdda2wav as root. 
+ 
+I am currently trying to find a way to detect whether cdda2wav was called from  
+a privileged process already and thus cannot become a vehicle for a privilege  
+escalation. 
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000969.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+	<LI>Next message: <A HREF="000971.html">[Cdrecord-support] cdda2wav: Permission denied. Could not open audio sample file.....
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#970">[ date ]</a>
+              <a href="thread.html#970">[ thread ]</a>
+              <a href="subject.html#970">[ subject ]</a>
+              <a href="author.html#970">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

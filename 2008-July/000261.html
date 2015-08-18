@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] possible buildsystem bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C487486e8.ADzJLFskIbVdkR0p%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000254.html">
+   <LINK REL="Next"  HREF="000263.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] possible buildsystem bug</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C487486e8.ADzJLFskIbVdkR0p%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] possible buildsystem bug">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Jul  9 11:37:44 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000254.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+        <LI>Next message: <A HREF="000263.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> &gt; Are you using gmake instead of smake and thus probably hit by gmake bugs?
+</I>&gt;<i>
+</I>&gt;<i> Yes, I'm using gmake. Maybe there's a bug, but I suspect a shell
+</I>&gt;<i> problem, since (IMHO) gmake just passes the command lines 
+</I>&gt;<i> directly to the shell.
+</I>
+see my other mail, this is a gmake problem. Gmake calls the shell the wrong 
+way.
+
+In order to make thing work correctly you need a shell that correctly abort a 
+&quot;pipeline&quot; (not a pipe ;-) if told to do so. You _also_ need a make program 
+that correctly calls the shell:
+
+make -i	---&gt; sh -c &quot;cmd ....&quot;
+make	---&gt; sh -ce &quot;cmd ....&quot;
+
+gmake always calls sh -c &quot;cmd ....&quot; which is the reason for your problem.
+
+Unfortunately POSIX itself is buggy here in the make man page :-(
+
+This is why smake allows to configure any possible behavior.
+
+Smake defines the followwing macros:
+
+     MAKE_SHELL_FLAG
+          This macro contains the shell flags used  when  calling
+          commands  from  smake.   The default value is -ce, When
+          smake in in POSIX mode, the default value is  -c.   The
+          MAKE_SHELL_FLAG   allows   to   overwrite  the  default
+          behavior.
+
+     MAKE_SHELL_IFLAG
+          This macro contains the shell flags used  when  calling
+          commands  from smake -i.  The default value is -c.  The
+          MAKE_SHELL_IFLAG  allows  to  overwrite   the   default
+          behavior.
+
+You should really rethink whether you continue to use gmake.
+Gmake still did not fix a bug that I reported in 1997 although it has been 
+accepted to be a bug by the gmake &quot;crew&quot;. Gmake in addition does not work 
+correctly on several &quot;DOS like&quot; platforms like e.g. Win-32. This is because 
+the makefile parser from gmake does not correctly handle white space and the 
+quote character '\\'.
+
+As a result, smake is the only make program that allows you to compile software 
+using the schily makefilesystem on the complete set of supported platforms.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000254.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+	<LI>Next message: <A HREF="000263.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#261">[ date ]</a>
+              <a href="thread.html#261">[ thread ]</a>
+              <a href="subject.html#261">[ subject ]</a>
+              <a href="author.html#261">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

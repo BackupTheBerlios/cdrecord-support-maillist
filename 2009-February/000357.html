@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Success
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Success&In-Reply-To=%3CF871BFDA66FB448EB8BF9C8397F7DBE1%40indigobox%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000354.html">
+   <LINK REL="Next"  HREF="000358.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Success</H1>
+    <B>Phil Rhodes</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Success&In-Reply-To=%3CF871BFDA66FB448EB8BF9C8397F7DBE1%40indigobox%3E"
+       TITLE="[Cdrecord-support] Success">phil_rhodes at rocketmail.com
+       </A><BR>
+    <I>Fri Feb 20 20:21:17 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000354.html">[Cdrecord-support] &quot;cannot load media with this drive&quot;
+</A></li>
+        <LI>Next message: <A HREF="000358.html">[Cdrecord-support] Determining fixation time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#357">[ date ]</a>
+              <a href="thread.html#357">[ thread ]</a>
+              <a href="subject.html#357">[ subject ]</a>
+              <a href="author.html#357">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>After quite a lot of trial and error, I've come up with a combination of versions which will reliably write discs piped from mkisofs to cdrecord under Windows, without needing a full cygwin shell (just the DLLs). Since this took a bit of work, I thought I'd post it here so it's in the archives. I'll state complete version numbers where possible so others can recreate this situation.
+
+I don't know if this is one of Mr Schilling's preferred original versions of cdrecord, but it works and it's extremely useful so it's worth mentioning.
+
+So there you go, you -can- pipe between mkisofs and cdrecord in windows without a cyg shell.
+
+
+Software:
+
+mkisofs 2.01.01a57 (i686-pc-cygwin) Copyright (C) 1993-1997 Eric Youngdale (C) 1997-2008 J&#246;rg Schilling
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a57 (i686-pc-cygwin) Copyright (C) 1995-2009 J&#246;rg Schilling
+cygwin1.dll 1005.25.0.0 (1.5.25-cr-0x5f1)
+cygintl-8.dll
+cygiconv-2.dll
+Windows XP SP3 Build 2600.xpsp_sp3_gdr_.080814-1236
+
+Hardware:
+
+Optiarc DVD RW AD-5170A 1.11 DVD+/-RW
+
+Commands and output:
+
+F:\Stuff\devel\cdrtools&gt;mkisofs -JR f:\session1 | cdrecord.exe -dev=6,0,0 -dao -
+tsize=1179926s -
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a57 (i686-pc-cygwin) Copyright (C) 1995-2009
+J&#246;rg Schilling
+scsidev: '6,0,0'
+scsibus: 6 target: 0 lun: 0
+Using _TEST000.AVI;1 for  /testfile_0802_4k106.avi...
+
+[...snipped file list...]
+
+....4d849.avi)
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'Optiarc '
+Identifikation : 'DVD RW AD-5170A '
+Revision       : '1.11'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+cdrecord: Warning: The DMA speed test has been skipped.
+Starting to write CD/DVD/BD at speed 4 in real SAO mode for single session.
+Last chance to quit, starting real write    6 seconds.   0 seconds. Operation st
+arts.
+  0.42% done, estimate finish Fri Feb 20 21:23:52 2009
+
+[...snipped progress reports...]
+
+ 99.58% done, estimate finish Fri Feb 20 19:18:04 2009
+Total translation table size: 0
+Total rockridge attributes bytes: 1983
+Total directory bytes: 0
+Path table size(bytes): 10
+Max brk space used 20000
+1179926 extents written (2304 MB)
+Track 01: Total bytes read/written: 2416488448/2416488448 (1179926 sectors).
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20090220/e6466716/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20090220/e6466716/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000354.html">[Cdrecord-support] &quot;cannot load media with this drive&quot;
+</A></li>
+	<LI>Next message: <A HREF="000358.html">[Cdrecord-support] Determining fixation time
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#357">[ date ]</a>
+              <a href="thread.html#357">[ thread ]</a>
+              <a href="subject.html#357">[ subject ]</a>
+              <a href="author.html#357">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

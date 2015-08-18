@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord and DOS
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20and%20DOS&In-Reply-To=%3CKI87I3%248AC635CCC981DD2445FDC341CF85A717%40itelefonica.com.br%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000425.html">
+   <LINK REL="Next"  HREF="000427.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord and DOS</H1>
+    <B>jassenna at itelefonica.com.br</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20and%20DOS&In-Reply-To=%3CKI87I3%248AC635CCC981DD2445FDC341CF85A717%40itelefonica.com.br%3E"
+       TITLE="[Cdrecord-support] cdrecord and DOS">jassenna at itelefonica.com.br
+       </A><BR>
+    <I>Fri Apr 17 05:39:39 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000425.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000427.html">[Cdrecord-support] cdrecord and DOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> I shall try here to respond to all suggestions I received from
+people in the cdrecord-support list.  
+ I shall use inline qoutes. Please tell me if this is deprecated
+ in this list.
+ 
+1)To Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt;:
+
+&gt;<i>Which version of cdrecord are you using?
+</I>
+ Version 2.01.a51, compiled with djgpp (it has the djgpp 
+signature on the executable file)
+
+&gt;<i>Run
+</I>&gt;<i>C:\&gt; cdrecord -scanbus
+</I>&gt;<i>and use the name that appears there could be something like 
+</I>&gt;<i>0,2,0 so you would use cdrecord -v -dao dev=3D0,2,0 ... options ...
+</I>
+ As I said, cdrecord only found 0,0,0 when I used the -scanbus 
+ option.
+ With dev=0,0,0 option it tries &quot;Test unit ready&quot; until timeout.
+
+2)To &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrecord at willemijns.com</A>&gt;:
+
+&gt;<i>They are 3 (real) DOS version available:
+</I>&gt;<i>- paehl.de and
+</I>&gt;<i>- i_forgot_the_compiler_name
+</I>&gt;<i>- a russian project 
+</I>
+&gt;<i> all of these are now very old versions or unsupported 
+</I>&gt;<i>projects :-(
+</I>
+ I got mine at ibiblio.org. Please see its version number
+in my reply to Antonio Olivares (above).
+
+3)To: Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt;
+
+&gt;<i>While cdrtools did compile on DOS (using DJGPP) some time ago,
+</I>&gt;<i>what is the reason for trying to run such a version?
+</I>
+ The reason is to find a way to add a cd recorder to a machine 
+that uses DOS (plain, no Windows) as its OS.
+
+&gt;<i>If your binary was compiled correctly, then I would assume
+</I>&gt;<i>that you did not install a working ASPI driver.
+</I>  
+ I don't know: I got both cdrecord.exe and aspi.sys as 
+compiled executables in the .zip file I found at ibiblio.
+ Anyway, aspi.sys installs without complaint and creates 
+a DOS device by name SCSIMGR$.
+ cdrecord finds it with the -scanbus option, but fails to 
+access it when attempting to write a CD.
+
+&gt;<i>DOS does not support device names at all. There is nothing 
+</I>&gt;<i>like explicit driver access in DOS.
+</I>
+ The standard way for opening a device in DOS (INT21
+ function 3Dh) uses the device name.
+ BTW, I can open SCSIMGR$ with this function.
+ 
+&gt;<i>Note that the ASPI driver for Win98 is most likely not
+</I>&gt;<i>accessible in the DOS emulation and that any driver that
+</I>&gt;<i>have been loaded from DOS (before running Win98) may not 
+</I>&gt;<i>work anymore after Win98 runs.
+</I>
+ ASPI.SYS is not a Win98 driver; it is a DOS driver. It is 
+loaded from CONFIG.SYS and the device it creates  (SCSIMGR$ )
+appears in the DOS memory map when I run  mem /d.
+ I don't know how to test whether it is working OK.
+
+&gt;<i>This is why it is a good idea to compile cdrtools on win32 
+</I>&gt;<i>for win32.
+</I>
+ I agree, but I am not at all interested in cdrtools for win32.
+ I am looking for a cd recording program for DOS. I test on the
+machine I mentioned because it already has a working CD-R drive 
+which also works under DOS (both DOS window and plain DOS) for 
+reading CDs. 
+
+Thank you all for your attention
+	JAS
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000425.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000427.html">[Cdrecord-support] cdrecord and DOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

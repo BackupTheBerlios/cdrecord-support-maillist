@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] problem with multisession continuation on DVD-R disk
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20problem%20with%20multisession%20continuation%20on%0A%20DVD-R%20disk&In-Reply-To=%3C4dba826e.Nkz%2BoSwEIh2ljlqt%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000748.html">
+   <LINK REL="Next"  HREF="000750.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] problem with multisession continuation on DVD-R disk</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20problem%20with%20multisession%20continuation%20on%0A%20DVD-R%20disk&In-Reply-To=%3C4dba826e.Nkz%2BoSwEIh2ljlqt%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] problem with multisession continuation on DVD-R disk">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Apr 29 11:18:38 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000748.html">[Cdrecord-support] problem with multisession continuation on DVD-R	disk
+</A></li>
+        <LI>Next message: <A HREF="000750.html">[Cdrecord-support] problem with multisession continuation on DVD-R disk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#749">[ date ]</a>
+              <a href="thread.html#749">[ thread ]</a>
+              <a href="subject.html#749">[ subject ]</a>
+              <a href="author.html#749">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>froff &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">froff at interia.pl</A>&gt; wrote:
+
+&gt;<i> Hello
+</I>&gt;<i> In the past I used cdrecord 3.0 from prompt as well as via k3b with no problems.
+</I>&gt;<i> Now something went wrong.
+</I>&gt;<i> It refuses to add session to multisession disk.
+</I>&gt;<i> There are my logs:
+</I>&gt;<i>
+</I>&gt;<i> 1st session:
+</I>&gt;<i> /opt/schily/bin/cdrecord -dev=1,0,0 -multi -sao driveropts=burnfree -v -speed=4 1.iso
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+</I>&gt;<i> TOC Type: 3 = CD-ROM XA mode 2
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'PIONEER '
+</I>&gt;<i> Identifikation : 'DVD-RW  DVR-212 '
+</I>&gt;<i> Revision       : '1.28'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Profile: DVD-R sequential recording (current)
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1605632 = 1568 KB
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data   976 MB
+</I>&gt;<i> Total size:      976 MB = 500123 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> Total power on  hours: 75040
+</I>&gt;<i> Blocks total: 2298496 Blocks current: 2298496 Blocks remaining: 1798373
+</I>&gt;<i> Reducing transfer size from 64512 to 32768 bytes.
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 4 in real SAO mode for multi session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is ON.
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01:  976 of  976 MB written (fifo 100%) [buf 100%]   4.0x.
+</I>&gt;<i> Track 01: Total bytes read/written: 1024251904/1024251904 (500123 sectors).
+</I>&gt;<i> Writing  time:  199.919s
+</I>&gt;<i> Average write speed   3.7x.
+</I>&gt;<i> Min drive buffer fill was 97%
+</I>&gt;<i> Fixating...
+</I>&gt;<i> Fixating time:    0.292s
+</I>&gt;<i> /opt/schily/bin/cdrecord: fifo had 31258 puts and 31258 gets.
+</I>&gt;<i> /opt/schily/bin/cdrecord: fifo was 0 times empty and 8997 times full, min fill was 82%.
+</I>&gt;<i>
+</I>&gt;<i> ==================
+</I>&gt;<i> everything looks ok, except two warnings - I don't know if it matters and how to eliminate them.
+</I>
+This looks OK, however I would need the cdrecord -minfo output from before and 
+after that write and it would help to know the output from cdrecord -atip
+
+&gt;<i>
+</I>&gt;<i> 2st session gives log as follows:
+</I>&gt;<i>
+</I>&gt;<i> /opt/schily/bin/cdrecord -dev=1,0,0 -multi -sao driveropts=burnfree -v -speed=4 2.iso
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+</I>&gt;<i> TOC Type: 3 = CD-ROM XA mode 2
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'PIONEER '
+</I>&gt;<i> Identifikation : 'DVD-RW  DVR-212 '
+</I>&gt;<i> Revision       : '1.28'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Profile: DVD-R sequential recording (current)
+</I>&gt;<i> Profile: DVD-ROM (current)
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1605632 = 1568 KB
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> /opt/schily/bin/cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data   979 MB
+</I>&gt;<i> Total size:      979 MB = 501676 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> Total power on  hours: 75040
+</I>&gt;<i> WARNING: Phys disk size 500123 differs from rzone size 0! Prerecorded disk?
+</I>&gt;<i> WARNING: Phys start: 196608 Phys end 696730
+</I>&gt;<i> WARNING: Drive returns zero media size. Using media size from ADIP.
+</I>&gt;<i> Blocks total: 500123 Blocks current: -28693 Blocks remaining: -530369
+</I>&gt;<i> /opt/schily/bin/cdrecord: Data does not fit on current disk.
+</I>&gt;<i>
+</I>&gt;<i> =================
+</I>&gt;<i> zonk!
+</I>&gt;<i> No idea what to do. Google does not return any reasonable answer.
+</I>&gt;<i>
+</I>&gt;<i> My media is Verbatim dvd-r. I had no problems with those disks previously.
+</I>
+I would need the media state that you get with cdrecord -minfo
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000748.html">[Cdrecord-support] problem with multisession continuation on DVD-R	disk
+</A></li>
+	<LI>Next message: <A HREF="000750.html">[Cdrecord-support] problem with multisession continuation on DVD-R disk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#749">[ date ]</a>
+              <a href="thread.html#749">[ thread ]</a>
+              <a href="subject.html#749">[ subject ]</a>
+              <a href="author.html#749">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

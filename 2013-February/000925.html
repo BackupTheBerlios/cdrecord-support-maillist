@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] errors after first burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C51220036.wPRY/43W6xnlAwVd%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000924.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] errors after first burn</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C51220036.wPRY/43W6xnlAwVd%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] errors after first burn">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Feb 18 11:19:34 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000924.html">[Cdrecord-support] errors after first burn
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#925">[ date ]</a>
+              <a href="thread.html#925">[ thread ]</a>
+              <a href="subject.html#925">[ subject ]</a>
+              <a href="author.html#925">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Noel Butler &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">noel.butler at ausics.net</A>&gt; wrote:
+
+&gt;<i> &gt; What you should do is to call
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; cdrecord -atip 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; to get the media manufacturer and retry with original Verbatim media and to call
+</I>&gt;<i> &gt; 
+</I>&gt;<i>
+</I>&gt;<i> Manufacturer:   'PRINCO'
+</I>&gt;<i>
+</I>&gt;<i> Maybe this drive can only partially handle those disks. For emergency
+</I>&gt;<i> reasons I still keep the original slackware large kernel on installs
+</I>&gt;<i> even though I always use custom kernel, its 2.6.33.4, I might try
+</I>&gt;<i> booting into that kernel and seeing if it makes a difference, also, I
+</I>&gt;<i> think 3.8 is getting close to official release so I might try the latest
+</I>&gt;<i> rc as well, the fact cdrecord sees and burns at least one, leads me to
+</I>&gt;<i> agree with you that its kernel related, if it was cdrecord at fault
+</I>&gt;<i> surely it just would not even burn the first one.
+</I>
+Well, princo is a _very_ cheap manufacturer. The problem with your error 
+message is, that it is only known by &quot;Toshiba/Samsung&quot; as it is vendor specific.
+So I have no idea what it means. So this error message could also mean &quot;cannot 
+write this media for some reason&quot;. Please try with Verbatin Media. Note that 
+Verbatim puts better quality in retail packages with less disks inside than in 
+50s spindles....these spindles may have been made by Moser Baer India.
+
+&gt;<i> &gt; &gt; PS:
+</I>&gt;<i> &gt; &gt; Cdrecord-ProDVD-ProBD-Clone   isnt it time we changed that now to
+</I>&gt;<i> &gt; &gt; Cdrecord-ProDVD-ProBD  :)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Do you belive that cdrecord is no longer capable of doing clone writes?
+</I>&gt;<i> &gt; 
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ahh, might be the grey matter, but I thought the Clone came about well
+</I>&gt;<i> over ten years back when there was a different version, a  Clone patch,
+</I>&gt;<i> from when official cdrecord was limited with DVD (I think it was) , way
+</I>&gt;<i> tooooooo long back to remember, once you changed that method/policy, I
+</I>&gt;<i> returned to your official source, but yeah it was great many years ago,
+</I>&gt;<i> you likely remember that more than me :) I (wrongfully) assumed the name
+</I>&gt;<i> stayed, or maybe i'm still muddled up - sign of getting too old.
+</I>
+The clone feature (which is in readcd and cdrecord) has been added 12 years ago 
+to permit to create copies of CDs with unknown and complex structure, such as 
+game CDs. To be more specific: at that time, I tried to copy a video CD using 
+&quot;cdrdao&quot; that claimed to be able to maked copies from video CDs. As it turned 
+out that this was just a marketing gag, I needed to implement something in 
+cdrtools that was able to make copies from Video CDs and this is what the clone
+feature was made for.
+
+The official cdrecord was indeed limited by not having source for DVD support 
+for some time, but this was a result of a NDA with Pioneer that prevented me 
+from making things OSS as long as those things were not widely known - e.g. 
+until even companies like Nero did learn how to write DVDs without my help ;-)
+
+So in theory, I could have made the DVD stuff OSS a year earlier than I 
+actually did. The reason for this delay was that some people tried to blackmail 
+me and I was not willing to let things look as if they have been successful.
+
+Anyway, the missing (in the OSS) feature was freely available for everyone via 
+precompiled binaries.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000924.html">[Cdrecord-support] errors after first burn
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#925">[ date ]</a>
+              <a href="thread.html#925">[ thread ]</a>
+              <a href="subject.html#925">[ subject ]</a>
+              <a href="author.html#925">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

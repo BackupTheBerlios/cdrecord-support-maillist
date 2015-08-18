@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] error writing to DVD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20writing%20to%20DVD&In-Reply-To=%3C492bd4c0.iP3vtujVwZhsNbsF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000305.html">
+   <LINK REL="Next"  HREF="000307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] error writing to DVD</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20writing%20to%20DVD&In-Reply-To=%3C492bd4c0.iP3vtujVwZhsNbsF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] error writing to DVD">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Nov 25 11:34:40 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000305.html">[Cdrecord-support] error writing to DVD
+</A></li>
+        <LI>Next message: <A HREF="000307.html">[Cdrecord-support] Feature Request: manual control over ACL usage @	compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ehab aziz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ehab_aziz2001 at yahoo.com</A>&gt; wrote:
+
+&gt;<i> I am using Solaris 10U3 x86.
+</I>&gt;<i> There is a problem of the option used with DVD to&#160;backup&#160;/export/home/unix directory ? 
+</I>&gt;<i> Also I need to backup my files with their long names and restore them also with their long names !?
+</I>&gt;<i> First for all the mkisofs did not include all subdirectories inside /export/home/unix ?
+</I>
+mkisofs support long names and includes all subdirectories if you do not use 
+exclude options.
+
+&gt;<i> Also I have a question about if I can&#160;use cp with DVD-RAM media or not with Solaris 10?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> #/export/home&gt;uname -a
+</I>&gt;<i> SunOS inhome 5.10 Generic_137138-09 i86pc i386 i86pc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> #/export/home&gt;mkisofs -R /export/home/unix | cdrecord -v&#160; fs=6m&#160; speed=2 dev=1,1,0 -
+</I>
+This is not OK for most cases (e.g. in the SAO case fron below).
+
+Follow the examples in the man pages.
+
+&gt;<i> That is the output of the running 
+</I>&gt;<i> -----------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Using IDSC3000 for&#160; /export/home/unix/programs.d/sedawk/idsc37_sedawk_OREILLY/idsc37-ch11 (idsc37-ch01)
+</I>&gt;<i> ..
+</I>&gt;<i> ..
+</I>&gt;<i>
+</I>&gt;<i> cdrecord: No write mode specified.
+</I>&gt;<i> cdrecord: Asuming -sao mode.
+</I>&gt;<i> cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> cdrecord: Future versions of cdrecord may have different drive dependent defaults.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a53 (i386-pc-solaris2.10) Copyright (C) 1995-2008 J???rg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '1,1,0'
+</I>&gt;<i> scsibus: 1 target: 1 lun: 0
+</I>&gt;<i> Warning: Using USCSI interface.
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> SCSI buffer size: 57344
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type&#160;&#160;&#160; : Removable CD-ROM
+</I>&gt;<i> Version&#160;&#160;&#160;&#160;&#160;&#160;&#160; : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities&#160;&#160; :
+</I>&gt;<i> Vendor_info&#160;&#160;&#160; : 'HL-DT-ST'
+</I>&gt;<i> Identifikation : 'DVDRAM GSA-H42N '
+</I>&gt;<i> Revision&#160;&#160;&#160;&#160;&#160;&#160; : 'RL00'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> Profile: DVD-RW sequential recording (current)
+</I>&gt;<i> Profile: DVD-RW restricted overwrite (current)
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD+R
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags&#160;&#160; : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> Drive buf size : 1114112 = 1088 KB
+</I>&gt;<i> Drive pbuf size: 1966080 = 1920 KB
+</I>&gt;<i> Drive DMA Speed: 2999 kB/s 17x CD 2x DVD 0x BD
+</I>&gt;<i> FIFO size&#160;&#160;&#160;&#160;&#160; : 6291456 = 6144 KB
+</I>&gt;<i> Track 01: data&#160; unknown length
+</I>&gt;<i> cdrecord: Track 1 has unknown length.
+</I>&gt;<i> cdrecord: Use tsize= option in SAO mode to specify track size.
+</I>&gt;<i> #/export/home&gt;
+</I>
+And cdrecord even gives you the hint on which option to add to make it work.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000305.html">[Cdrecord-support] error writing to DVD
+</A></li>
+	<LI>Next message: <A HREF="000307.html">[Cdrecord-support] Feature Request: manual control over ACL usage @	compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

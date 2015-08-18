@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E158AD0.8070603%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000763.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E158AD0.8070603%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Jul  7 12:30:40 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000763.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#762">[ date ]</a>
+              <a href="thread.html#762">[ thread ]</a>
+              <a href="subject.html#762">[ subject ]</a>
+              <a href="author.html#762">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+After some time I am again trying to compile cdrtools for the Windows
+operating system. I prefer the MinGW version because I experience
+problems with mounting paths with the Cygwin version and the
+additional dependancy on the Cygwin dlls.
+I downloaded the latest version (cdrtools 3.01a05). Unpacking the
+source tarball went without problems; last time I tried I had lots
+of trouble even with that. I read the README.mingw32 file which says
+that I need MinGW in a specific version and MSYS in a specific version.
+I downloaded and installed those (actually I already had MinGW). Then
+it says I should adjust the Path varible, which I did accordingly. The
+final step should simply be running `make&#180; and that's it.
+During make a few problems arose though, some are minor and easy to fix
+some are more basic and would require more understanding of what is
+really required.
+1) in the rules files RULES/i?86-mingw32_nt-gcc.rul the library mgw32
+    is added to the linker options (-lmgw32). On my system there no
+    libmgw32.a file but rather a libmingw32.a. I do not know what this
+    library does and why it is needed but replacing mgw32 by mingw32
+    succeeds in building the programs  align_test.exe and avoffset.exe
+    which in turn results in generating the otherwise missing files
+    align.h and avoffset.h.
+2) In libschily/fexec.c the macro `fd_getfd&#180; is incorrectly defined
+    if the macro F_GETFD is not defined (lines 138 - 142). This leads
+    to compile errors in lines 370, 376, 382.
+    I set it to                  `#define fd_getfd(fd)  fd&#180;
+
+    Likewise I set fd_setfd() to `#define df_setfd(fd, val)  fd=val&#180;
+    (not yet done in the attached build log).
+
+    Although this seems reasonable to me I did not dig into the code
+    to see what this really does.
+3) Changing line 64 of include/schily/ccomdefs.h from
+      #if __GNUC__ &gt; 3 || __GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1
+    to
+      #if (__GNUC__ &gt; 3 || (__GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1)) &amp;&amp; 
+!defined WIN32
+    helped avoiding a lot of warnings `ignoring attribute __used__&#180;
+    (or similar). Obviously, although the MinGW gcc I am using (MinGW
+    distribution 3.1.0-1 as requested in README.mingw32) is version
+    3.2.3 it does not support the __used__ attribute as apparently
+    his brothers on other OSs.
+
+These were the minor ones, now to the more severe problems:
+4) A number of *nix system calls regarding file/process ownership,
+    such as getuid(), geteuid(), etc., are not found and therefore
+    linking fails (btcflash.exe, mkisofs.exe, readcd.exe,
+    scgskeleton.exe)
+    I am aware that these are Unix-specific functions and have to be
+    emulated or at least provided dummy functions in Windows. I think
+    the build system (configure ...) should take care of that or at
+    least produce some warnings.
+    I have code for some of these calls but not for setuid().
+5) The same goes for the gettimeofday() system call. I do have code
+    for this, too, but again the build system should have warned about
+    it.
+6) More errors from the build log:
+
+make[1]: Entering directory `/d/WINPROG/cdrtools-3.01/cdda2wav'
+../RULES/local.cnf:43: OBJ/i686-mingw32_nt-gcc/Inull: No such file or 
+directory
+../RULES/local.cnf:44: OBJ/i686-mingw32_nt-gcc/local.cnf: No such file 
+or directory
+         ==&gt; MAKING DIRECTORY &quot;OBJ/i686-mingw32_nt-gcc&quot;
+         ==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/parse.d&quot;
+         ==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/base64.d&quot;
+In file included from base64.c:2:
+config.h:34:21: lconfig.h: No such file or directory
+
+&lt;snip&gt;
+
+sndconfig.c: In function `init_soundcard':
+sndconfig.c:345: `WIN_CallBack' undeclared (first use in this function)
+sndconfig.c:345: (Each undeclared identifier is reported only once
+sndconfig.c:345: for each function it appears in.)
+make[1]: *** [OBJ/i686-mingw32_nt-gcc/sndconfig.o] Error 1
+
+&lt;snip&gt;
+
+  ==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/cdrecord.o&quot;
+cdrecord.c:5091:28: stropts.h: No such file or directory
+cdrecord.c:5092:25: poll.h: No such file or directory
+cdrecord.c: In function `wait_input':
+cdrecord.c:5107: storage size of `pfd' isn't known
+cdrecord.c:5117: `POLLIN' undeclared (first use in this function)
+cdrecord.c:5117: (Each undeclared identifier is reported only once
+cdrecord.c:5117: for each function it appears in.)
+make[1]: *** [OBJ/i686-mingw32_nt-gcc/cdrecord.o] Error 1
+
+&lt;snip&gt;
+
+         ==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/mkisofs.exe&quot;
+OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x6db0):mkisofs.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x828d):mkisofs.c: undefined 
+reference to `getuid'
+OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x8295):mkisofs.c: undefined 
+reference to `setuid'
+OBJ/i686-mingw32_nt-gcc/tree.o(.text+0x43b2):tree.c: undefined reference 
+to `getuid'
+OBJ/i686-mingw32_nt-gcc/tree.o(.text+0x43ce):tree.c: undefined reference 
+to `getgid'
+../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c: 
+undefined reference to `gettimeofday'
+../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c: 
+undefined reference to `gettimeofday'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x17eb):find.c: 
+undefined reference to `getpwnam'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x1859):find.c: 
+undefined reference to `getgrnam'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x28d3):find.c: 
+undefined reference to `getpwuid'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x28e5):find.c: 
+undefined reference to `getgrgid'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x2c21):find.c: 
+undefined reference to `fork'
+../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x2c51):find.c: 
+undefined reference to `wait'
+../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0xa5):idcache.c: 
+undefined reference to `getpwuid'
+../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x1a8):idcache.c: 
+undefined reference to `getpwnam'
+../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x241):idcache.c: 
+undefined reference to `getgrgid'
+../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x344):idcache.c: 
+undefined reference to `getgrnam'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0xa0):fnmatch.c: undefined 
+reference to `mbrtowc'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0xc8):fnmatch.c: undefined 
+reference to `mbrtowc'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x29d):fnmatch.c: 
+undefined reference to `mbrtowc'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x395):fnmatch.c: 
+undefined reference to `mbrtowc'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x4ab):fnmatch.c: 
+undefined reference to `mbrtowc'
+../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x517):fnmatch.c: 
+more undefined references to `mbrtowc' follow
+make[1]: *** [OBJ/i686-mingw32_nt-gcc/mkisofs.exe] Error 1
+
+&lt;snip&gt;
+
+  ==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/dump.o&quot;
+dump.c: In function `reset_tty':
+dump.c:88: `TIOCSETN' undeclared (first use in this function)
+dump.c:88: (Each undeclared identifier is reported only once
+dump.c:88: for each function it appears in.)
+dump.c: In function `set_tty':
+dump.c:105: `TIOCSETN' undeclared (first use in this function)
+dump.c: In function `main':
+dump.c:349: `TIOCGETP' undeclared (first use in this function)
+dump.c:360: `newtty' has an incomplete type
+dump.c:362: invalid use of undefined type `struct sgttyb'
+dump.c:362: `ECHO' undeclared (first use in this function)
+dump.c:362: `CRMOD' undeclared (first use in this function)
+dump.c:363: invalid use of undefined type `struct sgttyb'
+dump.c:363: `CBREAK' undeclared (first use in this function)
+D:/Programme/MinGW/Include/inttypes.h: At top level:
+dump.c:67: storage size of `savetty' isn't known
+dump.c:68: storage size of `newtty' isn't known
+make[2]: *** [OBJ/i686-mingw32_nt-gcc/dump.o] Error 1
+
+&lt;snip&gt;
+
+  ==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/isodump.o&quot;
+isodump.c: In function `reset_tty':
+isodump.c:147: `TIOCSETN' undeclared (first use in this function)
+isodump.c:147: (Each undeclared identifier is reported only once
+isodump.c:147: for each function it appears in.)
+isodump.c: In function `set_tty':
+isodump.c:164: `TIOCSETN' undeclared (first use in this function)
+isodump.c: In function `main':
+isodump.c:637: `TIOCGETP' undeclared (first use in this function)
+isodump.c:648: `newtty' has an incomplete type
+isodump.c:650: invalid use of undefined type `struct sgttyb'
+isodump.c:650: `ECHO' undeclared (first use in this function)
+isodump.c:650: `CRMOD' undeclared (first use in this function)
+isodump.c:651: invalid use of undefined type `struct sgttyb'
+isodump.c:651: `CBREAK' undeclared (first use in this function)
+D:/Programme/MinGW/Include/inttypes.h: At top level:
+isodump.c:136: storage size of `savetty' isn't known
+isodump.c:137: storage size of `newtty' isn't known
+make[2]: *** [OBJ/i686-mingw32_nt-gcc/isodump.o] Error 1
+
+&lt;snip&gt;
+
+  ==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/isoinfo.o&quot;
+isoinfo.c: In function `find_stat':
+isoinfo.c:1882: structure has no member named `st_blksize'
+make[2]: *** [OBJ/i686-mingw32_nt-gcc/isoinfo.o] Error 1
+
+&lt;snip&gt;
+
+         ==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/isovfy.exe&quot;
+../../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c: 
+undefined reference to `gettimeofday'
+../../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c: 
+undefined reference to `gettimeofday'
+make[2]: *** [OBJ/i686-mingw32_nt-gcc/isovfy.exe] Error 1
+
+&lt;snip&gt;
+
+         ==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/isodebug.exe&quot;
+../../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c: 
+undefined reference to `gettimeofday'
+../../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c: 
+undefined reference to `gettimeofday'
+make[2]: *** [OBJ/i686-mingw32_nt-gcc/isodebug.exe] Error 1
+
+&lt;snip&gt;
+
+         ==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/readcd.exe&quot;
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x11e4):readcd.c: undefined 
+reference to `geteuid'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x11eb):readcd.c: undefined 
+reference to `getuid'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1202):readcd.c: undefined 
+reference to `getuid'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x120a):readcd.c: undefined 
+reference to `setuid'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x16c8):readcd.c: undefined 
+reference to `geteuid'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1b6a):readcd.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1bee):readcd.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x4a62):readcd.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x52de):readcd.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x64e8):readcd.c: undefined 
+reference to `gettimeofday'
+OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x6559):readcd.c: more undefined 
+references to `gettimeofday' follow
+make[1]: *** [OBJ/i686-mingw32_nt-gcc/readcd.exe] Error 1
+
+&lt;snip&gt;
+
+         ==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/scgskeleton.exe&quot;
+OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb79):skel.c: undefined reference 
+to `geteuid'
+OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb80):skel.c: undefined reference 
+to `getuid'
+OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb97):skel.c: undefined reference 
+to `getuid'
+OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb9f):skel.c: undefined reference 
+to `setuid'
+../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c: 
+undefined reference to `gettimeofday'
+../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c: 
+undefined reference to `gettimeofday'
+make[1]: *** [OBJ/i686-mingw32_nt-gcc/scgskeleton.exe] Error 1
+
+
+I have attached a complete log of the configure/make process.
+
+Was anyone on the list successful in compiling/building cdrtools on
+Windows/MinGW? How did you do?
+
+Please help in sorting out these issues. Thanks in advance!
+
+Johannes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: cdrtools_build.log.gz
+Type: application/x-gzip
+Size: 12733 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110707/47c932c8/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110707/47c932c8/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000763.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#762">[ date ]</a>
+              <a href="thread.html#762">[ thread ]</a>
+              <a href="subject.html#762">[ subject ]</a>
+              <a href="author.html#762">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

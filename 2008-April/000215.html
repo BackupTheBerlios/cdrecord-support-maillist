@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problems with mkisofs syntax: -no-bak
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problems%20with%20mkisofs%20syntax%3A%20-no-bak&In-Reply-To=%3C48106898.iND4aRKv33un0nqn%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000209.html">
+   <LINK REL="Next"  HREF="000206.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problems with mkisofs syntax: -no-bak</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problems%20with%20mkisofs%20syntax%3A%20-no-bak&In-Reply-To=%3C48106898.iND4aRKv33un0nqn%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Problems with mkisofs syntax: -no-bak">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Apr 24 13:01:44 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000209.html">[Cdrecord-support] Problems with mkisofs syntax: -no-bak
+</A></li>
+        <LI>Next message: <A HREF="000206.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>andrew &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew.david.45 at gmail.com</A>&gt; wrote:
+
+&gt;<i> On Tue, Apr 22, 2008 at 06:11:45PM +0200, Joerg Schilling wrote:
+</I>&gt;<i> &gt; andrew &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew.david.45 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt;  I was hoping for some guidance on the use of the -no-bak option for
+</I>&gt;<i> &gt; &gt; mkisofs. I am attempting to use this option in the following example:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at ilium</A>/home/andrew#  mkisofs -r -J -l -V &quot;Backup `date +&quot;%d %B %Y&quot;`&quot;\
+</I>&gt;<i> &gt; &gt; &gt;             -allow-multidot -allow-leading-dots \
+</I>&gt;<i> &gt; &gt; &gt;             -x /etc/mtab -hide-rr-moved -no-bak \
+</I>&gt;<i> &gt; &gt; &gt;             -graft-points &quot;home/=/home/andrew&quot; &quot;etc/=/etc&quot; \
+</I>&gt;<i> &gt; &gt; &gt;             &quot;crontabs/=/var/spool/cron/crontabs&quot; -o test.iso
+</I>&gt;<i> &gt; &gt; Bad Option '-no-bak' (error -1 BADFLAG).
+</I>&gt;<i> &gt; &gt; Usage: mkisofs [options] [-find] file... [find expression]
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; It seems that this option was removed by mistake with 2.01.01a22,
+</I>&gt;<i> &gt; thank you for the information.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for your prompt email and a big thanks for the cdrtools set of
+</I>&gt;<i> programs. Your unpaid and dedicated work is highly appreciated by many.
+</I>
+Well, for fixing such bugs I need the help from other people.
+
+The bug has been introduced when 4 new options have been added. At the same 
+time, I did acdentally remove two options. As the new option parser is 
+compleetely table driven, removing th table entries will silently remove the 
+options too.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000209.html">[Cdrecord-support] Problems with mkisofs syntax: -no-bak
+</A></li>
+	<LI>Next message: <A HREF="000206.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#215">[ date ]</a>
+              <a href="thread.html#215">[ thread ]</a>
+              <a href="subject.html#215">[ subject ]</a>
+              <a href="author.html#215">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

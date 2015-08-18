@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] error after 773918720 bytes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20after%20773918720%20bytes&In-Reply-To=%3C4919fd80.7NZaCxbwl0uIFk5j%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000303.html">
+   <LINK REL="Next"  HREF="000305.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] error after 773918720 bytes</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20after%20773918720%20bytes&In-Reply-To=%3C4919fd80.7NZaCxbwl0uIFk5j%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] error after 773918720 bytes">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Nov 11 22:47:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000303.html">[Cdrecord-support] Fwd: error after 773918720 bytes
+</A></li>
+        <LI>Next message: <A HREF="000305.html">[Cdrecord-support] error writing to DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#304">[ date ]</a>
+              <a href="thread.html#304">[ thread ]</a>
+              <a href="subject.html#304">[ subject ]</a>
+              <a href="author.html#304">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Margaret Doll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">margaret_doll at brown.edu</A>&gt; wrote:
+
+&gt;<i> I have been trying to burn cds on two different  RedHat systems,  
+</I>&gt;<i> 2.6.9-78.ELsmp and 2.4.21-57.ELsmp, using cdrecord-2.01.1-5.0.EL4.4  
+</I>&gt;<i> and cdrecord-2.01.0.a32-0.EL3.6   respectively.
+</I>&gt;<i>
+</I>&gt;<i> I am using Magnavox  CD-R cds.  I am trying to record data directories  
+</I>&gt;<i> that are less than 4 Gb in size.
+</I>&gt;<i>
+</I>&gt;<i> I am using the following commands:
+</I>&gt;<i>
+</I>&gt;<i> mkisof -R -o  disk1.iso disk1
+</I>&gt;<i> cdrecord speed=4 dev=2,0,0 disk1.iso
+</I>&gt;<i>
+</I>&gt;<i> and
+</I>&gt;<i>
+</I>&gt;<i> cdrecord speed=4 dev=/dev/cdwriter:@ disk1.iso
+</I>&gt;<i>
+</I>&gt;<i> Both systems are  Dell optiplex GX 620s
+</I>&gt;<i>
+</I>&gt;<i> I keep getting the WARNING:  Data may not fit on current disk.
+</I>&gt;<i> 		Notice:  Most recorders cannot write CD's &gt;= 90 minutes.
+</I>&gt;<i> 	        Notice:  Use - ignsize option to allow &gt;= 90 minutes.
+</I>&gt;<i>
+</I>&gt;<i> If I use  the -ignsize option on either computer, I get the error  
+</I>&gt;<i> message
+</I>&gt;<i>
+</I>&gt;<i> Error after 773918720 bytes.
+</I>&gt;<i>
+</I>&gt;<i> I used to be able to record without problems.   What's going on?
+</I>&gt;<i>
+</I>&gt;<i> The Vendor_info from cdrecord:  'HL-DT-ST'
+</I>&gt;<i> Identification:  DVD+-RW GWA4164B
+</I>
+You did not include a suficcient amount of information to give you more help, 
+however you are not running cdrecord but a variant from redhat with inofficial
+modifications.
+
+So far all these modified cdrtools versions have been identified to be 
+defective.
+
+Please use a recent cdrtools version from
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha/">ftp://ftp.berlios.de/pub/cdrecord/alpha/</A>
+
+and make sure to install cdrecord suid root.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000303.html">[Cdrecord-support] Fwd: error after 773918720 bytes
+</A></li>
+	<LI>Next message: <A HREF="000305.html">[Cdrecord-support] error writing to DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#304">[ date ]</a>
+              <a href="thread.html#304">[ thread ]</a>
+              <a href="subject.html#304">[ subject ]</a>
+              <a href="author.html#304">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

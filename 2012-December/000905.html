@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-3.01a09%20regression%3A%20mkisofs%3A%0A%20Implementation%20botch.%20Video%20pad%20for%20file%20VTS_12_0.BUP%20is%20-3757166&In-Reply-To=%3C1354878898.31090.46.camel%40rook%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000904.html">
+   <LINK REL="Next"  HREF="000906.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166</H1>
+    <B>Alexandre Rostovtsev</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-3.01a09%20regression%3A%20mkisofs%3A%0A%20Implementation%20botch.%20Video%20pad%20for%20file%20VTS_12_0.BUP%20is%20-3757166&In-Reply-To=%3C1354878898.31090.46.camel%40rook%3E"
+       TITLE="[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166">tetromino at gentoo.org
+       </A><BR>
+    <I>Fri Dec  7 12:14:58 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000904.html">[Cdrecord-support] Cdrtools-3.01a09 ready
+</A></li>
+        <LI>Next message: <A HREF="000906.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#905">[ date ]</a>
+              <a href="thread.html#905">[ thread ]</a>
+              <a href="subject.html#905">[ subject ]</a>
+              <a href="author.html#905">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>(reported downstream at <A HREF="https://bugs.gentoo.org/show_bug.cgi?id=446332">https://bugs.gentoo.org/show_bug.cgi?id=446332</A>)
+
+When using cdrtools-3.01a09, mkisofs fails to calculate the image size
+when I am backing up a particular video DVD:
+
+$ mkisofs --version
+mkisofs 3.01a09 (x86_64-unknown-linux-gnu) Copyright (C) 1993-1997 Eric Youngdale (C) 1997-2012 Joerg Schilling
+$ mkisofs -print-size -udf -dvd-video -f dvdbackup
+Setting input-charset to 'UTF-8' from locale.
+mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+mkisofs: Either the *.IFO file is bad or you found a mkisofs bug.
+
+This behavior is a regression; in cdrtools-3.01a08, mkisofs had worked
+correctly for the same DVD:
+
+$ mkisofs --version
+mkisofs 3.01a08 (x86_64-unknown-linux-gnu) Copyright (C) 1993-1997 Eric Youngdale (C) 1997-2010 Joerg Schilling
+$ mkisofs -print-size -udf -dvd-video -f dvdbackup
+Setting input-charset to 'UTF-8' from locale.
+Total extents scheduled to be written = 3781360
+3781360
+
+I am seeing this on an amd64 Gentoo Linux system; both versions of
+cdrtools were built with gcc-4.7.2.
+
+You can download the VTS_12_0.BUP file that is giving the error at
+<A HREF="https://bugs.gentoo.org/attachment.cgi?id=331728">https://bugs.gentoo.org/attachment.cgi?id=331728</A>
+
+The full DVD image is 7G, making it impractical to share, but I am
+willing to run any test code you need on it to help diagnose the
+problem.
+
+
+Alexandre Rostovtsev.
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000904.html">[Cdrecord-support] Cdrtools-3.01a09 ready
+</A></li>
+	<LI>Next message: <A HREF="000906.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#905">[ date ]</a>
+              <a href="thread.html#905">[ thread ]</a>
+              <a href="subject.html#905">[ subject ]</a>
+              <a href="author.html#905">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

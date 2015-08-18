@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e2818d2.5SCrOK7oZc57yUoH%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000795.html">
+   <LINK REL="Next"  HREF="000804.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e2818d2.5SCrOK7oZc57yUoH%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 21 14:17:22 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000795.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000804.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#800">[ date ]</a>
+              <a href="thread.html#800">[ thread ]</a>
+              <a href="subject.html#800">[ subject ]</a>
+              <a href="author.html#800">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> Partly Success!
+</I>&gt;<i>
+</I>&gt;<i> I am able to compile smake under the MinGW environment. Based on
+</I>&gt;<i> version smake-1.2.1 with following changes the build process is
+</I>&gt;<i> successful:
+</I>&gt;<i> - in RULES/i?86-mingw32_nt-gcc.rul:
+</I>&gt;<i>    replace -lmgw32 with -lmingw32 (as discussed previously)
+</I>
+This has been done 8 days ago.
+
+&gt;<i> - in psmake/MAKE-sh:
+</I>&gt;<i>    add line test -h xxzzy.123 || lnfiles=&quot;sh cpfiles&quot; after the line
+</I>&gt;<i>    test -r xxzzy.123 || lnfiles=&quot;sh cpfiles&quot;
+</I>&gt;<i>    (as discussed previously)
+</I>
+I did not jet have the time to think  about this.
+
+
+&gt;<i> - in RULES/r-smake.dep:
+</I>&gt;<i>    replace the single quotes with double quotes in the sed ... lines
+</I>&gt;<i>    (as mentioned earlier)
+</I>
+If calling sh -c cmd would work correctly, there was no need to change
+quoting. We need to come to a state where this works out of the box.
+
+&gt;<i> - in RULES/r-smake.obj:
+</I>&gt;<i>    replace -o O/$@ with -o $(ARCHDSIR)/$@ in line45
+</I>
+NO, the file is correct as it is.
+
+&gt;<i> - in include/schily/ccomdefs.h:
+</I>&gt;<i>    add a check !defined __MINGW32__ to the conditional definition of
+</I>&gt;<i>    macro UConst so that Uconst will be defined to const
+</I>&gt;<i>    (as discussed previously)
+</I>&gt;<i>    Note: this is not strictly necessary but prevents the generation of
+</I>&gt;<i>      a lot of warnings.
+</I>
+I am still waiting for the requested information.
+
+&gt;<i> - in smake/make.c:
+</I>&gt;<i>    in docmd():
+</I>&gt;<i>    - add a sectionfor __MINGW32__
+</I>&gt;<i>    - quote the command which shall be executed in sh with single quotes
+</I>&gt;<i>    - call spawnl()
+</I>
+The qoting nightmare is not specific to mingw, but it is a bug from Microsoft.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000795.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000804.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#800">[ date ]</a>
+              <a href="thread.html#800">[ thread ]</a>
+              <a href="subject.html#800">[ subject ]</a>
+              <a href="author.html#800">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 1:1 audio cd copy, clone mode problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C1287126117.5441.80.camel%40deepthought%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000703.html">
+   <LINK REL="Next"  HREF="000705.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 1:1 audio cd copy, clone mode problem</H1>
+    <B>Tobias Deiminger</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C1287126117.5441.80.camel%40deepthought%3E"
+       TITLE="[Cdrecord-support] 1:1 audio cd copy, clone mode problem">tobias.deiminger at t-online.de
+       </A><BR>
+    <I>Fri Oct 15 09:01:57 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000703.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+        <LI>Next message: <A HREF="000705.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi J&#246;rg, thanks for your quick reply!
+
+&gt;<i> &gt; readcd dev=5,0,0 -clone f=readcd.img
+</I>&gt;<i> &gt; cdrecord dev=5,0,0 -raw96r -clone -v readcd.img
+</I>&gt;<i> 
+</I>&gt;<i> This is to copy CDs with unknown format and to copy CDs that try to prevent 
+</I>&gt;<i> copying by introducing specific defects.
+</I>
+This play protected non-CDDA discs are a bad thing. But I own a few and
+would backup them too. Just tried cdda2wav for one of them, and it
+worked fine (except cdda2wav complaining about atom, edge and drop
+issues some times). So I guess readcd -clone is not always required,
+even in such a case. Only noticeable thing is that cdda2wav produces an
+16th empty .wav track of 35MB, while on the original there are only 15
+tracks and one data track (it is a CD-extra). May the 16th track be the
+data?
+
+&gt;<i> This copy mode does not repair any defect and thus is a bad idea for copying audio data.
+</I>
+But in case of good original audio cd without any errors, clone mode
+should copy them, right? My test results are somewhat unexpected then.
+
+&gt;<i> &gt; But even after about 20 trials I could not manage to create only one CD that plays in
+</I>&gt;<i> &gt; all players here.
+</I>&gt;<i> 
+</I>&gt;<i> Without information on why this happened, I cannot help.
+</I>
+I will provide you with any debug information I can retrieve, starting
+with command line output below. What else is of use?
+
+&gt;<i> For CD-extra, extract the second data session separately with readcd and
+</I>&gt;<i> append a session with this data.
+</I>
+Sounds good. So I just need a way to automatically determine whether it
+is CD-extra and do the additional stuff, but I can figure this out I
+think. There are lots of CDs, and examining each single one by hand
+would catch me in front of PC all night long. Being there at work the
+whole day is enough:-)
+
+What about the gapless issue? Might cdrecord -dao be useful?
+
+&gt;<i> Did you replace the broken fork that comes with Ubuntu by the original software?
+</I>
+Sure. Compiled cdrtools 3.00. I don't know the fork well enough, so I'm
+not going to comment the stated brokenness:)
+
+Best,
+Tobias
+
+Here are example command line outputs of my clone-mode trials:
+
+$ readcd dev=1,1,0 -clone f=cd.img
+Read  speed:  7056 kB/s (CD  40x, DVD  5x, BD  1x).
+Write speed:  8467 kB/s (CD  48x, DVD  6x, BD  1x).
+TOC len: 191. First Session: 1 Last Session: 1.
+01 10 00 A0 00 00 00 00 01 00 00 
+01 10 00 A1 00 00 00 00 0E 00 00 
+01 10 00 A2 00 00 00 00 1B 1A 31 
+01 10 00 01 00 00 00 00 00 02 00 
+01 10 00 02 00 00 00 00 01 04 00 
+01 10 00 03 00 00 00 00 03 10 48 
+01 10 00 04 00 00 00 00 05 1D 27 
+01 10 00 05 00 00 00 00 07 0F 12 
+01 10 00 06 00 00 00 00 09 20 18 
+01 10 00 07 00 00 00 00 0B 12 24 
+01 10 00 08 00 00 00 00 0C 2D 3F 
+01 10 00 09 00 00 00 00 0F 1F 2A 
+01 10 00 0A 00 00 00 00 11 0C 33 
+01 10 00 0B 00 00 00 00 14 02 24 
+01 10 00 0C 00 00 00 00 15 0F 24 
+01 10 00 0D 00 00 00 00 16 39 2A 
+01 10 00 0E 00 00 00 00 18 34 0C 
+00 00 00 00 00 00 00 00 00 00 00 
+Lead out 1: 123349
+Capacity: 123349 Blocks = 246698 kBytes = 240 MBytes = 252 prMB
+Sectorsize: 2048 Bytes
+readcd: Input/output error. read_cd: scsi sendcmd: no error
+CDB:  BE 00 00 00 00 00 00 00 00 F8 01 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 21 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x21 Qual 0x00 (logical block address out of range) Fru 0x0
+Sense flags: Blk 0 (not valid) 
+cmd finished after 0.000s timeout 40s
+readcd: read 2448 failed
+readcd: Input/output error. read_cd: scsi sendcmd: no error
+CDB:  BE 00 00 00 00 00 00 00 00 F8 02 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 21 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x21 Qual 0x00 (logical block address out of range) Fru 0x0
+Sense flags: Blk 0 (not valid) 
+cmd finished after 0.000s timeout 40s
+Copy from SCSI (1,1,0) disk to file 'cd.img'
+end:    123349
+addr:   123349 cnt: 18
+Time total: 138.530sec
+Read 294881.20 kB at 2128.6 kB/sec.
+
+
+$ cdrecord dev=1,1,0 -raw96r -clone -v cd.img
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2010 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,1,0'
+scsibus: 1 target: 1 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   : 
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-R
+Profile: DVD+R/DL 
+Profile: DVD+R 
+Profile: DVD+RW 
+Profile: DVD-R/DL layer jump recording 
+Profile: DVD-R/DL sequential recording 
+Profile: DVD-RW sequential recording 
+Profile: DVD-RW restricted overwrite 
+Profile: DVD-RAM 
+Profile: DVD-R sequential recording 
+Profile: DVD-ROM 
+Profile: CD-RW 
+Profile: CD-R (current)
+Profile: CD-ROM 
+Profile: Removable Disk 
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE 
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R LAYER_JUMP
+Drive buf size : 720896 = 704 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Encoding speed : 579x (43362 sectors/s) for libedc from Heiko Ei&#65533;feldt
+Track 01: data   287 MB        
+Total size:      276 MB (27:24.65) = 123349 sectors
+Lout start:      277 MB (27:26/49) = 123349 sectors
+Current Secsize: 2048
+ATIP info from disk:
+  Indicated writing power: 5
+Disk Is not unrestricted
+Disk Is not erasable
+  Disk sub type: Medium Type A, high Beta category (A+) (3)
+  ATIP start of lead in:  -11634 (97:26/66)
+  ATIP start of lead out: 359846 (79:59/71)
+Disk type:    Short strategy type (Phthalocyanine or similar)
+Manuf. index: 3
+Manufacturer: CMC Magnetics Corporation
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+      359844             2048         0x00  No Media Present or Unknown
+Capacity
+Blocks total: 359846 Blocks current: 359846 Blocks remaining: 236497
+Starting to write CD/DVD/BD at speed 48 in real RAW/RAW96R mode for
+single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Performing OPC...
+cdrecord: WARNING: Drive returns wrong startsec (0) using -11634 from
+ATIP
+Writing lead-in at sector -11634
+Lead-in write time:   19.282s
+Writing pregap for track 1 at -150
+Starting new track at sector: 0
+Track 01:  287 of  287 MB written (fifo 100%) [buf  73%]  33.5x.
+Track 01: Total bytes read/written: 301958352/301958352 (123349
+sectors).
+Writing  time:   80.418s
+Average write speed  26.9x.
+Min drive buffer fill was 44%
+Writing Leadout...
+Fixating...
+Fixating time:   15.604s
+cdrecord: fifo had 4745 puts and 4745 gets.
+cdrecord: fifo was 0 times empty and 3009 times full, min fill was 93%.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000703.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+	<LI>Next message: <A HREF="000705.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#704">[ date ]</a>
+              <a href="thread.html#704">[ thread ]</a>
+              <a href="subject.html#704">[ subject ]</a>
+              <a href="author.html#704">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Notice, PPA for Ubuntu users
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Notice%2C%20PPA%20for%20Ubuntu%20users&In-Reply-To=%3CAANLkTikY9iLT9YLmKv4HDHG7Y4WzoXG6e1J__S%2B_aQSn%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000707.html">
+   <LINK REL="Next"  HREF="000709.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Notice, PPA for Ubuntu users</H1>
+    <B>Eric Shattow &quot;Eprecocious&quot;</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Notice%2C%20PPA%20for%20Ubuntu%20users&In-Reply-To=%3CAANLkTikY9iLT9YLmKv4HDHG7Y4WzoXG6e1J__S%2B_aQSn%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Notice, PPA for Ubuntu users">lucent at gmail.com
+       </A><BR>
+    <I>Sat Oct 23 13:52:12 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000707.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+        <LI>Next message: <A HREF="000709.html">[Cdrecord-support] Notice, PPA for Ubuntu users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've written a debian packaging from scratch (for Ubuntu Linux
+Maverick 10.10) of the cdrtools 3.00 stable release:
+<A HREF="https://launchpad.net/~eshattow/+archive/cdrtools-stable">https://launchpad.net/~eshattow/+archive/cdrtools-stable</A>
+
+There is also a modern packaging of 3.00 stable release:
+<A HREF="https://launchpad.net/~brandonsnider/+archive/cdrtools">https://launchpad.net/~brandonsnider/+archive/cdrtools</A>
+
+The difference there is I make no attempt to integrate cdrtools with
+cdrkit / dvd+rw-tools in my packaging effort; All executable files are
+renamed with a suffix &quot;-cdrtools&quot; on the name:
+/usr/bin/cdrecord
+becomes
+/usr/bin/cdrecord-cdrtools
+
+and this is done with all installed executables.  Any static libraries
+in /usr/lib are moved to /usr/lib/cdrtools ; similar with installed
+header files moved to /usr/include/cdrtools
+
+Jeorg, is this use of renaming acceptable?
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000707.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+	<LI>Next message: <A HREF="000709.html">[Cdrecord-support] Notice, PPA for Ubuntu users
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

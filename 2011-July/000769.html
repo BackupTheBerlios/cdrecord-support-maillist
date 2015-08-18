@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e16fe6a.hnbKZ0Y2wjzR4mIb%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000766.html">
+   <LINK REL="Next"  HREF="000770.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e16fe6a.hnbKZ0Y2wjzR4mIb%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Jul  8 14:56:10 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000766.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000770.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#769">[ date ]</a>
+              <a href="thread.html#769">[ thread ]</a>
+              <a href="subject.html#769">[ subject ]</a>
+              <a href="author.html#769">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>/*--------------------------------------------------------------------------*/
+Some new information:
+
+I have been able to find the patches from the russion guy who did make the last
+MinGW port in 2003. His code is very expensive, he implements many things by 
+hand that are already available in the port abstraction system in a more 
+generalized form.
+
+There are however a log of hints that could be used to create a new better port.
+
+Basic information in any case:
+
+You first need to port smake to mingw.
+
+Do this by downloading:
+
+<A HREF="ftp://ftp.berlios.de/pub/schily/schily-2011-05-08.tar.bz2">ftp://ftp.berlios.de/pub/schily/schily-2011-05-08.tar.bz2</A>
+
+and unpacking the archive.
+
+Then chdir to the  directory &quot;psmake&quot; and call &quot;./MAKE-all&quot; in that directory.
+This works completely shell skript controlled. If there are basic problems 
+with compiling smake, we first need to address them but the changes will 
+immediately help cdrtools to advance as everything uses a unique portability 
+system.
+
+With smake I mainly expect problems with calling shell commands.
+
+/*--------------------------------------------------------------------------*/
+
+Repeating things as they have not made it to the list
+
+Henry &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">defsyn at gmail.com</A>&gt; wrote:
+
+&gt;<i> &gt; I have never succeeded in compiling cdrtools on MinGW. Have tried on and
+</I>&gt;<i> off for the last 10 years. The Cygwin environment has been the only
+</I>&gt;<i> environment on windows that has worked for me.
+</I>
+As I try to avoid to use a Microsoft environment, and as I have too few 
+experiences with MinGW, I am just able to help with reports from people who 
+actually try. Given the fact that I need to make sure that my software will be 
+able to survive me, there should be other people who collaborate with the 
+development ;-)
+
+&gt;<i>From other porting attempts, it seems to be the best idea if someone who is 
+</I>used to  work under MinGW would do some testing and reports his results. As
+the basic code structure is higly portable, it usually takes less than one 
+hour to fix problems with a specific platform.
+
+
+There is a russian guy who offered older versions from cdrtools as MinGW based 
+binaries, but he unfortunately did not report what he did in order to succeed.
+
+There is MS SFU (Interix) or whatever it is called today. Cdrtools compile 
+in this environment, but unfortunately MS does not offer access to the SCSI 
+subsystem to programs that are run in that environment.
+
+There is also UWIN and from a discussion I had with David Korn, there is a big 
+chance to get cdrtools compile and work on UWIN - I did not try yet.
+
+
+&gt;<i> You need to follow Schilling's recommendations to use his smake at the very
+</I>&gt;<i> least.
+</I>&gt;<i>
+</I>&gt;<i> At one point Gnu Make used to work on Cygwin. About 3 years ago, it quit.
+</I>&gt;<i> Using smake became a requirment.
+</I>
+Gmake always has been a problem. Gmake compiles on many platforms but it works 
+in a suffuciently usable way only on very few platforms. Even though smake is 
+much older than gmake, I planned to stop working on smake around 1995. 
+
+When the OS/2 port was made for cdrtools in 1998, it turned out that the 
+person in Russia who initially worked on the port spend more than two weeks 
+without being able to advance. After he presented really strange results, I 
+made the proposal to first port smake. He was confused and thought that this 
+would force him to work for many additional weeks without being able to 
+advance the cdrtools port. After I have been able to convince him to try to 
+compile smake once, it turned out that porting smake to OS/2 took less than a 
+day and most of the problems he observed before while trying to use gmake 
+disappeared while using smake. 
+
+After seeing this experience, It was obvious that I need to continue working on 
+smake if I like to support more than a few target platforms.
+
+If you like to understans why gmake has problems on other platforms, have a 
+look in the source and check how many platform specific #ifdefs are in the 
+makefile parser. Smake has no such #ifdefs and this avoids platform specific 
+problems. If you like to port smake, you only need to find a way to call a 
+halfway POSIX compliant shell and to add code to smake/archconf.c to enable the 
+automake features for the new platform (this is code like uname() for 
+auto-detecting platforms).
+
+
+&gt;<i> And I've found that only the 3.xx gcc compilers to have been successful in
+</I>&gt;<i> compiling on Cygwin for cdrtools. You should take note that the versions of
+</I>&gt;<i> cdrtools that appear on the net for Windows use a Cygwin compiled version of
+</I>&gt;<i> cdrtools.
+</I>
+As mentioned before, GCC-4.x gives warnings on 100% ANSI-C compliant code.
+Warnings like:
+
+        ==&gt; COMPILING &quot;raisecond.o&quot; 
+raisecond.c: In function 'raiseabort': 
+raisecond.c:159: warning: ignoring return value of 'write', declared with attribute warn_unused_result 
+
+Are printed because GCC-4 ignores ANSI C rules that permit to write something 
+like:
+
+	(void) write(2, &quot;ERROR\n&quot;, 6);
+
+in order to tell the compiler that the return value from write() is 
+intentionally ignored.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000766.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000770.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#769">[ date ]</a>
+              <a href="thread.html#769">[ thread ]</a>
+              <a href="subject.html#769">[ subject ]</a>
+              <a href="author.html#769">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 9.2-RELEASE FreeBSD unsuccessful try to	build schily-2013-11-09
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%209.2-RELEASE%20FreeBSD%20unsuccessful%20try%20to%0A%09build%20schily-2013-11-09&In-Reply-To=%3CCAJ5UdcOWTKv1W7HvY%2BbKzvxK3sjb02ePP8Rr84GORnD6%3DW_9sw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000961.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 9.2-RELEASE FreeBSD unsuccessful try to	build schily-2013-11-09</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%209.2-RELEASE%20FreeBSD%20unsuccessful%20try%20to%0A%09build%20schily-2013-11-09&In-Reply-To=%3CCAJ5UdcOWTKv1W7HvY%2BbKzvxK3sjb02ePP8Rr84GORnD6%3DW_9sw%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] 9.2-RELEASE FreeBSD unsuccessful try to	build schily-2013-11-09">olivares14031 at gmail.com
+       </A><BR>
+    <I>Thu Nov 14 23:45:15 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000961.html">[Cdrecord-support] 9.2-RELEASE FreeBSD unsuccessful try to build schily-2013-11-09
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#962">[ date ]</a>
+              <a href="thread.html#962">[ thread ]</a>
+              <a href="subject.html#962">[ subject ]</a>
+              <a href="author.html#962">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Nov 14, 2013 at 2:55 PM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Dear Sir,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Tried the same suggestion that worked in 8.4-RELEASE here in 9.2-RELEASE
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Edit RULES/cc* and RULES/rules.cnf and change:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $(OSINCDIRS)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> to
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $(OSINCDIRS:%=-I%)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> but it fails somehow.  Or is it another message?
+</I>&gt;&gt;<i> I have not successfully* compiled schily-2013-* tools on the 9.1 now
+</I>&gt;&gt;<i> 9.2-RELEASE :(
+</I>&gt;&gt;<i> some *.h files from BSD folks?  other situation?
+</I>&gt;<i>
+</I>&gt;<i> believe me that it compiles after that change, I tested it yesterday.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>
+
+Dear Sir,
+
+I was using sed command to replace $OSINCDIRS) with the new command,
+but it was failing to do it, I had to check manually that the command
+was not changing the files.  I made the changes as root user and it
+has successfully compiled :)
+
+$ pwd
+/home/olivares/Downloads/schily-2013-11-09
+$ which cdrecord
+/opt/schily/bin/cdrecord
+$ cdrecord --version
+Cdrecord-ProDVD-ProBD-Clone 3.01a18 (amd64-unknown-freebsd9.2)
+Copyright (C) 1995-2013 Joerg Schilling
+$ uname -a
+FreeBSD E-213-3W 9.2-RELEASE FreeBSD 9.2-RELEASE #0 r255898: Thu Sep
+26 22:50:31 UTC 2013
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at bake.isc.freebsd.org</A>:/usr/obj/usr/src/sys/GENERIC  amd64
+
+where before the last version that had completed successfully was :
+
+$ which cdrecord
+/opt/schily/bin/cdrecord
+$ cdrecord --version
+Cdrecord-ProDVD-ProBD-Clone 3.01a14 (amd64-unknown-freebsd9.1)
+Copyright (C) 1995-2013 Joerg Schilling
+
+Thank you very much and sorry for my mistakes that at first were not
+noticeable :(.
+
+
+Best Regards,
+</PRE>
+
+
+
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000961.html">[Cdrecord-support] 9.2-RELEASE FreeBSD unsuccessful try to build schily-2013-11-09
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#962">[ date ]</a>
+              <a href="thread.html#962">[ thread ]</a>
+              <a href="subject.html#962">[ subject ]</a>
+              <a href="author.html#962">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

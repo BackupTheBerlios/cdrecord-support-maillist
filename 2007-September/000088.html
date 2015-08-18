@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord confused over SATAPI and DMA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20confused%20over%20SATAPI%20and%20DMA&In-Reply-To=%3C46f23f47.0MDkXrBIw7qIEONL%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000087.html">
+   <LINK REL="Next"  HREF="000089.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord confused over SATAPI and DMA</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20confused%20over%20SATAPI%20and%20DMA&In-Reply-To=%3C46f23f47.0MDkXrBIw7qIEONL%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord confused over SATAPI and DMA">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Sep 20 11:37:11 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000087.html">[Cdrecord-support] cdrecord confused over SATAPI and DMA
+</A></li>
+        <LI>Next message: <A HREF="000089.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Joshua Newton&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrecord at standingduck.net</A>&gt; wrote:
+
+&gt;<i> cdrecord seems to be very confused by SATAPI DVD burners in Linux. 
+</I>&gt;<i> Using the ATA: interface causes cdrecord to mis-detect the state of DMA
+</I>&gt;<i> (to be fair, so does hdparm, but qpxtools gets it right), and it refuses
+</I>&gt;<i> to burn at any speed higher than 16x, and quits.
+</I>
+???
+
+&gt;<i> Passing driveropts=burnfree causes cdrecord to make the same complaint,
+</I>&gt;<i> but it continues to the burning stage, claiming that it's beginning to
+</I>&gt;<i> burn at 24x, but cdrecord reports an actual speed of 16-17x through the
+</I>&gt;<i> entire burn (a full-size 700MB ISO image).  Is cdrecord written to
+</I>&gt;<i> libata yet?  Is there an undocumented switch along the lines of &quot;-sata&quot; 
+</I>&gt;<i> or &quot;-forcespeed&quot;?  (I know about forcespeed, but that appears to be a
+</I>&gt;<i> method of telling cdrecord to override the drive; not its own DMA
+</I>&gt;<i> detection routine.)
+</I>
+This looks confused. Platform specific interfaces in the kernel are irrelevent 
+for generic SCSI. Cdrecord uses documented interfaces that are available to
+the user space commands and I encourage Kernel hackers to implement _one_
+orthogonal interface for all SCSI transfers.
+
+&gt;<i> Having cdrecord outguess the user seems suboptimal.
+</I>&gt;<i>
+</I>&gt;<i> (FTR: Plextor PX-716SA, v1.11 f/w)
+</I>
+This drive is known to support no DMA for the READ buffer command.
+
+You need to use the documented workarounds for such drives, e.g. setting the 
+environment CDR_FORCESPEED
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000087.html">[Cdrecord-support] cdrecord confused over SATAPI and DMA
+</A></li>
+	<LI>Next message: <A HREF="000089.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#88">[ date ]</a>
+              <a href="thread.html#88">[ thread ]</a>
+              <a href="subject.html#88">[ subject ]</a>
+              <a href="author.html#88">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

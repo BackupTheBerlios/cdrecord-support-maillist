@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Rewriting DVD+RW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C4c5a76cf.Ryp6Vzy8Qcso91Ue%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000685.html">
+   <LINK REL="Next"  HREF="000687.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Rewriting DVD+RW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C4c5a76cf.Ryp6Vzy8Qcso91Ue%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Rewriting DVD+RW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Aug  5 10:31:11 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000685.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+        <LI>Next message: <A HREF="000687.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#686">[ date ]</a>
+              <a href="thread.html#686">[ thread ]</a>
+              <a href="subject.html#686">[ subject ]</a>
+              <a href="author.html#686">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;mwesten&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mwesten at verizon.net</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I'm using Cdrtools-3.0 (on RIPLinux 10.3) to write DVDs.  DVD+Rs are written fine, but I have some DVD+RWs which were previously written by a DVR machine that I will want to rewrite.  The first one of those that I tried was only half-full (~2GB), and when I attempted to record a ~3GB iso, cdrecord said the disc was too small.  That disc was closed, so I assumed it would just overwrite it from the beginning.  I thought DVD+RWs did not need blanking, but I did blank=fast on it anyway.  After that, I happened to eject the disc before attempting another write.  I reinserted it and tried writing, but got the same error (too small).  I did blank=fast again, and then issued the write command again, but this time without ejecting the disc.  It did write, but apparently did not complete successfully, and the disc doesn't work.  It took 300 seconds to fixate, and then the drive hung with the light blinking.  After rebooting, I found that the toc is wrong, and some files give an Input/Output error when I try to read them.
+</I>
+The whole DVD+ system is non-standard and a quality desaster.
+There is nothing like the round robin test that the DVD Forum does for DVD-
+media.
+
+In special writing DVD+RW from different drives causes many compatibility 
+problems. You may try to run the DVD+RW blank &quot;emulation&quot; cdrecord blank=all
+several times or &quot;cdrecord -format -force&quot; if that works.
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000685.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+	<LI>Next message: <A HREF="000687.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#686">[ date ]</a>
+              <a href="thread.html#686">[ thread ]</a>
+              <a href="subject.html#686">[ subject ]</a>
+              <a href="author.html#686">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Latest cdrecord + NEC ND-1300A
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Latest%20cdrecord%20%2B%20NEC%20ND-1300A&In-Reply-To=%3C45D0D44E.5060006%40mpexnet.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000017.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Latest cdrecord + NEC ND-1300A</H1>
+    <B>Lars Braeuer</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Latest%20cdrecord%20%2B%20NEC%20ND-1300A&In-Reply-To=%3C45D0D44E.5060006%40mpexnet.de%3E"
+       TITLE="[Cdrecord-support] Latest cdrecord + NEC ND-1300A">lb at mpexnet.de
+       </A><BR>
+    <I>Mon Feb 12 21:55:42 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000017.html">[Cdrecord-support] CDRTOOLS Support?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello list,
+
+until recently I used &quot;Cdrecord-ProDVD-Clone 2.01b31&quot;, it worked fine.
+
+But the key expired and as I understand, cdrecord-prodvd is now open source, so there's no more key,
+but an installation of the latest cdrtools is requried, right huh?
+
+I tried to do this (using Cdrecord-ProDVD-Clone 2.01.01a23). And I'm not able to burn this Verbatim
+DVD-RW I used with the old version of cdrecord-prodvd for more than a year (it's blanked of course).
+
+I did find other postings about this &quot;Data will not fit on any disk.&quot; message, but nothing that
+really helped.
+
+Here's the output, as well as the output of -minfo on the bottom:
+
+# ./cdrecord -v -dao dev=ATAPI speed=2 /usr/backup/backup.iso
+Cdrecord-ProDVD-Clone 2.01.01a23 (i686-pc-linux-gnu) Copyright (C) 1995-2006 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: 'ATAPI'
+devname: 'ATAPI'
+scsibus: -2 target: -2 lun: -2
+Warning: dev=ATA: is preferred over dev=ATAPI:.
+Warning: Using ATA Packet interface.
+Warning: The related Linux kernel interface code seems to be unmaintained.
+Warning: There is absolutely NO DMA, operations thus are slow.
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+No target specified, trying to find one...
+Using dev=ATAPI:0,0,0.
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : '_NEC    '
+Identifikation : 'DVD_RW ND-1300A '
+Revision       : '1.0B'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-RW sequential overwrite
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential overwrite (current)
+Profile: DVD-RW restricted overwrite (current)
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO
+Drive buf size : 1605632 = 1568 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  2978 MB
+Total size:     2978 MB = 1525232 sectors
+Current Secsize: 2048
+Trying to clear drive status.
+./cdrecord: MMC-3 speed select did not work.
+./cdrecord: Drive needs to reload the media to return to proper status.
+WARNING: Phys disk size 2298496 differs from rzone size 0! Prerecorded disk?
+WARNING: Phys start: 196608 Phys end 2495103
+./cdrecord: Data will not fit on any disk.
+./cdrecord: Cannot write CD's &gt;= 100 minutes.
+
+------------------------------
+
+-minfo:
+
+
+
+(output above this line save as previous output posted)
+Drive buf size : 1605632 = 1568 KB
+Current Secsize: 2048
+
+    Capacity  Blklen/Sparesz.  Type
+           0                0  Reserved (0)
+           0                0  Reserved (0)
+           0                0  Reserved (0)
+           0                0  Reserved (0)
+WARNING: Phys disk size 2298496 differs from rzone size 0! Prerecorded disk?
+WARNING: Phys start: 196608 Phys end 2495103
+Disk Is not erasable
+data type:                standard
+disk status:              empty
+session status:           empty
+BG format status:         none
+first track:              0
+number of sessions:       0
+first track in last sess: 0
+last track in last sess:  0
+Disk Is not unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+    0     0 Audio  0          -1         0         -1
+
+Last session start address:         0
+Last session leadout start address: 0
+
+------------------------
+
+
+This disc was definetley eraseable/usable with 2.01b31 (there's no -minfo for this version, right?).
+
+I also tested some of the driver= options
+
+
+
+------------------------
+
+# ./cdrecord dev=ATAPI -scanbus
+
+Cdrecord-ProDVD-Clone 2.01.01a23 (i686-pc-linux-gnu) Copyright (C) 1995-2006 J&#246;rg Schilling
+scsidev: 'ATAPI'
+devname: 'ATAPI'
+scsibus: -2 target: -2 lun: -2
+Warning: dev=ATA: is preferred over dev=ATAPI:.
+Warning: Using ATA Packet interface.
+Warning: The related Linux kernel interface code seems to be unmaintained.
+Warning: There is absolutely NO DMA, operations thus are slow.
+Using libscg version 'schily-0.9'.
+scsibus0:
+        0,0,0     0) '_NEC    ' 'DVD_RW ND-1300A ' '1.0B' Removable CD-ROM
+        0,1,0     1) *
+...
+--------------------------
+
+Trying to use driver=mmc_cd_dvd
+
+...
+./cdrecord: WARNING: Trying to use other driver on known device.
+Using generic SCSI-3/mmc   CD/DVD driver (checks media) (mmc_cd_dvd).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+Drive buf size : 1605632 = 1568 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  2978 MB
+Total size:     3421 MB (338:56.42) = 1525232 sectors
+Lout start:     3421 MB (338:58/32) = 1525232 sectors
+Current Secsize: 2048
+./cdrecord: Unspecified command not implemented for this drive.
+./cdrecord: Data will not fit on any disk.
+./cdrecord: Cannot write more than remaining DVD capacity.
+
+--------------------------
+
+Thanks for any help or anyone even reading this. ;)
+
+Best,
+
+Lars
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000017.html">[Cdrecord-support] CDRTOOLS Support?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#16">[ date ]</a>
+              <a href="thread.html#16">[ thread ]</a>
+              <a href="subject.html#16">[ subject ]</a>
+              <a href="author.html#16">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] error writing to DVD
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20writing%20to%20DVD&In-Reply-To=%3C54742.30429.qm%40web53201.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000304.html">
+   <LINK REL="Next"  HREF="000306.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] error writing to DVD</H1>
+    <B>ehab aziz</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20error%20writing%20to%20DVD&In-Reply-To=%3C54742.30429.qm%40web53201.mail.re2.yahoo.com%3E"
+       TITLE="[Cdrecord-support] error writing to DVD">ehab_aziz2001 at yahoo.com
+       </A><BR>
+    <I>Tue Nov 25 00:04:17 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000304.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+        <LI>Next message: <A HREF="000306.html">[Cdrecord-support] error writing to DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+
+
+
+I am using Solaris 10U3 x86.
+There is a problem of the option used with DVD to&#160;backup&#160;/export/home/unix directory ? 
+Also I need to backup my files with their long names and restore them also with their long names !?
+First for all the mkisofs did not include all subdirectories inside /export/home/unix ?
+Also I have a question about if I can&#160;use cp with DVD-RAM media or not with Solaris 10?
+
+
+#/export/home&gt;uname -a
+SunOS inhome 5.10 Generic_137138-09 i86pc i386 i86pc
+
+
+#/export/home&gt;mkisofs -R /export/home/unix | cdrecord -v&#160; fs=6m&#160; speed=2 dev=1,1,0 -
+
+That is the output of the running 
+-----------------------------------------------
+
+
+Using IDSC3000 for&#160; /export/home/unix/programs.d/sedawk/idsc37_sedawk_OREILLY/idsc37-ch11 (idsc37-ch01)
+..
+..
+
+cdrecord: No write mode specified.
+cdrecord: Asuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a53 (i386-pc-solaris2.10) Copyright (C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,1,0'
+scsibus: 1 target: 1 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 57344
+atapi: 1
+Device type&#160;&#160;&#160; : Removable CD-ROM
+Version&#160;&#160;&#160;&#160;&#160;&#160;&#160; : 0
+Response Format: 2
+Capabilities&#160;&#160; :
+Vendor_info&#160;&#160;&#160; : 'HL-DT-ST'
+Identifikation : 'DVDRAM GSA-H42N '
+Revision&#160;&#160;&#160;&#160;&#160;&#160; : 'RL00'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-RW sequential recording
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-RW sequential recording (current)
+Profile: DVD-RW restricted overwrite (current)
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD+R/DL
+Profile: DVD-ROM
+Profile: CD-R
+Profile: CD-RW
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags&#160;&#160; : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1114112 = 1088 KB
+Drive pbuf size: 1966080 = 1920 KB
+Drive DMA Speed: 2999 kB/s 17x CD 2x DVD 0x BD
+FIFO size&#160;&#160;&#160;&#160;&#160; : 6291456 = 6144 KB
+Track 01: data&#160; unknown length
+cdrecord: Track 1 has unknown length.
+cdrecord: Use tsize= option in SAO mode to specify track size.
+#/export/home&gt;
+
+
+
+      
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20081124/8f292348/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20081124/8f292348/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000304.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+	<LI>Next message: <A HREF="000306.html">[Cdrecord-support] error writing to DVD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#305">[ date ]</a>
+              <a href="thread.html#305">[ thread ]</a>
+              <a href="subject.html#305">[ subject ]</a>
+              <a href="author.html#305">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

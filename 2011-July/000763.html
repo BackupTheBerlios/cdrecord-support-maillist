@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e15bc7b.KtRf26xoLzQPyiXe%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000762.html">
+   <LINK REL="Next"  HREF="000764.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e15bc7b.KtRf26xoLzQPyiXe%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul  7 16:02:35 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000762.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000764.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#763">[ date ]</a>
+              <a href="thread.html#763">[ thread ]</a>
+              <a href="subject.html#763">[ subject ]</a>
+              <a href="author.html#763">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> After some time I am again trying to compile cdrtools for the Windows
+</I>&gt;<i> operating system. I prefer the MinGW version because I experience
+</I>&gt;<i> problems with mounting paths with the Cygwin version and the
+</I>&gt;<i> additional dependancy on the Cygwin dlls.
+</I>&gt;<i> I downloaded the latest version (cdrtools 3.01a05). Unpacking the
+</I>&gt;<i> source tarball went without problems; last time I tried I had lots
+</I>&gt;<i> of trouble even with that. I read the README.mingw32 file which says
+</I>
+Well GNUtar has strange bugs. Some of them have been fixed partly 2 years ago.
+
+If you are a victim of GNU tar and cannot succeed to unpack archives, there are 
+shell archives from smake and star.
+
+&gt;<i> that I need MinGW in a specific version and MSYS in a specific version.
+</I>&gt;<i> I downloaded and installed those (actually I already had MinGW). Then
+</I>&gt;<i> it says I should adjust the Path varible, which I did accordingly. The
+</I>&gt;<i> final step should simply be running `make? and that's it.
+</I>
+It seems that you used gmake which is known to fail on MinGW. I recommend to 
+use smake that was in use aprox. 7-10 years ago when I was working wwith the 
+last person who helped to make cdrtools compile on MinGW.
+
+&gt;<i> During make a few problems arose though, some are minor and easy to fix
+</I>&gt;<i> some are more basic and would require more understanding of what is
+</I>&gt;<i> really required.
+</I>&gt;<i> 1) in the rules files RULES/i?86-mingw32_nt-gcc.rul the library mgw32
+</I>&gt;<i>     is added to the linker options (-lmgw32). On my system there no
+</I>&gt;<i>     libmgw32.a file but rather a libmingw32.a. I do not know what this
+</I>&gt;<i>     library does and why it is needed but replacing mgw32 by mingw32
+</I>&gt;<i>     succeeds in building the programs  align_test.exe and avoffset.exe
+</I>&gt;<i>     which in turn results in generating the otherwise missing files
+</I>&gt;<i>     align.h and avoffset.h.
+</I>
+As I believe that I repeated the port at home, I am sure there was such a 
+library at that time. You seem to miss functions that are otherwise granted to 
+exist. This seems to be a hint that something may be missing.
+
+&gt;<i> 2) In libschily/fexec.c the macro `fd_getfd? is incorrectly defined
+</I>&gt;<i>     if the macro F_GETFD is not defined (lines 138 - 142). This leads
+</I>&gt;<i>     to compile errors in lines 370, 376, 382.
+</I>&gt;<i>     I set it to                  `#define fd_getfd(fd)  fd?
+</I>&gt;<i>
+</I>&gt;<i>     Likewise I set fd_setfd() to `#define df_setfd(fd, val)  fd=val?
+</I>&gt;<i>     (not yet done in the attached build log).
+</I>
+These macros need to return 0 in case that fcntl() is not available.
+
+&gt;<i> 3) Changing line 64 of include/schily/ccomdefs.h from
+</I>&gt;<i>       #if __GNUC__ &gt; 3 || __GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1
+</I>&gt;<i>     to
+</I>&gt;<i>       #if (__GNUC__ &gt; 3 || (__GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1)) &amp;&amp; 
+</I>&gt;<i> !defined WIN32
+</I>&gt;<i>     helped avoiding a lot of warnings `ignoring attribute __used__?
+</I>&gt;<i>     (or similar). Obviously, although the MinGW gcc I am using (MinGW
+</I>&gt;<i>     distribution 3.1.0-1 as requested in README.mingw32) is version
+</I>&gt;<i>     3.2.3 it does not support the __used__ attribute as apparently
+</I>&gt;<i>     his brothers on other OSs.
+</I>
+It may be that you see a well known bug in newer GCCs. This does not seem to be 
+MinGW specific. GCC unfortunately prints a warning message even if there is 
+code that is 100% correct according to the C-standard. An example: 
+
+	(void) write(2, &quot;ERROR\n&quot;, 6);
+
+is not permitted to cause a copiler warning.
+
+&gt;<i> These were the minor ones, now to the more severe problems:
+</I>&gt;<i> 4) A number of *nix system calls regarding file/process ownership,
+</I>&gt;<i>     such as getuid(), geteuid(), etc., are not found and therefore
+</I>&gt;<i>     linking fails (btcflash.exe, mkisofs.exe, readcd.exe,
+</I>&gt;<i>     scgskeleton.exe)
+</I>
+I am not aware that there ever have been related problems. You seem to miss a 
+library.
+
+&gt;<i>     I have code for some of these calls but not for setuid().
+</I>
+&gt;<i> 5) The same goes for the gettimeofday() system call. I do have code
+</I>&gt;<i>     for this, too, but again the build system should have warned about
+</I>&gt;<i>     it.
+</I>
+It is very strange that gettimeofday() is missing.
+
+&gt;<i> 6) More errors from the build log:
+</I>&gt;<i>
+</I>&gt;<i> make[1]: Entering directory `/d/WINPROG/cdrtools-3.01/cdda2wav'
+</I>&gt;<i> ../RULES/local.cnf:43: OBJ/i686-mingw32_nt-gcc/Inull: No such file or 
+</I>&gt;<i> directory
+</I>&gt;<i> ../RULES/local.cnf:44: OBJ/i686-mingw32_nt-gcc/local.cnf: No such file 
+</I>&gt;<i> or directory
+</I>&gt;<i>          ==&gt; MAKING DIRECTORY &quot;OBJ/i686-mingw32_nt-gcc&quot;
+</I>&gt;<i>          ==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/parse.d&quot;
+</I>&gt;<i>          ==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/base64.d&quot;
+</I>&gt;<i> In file included from base64.c:2:
+</I>&gt;<i> config.h:34:21: lconfig.h: No such file or directory
+</I>
+This is most likely a result from a well known bug in GNU make.
+
+GNUmake has a rotten parser that causes problems on platforms that use \r\n as 
+line end and \ ad path name separator.
+
+It is recommended to use smake on such platforms.
+
+Did you try:
+
+	<A HREF="ftp://ftp.berlios.de/pub/schily/">ftp://ftp.berlios.de/pub/schily/</A>
+
+There is a bootstrap smake inside that compiles with shell scripts only and 
+does not rely on a non-existent make program.
+
+&gt;<i> sndconfig.c: In function `init_soundcard':
+</I>&gt;<i> sndconfig.c:345: `WIN_CallBack' undeclared (first use in this function)
+</I>&gt;<i> sndconfig.c:345: (Each undeclared identifier is reported only once
+</I>&gt;<i> sndconfig.c:345: for each function it appears in.)
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/sndconfig.o] Error 1
+</I>
+looks like a followup problem from the problem above.
+
+&gt;<i>   ==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/cdrecord.o&quot;
+</I>&gt;<i> cdrecord.c:5091:28: stropts.h: No such file or directory
+</I>&gt;<i> cdrecord.c:5092:25: poll.h: No such file or directory
+</I>&gt;<i> cdrecord.c: In function `wait_input':
+</I>&gt;<i> cdrecord.c:5107: storage size of `pfd' isn't known
+</I>&gt;<i> cdrecord.c:5117: `POLLIN' undeclared (first use in this function)
+</I>&gt;<i> cdrecord.c:5117: (Each undeclared identifier is reported only once
+</I>&gt;<i> cdrecord.c:5117: for each function it appears in.)
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/cdrecord.o] Error 1
+</I>
+This function exists since y2000 and may have been introduced past the last 
+MinGW port has been made.
+
+I was under the assumption that an OS either supports select() or poll() as 
+this seems to be true since aprox. 1984.
+
+Let us delay the other problems until you have a working smake and until you 
+found a solution for the missing functions from libc.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000762.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000764.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#763">[ date ]</a>
+              <a href="thread.html#763">[ thread ]</a>
+              <a href="subject.html#763">[ subject ]</a>
+              <a href="author.html#763">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

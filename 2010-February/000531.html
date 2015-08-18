@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3C4b694c04.xnBkrkuxynRkrsWI%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000530.html">
+   <LINK REL="Next"  HREF="000534.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3C4b694c04.xnBkrkuxynRkrsWI%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Feb  3 11:12:20 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000530.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+        <LI>Next message: <A HREF="000534.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>bill browne &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">bilie.browne at gmail.com</A>&gt; wrote:
+
+&gt;<i> DVD seems to burn OK - can see burnt area visually
+</I>&gt;<i> Halts with cannot fixate - cdrecord -scanbus can then no longer see
+</I>&gt;<i> drive until reboot.
+</I>
+This is a hint for a bug in the Linux kernel.
+
+&gt;<i> cdrecord -minfo is showing Cannot read drive buffer:
+</I>
+Not all drives support the READ BUFFER command.
+
+&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a74 (x86_64-unknown-linux-gnu)
+</I>&gt;<i> Copyright (C) 1995-2010 J???rg Schilling
+</I>&gt;<i> scsidev: '1,0,0'
+</I>&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Device type&#160;&#160;&#160; : Removable CD-ROM
+</I>&gt;<i> Version&#160;&#160;&#160;&#160;&#160;&#160;&#160; : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities&#160;&#160; :
+</I>&gt;<i> Vendor_info&#160;&#160;&#160; : 'TSSTcorp'
+</I>&gt;<i> Identifikation : 'CDDVDW SH-S223C '
+</I>&gt;<i> Revision&#160;&#160;&#160;&#160;&#160;&#160; : 'SB01'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+</I>&gt;<i> Driver flags&#160;&#160; : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> Mounted media class:&#160;&#160;&#160;&#160;&#160; DVD
+</I>&gt;<i> Mounted media type:&#160;&#160;&#160;&#160;&#160;&#160; DVD+R/DL
+</I>&gt;<i> Disk Is not erasable
+</I>&gt;<i> data type:&#160;??&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; standard
+</I>&gt;<i> disk status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; empty
+</I>&gt;<i> session status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;??&#160; empty
+</I>&gt;<i> BG format status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; none
+</I>&gt;<i> first track:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1
+</I>&gt;<i> number of sessions:&#160;&#160;??&#160;&#160;&#160; 1
+</I>&gt;<i> first track in last sess: 1
+</I>&gt;<i> last track in last sess:&#160; 1
+</I>&gt;<i> Disk Is not unrestricted
+</I>&gt;<i> Disk type: DVD, HD-DVD or BD
+</I>&gt;<i>
+</I>&gt;<i> Track&#160; Sess Type&#160;&#160; Start Addr End Addr&#160;&#160; Size
+</I>&gt;<i> ==============================================
+</I>&gt;<i> &#160;&#160;&#160; 1&#160;&#160;&#160;&#160; 1 Blank&#160; 0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173823&#160;&#160;&#160; 4173824
+</I>&gt;<i>
+</I>&gt;<i> Next writable address:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0
+</I>&gt;<i> Remaining writable size:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173824
+</I>
+Do you have a log from the writing procedure?
+
+What media manufacturer did you use?
+Check with cdrecord -atip
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000530.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+	<LI>Next message: <A HREF="000534.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

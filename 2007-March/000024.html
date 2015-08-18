@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Help%20needed%20on%20Mac%20OS%20Extended%20%28i.e%20HFS%2B%29%0A%20support%20with%20mkisofs.exe&In-Reply-To=%3C460a712a.BqRNnHSQsJJ4pHXC%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Help%20needed%20on%20Mac%20OS%20Extended%20%28i.e%20HFS%2B%29%0A%20support%20with%20mkisofs.exe&In-Reply-To=%3C460a712a.BqRNnHSQsJJ4pHXC%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Mar 28 15:44:10 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000023.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>boohbah &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">d.burchmore at byn.net.au</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> Actually I don't need it. I was guessing on behalf of the other guy.
+</I>&gt;<i>
+</I>&gt;<i> However, what I DO need is a way to edit the TOC of a PC / MAC hybrid iso
+</I>&gt;<i> file in order to offset its session start position in order to burn it as
+</I>&gt;<i> the 2nd session of a multisession disc.
+</I>
+I am not sure whether mkisofs supports thsi for mac hybrid CDs, did you test?
+
+&gt;<i> I believe that a method which involves converting to .raw will strip out the
+</I>&gt;<i> HFS+ part.
+</I>&gt;<i>
+</I>&gt;<i> The Hybrid.iso was created with MacImage. A great application imho.
+</I>&gt;<i>
+</I>&gt;<i> The author has responded to me on this subject, but says the ability to
+</I>&gt;<i> 'dock' the hybrid.iso to the end of a (specifically) audio 1st session might
+</I>&gt;<i> be on his to do list...but not yet!
+</I>&gt;<i>
+</I>&gt;<i> I have been trying to find a solution to this for months.
+</I>
+It usually is easier to find a solutoion that is based on standards only
+and that does not need a mac specific hack.
+
+The problem with the HFS code in mkisofs is that is is not cleanly written and
+hard to impossible to maintain.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000023.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[Cdrecord-support] Help needed on Mac OS Extended (i.e HFS+) support with mkisofs.exe
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

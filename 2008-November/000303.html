@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Fwd: error after 773918720 bytes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Fwd%3A%20error%20after%20773918720%20bytes&In-Reply-To=%3C4709DF98-FCE4-4787-A603-FED0CD43ED8C%40brown.edu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000302.html">
+   <LINK REL="Next"  HREF="000304.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Fwd: error after 773918720 bytes</H1>
+    <B>Margaret Doll</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Fwd%3A%20error%20after%20773918720%20bytes&In-Reply-To=%3C4709DF98-FCE4-4787-A603-FED0CD43ED8C%40brown.edu%3E"
+       TITLE="[Cdrecord-support] Fwd: error after 773918720 bytes">Margaret_Doll at brown.edu
+       </A><BR>
+    <I>Tue Nov 11 22:35:14 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000302.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+        <LI>Next message: <A HREF="000304.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sorry,  I am brain-dead today.  Of course, there is not enough room on  
+cds.
+
+I changed over to DVD-R by Memorex.   They hold 4.7 Gb of data.
+
+When I execute
+&gt;<i> cdrecord speed=4 dev=/dev/cdwriter:@ disk1.iso
+</I>
+I get
+
+cmd finished after 0.001s timeout 40s
+cdrecord:  No disk / Wrong disk!
+
+I have tried imation DVD-R and HP dvd+R dvds.  Same results.
+
+There is a note that this version of cdrecord is an unofficial version  
+eith DVD support.
+
+
+
+
+Begin forwarded message:
+
+&gt;<i> From: Margaret Doll &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">margaret_doll at brown.edu</A>&gt;
+</I>&gt;<i> Date: November 11, 2008 4:15:29 PM EST
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> Subject: error after 773918720 bytes
+</I>&gt;<i>
+</I>&gt;<i> I have been trying to burn cds on two different  RedHat systems,  
+</I>&gt;<i> 2.6.9-78.ELsmp and 2.4.21-57.ELsmp, using cdrecord-2.01.1-5.0.EL4.4  
+</I>&gt;<i> and cdrecord-2.01.0.a32-0.EL3.6   respectively.
+</I>&gt;<i>
+</I>&gt;<i> I am using Magnavox  CD-R cds.  I am trying to record data  
+</I>&gt;<i> directories that are less than 4 Gb in size.
+</I>&gt;<i>
+</I>&gt;<i> I am using the following commands:
+</I>&gt;<i>
+</I>&gt;<i> mkisof -R -o  disk1.iso disk1
+</I>&gt;<i> cdrecord speed=4 dev=2,0,0 disk1.iso
+</I>&gt;<i>
+</I>&gt;<i> and
+</I>&gt;<i>
+</I>&gt;<i> cdrecord speed=4 dev=/dev/cdwriter:@ disk1.iso
+</I>&gt;<i>
+</I>&gt;<i> Both systems are  Dell optiplex GX 620s
+</I>&gt;<i>
+</I>&gt;<i> I keep getting the WARNING:  Data may not fit on current disk.
+</I>&gt;<i> 		Notice:  Most recorders cannot write CD's &gt;= 90 minutes.
+</I>&gt;<i> 	        Notice:  Use - ignsize option to allow &gt;= 90 minutes.
+</I>&gt;<i>
+</I>&gt;<i> If I use  the -ignsize option on either computer, I get the error  
+</I>&gt;<i> message
+</I>&gt;<i>
+</I>&gt;<i> Error after 773918720 bytes.
+</I>&gt;<i>
+</I>&gt;<i> I used to be able to record without problems.   What's going on?
+</I>&gt;<i>
+</I>&gt;<i> The Vendor_info from cdrecord:  'HL-DT-ST'
+</I>&gt;<i> Identification:  DVD+-RW GWA4164B
+</I>&gt;<i>
+</I>&gt;<i> Using generic SCSI-3/mmc
+</I>&gt;<i> Drvier flags:  MMC-3 SWABAUDIO BURNFREE
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20081111/10a5b60f/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20081111/10a5b60f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000302.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+	<LI>Next message: <A HREF="000304.html">[Cdrecord-support] error after 773918720 bytes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#303">[ date ]</a>
+              <a href="thread.html#303">[ thread ]</a>
+              <a href="subject.html#303">[ subject ]</a>
+              <a href="author.html#303">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

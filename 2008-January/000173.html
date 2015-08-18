@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs: path-list in win32 issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%3A%20path-list%20in%20win32%20issues&In-Reply-To=%3C478cd69f.Cormqkk3GlxBhs4w%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000172.html">
+   <LINK REL="Next"  HREF="000174.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs: path-list in win32 issues</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%3A%20path-list%20in%20win32%20issues&In-Reply-To=%3C478cd69f.Cormqkk3GlxBhs4w%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs: path-list in win32 issues">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jan 15 16:51:59 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000172.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+        <LI>Next message: <A HREF="000174.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael Grigoni &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">michael.grigoni at cybertheque.org</A>&gt; wrote:
+
+&gt;<i> Built 2.01.01a37 (default download from 'alpha', labeled 'beta') on
+</I>&gt;<i> Cygwin (dll 1.3.22), Win2k Server SP3, GCC 3.2:
+</I>&gt;<i>
+</I>&gt;<i> 1. libsiconv build fails:
+</I>&gt;<i>       sic_nls.c:44:9: missing binary operator before '('
+</I>&gt;<i>     -- commented out lines 44 -&gt; 48
+</I>
+This really looks strange!
+
+Your compiler does not seem to be C99 compliant
+I see no problems with GCC 2.95.3 and GCC 3.4.3
+
+
+&gt;<i> 2. tested 'mkisofs':
+</I>&gt;<i>       ./mkisofs -J -r -o foobar.iso -graft-points -path-list foobar.lst
+</I>&gt;<i>       ./mkisofs: Warning: Cannot add inode hints with -no-cache-inodes.
+</I>
+Are you using an _extremely_ old version off cygwin?
+
+Cygwin supports 64 bit and correct inode numbers since many years now.
+Mkisofs will recongise new Cygwin versions since october 2006.
+
+
+
+&gt;<i>       '.mkisofs: No such file or directory. Invalid node - 'dir1
+</I>&gt;<i>     (NOTE: superfluous single quotes, not present in output from older
+</I>&gt;<i>      builds of mkisofs)
+</I>
+The quotes for better readability of filenames have been added to all missing 
+places more than 2 years ago. Before mkisofs behaved inconsistent.
+
+
+&gt;<i> 3. determined that &quot;Invalid node&quot; error is due to presence of 'CR LF'
+</I>&gt;<i>     EOL delimiters vs. LF-only delimiters in pathlist file.
+</I>&gt;<i>     NOTE: this is also the reason for the error seen in earlier builds
+</I>&gt;<i>     of mkisofs.
+</I>
+Unless you configured Cygwin to default to UNIX linefeeds, I see no problem.
+
+I see no problem in mkisofs here.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000172.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+	<LI>Next message: <A HREF="000174.html">[Cdrecord-support] mkisofs: path-list in win32 issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#173">[ date ]</a>
+              <a href="thread.html#173">[ thread ]</a>
+              <a href="subject.html#173">[ subject ]</a>
+              <a href="author.html#173">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

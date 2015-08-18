@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3C501667fd.Nld13mwM3whakK9w%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000862.html">
+   <LINK REL="Next"  HREF="000866.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3C501667fd.Nld13mwM3whakK9w%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Jul 30 12:54:53 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000862.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+        <LI>Next message: <A HREF="000866.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ady Ady &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>&gt; wrote:
+
+&gt;<i> &gt; Thank you for the report, the problem was introduced when adding support for 
+</I>&gt;<i> &gt; Grub2 UUIDs. I removed one line that should stay.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; J&#246;rg
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Thank you for your answer.
+</I>&gt;<i> During my tests and searches before reporting, I wasn't able to find anything about the bug (except users not knowing why the resulting ISO images were incompatible). Do you mean this was an already-known bug?
+</I>
+What do you mean with incompatible?
+
+I believe that nobody discovered the problem during 14 months is because no 
+software I am aware of depends on the missing date string.
+
+How did you get aware of the problem?
+
+&gt;<i> I don't know which are the criteria to release new (alpha/beta) versions.
+</I>&gt;<i> More users are seeing this issue because cdrtools (mkisofs) 3.01a07 was recently added to Slackware -current, and the next release of Slackware stable seems to be relatively close. Also Debian is preparing its next stable release. As known, these 2 Linux distros are the based to many others.
+</I>
+I thought Debian is still OSS hostile and does not ship mkisofs...... Did this 
+change?
+
+&gt;<i> Additionally, since the resulting ISO images (of mkisofs 3.01a05, -a06 and -a07 too) are incompatible to ECMA-119, some (few) tools will not accept (work) with those ISO images. One such software is 7-zip, which is in time also used by many other tools to expand ISO images (like for example multiboot USB-media related utilities).
+</I>&gt;<i> So, as I was saying, I don't know which criteria you use to release (or not) new alpha versions. Please consider releasing a bug-fix release, so the developers of relevant Linux distros would be able to update cdrtools too before their mayor next releases.
+</I>
+The software was tested against known problems, things like this may rarely 
+happen.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000862.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+	<LI>Next message: <A HREF="000866.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E26B66C.8020105%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000794.html">
+   <LINK REL="Next"  HREF="000800.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E26B66C.8020105%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Wed Jul 20 13:05:16 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000794.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000800.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#795">[ date ]</a>
+              <a href="thread.html#795">[ thread ]</a>
+              <a href="subject.html#795">[ subject ]</a>
+              <a href="author.html#795">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> &gt; BTW: It seems that you ask and send only information that you believe
+ &gt; is important. I am still waiting for a lot of information I asked for
+I am sorry, but I must have missed that you are waiting for information
+from me. I went throught the mails once more but could not find anything
+specific. Maybe I missed some mails (victim of spam filters?). So
+please tell me once more and explicitely what are the pieces of
+information you are waiting for?
+
+I am trying to document my progress and findings openly. I have to
+admit that these tend to be seen from my point of view. I am lacking
+somewhat the &quot;big picture&quot; and the experience with all of the 30+ 
+platforms your software supports. So please be indulgent when I make 
+suggestions which are of rather limited scope and would likely break
+other platforms.
+
+ &gt; If it does not work, what do you see in $MAKE  with smake -r -f 
+/dev/null -p
+When running psmake/smake -r -f /dev/null -p from the directory
+/d/winprog/smake-1.2.1 from within an MSYS shell it says
+   MAKE=d:/winprog/smake-1.2.1/psmake/smake.exe
+Running psmake/smake -r all from within the MSYS shell works
+
+When running psmake\smake -r -f nul -p from the directory
+D:\winprog\smake-1.2.1 from within a Windows cmd.exe shell it says
+   MAKE=psmake/smake
+.. and this is the case when I have to give the complete absolute path
+in order to successfully build smake. This is a minor issue because
+there is a workaround. The final smake does not have any problem and
+succeeds in building smake.
+
+Running the final smake -r -f nul -p from D:\winprog\smake-1.2.1 from
+within a cmd.exe shell yields
+   MAKE=smake
+
+I do not know whether this is caused by a broken getcwd(), by calling
+getcwd() differently or by the fact that different environments report
+different strings in the argv[0] variable of main() (with or without
+full path) or by something else.
+
+
+With best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> One thing I forgot to mention:
+</I>&gt;&gt;<i> When building the real smake I have to start the bootstrap with the
+</I>&gt;&gt;<i> complete absolute path, e.g. C:\smake-1.2.1\psmake\smake -r all
+</I>&gt;&gt;<i> Johannes
+</I>&gt;<i>
+</I>&gt;<i> This is not needed, except when your OS does not support a working getcwd().
+</I>&gt;<i>
+</I>&gt;<i> If it does not work, what do you see in $MAKE  with smake -r -f /dev/null -p
+</I>&gt;<i>
+</I>&gt;<i> BTW: It seems that you ask and send only information that you beliee is
+</I>&gt;<i> important. I am still waiting for a lot of information I asked for....
+</I>&gt;<i>
+</I>&gt;<i> Many questions can only be answered in case that I have the needed information.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000794.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000800.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#795">[ date ]</a>
+              <a href="thread.html#795">[ thread ]</a>
+              <a href="subject.html#795">[ subject ]</a>
+              <a href="author.html#795">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

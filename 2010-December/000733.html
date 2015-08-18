@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] fbk driver on sol 2.6
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20fbk%20driver%20on%20sol%202.6&In-Reply-To=%3CPine.LNX.4.58.1012101054140.18799%40waste.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000732.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] fbk driver on sol 2.6</H1>
+    <B>Infra</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20fbk%20driver%20on%20sol%202.6&In-Reply-To=%3CPine.LNX.4.58.1012101054140.18799%40waste.org%3E"
+       TITLE="[Cdrecord-support] fbk driver on sol 2.6">msg at waste.org
+       </A><BR>
+    <I>Fri Dec 10 17:56:44 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000732.html">[Cdrecord-support] fbk driver on sol 2.6
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#733">[ date ]</a>
+              <a href="thread.html#733">[ thread ]</a>
+              <a href="subject.html#733">[ subject ]</a>
+              <a href="author.html#733">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 10 Dec 2010, Joerg Schilling wrote:
+
+To close this thread I can report that the driver works for iso9660
+image mounts; it just won't mount the 2GB ufs image file from an i386
+SVR4 machine (which is also on an NFS share if that matters).
+
+# mount -F fbk -o ro,type=hsfs /dev/fbk0:/tmp/testimg.iso /mnt
+MOUNT FBK: mount -o ro,type=hsfs /dev/fbk0:/tmp/testimg.iso /mnt
+mount -F hsfs -m -o ro /dev/fbk0 /mnt
+# ls /mnt
+asterisk-mj-debuggin.log  moyers-09042009.txt
+
+&gt;<i> Infra &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">msg at waste.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Installed fbk driver on sol 2.6/sparc, postinstall completed w/out error
+</I>&gt;<i> &gt; despite warning in README. Ran drvconfig and devlinks. /dev/fkb0 and
+</I>&gt;<i> &gt; /devices/... files exist. Also ran modload drv/fbk. No errors anywhere.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; # mount -r -F fbk /dev/fbk0:/server2.a0/bigsys/usr2/usr2-bu/c0t2d0s1.dd
+</I>&gt;<i> &gt; /mnt
+</I>&gt;<i> &gt; MOUNT FBK: mount -r /dev/fbk0:/server2.a0/bigsys/usr2/usr2-bu/c0t2d0s1.dd
+</I>&gt;<i> &gt; /mnt
+</I>&gt;<i> &gt; mount -F ufs -m -r /dev/fbk0 /mnt
+</I>&gt;<i> &gt; mount: /dev/fbk0 no such device
+</I>&gt;<i> &gt; mount: mount exited with 32
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Really don't want to reboot production machine. Anything I can do?
+</I>&gt;<i>
+</I>&gt;<i> There is no need to reboot.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> If there is no /dev/fbk0, the postinstall did not work correctly. Run
+</I>&gt;<i>
+</I>&gt;<i> drvconfig
+</I>&gt;<i> devlinks
+</I>&gt;<i>
+</I>&gt;<i> this should create it.
+</I>&gt;<i>
+</I>&gt;<i> If this is no ufs, then you need to mount the image by hand later using:
+</I>&gt;<i>
+</I>&gt;<i> mount -F something  /dev/fbk0 /mnt
+</I>&gt;<i>
+</I>&gt;<i> Theassociation between /dev/fbk0 and the file is removed after the last close.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000732.html">[Cdrecord-support] fbk driver on sol 2.6
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#733">[ date ]</a>
+              <a href="thread.html#733">[ thread ]</a>
+              <a href="subject.html#733">[ subject ]</a>
+              <a href="author.html#733">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

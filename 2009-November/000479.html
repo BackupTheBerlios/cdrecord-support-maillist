@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] -scanbus broken with hardware raid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4AF45263.6080605%40feise.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000478.html">
+   <LINK REL="Next"  HREF="000480.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] -scanbus broken with hardware raid</H1>
+    <B>Joe Feise</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4AF45263.6080605%40feise.com%3E"
+       TITLE="[Cdrecord-support] -scanbus broken with hardware raid">jfeise at feise.com
+       </A><BR>
+    <I>Fri Nov  6 17:44:19 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000478.html">[Cdrecord-support] cdrtools-2.01.01a67 ready
+</A></li>
+        <LI>Next message: <A HREF="000480.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#479">[ date ]</a>
+              <a href="thread.html#479">[ thread ]</a>
+              <a href="subject.html#479">[ subject ]</a>
+              <a href="author.html#479">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have a SCSI hardware RAID system, using an Adaptec 2200S dual channel card.
+Channel 1 has a RAID 1 and a RAID 0 disk, channel 2 has a CD-ROM drive.
+cdrecord -scanbus shows this output:
+Linux sg driver version: 3.5.34
+cdrecord: Warning Linux Bus mapping botch.
+cdrecord: Warning Linux Bus mapping botch.
+cdrecord: Warning Linux Bus mapping botch.
+cdrecord: Warning Linux Bus mapping botch.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a67 (i686-pc-linux-gnu) Copyright (C)
+1995-2009 J&#246;rg Schilling
+Using libscg version 'schily-0.9'.
+scsibus0:
+        0,0,0     0) 'Adaptec ' '2200S Legacy    ' 'V1.0' Disk
+        0,1,0     1) 'Adaptec ' 'Media           ' 'V1.0' Disk
+        0,2,0     2) *
+        0,3,0     3) 'MAXTOR  ' 'ATLAS10K5_147WLS' 'GVV0' Disk
+        0,4,0     4) *
+        0,5,0     5) 'YAMAHA  ' 'CRW-F1S         ' '1.0g' Removable CD-ROM
+        0,6,0     6) *
+        0,7,0     7) *
+
+However, sgdiag (from <A HREF="http://scsirastools.sourceforge.net/">http://scsirastools.sourceforge.net/</A>) shows the correct
+output:
+-- sgdiag v1.60 log started at Fri Nov  6 08:32:13 2009
+ 0 /dev/sg0 [0:0:0:0] Disk Adaptec  2200S Legacy     V1.0  [em]
+ 1 /dev/sg1 [0:0:1:0] Disk Adaptec  Media            V1.0  [em]
+ 2 /dev/sg2 [0:1:0:0] Disk ModusLnk                                 [em]
+ 3 /dev/sg3 [0:1:1:0] Disk ModusLnk MXJ3300SC800600W M108   ML0001  [em]
+ 4 /dev/sg4 [0:1:3:0] Disk MAXTOR   ATLAS10K5_147WLS GVV0 D4Y00QYK  [em]
+ 5 /dev/sg5 [0:2:5:0] CDRM YAMAHA   CRW-F1S          1.0g 16/04/03  [em]
+
+In other words, the RAID disks are listed at channel 0, the physical disks on
+channel 1 are listed at channel 1, and the cdrom on channel 2 is listed on
+channel 2, which is the correct layout.
+
+-Joe
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000478.html">[Cdrecord-support] cdrtools-2.01.01a67 ready
+</A></li>
+	<LI>Next message: <A HREF="000480.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#479">[ date ]</a>
+              <a href="thread.html#479">[ thread ]</a>
+              <a href="subject.html#479">[ subject ]</a>
+              <a href="author.html#479">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

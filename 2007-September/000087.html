@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord confused over SATAPI and DMA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20confused%20over%20SATAPI%20and%20DMA&In-Reply-To=%3C1190261834.13304.1211609781%40webmail.messagingengine.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000086.html">
+   <LINK REL="Next"  HREF="000088.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord confused over SATAPI and DMA</H1>
+    <B>Joshua Newton</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20confused%20over%20SATAPI%20and%20DMA&In-Reply-To=%3C1190261834.13304.1211609781%40webmail.messagingengine.com%3E"
+       TITLE="[Cdrecord-support] cdrecord confused over SATAPI and DMA">cdrecord at standingduck.net
+       </A><BR>
+    <I>Thu Sep 20 06:17:14 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000086.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+        <LI>Next message: <A HREF="000088.html">[Cdrecord-support] cdrecord confused over SATAPI and DMA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>cdrecord seems to be very confused by SATAPI DVD burners in Linux. 
+Using the ATA: interface causes cdrecord to mis-detect the state of DMA
+(to be fair, so does hdparm, but qpxtools gets it right), and it refuses
+to burn at any speed higher than 16x, and quits.
+
+Passing driveropts=burnfree causes cdrecord to make the same complaint,
+but it continues to the burning stage, claiming that it's beginning to
+burn at 24x, but cdrecord reports an actual speed of 16-17x through the
+entire burn (a full-size 700MB ISO image).  Is cdrecord written to
+libata yet?  Is there an undocumented switch along the lines of &quot;-sata&quot; 
+or &quot;-forcespeed&quot;?  (I know about forcespeed, but that appears to be a
+method of telling cdrecord to override the drive; not its own DMA
+detection routine.)
+
+Having cdrecord outguess the user seems suboptimal.
+
+(FTR: Plextor PX-716SA, v1.11 f/w)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000086.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+	<LI>Next message: <A HREF="000088.html">[Cdrecord-support] cdrecord confused over SATAPI and DMA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#87">[ date ]</a>
+              <a href="thread.html#87">[ thread ]</a>
+              <a href="subject.html#87">[ subject ]</a>
+              <a href="author.html#87">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

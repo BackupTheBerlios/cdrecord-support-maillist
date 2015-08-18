@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] -scanbus broken with hardware raid
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4AF45371.80808%40feise.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000479.html">
+   <LINK REL="Next"  HREF="000481.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] -scanbus broken with hardware raid</H1>
+    <B>Joe Feise</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20-scanbus%20broken%20with%20hardware%20raid&In-Reply-To=%3C4AF45371.80808%40feise.com%3E"
+       TITLE="[Cdrecord-support] -scanbus broken with hardware raid">jfeise at feise.com
+       </A><BR>
+    <I>Fri Nov  6 17:48:49 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000479.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+        <LI>Next message: <A HREF="000481.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#480">[ date ]</a>
+              <a href="thread.html#480">[ thread ]</a>
+              <a href="subject.html#480">[ subject ]</a>
+              <a href="author.html#480">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe Feise wrote on 11/06/09 08:44:
+
+&gt;<i> I have a SCSI hardware RAID system, using an Adaptec 2200S dual channel card.
+</I>&gt;<i> Channel 1 has a RAID 1 and a RAID 0 disk, channel 2 has a CD-ROM drive.
+</I>&gt;<i> cdrecord -scanbus shows this output:
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> cdrecord: Warning Linux Bus mapping botch.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a67 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2009 J&#246;rg Schilling
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> scsibus0:
+</I>&gt;<i>         0,0,0     0) 'Adaptec ' '2200S Legacy    ' 'V1.0' Disk
+</I>&gt;<i>         0,1,0     1) 'Adaptec ' 'Media           ' 'V1.0' Disk
+</I>&gt;<i>         0,2,0     2) *
+</I>&gt;<i>         0,3,0     3) 'MAXTOR  ' 'ATLAS10K5_147WLS' 'GVV0' Disk
+</I>&gt;<i>         0,4,0     4) *
+</I>&gt;<i>         0,5,0     5) 'YAMAHA  ' 'CRW-F1S         ' '1.0g' Removable CD-ROM
+</I>&gt;<i>         0,6,0     6) *
+</I>&gt;<i>         0,7,0     7) *
+</I>&gt;<i> 
+</I>&gt;<i> However, sgdiag (from <A HREF="http://scsirastools.sourceforge.net/">http://scsirastools.sourceforge.net/</A>) shows the correct
+</I>&gt;<i> output:
+</I>&gt;<i> -- sgdiag v1.60 log started at Fri Nov  6 08:32:13 2009
+</I>&gt;<i>  0 /dev/sg0 [0:0:0:0] Disk Adaptec  2200S Legacy     V1.0  [em]
+</I>&gt;<i>  1 /dev/sg1 [0:0:1:0] Disk Adaptec  Media            V1.0  [em]
+</I>&gt;<i>  2 /dev/sg2 [0:1:0:0] Disk ModusLnk                                 [em]
+</I>&gt;<i>  3 /dev/sg3 [0:1:1:0] Disk ModusLnk MXJ3300SC800600W M108   ML0001  [em]
+</I>&gt;<i>  4 /dev/sg4 [0:1:3:0] Disk MAXTOR   ATLAS10K5_147WLS GVV0 D4Y00QYK  [em]
+</I>&gt;<i>  5 /dev/sg5 [0:2:5:0] CDRM YAMAHA   CRW-F1S          1.0g 16/04/03  [em]
+</I>&gt;<i> 
+</I>&gt;<i> In other words, the RAID disks are listed at channel 0, the physical disks on
+</I>&gt;<i> channel 1 are listed at channel 1, and the cdrom on channel 2 is listed on
+</I>&gt;<i> channel 2, which is the correct layout.
+</I>
+I forgot to mention, the system is a Linux box.
+$: uname -a
+Linux joe 2.6.29.6 #7 SMP PREEMPT Tue Oct 27 01:39:17 PDT 2009 i686 Intel(R)
+Pentium(R) 4 CPU 3.40GHz GenuineIntel GNU/Linux
+
+-Joe
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000479.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+	<LI>Next message: <A HREF="000481.html">[Cdrecord-support] -scanbus broken with hardware raid
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#480">[ date ]</a>
+              <a href="thread.html#480">[ thread ]</a>
+              <a href="subject.html#480">[ subject ]</a>
+              <a href="author.html#480">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

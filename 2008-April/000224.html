@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord 2.01.01a37 segfault
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C4810a531.oa/WkbkaxKowhltj%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000221.html">
+   <LINK REL="Next"  HREF="000211.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord 2.01.01a37 segfault</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C4810a531.oa/WkbkaxKowhltj%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord 2.01.01a37 segfault">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Apr 24 17:20:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000221.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+        <LI>Next message: <A HREF="000211.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Marcin Gryszkalis &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mg at fork.pl</A>&gt; wrote:
+
+&gt;<i> &gt; Given the fact that your debugger correctly lists the call parameters for
+</I>&gt;<i> &gt; fill_buf(), it may only be that your local libc provides a fill_buf()
+</I>&gt;<i> &gt; function and the linker ignored link preference order rules.
+</I>&gt;<i> seems pretty strange... I would rather blame stack/memory corruption, 
+</I>&gt;<i> or fillbytes filling something it was not supposed to fill :)
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; &gt; Given the fact, that there have recently been some bug reports on
+</I>&gt;<i> &gt; &gt; &gt; optimizer bugs in gcc-4.2.3 that cause fillbytes() to be compiled
+</I>&gt;<i> &gt; &gt; &gt; incorrectly, I would recommend to either use an older GCC or the latest
+</I>&gt;<i> &gt; &gt; &gt; GCC which seems to be gcc-4.3.
+</I>&gt;<i>
+</I>&gt;<i> &gt; &gt; # gcc -v
+</I>&gt;<i> &gt; &gt; gcc version 4.2.1 20070719  [FreeBSD]
+</I>&gt;<i>
+</I>&gt;<i> &gt; Could you try a different GCC?
+</I>&gt;<i>
+</I>&gt;<i> which one would you like?
+</I>&gt;<i>
+</I>&gt;<i> /var/ports/lang/gcc28/
+</I>&gt;<i> /var/ports/lang/gcc295/
+</I>
+....
+
+I am not sure, but I believe that 2.9.5 was a good vintage....
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000221.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+	<LI>Next message: <A HREF="000211.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

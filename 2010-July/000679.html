@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C53FFAB.4000203%40netspace.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000678.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE</H1>
+    <B>Murray Blakeman</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C53FFAB.4000203%40netspace.net.au%3E"
+       TITLE="[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE">mblakeman at netspace.net.au
+       </A><BR>
+    <I>Sat Jul 31 12:49:15 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000678.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 31/07/10 02:15 PM, Eric Shattow &quot;Eprecocious&quot; wrote:
+&gt;<i> Try raw96 mode?  Tell us if that works.
+</I>&gt;<i>
+</I>&gt;<i> Apparently, the default mode was changed to something which fails on
+</I>&gt;<i> *many* writers / &quot;The hardware is buggy&quot;
+</I>&gt;<i>
+</I>&gt;<i>    
+</I>
+I assume you mean either of the -raw96? options.  I tried both raw96p 
+and raw96r.  With both, I get a &quot;Drive does not support RAW recording&quot; 
+error as shown below.
+
+
+$ cdrecord dev=0,0,0 driveropts=burnfree -verbose -raw96p image.iso
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.10) Copyright (C) 
+1995-2010 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 0
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'BD-RW   BDR-205 '
+Revision       : '1.04'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-RE
+Profile: BD-RE (current)
+Profile: BD-R random recording
+Profile: BD-R sequential recording
+Profile: BD-ROM
+Profile: DVD+R/DL
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RW sequential recording
+Profile: DVD-R sequential recording
+Profile: DVD-RAM
+Profile: Removable Disk
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Using generic SCSI-3/mmc-3 BD-RE driver (mmc_bdre).
+Driver flags   : NO-CD BD MMC-3 BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1572864 = 1536 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Encoding speed : 1000x (75000 sectors/s) for libedc from Heiko Ei&#223;feldt
+cdrecord: Drive does not support RAW recording.
+cdrecord: Illegal write mode for this drive.
+
+
+
+I also had issues attempting to burn to a BD-R as shown below.  Even 
+though I stipulated &quot;-dummy&quot; it still wrote some data to the disc (coaster).
+
+
+
+$ ./cdrecord dev=0,0,0 driveropts=burnfree gracetime=20 -dummy -verbose 
+/export/storage/mac_os_10.6.iso
+./cdrecord: No write mode specified.
+./cdrecord: Assuming -sao mode.
+./cdrecord: If your drive does not accept -sao, try -tao.
+./cdrecord: Future versions of cdrecord may have different drive 
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.10) Copyright (C) 
+1995-2010 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 0
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'BD-RW   BDR-205 '
+Revision       : '1.04'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-R sequential recording
+Profile: BD-RE
+Profile: BD-R random recording
+Profile: BD-R sequential recording (current)
+Profile: BD-ROM
+Profile: DVD+R/DL
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RW sequential recording
+Profile: DVD-R sequential recording
+Profile: DVD-RAM
+Profile: Removable Disk
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1703936 = 1664 KB
+./cdrecord: Warning: Cannot read drive buffer.
+./cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  7411 MB
+Total size:     7411 MB = 3794608 sectors
+Current Secsize: 2048
+WARNING: Phys disk size 4452354 differs from rzone size 12219392! 
+Prerecorded disk?
+WARNING: Phys start: 25088 Phys end 4477441
+Blocks total: 12219392 Blocks current: 12219392 Blocks remaining: 8424784
+Reducing transfer size from 64512 to 32768 bytes.
+Starting to write CD/DVD/BD at speed 0 in dummy SAO mode for single session.
+Last chance to quit, starting dummy write i   0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01:    3 of 7411 MB written (fifo  97%) [buf  76%]   
+7.9x../cdrecord: I/O error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 00 07 10 00 00 10 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 21 02 00 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x21 Qual 0x02 (invalid address for write) Fru 0x0
+Sense flags: Blk 0 (not valid)
+resid: 32768
+cmd finished after 0.087s timeout 200s
+
+write track data: error after 3702784 bytes
+./cdrecord: The current problem looks like a buffer underrun.
+./cdrecord: It looks like 'driveropts=burnfree' does not work for this 
+drive.
+./cdrecord: Please report.
+./cdrecord: Make sure that you are root, enable DMA and check your HW/OS 
+set up.
+Writing  time:   23.648s
+Average write speed  73.1x.
+Min drive buffer fill was 15%
+Fixating...
+Fixating time:   10.135s
+./cdrecord: fifo had 241 puts and 114 gets.
+./cdrecord: fifo was 0 times empty and 9 times full, min fill was 82%.
+
+
+
+I've had no issues with CD and DVD writes with the drive but I'm et to 
+have any success with Bluray.
+
+Thanks
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000678.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

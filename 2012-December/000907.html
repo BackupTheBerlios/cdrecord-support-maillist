@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-3.01a09%20regression%3A%20mkisofs%3A%0A%20Implementation%20botch.%20Video%20pad%20for%20file%20VTS_12_0.BUP%20is%20-3757166&In-Reply-To=%3C1354905597.31090.52.camel%40rook%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000906.html">
+   <LINK REL="Next"  HREF="000908.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166</H1>
+    <B>Alexandre Rostovtsev</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-3.01a09%20regression%3A%20mkisofs%3A%0A%20Implementation%20botch.%20Video%20pad%20for%20file%20VTS_12_0.BUP%20is%20-3757166&In-Reply-To=%3C1354905597.31090.52.camel%40rook%3E"
+       TITLE="[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166">tetromino at gentoo.org
+       </A><BR>
+    <I>Fri Dec  7 19:39:57 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000906.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+        <LI>Next message: <A HREF="000908.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2012-12-07 at 12:50 +0100, Joerg Schilling wrote:
+&gt;<i> In the file mkisofs/dvd_file.c
+</I>&gt;<i> 
+</I>&gt;<i> 71c71
+</I>&gt;<i> &lt;       for (i = 0, j = 0; j &lt; (titles-1); ) {
+</I>&gt;<i> ---
+</I>&gt;<i> &gt;       for (i = 0, j = 0; j &lt; titles; ) {
+</I>&gt;<i> 
+</I>&gt;<i> If it then works, I need to think again about a but report regarding a claim 
+</I>&gt;<i> from a valgrind warning.
+</I>&gt;<i> 
+</I>&gt;<i> It also may be that we are able to get closer to a similar problem that is very 
+</I>&gt;<i> rare and reported since 10 years but never could be identified.
+</I>&gt;<i> 
+</I>&gt;<i> J&#246;rg
+</I>
+Hi J&#246;rg,
+
+Thank you, this change fixes the &quot;Implementation botch&quot; error in 3.01a09.
+
+Alexandre
+
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000906.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+	<LI>Next message: <A HREF="000908.html">[Cdrecord-support] cdrtools-3.01a09 regression: mkisofs: Implementation botch. Video pad for file VTS_12_0.BUP is -3757166
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord 2.01.01a37 segfault
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200802220250.35398.mg%40fork.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord 2.01.01a37 segfault</H1>
+    <B>Marcin Gryszkalis</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200802220250.35398.mg%40fork.pl%3E"
+       TITLE="[Cdrecord-support] cdrecord 2.01.01a37 segfault">mg at fork.pl
+       </A><BR>
+    <I>Fri Feb 22 02:50:35 CET 2008</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#182">[ date ]</a>
+              <a href="thread.html#182">[ thread ]</a>
+              <a href="subject.html#182">[ subject ]</a>
+              <a href="author.html#182">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, 
+
+cdrecord on freebsd 6.3, compiled via cdrecord-devel port
+crashes burning dvd+r from iso image on pioneer dvr-108.
+Message is &quot;faio_wait_on_buffer for reader timed out&quot; and
+gdb suggests crash is in &quot;sd_ccs_error_str&quot;
+cdrecord called as:
+# cdrecord  -dao -v -v speed=4 dev=1,1,0 disc.iso
+
+crash is reproducible.
+
+more details from run below:
+
+
+TOC Type: 1 = CD-ROM
+scsidev: '1,1,0'
+scsibus: 1 target: 1 lun: 0
+Using libscg version 'schily-0.9'.
+Using libscg transport code version 'schily-scsi-bsd.c-1.44'
+SCSI buffer size: 64512
+atapi: 0
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-108 '
+Revision       : '1.18'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+[...]
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO
+Drive buf size : 1605632 = 1568 KB
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  4210 MB
+track: 1 start: 0 pregap: 0
+Total size:     4210 MB = 2155935 sectors
+Track 1 start 0           
+Track 2 start 2155935
+[...]
+book type:       DVD+R, Version (10.1)
+disc size:       120mm (0)
+maximum rate:    Not specified (15)
+number of layers:1
+track path:      Parallel Track Path (0)
+layer type:      Rewritable Area (2)
+linear density:  0.267 &#65533;m/bit (0)
+track density:   0.74 &#65533;m/track (0)
+phys start:      196608 (0x30000)
+phys end:        2491711
+end layer 0:     0
+bca:             0
+phys size:...    2295104
+Manufacturer:    'MCC'
+Media type:      '004'
+Category/Version        A1
+Disk size               0F
+Disk structure          02
+Recoding density        00
+Manufacturer:           'MCC'
+Media type:             '004'
+Product revision        0
+ADIP numbytes           56
+Reference speed         35
+Max speed               84
+copyr prot type: 0
+region mgt info: 0
+rzone size:         36
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         7 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        2295104
+blocking factor:    16
+rzone size:         2295104
+last recorded addr: 0
+[...]
+Executing 'log sense' command on Bus 1 Target 1, Lun 0 timeout 100s
+CDB:  4D 00 43 00 00 00 00 00 FF 00
+cmd finished after 0.004s timeout 100s
+Log sense Data   : 03 00 (...) 00
+
+Executing 'log sense' command on Bus 1 Target 1, Lun 0 timeout 100s
+CDB:  4D 00 71 00 00 00 00 00 FF 00
+cdrecord: Input/output error. log sense: scsi sendcmd: retryable error
+CDB:  4D 00 71 00 00 00 00 00 FF 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 24 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x24 Qual 0x00 (invalid field in cdb) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 0.006s timeout 100s
+rzone size:         36
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         7 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        2295104
+blocking factor:    16
+rzone size:         2295104
+last recorded addr: 0
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+     4101552             2048         0x00  No Media Present or Unknown 
+Capacity
+CD write parameter: 37 41 00 00 05 32 61 C4 08 10 00 00 00 00 00 00 00 00 00 
+96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00
+CD write parameter: 37 41 00 00 05 32 62 C4 08 10 00 00 00 00 00 00 00 00 00 
+96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00
+Blocks total: 2295104 Blocks current: 2295104 Blocks remaining: 139169
+CD write parameter: 37 41 00 00 05 32 62 C4 08 10 00 00 00 00 00 00 00 00 00 
+96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00
+CD write parameter: 37 41 00 00 05 32 62 C4 08 10 00 00 00 00 00 00 00 00 00 
+96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00
+Starting to write CD/DVD/BD at speed 4 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+CD write parameter: 37 41 00 00 05 32 62 C4 08 10 00 00 00 00 00 00 00 00 00 
+96 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00
+Starting new track at sector: 0
+
+Track 01: 4210 of 4210 MB written (fifo  21%) [buf  96%]   4.3x.cdrecord: 
+faio_wait_on_buffer for reader timed out.
+Writing  time: 1066.206s
+Min drive buffer fill was 93%
+cdrecord: fifo had 69546 puts and 69546 gets.
+cdrecord: fifo was 1 times empty and 34211 times full, min fill was 0%.
+
+
+gdb says:
+#0  0x080b5053 in sd_ccs_error_str ()
+Cannot access memory at address 0xe4080a76
+
+
+-- 
+Marcin Gryszkalis, PGP 0x9F183FA3 
+jabber jid:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mg at fork.pl</A>, gg:2532994
+<A HREF="http://the.fork.pl">http://the.fork.pl</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#182">[ date ]</a>
+              <a href="thread.html#182">[ thread ]</a>
+              <a href="subject.html#182">[ subject ]</a>
+              <a href="author.html#182">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

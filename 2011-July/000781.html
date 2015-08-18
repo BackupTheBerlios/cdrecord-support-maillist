@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e1da08f.rhjwPoJFx2lECxRP%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000780.html">
+   <LINK REL="Next"  HREF="000783.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e1da08f.rhjwPoJFx2lECxRP%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Jul 13 15:41:35 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000780.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000783.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#781">[ date ]</a>
+              <a href="thread.html#781">[ thread ]</a>
+              <a href="subject.html#781">[ subject ]</a>
+              <a href="author.html#781">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> I found out that mbrtowc() is in the library libmsvcp60.a, so adding
+</I>&gt;<i> -lmsvc60 to RULES/i?86-mingw32_nt-gcc.rul solves the issue.
+</I>
+It may hide the issue but cannot be seens as a solution.
+
+&gt;<i> The check in configure passes probably because the compiler optimizes
+</I>&gt;<i> the code away. Here is the relevant part of autoconf/configure:
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i> .
+</I>&gt;<i> echo $ac_n &quot;checking if mbrtowc is defined or function&quot;&quot;... $ac_c&quot; 1&gt;&amp;6
+</I>&gt;<i> echo &quot;configure:15289: checking if mbrtowc is defined or function&quot; &gt;&amp;5
+</I>&gt;<i> if eval &quot;test \&quot;`echo '$''{'ac_cv_have_mbrtowc'+set}'`\&quot; = set&quot;; then
+</I>&gt;<i>    echo $ac_n &quot;(cached) $ac_c&quot; 1&gt;&amp;6
+</I>&gt;<i> else
+</I>&gt;<i>    cat &gt; conftest.$ac_ext &lt;&lt;EOF
+</I>&gt;<i> #line 15294 &quot;configure&quot;
+</I>&gt;<i> #include &quot;confdefs.h&quot;
+</I>&gt;<i>
+</I>&gt;<i> #ifdef	HAVE_WCHAR_H
+</I>&gt;<i> #include &lt;wchar.h&gt;
+</I>&gt;<i> #endif
+</I>&gt;<i> #ifdef	HAVE_WCTYPE_H
+</I>&gt;<i> #include &lt;wctype.h&gt;
+</I>&gt;<i> #endif
+</I>&gt;<i>
+</I>&gt;<i> int main() {
+</I>&gt;<i>
+</I>&gt;<i> #ifndef mbrtowc
+</I>&gt;<i>    char *p = (char *) mbrtowc;
+</I>&gt;<i> #endif
+</I>&gt;<i> ; return 0; }
+</I>
+
+&gt;<i> int main() {
+</I>&gt;<i>
+</I>&gt;<i> #ifndef mbrtowc
+</I>&gt;<i>    char *p = (char *) mbrtowc;
+</I>&gt;<i>    printf(&quot;mbrtowc not defined! p=%p\n&quot;, p);
+</I>&gt;<i> #endif
+</I>&gt;<i> ; return 0; }
+</I>
+
+OK, then the right way to deal with this problem would be to use:
+
+int main() {
+
+#ifndef mbrtowc
+   char *p = (char *) mbrtowc;
+return (p != 0);
+#endif
+; return 0; 
+}
+
+BTW: what's up with the smake changes, do they work?
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000780.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000783.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#781">[ date ]</a>
+              <a href="thread.html#781">[ thread ]</a>
+              <a href="subject.html#781">[ subject ]</a>
+              <a href="author.html#781">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

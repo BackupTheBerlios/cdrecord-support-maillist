@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] how to check multisession and empty drive ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20how%20to%20check%20multisession%20and%20empty%20drive%20%3F&In-Reply-To=%3C46FB35A7.4080705%40unlimitedmail.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000090.html">
+   <LINK REL="Next"  HREF="000099.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] how to check multisession and empty drive ?</H1>
+    <B>JOYDEEP</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20how%20to%20check%20multisession%20and%20empty%20drive%20%3F&In-Reply-To=%3C46FB35A7.4080705%40unlimitedmail.org%3E"
+       TITLE="[Cdrecord-support] how to check multisession and empty drive ?">j.bakshi at unlimitedmail.org
+       </A><BR>
+    <I>Thu Sep 27 06:46:31 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000090.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+        <LI>Next message: <A HREF="000099.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+&gt;<i> JOYDEEP &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">j.bakshi at unlimitedmail.org</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> 1&gt; How can I check with cdrecord/cdrtools that the drive is empty ?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Check readcd sectors=0-0
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> 2&gt; How can I check the CD-R (with some data in it) support mutisession
+</I>&gt;&gt;<i> or not ?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> cdrecord -minfo
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> 3&gt; What is the difference between a Diskcopy than Cloning ? and what is
+</I>&gt;&gt;<i> the best method of cloning i.e by cdrecord or by cdread ?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> cloning also copies CD sub-channel data.
+</I>&gt;<i>
+</I>&gt;<i> How to to it is in the man pages.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+Thanks a lot to Joerg Schilling for the solution. specially the 
+
+readcd sectors=0-0 to check the drive (empty or not) is excellent.
+
+yesterday I checked  the &quot;toc&quot; option. I noticed that as a root user only
+&quot;toc&quot; shows the Manufacturer but a non-root user can't get the Manufacturer information
+even with &quot;-vv&quot; with toc. Is it the default behaviour of cdrecord ?
+thanks once again.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000090.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+	<LI>Next message: <A HREF="000099.html">[Cdrecord-support] how to check multisession and empty drive ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Corrupt Blu-Ray ISO/UDF image with files &gt;	8GB with mkisofs -sort option
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Corrupt%20Blu-Ray%20ISO/UDF%20image%20with%20files%20%3E%0A%098GB%20with%20mkisofs%20-sort%20option&In-Reply-To=%3C4e6fbfd2.0sdTzjgQbYWkI6h7%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000826.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Corrupt Blu-Ray ISO/UDF image with files &gt;	8GB with mkisofs -sort option</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Corrupt%20Blu-Ray%20ISO/UDF%20image%20with%20files%20%3E%0A%098GB%20with%20mkisofs%20-sort%20option&In-Reply-To=%3C4e6fbfd2.0sdTzjgQbYWkI6h7%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Corrupt Blu-Ray ISO/UDF image with files &gt;	8GB with mkisofs -sort option">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Sep 13 22:40:50 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000826.html">[Cdrecord-support] Very minor cdrtools man space error?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#825">[ date ]</a>
+              <a href="thread.html#825">[ thread ]</a>
+              <a href="subject.html#825">[ subject ]</a>
+              <a href="author.html#825">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Stephane Berthelot &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">sberthelot at emisfr.com</A>&gt; wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i>
+</I>&gt;<i> Sorry for reporting again for the same kind of problem but I have 
+</I>&gt;<i> tracked it down when burning 3 big files on a BluRay.
+</I>&gt;<i> Using mkisofs 3.01a2 on Slackware64-Current with k3b 2.0.2 I have 
+</I>&gt;<i> corrupted files on the resulting image file.
+</I>&gt;<i>
+</I>&gt;<i> The bug is similar to what I had last time : working without -sort 
+</I>&gt;<i> option, and not working with it.
+</I>&gt;<i> Unfortunately k3b still adds the -sort option everytime even with an 
+</I>&gt;<i> empty sort file.
+</I>&gt;<i> (For info my previous bug report on k3b for not using the -sort option 
+</I>&gt;<i> was here <A HREF="https://bugs.kde.org/show_bug.cgi?id=257241">https://bugs.kde.org/show_bug.cgi?id=257241</A> )
+</I>&gt;<i>
+</I>&gt;<i> I have 3 big files :
+</I>&gt;<i> a.mkv 8346044946bytes
+</I>&gt;<i> b.mkv 8302955518bytes
+</I>&gt;<i> c.mkv 8261719841bytes
+</I>&gt;<i> I have been able to reproduce the bug generating empty files 
+</I>&gt;<i> (if=/dev/zero) with dd and changing filenames
+</I>&gt;<i>
+</I>&gt;<i> Non-working command line :
+</I>&gt;<i> /usr/bin/mkisofs -gui -graft-points -volid a -volset &quot;&quot; -appid &quot;K3B THE 
+</I>&gt;<i> CD KREATOR (C) 1998-2010 SEBASTIAN TRUEG AND MICHAL MALEK&quot; -publisher &quot;&quot; 
+</I>&gt;<i> -preparer &quot;&quot; -sysid LINUX -volset-size 1 -volset-seqno 1 -sort 
+</I>&gt;<i> /Storage/aa/k3box4256.tmp -rational-rock -hide-list 
+</I>&gt;<i> /Storage/aa/k3bSf4256.tmp -no-cache-inodes -udf -full-iso9660-filenames 
+</I>&gt;<i> -iso-level 3 -path-list /Storage/aa/k3bEj4256.tmp -o /Storage/d.iso
+</I>&gt;<i>
+</I>&gt;<i> Working :
+</I>&gt;<i> /usr/bin/mkisofs -gui -graft-points -volid a -volset &quot;&quot; -appid &quot;K3B THE
+</I>&gt;<i> CD KREATOR (C) 1998-2010 SEBASTIAN TRUEG AND MICHAL MALEK&quot; -publisher &quot;&quot;
+</I>&gt;<i>   -preparer &quot;&quot; -sysid LINUX -volset-size 1 -volset-seqno 1 -rational-rock -hide-list
+</I>&gt;<i> /Storage/aa/k3bSf4256.tmp -no-cache-inodes -udf -full-iso9660-filenames
+</I>&gt;<i> -iso-level 3 -path-list /Storage/aa/k3bEj4256.tmp -o /Storage/d.iso
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> k3bSf4256.tmp and k3box4256.tmp files are empty
+</I>
+Let me asume that you like to tell me that -sort is used together with an empty 
+sort file.
+
+I am not able to repeat your problem. The starting addresses in the directory 
+records are OK.
+
+isoinfo -debug -i /export/space/tmp/test/o -l
+Setting input-charset to 'ISO8859-1' from locale.
+
+Directory listing of /
+d---------   0    0    0       2048 Sep 13 2011 [    274 02] . 
+d---------   0    0    0       2048 Sep 13 2011 [    274 02] .. 
+----------   0    0    0 4294965248 Sep 13 2011 [    276 80] A.MKV;1 
+----------   0    0    0 4051079698 Sep 13 2011 [2097427 00] A.MKV;1 
+----------   0    0    0 8346044946 Sep 13 2011 [    276 00] A.MKV;1 
+----------   0    0    0 4294965248 Sep 13 2011 [4075494 80] B.MKV;1 
+----------   0    0    0 4007990270 Sep 13 2011 [6172645 00] B.MKV;1 
+----------   0    0    0 8302955518 Sep 13 2011 [4075494 00] B.MKV;1 
+----------   0    0    0 4294965248 Sep 13 2011 [8129672 80] C.MKV;1 
+----------   0    0    0 3966754593 Sep 13 2011 [10226823 00] C.MKV;1 
+----------   0    0    0 8261719841 Sep 13 2011 [8129672 00] C.MKV;1 
+
+Note that the last printed directory entry is not existent but computed by 
+isoinfo as aggregation of all entries per file.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000826.html">[Cdrecord-support] Very minor cdrtools man space error?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#825">[ date ]</a>
+              <a href="thread.html#825">[ thread ]</a>
+              <a href="subject.html#825">[ subject ]</a>
+              <a href="author.html#825">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

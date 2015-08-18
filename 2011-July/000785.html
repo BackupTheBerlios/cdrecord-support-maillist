@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e1eb7d6.fFoawEk8jmayf6%2B4%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000783.html">
+   <LINK REL="Next"  HREF="000788.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e1eb7d6.fFoawEk8jmayf6%2B4%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 14 11:33:10 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000783.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000788.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i>  &gt; BTW: what's up with the smake changes, do they work?
+</I>&gt;<i> I have tried a few things so far but with no access. The call to
+</I>&gt;<i> sh.exe as you pointed out in a previous mail is the key point. But
+</I>&gt;<i> I could not yet find out how to put this right.
+</I>&gt;<i>
+</I>&gt;<i> I tried to build with a cygwin-smake but this does not work, too.
+</I>
+smake is automake enhanced, as it has been compiled with Cygwin, it calls 
+uname(2) from cygwin and sets up defaults for Cygwin.
+
+smake retrieves many things from the OS:
+
+MAKEFLAGS  =    -pr 
+MAKE_ARCH  =    i386 
+MAKE_BRAND  =   
+MAKE_DOMAIN  =  
+MAKE_FLAGS  =   -pr 
+MAKE_HOST  =    opt 
+MAKE_HWSERIAL  =        448596686 
+MAKE_ISALIST  = amd64 pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86 
+MAKE_LEVEL  =   1 
+MAKE_MACH  =    i86pc 
+MAKE_MODEL  =   i86pc 
+MAKE_M_ARCH  =  i86pc 
+MAKE_NAME  =    smake 
+MAKE_OS  =      sunos 
+MAKE_OSDEFS  =  -D__SVR4 
+MAKE_OSREL  =   5.11 
+MAKE_OSVERSION  =       snv_105 
+MAKE_SHELL_FLAG  =      -ce 
+MAKE_SHELL_IFLAG  =     -c 
+MAKE_VERSION  = 1.2.1 
+NUMBER_SIGN  =  # 
+SHELL  =        /bin/sh 
+
+This all has been setup by smake. On Cygwin, smake will in addition give you 
+information about the underlying WIN-DOS.
+
+Compiling for mingw using cygwin tools is called &quot;cross compilation&quot; and in 
+such a case, you need to overwrite all relevant make macros from the command 
+line to smake.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000783.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000788.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

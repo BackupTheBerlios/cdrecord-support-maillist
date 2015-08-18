@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with multisession
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20pioneer%20dvr-212%20-%20does%20not%20burn%20DVD-R%20with%0A%20multisession&In-Reply-To=%3C4c03c47f.vK5/MgWIfYA2Spbw%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000652.html">
+   <LINK REL="Next"  HREF="000654.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with multisession</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20pioneer%20dvr-212%20-%20does%20not%20burn%20DVD-R%20with%0A%20multisession&In-Reply-To=%3C4c03c47f.vK5/MgWIfYA2Spbw%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with multisession">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon May 31 16:15:27 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000652.html">[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with	multisession
+</A></li>
+        <LI>Next message: <A HREF="000654.html">[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with multisession
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>froff &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">froff at interia.pl</A>&gt; wrote:
+
+&gt;<i> Now I have Verbaitm DVD-R disks and the same problem! :(
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> /opt/schily/bin/cdrecord -dev=3,0,0 -multi -tao -v -speed=4  photos.iso
+</I>&gt;<i>
+</I>&gt;<i> ...
+</I>&gt;<i> Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> ...
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 4 in real SAO mode for multi session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> BURN-Free is ON.
+</I>&gt;<i> Turning BURN-Free off
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01: 1990 of 1990 MB written (fifo 100%) [buf 100%]   4.0x.
+</I>&gt;<i> Track 01: Total bytes read/written: 2086782976/2086782976 (1018937 sectors).
+</I>&gt;<i> Writing  time:  386.870s
+</I>&gt;<i> Average write speed   3.9x.
+</I>&gt;<i> Min drive buffer fill was 83%
+</I>&gt;<i> Fixating...
+</I>&gt;<i> Fixating time:    0.292s
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ...and disk is closed :(
+</I>&gt;<i> Is it any way to burn in multiession on this drive?
+</I>
+It should definitely work with DVD-RW media.
+
+Cdrecord does not distinct between DVD-R and DVD-RW when setting up multi-border
+write mode. It may be that it could be possible for your drive with DVD-R also 
+but this is an investigation that cannot happen before cdrtools-3.0 is out.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000652.html">[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with	multisession
+</A></li>
+	<LI>Next message: <A HREF="000654.html">[Cdrecord-support] pioneer dvr-212 - does not burn DVD-R with multisession
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

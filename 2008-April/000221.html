@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord 2.01.01a37 segfault
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200804241506.31056.mg%40fork.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000220.html">
+   <LINK REL="Next"  HREF="000224.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord 2.01.01a37 segfault</H1>
+    <B>Marcin Gryszkalis</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%202.01.01a37%20segfault&In-Reply-To=%3C200804241506.31056.mg%40fork.pl%3E"
+       TITLE="[Cdrecord-support] cdrecord 2.01.01a37 segfault">mg at fork.pl
+       </A><BR>
+    <I>Thu Apr 24 15:06:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000220.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+        <LI>Next message: <A HREF="000224.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thursday of April 24 2008, Joerg Schilling wrote:
+&gt;<i> Well, this is no function but a table and it is in libschily ;-)
+</I>
+&gt;<i> Given the fact that your debugger correctly lists the call parameters for
+</I>&gt;<i> fill_buf(), it may only be that your local libc provides a fill_buf()
+</I>&gt;<i> function and the linker ignored link preference order rules.
+</I>seems pretty strange... I would rather blame stack/memory corruption, 
+or fillbytes filling something it was not supposed to fill :)
+
+&gt;<i> &gt; &gt; Given the fact, that there have recently been some bug reports on
+</I>&gt;<i> &gt; &gt; optimizer bugs in gcc-4.2.3 that cause fillbytes() to be compiled
+</I>&gt;<i> &gt; &gt; incorrectly, I would recommend to either use an older GCC or the latest
+</I>&gt;<i> &gt; &gt; GCC which seems to be gcc-4.3.
+</I>
+&gt;<i> &gt; # gcc -v
+</I>&gt;<i> &gt; gcc version 4.2.1 20070719  [FreeBSD]
+</I>
+&gt;<i> Could you try a different GCC?
+</I>
+which one would you like?
+
+/var/ports/lang/gcc28/
+/var/ports/lang/gcc295/
+/var/ports/lang/gcc32/
+/var/ports/lang/gcc33/
+/var/ports/lang/gcc34/
+/var/ports/lang/gcc41/
+/var/ports/lang/gcc41-withgcjawt/
+/var/ports/lang/gcc42/
+/var/ports/lang/gcc42-withgcjawt/
+/var/ports/lang/gcc43/
+/var/ports/lang/gcc44/
+
+greetings
+-- 
+Marcin Gryszkalis, PGP 0x9F183FA3 
+jabber jid:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mg at fork.pl</A>, gg:2532994
+<A HREF="http://the.fork.pl">http://the.fork.pl</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000220.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+	<LI>Next message: <A HREF="000224.html">[Cdrecord-support] cdrecord 2.01.01a37 segfault
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#221">[ date ]</a>
+              <a href="thread.html#221">[ thread ]</a>
+              <a href="subject.html#221">[ subject ]</a>
+              <a href="author.html#221">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

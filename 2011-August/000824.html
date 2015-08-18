@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e3f0728.g3QioXWeQoQK7bcg%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000823.html">
+   <LINK REL="Next"  HREF="000815.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e3f0728.g3QioXWeQoQK7bcg%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Aug  7 23:44:08 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000823.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000815.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#824">[ date ]</a>
+              <a href="thread.html#824">[ thread ]</a>
+              <a href="subject.html#824">[ subject ]</a>
+              <a href="author.html#824">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> &gt;&gt; Furthermore I replace smake/make.c with the version I was successful
+</I>&gt;<i> &gt;&gt; with ins schily-2011-07-26.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; As there is uname(), smake now looks much nicer - I am still not sure on
+</I>&gt;<i> &gt; whether a &quot;native&quot; smake binary makes sense at all as there is no:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;          -       sed
+</I>&gt;<i> &gt;          -       rm
+</I>&gt;<i> &gt;          -       egrep
+</I>&gt;<i> &gt;          -       grep
+</I>&gt;<i> &gt;          -       tr
+</I>&gt;<i> &gt;          -       uname
+</I>&gt;<i> &gt;          -       chmod
+</I>&gt;<i> &gt;          -       expr
+</I>&gt;<i> &gt;          -       false
+</I>&gt;<i> &gt;          -       cat
+</I>&gt;<i> &gt;          -       echo
+</I>&gt;<i> &gt;          -       cp
+</I>&gt;<i> &gt;          -       cmp
+</I>&gt;<i> &gt;          -       mv
+</I>&gt;<i> &gt;          -       ls
+</I>&gt;<i> &gt;          -       [
+</I>&gt;<i> &gt;          -       test
+</I>&gt;<i> I have to say the results with smake or the make which is part of MSYS
+</I>&gt;<i> (I think you call it gmake) are quite the same. The messages are
+</I>&gt;<i> different but the reasons for problems are the same. As you say most
+</I>&gt;<i> problems are caused by missing library calls not by the make process.
+</I>
+MS has many problems.
+
+The way arguments are passed to sub processes is a big problem.
+
+Another major problem is the fact that MS has 64 bit inode numbers but hides
+them from users of stat(). 
+
+&gt;<i> &gt;&gt; When I start 'make' it builds the bootstrap smake successfully but
+</I>&gt;<i> &gt;&gt; when running the bootstrap smake to build the whole package I had to
+</I>&gt;<i> &gt;&gt; change file libschily/searchinpath.c: in line 206 remove the condition
+</I>&gt;<i> &gt;&gt; (!plain_file || S_ISREG(sb.st_mode)). Otherwise the shell (sh.exe)
+</I>&gt;<i> &gt;&gt; is not found in the system search path and the default (/bin/sh) is
+</I>&gt;<i> &gt;&gt; used. I am not sure what the meaning of the plain_file flag is and
+</I>&gt;<i> &gt;&gt; why the S_ISREG check is not true (sh.exe should be a regular file,
+</I>&gt;<i> &gt;&gt; shouldn't it?). Maybe the MinGW stat() function is deficient. This
+</I>&gt;<i> &gt;&gt; change in searchinpath.c is in addition to schily-2011-07-26 (replace
+</I>&gt;<i> &gt;&gt; 'xn' with 'NULL' in line 148).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Your change is not correct - just because it seems to do what you expect in
+</I>&gt;<i> &gt; your case does not help in all other cases.
+</I>&gt;<i> I am aware of that. But in order to be to test I had to have a working
+</I>&gt;<i> system. As I wrote in a previous mail I do not completely understand
+</I>&gt;<i> what is happening in searchinpath.c. For the functionality which is
+</I>&gt;<i> obvious to me it could be much simpler. So I believe there must be
+</I>&gt;<i> something aother, which I am not thinking of, etc.
+</I>
+If there is a problem, I can only help if I know about the exact problem.....
+
+
+
+&gt;<i> &gt; Getting an executable however does not mean that this executable works as
+</I>&gt;<i> &gt; expected. Note that the OS behaves badly in many cases (violates POSIX on
+</I>&gt;<i> &gt; nearly any place) and thus many of the commands still may not make something
+</I>&gt;<i> &gt; useful.
+</I>&gt;<i> Yes, this is the next step then. I discovered that cdda2wav crashes
+</I>&gt;<i> unless I disable the CD text functionality.
+</I>
+You should follow the instructions for debugging, e.g. call smake &quot;COPTX=-O0 -g&quot;
+LDOPTX=-g and use gdb to find the reason. Note that there never was a similar 
+report for a decent OS.
+
+&gt;<i> &gt; I need help from people who like to test and who are willing to debug in case
+</I>&gt;<i> &gt; that a program does not work.
+</I>&gt;<i> I am ready to do that. Yesterday I downloaded and installed the MSVC
+</I>&gt;<i> 2008 express. How do you do that that you compile with the MS compiler
+</I>&gt;<i> under cygwin? How to tell the build system which compiler to use?
+</I>
+You need to copy DEFAULTS/vc9-cygwin-setup to DEFAULTS/vc10-cygwin-setup
+and call:
+
+	smake CCOM=cl VC=10
+
+and to make the setup work... Plese report your changes to the setup file.
+
+cl.exe is the most braindead compiler I did ever see... It needs aprox 5
+environment variables set up manually even though it could do this 
+automatically.
+
+
+Mircrosoft is just not a company that knows about how to make user friendly 
+software.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000823.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000815.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#824">[ date ]</a>
+              <a href="thread.html#824">[ thread ]</a>
+              <a href="subject.html#824">[ subject ]</a>
+              <a href="author.html#824">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

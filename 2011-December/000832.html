@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] trouble writing 25G blu-ray
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3Calpine.LNX.2.00.1112131141340.3471%40coulomb.univ-paris12.fr%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000830.html">
+   <LINK REL="Next"  HREF="000833.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] trouble writing 25G blu-ray</H1>
+    <B>Lucas Levrel</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3Calpine.LNX.2.00.1112131141340.3471%40coulomb.univ-paris12.fr%3E"
+       TITLE="[Cdrecord-support] trouble writing 25G blu-ray">llevrel at yahoo.fr
+       </A><BR>
+    <I>Tue Dec 13 11:58:24 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000830.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+        <LI>Next message: <A HREF="000833.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Le 12 d&#233;cembre 2011, Steve Kelem a &#233;crit :
+
+&gt;<i> Thank you for your help. The reason I posted my request to this group is 
+</I>&gt;<i> that, after reading the man page, I was unable to guess the parameters 
+</I>&gt;<i> for using this utility. I did not find (or possibly recognize) an 
+</I>&gt;<i> example that fit what I needed to do.
+</I>&gt;<i>
+</I>&gt;<i> The man page looks like it's been written by experts for experts.
+</I>
+The mkisofs one is. That of cdrecord also, but I suggested a rewording of 
+the EXAMPLES section that I hope makes it more clear. As a beginner, I 
+advise you read that section first (as one should probably always do with 
+a manpage).
+
+&gt;<i> I have no idea what the Rockridge standard is. There are way more 
+</I>&gt;<i> options than I know what to do with. I just want to dump my (Linux ext3) 
+</I>&gt;<i> files onto a BD and be able to read them back again. I don't really care 
+</I>&gt;<i> whether I can read them on a Microsoft system.
+</I>
+The examples won't answer these questions, but try them and check the 
+resulting filesystem before writing it! (there are example usages of 
+mkisofs in the cdrecord manpage)
+
+&gt;&gt;<i> This is more than a single layer BD can hold.
+</I>&gt;<i> Thank you. What is the maximum number of bytes that a single and 
+</I>&gt;<i> double-layer BD can hold?
+</I>
+Insert a blank one in your burner and type: cdrecord -minfo
+cdrecord speaks in 2 kB sectors.
+
+&gt;&gt;&gt;<i> I then got the block size with:
+</I>&gt;&gt;&gt;<i> % mkisofs -o /media/Maxtor2/Backups/maxtor2.iso -print-size -quiet -r -J -hide-rr-moved -V &quot;Backup 2011/12/07&quot; -publisher &quot;user&quot; -iso-level 4 -graft-points photos/Maxtor2/Photos=/media/Maxtor2/Photos photos/Maxtor2/Pictures=/media/Maxtor2/Pictures photos/Maxtor2/pix=/media/Maxtor2/pix
+</I>&gt;&gt;&gt;<i> 12248975
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> [sidebar: Do I need all those paramters if the iso file already 
+</I>&gt;&gt;&gt;<i> exists? I tried:
+</I>
+I think you don't need -print-size if you make an iso file. -print-size is 
+for you to know (and pass to cdrecord) the size of the ISO when you use a 
+pipe on some drives (see cdrecord examples).
+
+&gt;&gt;&gt;<i> I then wrote the BD with the following command:
+</I>&gt;&gt;&gt;<i> % cdrecord -v dev=/dev/sr2 tsize=12248975 -dao maxtor2.iso
+</I>&gt;&gt;<i> Why do you use an unsupported dev= parameter?
+</I>&gt;&gt;<i> Setting dev= to a named driver instead of using the standard SCSI addresses may
+</I>&gt;&gt;<i> force Linux to use a bad driver (note that Linux implements more than one
+</I>&gt;&gt;<i> driver to access CD-ROM type drives).
+</I>&gt;<i> Because I have no idea it's unsupported! Why is the cryptic SCSI address used instead of one of the intuitive names of the device? If the software needs the SCSI address, why can't it derive it from the name of the device?
+</I>
+In fact you don't need any dev= if you have only one burner. All you need 
+is: cdrecord -v -dao maxtor2.iso
+Simple, isn't it?
+
+&gt;&gt;&gt;<i> Total size:     23923 MB = 12248975 sectors
+</I>
+This is the size of what you tried to write.
+
+&gt;&gt;&gt;<i> Current Secsize: 2048
+</I>
+The magic number 2 kB ;-)
+
+&gt;&gt;&gt;<i> Blocks total: 12219392 Blocks current: 12219392 Blocks remaining: -29583
+</I>
+These are the media size and the delta. delta&lt;0 =&gt; doesn't fit!
+
+&gt;&gt;&gt;<i> This implies that either the iso is too big, or that I have the wrong sector size (should it be 174 instead of 12248975?), or something else?
+</I>&gt;&gt;<i> As you see, the BD media is 60 MB too small for your data.
+</I>&gt;<i> I don't see.  How did you get 60 MB from 25085900800? (The size of the iso, unless you got it from somewhere else...) How is someone who hasn't taken Computer Science supposed to figure this out?
+</I>
+29583 &#215; 2 kB = approx. 60 MB.
+
+HTH
+
+-- 
+Lucas Levrel
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000830.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+	<LI>Next message: <A HREF="000833.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

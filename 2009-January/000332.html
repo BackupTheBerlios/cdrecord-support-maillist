@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem fixating svn 105
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C496F4778.6030909%40infineon.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000331.html">
+   <LINK REL="Next"  HREF="000333.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem fixating svn 105</H1>
+    <B>Richard Skelton</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C496F4778.6030909%40infineon.com%3E"
+       TITLE="[Cdrecord-support] Problem fixating svn 105">Richard.Skelton at infineon.com
+       </A><BR>
+    <I>Thu Jan 15 15:26:00 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000331.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+        <LI>Next message: <A HREF="000333.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joerg,
+Thanks for the fast reply.
+Disk label says:-
+Bulkpaq
+www.bulkpaq.co.uk
+<A HREF="http://www.dvd-recordable.org/">http://www.dvd-recordable.org/</A>
+8x speed DVD-R
+4.7GB/ 120 minutes
+
+rts{root}48: cdrecord dev=1,0,0 -v -minfo
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i386-pc-solaris2.11) Copyright
+(C) 1995-2008 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 0
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'DVDRAM GE20LU10 '
+Revision       : 'FE05'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD-R sequential recording
+Profile: DVD-RAM
+Profile: DVD-R sequential recording (current)
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RW/DL
+Profile: DVD-RW sequential recording
+Profile: DVD+RW
+Profile: DVD+R
+Profile: DVD+R/DL
+Profile: DVD-ROM
+Profile: CD-R
+Profile: CD-RW
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-2 DVD-R/DVD-RW/DVD-RAM driver (mmc_dvd).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1114112 = 1088 KB
+Drive pbuf size: 1966080 = 1920 KB
+Drive DMA Speed: 14762 kB/s 83x CD 10x DVD 3x BD
+Current Secsize: 2048
+Total power on  hours: 0
+rzone size:         48
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         4 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        2298496
+blocking factor:    16
+rzone size:         2298496
+last recorded addr: 0
+read compat lba:    0
+next layerjmp addr: 0
+last layerjmp addr: 0
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+     2297888             2048         0x00  Unformated or Blank Media
+Mounted media class:      DVD
+Mounted media type:       DVD-R sequential recording
+Disk Is not erasable
+data type:                standard
+disk status:              empty
+session status:           empty
+BG format status:         none
+first track:              1
+number of sessions:       1
+first track in last sess: 1
+last track in last sess:  1
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+    1     1 Blank  0          2298495    2298496         -1
+
+Next writable address:              0
+Remaining writable size:            2298496
+rts{root}49:
+
+
+
+Joerg Schilling wrote:
+&gt;<i> Richard Skelton &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i> I am using cdrecord which comes with svn 104 on my laptop and with a new
+</I>&gt;&gt;<i> LG burner (GE20LU10)
+</I>&gt;&gt;<i> I see some problems with fixating the latest svn 105 disk.
+</I>&gt;&gt;<i> Do I need to dos something special to stop these message.
+</I>&gt;&gt;<i> The burnt disk seem to work fine as I am building a system with is now :-)
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> What media do you use?
+</I>&gt;<i>
+</I>&gt;<i> What does cdrecord -v -minfo print?
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>   
+</I>
+-- 
+
+
+
+Cheers
+
+Richard Skelton
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>
+Infineon Technologies UK Ltd
+Infineon House
+Great Western Court
+Hunts Ground Road
+Stoke Gifford
+Bristol
+BS34 8HP
+Tel +44(0)117 9528808
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000331.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+	<LI>Next message: <A HREF="000333.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#332">[ date ]</a>
+              <a href="thread.html#332">[ thread ]</a>
+              <a href="subject.html#332">[ subject ]</a>
+              <a href="author.html#332">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

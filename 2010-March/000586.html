@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] BD-RE: getting nominal max write speed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C20100301095838.E4097F815%40i3.golden.dom%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000585.html">
+   <LINK REL="Next"  HREF="000587.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] BD-RE: getting nominal max write speed</H1>
+    <B>Giulio Orsero</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C20100301095838.E4097F815%40i3.golden.dom%3E"
+       TITLE="[Cdrecord-support] BD-RE: getting nominal max write speed">giulioo at gmail.com
+       </A><BR>
+    <I>Mon Mar  1 10:58:38 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000585.html">[Cdrecord-support] BD-RE: errors on fixating
+</A></li>
+        <LI>Next message: <A HREF="000587.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 28 Feb 2010 13:44:40 +0100, <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>
+(Joerg Schilling) wrote:
+
+&gt;<i>Giulio &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">giulioo at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> cdrecord-2.01.01a69, Linux
+</I>&gt;&gt;<i> USB HL-DT-ST BD-RE BE08LU20 2.00
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> When writing to 2x BD-RE media, the effective write speed is 1x due to
+</I>&gt;&gt;<i> defect management I think (when writing you see 2.3x 0.8x 2.3x 0.8x 2.3x
+</I>&gt;&gt;<i> 0.8x ... as the current speed).
+</I>
+&gt;<i>Analysing why this happens may take some time and as we are very close before
+</I>
+The reason it happens it that w/o streaming mode the defect management kicks
+in and causes the actual speed to be half the nominal one, I get the same
+half speed in cdrskin if I don't enable streaming mode
+(stream_recording=on); however, I understand that, a new release being
+imminent, this is not a good time to change the code to add streaming mode
+now.
+
+Thanks.
+-- 
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">giulioo at pobox.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000585.html">[Cdrecord-support] BD-RE: errors on fixating
+</A></li>
+	<LI>Next message: <A HREF="000587.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#586">[ date ]</a>
+              <a href="thread.html#586">[ thread ]</a>
+              <a href="subject.html#586">[ subject ]</a>
+              <a href="author.html#586">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

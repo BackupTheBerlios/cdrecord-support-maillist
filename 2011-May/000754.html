@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%5Bboot%20failed%5D%20mkisofs%20w/%20-rational-rock%0A%20specified%20to%20create%20an%20iso%20w/%20isolinux%203.72&In-Reply-To=%3C20110518221529.43f0d612%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000753.html">
+   <LINK REL="Next"  HREF="000755.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%5Bboot%20failed%5D%20mkisofs%20w/%20-rational-rock%0A%20specified%20to%20create%20an%20iso%20w/%20isolinux%203.72&In-Reply-To=%3C20110518221529.43f0d612%40bashir%3E"
+       TITLE="[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72">list1 at michaelshell.org
+       </A><BR>
+    <I>Thu May 19 04:15:29 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000753.html">[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72
+</A></li>
+        <LI>Next message: <A HREF="000755.html">[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 18 May 2011 08:45:01 -0700 (PDT)
+Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+
+
+&gt;<i> while we remove the option &quot;-rational-rock&quot;, it works again.
+</I>
+
+According to:
+
+<A HREF="http://syslinux.zytor.com/wiki/index.php/ISOLINUX">http://syslinux.zytor.com/wiki/index.php/ISOLINUX</A>
+
+  &quot;only uses the plain ISO 9660 filenames, i.e. it does not support
+   Rock Ridge or Joliet filenames.&quot;
+
+and:
+
+    &quot;*  Use the following command to create your ISO image: 
+
+     mkisofs -o output.iso \
+             -b isolinux/isolinux.bin -c isolinux/boot.cat \
+             -no-emul-boot -boot-load-size 4 -boot-info-table \
+             CD_root
+    &quot;
+
+
+Given that isolinux claims to not even be able to see
+the Rock Ridge extensions, could the mere presence of
+the RR support files be causing the problem irrespective
+of their internal permissions/user ID/etc. settings?
+
+If so, this suggests that even the &quot;plainer&quot; -R option
+(instead of -r which does other things too) will now
+cause isolinux to barf. Does it?
+
+There may be some helpful info here:
+
+<A HREF="http://www.911cd.net/forums/lofiversion/index.php/t23099.html">http://www.911cd.net/forums/lofiversion/index.php/t23099.html</A>
+
+ &quot;Remember XP boot sector may fail at rock ridge.&quot;
+.
+.
+ &quot;Thanks to Icecube, chain.c32 can chainload setuplr.bin at CD now:
+  ... Extension Rock ridge and chain.c32 is possible now.&quot;
+
+
+In any case, this probably is an isolinux change/issue and not
+a problem with mkisofs.
+
+
+  Cheers,
+
+  Mike Shell
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000753.html">[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72
+</A></li>
+	<LI>Next message: <A HREF="000755.html">[Cdrecord-support] [boot failed] mkisofs w/ -rational-rock specified to create an iso w/ isolinux 3.72
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

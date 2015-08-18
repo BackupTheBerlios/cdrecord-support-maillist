@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] possible buildsystem bug
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080708142724.GD12384%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000251.html">
+   <LINK REL="Next"  HREF="000254.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] possible buildsystem bug</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20possible%20buildsystem%20bug&In-Reply-To=%3C20080708142724.GD12384%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] possible buildsystem bug">weigelt at metux.de
+       </A><BR>
+    <I>Tue Jul  8 16:27:24 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000251.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+        <LI>Next message: <A HREF="000254.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+
+&gt;<i> &gt; Meanwhile I've fixed it. It's caused by those lines:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     echo ... ; gcc ...
+</I>&gt;<i> &gt;     
+</I>&gt;<i> &gt; The trick is to just replace ; by &amp;.
+</I>&gt;<i> &gt; Works fine for me.
+</I>&gt;<i> 
+</I>&gt;<i> Looks like you are mistaken. Problems in this area are unknown.
+</I>
+This *was* my problem here, and using &amp; fixed it. Period.
+IMHO, this should cause no problems elswhere, unless echo
+returns an error ;-o
+
+&gt;<i> Are you using gmake instead of smake and thus probably hit by gmake bugs?
+</I>
+Yes, I'm using gmake. Maybe there's a bug, but I suspect a shell
+problem, since (IMHO) gmake just passes the command lines 
+directly to the shell.
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000251.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+	<LI>Next message: <A HREF="000254.html">[Cdrecord-support] possible buildsystem bug
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#253">[ date ]</a>
+              <a href="thread.html#253">[ thread ]</a>
+              <a href="subject.html#253">[ subject ]</a>
+              <a href="author.html#253">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

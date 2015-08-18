@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Checking drives for media compatibility?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C4b8cdced.sxWwksWLonVKAdD%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000594.html">
+   <LINK REL="Next"  HREF="000601.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Checking drives for media compatibility?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Checking%20drives%20for%20media%20compatibility%3F&In-Reply-To=%3C4b8cdced.sxWwksWLonVKAdD%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Checking drives for media compatibility?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Mar  2 10:39:57 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000594.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+        <LI>Next message: <A HREF="000601.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>    What is the best way to determine what media works in a specific
+</I>&gt;<i> drive? I'm trying -checkdrive but that's not very clear. Is there a
+</I>&gt;<i> command which produces output that might say DVD-R supported, DVD+RW
+</I>&gt;<i> not supported for writing, supported for reading, etc.?
+</I>
+The best way is to write a media and later check the write quality.
+For CDs, things are relatively easy as many drives support the read C2 pointers
+command, even though C2 errors are uncorrectable high level errors at the upper
+audio level (data sectors sit on top of audio sectors).
+
+Unfortunately the command set for doing the needed checks for DVDs is known only 
+for a few drives. For this reason, the only way to check in most cases is to 
+start:
+	readcd meshpoints=1000
+
+catch the output and visualize the result using e.g. gnu plot. If you see slow 
+downs in some areas, the write quality was bad. If you have one of the last 
+drives made by Plextor and installed a hacked firmware, you may run Pisum and 
+Pi8 checks.
+
+&gt;<i> BACKGROUND:
+</I>&gt;<i>
+</I>&gt;<i>    I did a backup to DVD sometime ago. I have a DVD drive in the
+</I>&gt;<i> machine I backed up but I had a hard time writing the DVD so I moved
+</I>&gt;<i> all the data to a second machine and did the backup there. The DVD is
+</I>&gt;<i> readable on the machine that made it, and also on a 3rd machine, but
+</I>&gt;<i> it's not readable (so far) on the machine where I need to now restore
+</I>&gt;<i> the data. Is this because the drive in the machine is bad, or is it
+</I>&gt;<i> because the drive is not compatible with the media I wrote the backup
+</I>&gt;<i> on? (DVD-R)
+</I>
+Sure that it was not a DVD+?
+
+The DVD Forum standards are carefully checked by doing &quot;round robin&quot; read/write
+tests with all media using all writers and readers. If there is a problem, the 
+manufacturers are informed immediately. 
+
+This does not apply to DVD+ media.
+
+If you like good readability, I recommend Verbatim media.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000594.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+	<LI>Next message: <A HREF="000601.html">[Cdrecord-support] Checking drives for media compatibility?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

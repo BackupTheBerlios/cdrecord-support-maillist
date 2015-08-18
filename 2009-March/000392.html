@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Write file list
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20file%20list&In-Reply-To=%3C20090228194036.43629d1d%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000393.html">
+   <LINK REL="Next"  HREF="000394.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Write file list</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20file%20list&In-Reply-To=%3C20090228194036.43629d1d%40bashir%3E"
+       TITLE="[Cdrecord-support] Write file list">list1 at michaelshell.org
+       </A><BR>
+    <I>Sun Mar  1 01:40:36 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000393.html">[Cdrecord-support] Write file list
+</A></li>
+        <LI>Next message: <A HREF="000394.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#392">[ date ]</a>
+              <a href="thread.html#392">[ thread ]</a>
+              <a href="subject.html#392">[ subject ]</a>
+              <a href="author.html#392">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 28 Feb 2009 19:56:04 -0000
+&quot;Phil Rhodes&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">phil_rhodes at rocketmail.com</A>&gt; wrote:
+
+
+&gt;<i> c:\foo.avi
+</I>&gt;<i> f:\bar\quux.avi
+</I>&gt;<i> 
+</I>&gt;<i> How do I make mkisofs create an image containing both, without moving or 
+</I>&gt;<i> renaming them?
+</I>
+
+If I understand correctly, -graft-points without an &quot;=&quot; remapping,
+will assume the target (in the image, the specifier to the *left* any =)
+is the root directory on the ISO image. Also, -graft-points can be
+used to get a directory *and* its contents into the image, while pathspec
+will only place the *contents* of the given directory at the root
+of the image.
+
+So, for the example above, if foo.avi and quux.avi are to be placed in
+the root of the ISO image, one could do:
+
+
+-graft-points c:\\foo.avi f:\\bar\\quux.avi
+
+
+which is the same as:
+
+
+-graft-points /=c:\\foo.avi /=f:\\bar\\quux.avi 
+
+
+and would result in
+
+foo.avi
+quux.avi 
+
+in the root (/) directory of the image.
+
+I would be nice if there was a &quot;-graft-points-list&quot; 
+(note there already is a -hidden-list in mkisofs) to allow
+us to have an external .txt file with the file list:
+
+
+-graft-points-list myfiles.txt
+
+
+where myfiles.txt had lines like:
+
+
+c:\\foo.avi
+f:\\bar\\quux.avi  
+
+
+which is what I think Phil really wants.
+
+One gotcha to watch out for mentioned in the mkisofs man page is:
+
+:<i> By default, any directories that are created on the fly like
+</I>:<i> this will have permissions 0555 and appear to be owned by the
+</I>:<i> person running mkisofs. If you wish other permissions or owners
+</I>:<i> of the inter-mediate directories, see -uid, -gid, -dir-mode,
+</I>:<i> -file-mode and -new-dir-mode.
+</I>
+
+It always seemed to me that something was less than well thought
+out with the likes of tar and other image creation and use
+in general. (In what follows, my comments are not specific to
+mkisofs, but perhaps to Unix and removable media in general.)
+
+There are four basic types of images/disks:
+
+1. Archival - every file ownership and mode should be unchanged.
+   Furthermore, their should be an optional file that includes
+   the mapping information from numerical to strings of all the
+   uid/gid of included files, e.g., mshell:551:551:Michael Shell
+   to allow for optional inter-system copying based on the login
+   name when it can be assumed they are unqiue. (e.g., allow &quot;mshell&quot;
+   files to be copied from a system where mshell has uid 551 to
+   one with uid 560). At a deeper level, it would nice to be able
+   to present a &quot;login alias&quot; to removable media - e.g., &quot;zork&quot; on
+   this system is really &quot;mshell&quot; on the image.
+
+2. Public distribution - every file should be owned by the person
+   currently *accessing* the image. This, the file ownership depends
+   on who mounts the image. Alternatively, there could be a generic
+   world-readable user &quot;User&quot;.
+
+3. Private distribution - every file should be owned by the person
+   currently *making* the image. 
+
+4. Administration disks - for restricted use, such as files that
+   can only be read/executed by root. All files are owned by root.
+   
+It would be nice if there was a simple switch to select between
+the basic modes with stuff like -uid, -gid to allow for more
+detailed customization.
+
+
+  Cheers,
+
+  Mike Shell
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000393.html">[Cdrecord-support] Write file list
+</A></li>
+	<LI>Next message: <A HREF="000394.html">[Cdrecord-support] Write file list
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#392">[ date ]</a>
+              <a href="thread.html#392">[ thread ]</a>
+              <a href="subject.html#392">[ subject ]</a>
+              <a href="author.html#392">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

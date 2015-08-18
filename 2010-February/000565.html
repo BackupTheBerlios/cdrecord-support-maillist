@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Trying cdrecord to write data to DVD+R?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160632h667034ddw2667ba10a72f7a8e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000561.html">
+   <LINK REL="Next"  HREF="000571.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Trying cdrecord to write data to DVD+R?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160632h667034ddw2667ba10a72f7a8e%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Trying cdrecord to write data to DVD+R?">markknecht at gmail.com
+       </A><BR>
+    <I>Tue Feb 16 15:32:55 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000561.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+        <LI>Next message: <A HREF="000571.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Feb 16, 2010 at 5:52 AM, Michael Shell &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">list1 at michaelshell.org</A>&gt; wrote:
+&gt;<i> On Mon, 15 Feb 2010 09:59:56 -0800
+</I>&gt;<i> Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> cdrecord dev=1001,0,0 backup.tar.bz2
+</I>&gt;<i>
+</I>&gt;<i> To make an image, I use something like:
+</I>&gt;<i>
+</I>&gt;<i> mkisofs -V volume -R -J -v -o filename.img directories
+</I>&gt;<i>
+</I>&gt;<i> you can omit the -J if you aren't planning to use it under MS Windows.
+</I>&gt;<i> Note that directory *contents* are placed at root of image.
+</I>&gt;<i>
+</I>&gt;<i> Then burn via:
+</I>&gt;<i>
+</I>&gt;<i> cdrecord -v dev=1001,0,0 file.img
+</I>&gt;<i>
+</I>&gt;<i> You should then be able to mount it and see the file/files.
+</I>
+Thank you! This is making some sense, although see my response to
+Joerg on why (to me) the use of cdrecord seems inconsistent to me.
+
+None the less it doesn't matter. I need to learn how to use it and it
+seems that mkisofs is the right wat to go.
+
+&gt;<i>
+</I>&gt;&gt;<i> I'm almost out of disk space on the system being backed up
+</I>&gt;&gt;<i> and don't have another 5GB to create some big *.iso file.
+</I>&gt;&gt;<i> Am I hosed?
+</I>&gt;<i>
+</I>&gt;<i> There is a wikihow article on on-the-fly burning with cdrecord,
+</I>&gt;<i> but I always build an image first so I don't have much experience
+</I>&gt;<i> here:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://www.wikihow.com/Use-CDR-Tools-On-the-Fly">http://www.wikihow.com/Use-CDR-Tools-On-the-Fly</A>
+</I>&gt;<i>
+</I>&gt;<i> The growisofs burn utility operates by default in such an on-the-fly
+</I>&gt;<i> mode:
+</I>&gt;<i>
+</I>&gt;<i> growisofs -Z /dev/dvd -R -J /some/files
+</I>&gt;<i>
+</I>&gt;<i> Basically, in both cases mkisofs pipes its output to the burn utility.
+</I>&gt;<i> It's a good idea to have a machine that can keep up with the required
+</I>&gt;<i> data rate. Also, nothing better go wrong during mkisofs' work, or the
+</I>&gt;<i> burn will have to be aborted.
+</I>&gt;<i>
+</I>
+OK - makes sense. I don't know if that specific machine will keep up,
+but I can drag the 4GB file across the network and do it on a machine
+that certain will.
+
+THANKS!
+
+- Mark
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &#160;Cheers,
+</I>&gt;<i>
+</I>&gt;<i> &#160;Mike Shell
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000561.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+	<LI>Next message: <A HREF="000571.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

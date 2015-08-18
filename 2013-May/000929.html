@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord from schily-2013-05-10 fails to build	with gmake
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%20build%0A%09with%20gmake&In-Reply-To=%3CCAJ5UdcOuyJX4FY9cP%3D_A_zAJTC%3DmvDdZXfTpS8DE21Km2y%3DdSw%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000930.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build	with gmake</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20from%20schily-2013-05-10%20fails%20to%20build%0A%09with%20gmake&In-Reply-To=%3CCAJ5UdcOuyJX4FY9cP%3D_A_zAJTC%3DmvDdZXfTpS8DE21Km2y%3DdSw%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] cdrecord from schily-2013-05-10 fails to build	with gmake">olivares14031 at gmail.com
+       </A><BR>
+    <I>Tue May 28 14:10:09 CEST 2013</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000930.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#929">[ date ]</a>
+              <a href="thread.html#929">[ thread ]</a>
+              <a href="subject.html#929">[ subject ]</a>
+              <a href="author.html#929">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear sir,
+
+I am trying to build schily-2013-05-10.tar.bz2 which has cdrtools and
+other tools integrated.  I am running DragonFlyBSD version 3.4.1 and I
+run gmake to build :
+
+Mostly everything builds but it stops in cdda2wav with the following:
+
+creating lconfig.h
+    ==&gt; MAKING DEPENDENCIES &quot;cdda2wav.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;interface.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;semshm.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;resample.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;toc.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;wav.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;sun.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;raw.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;setuid.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;ringbuff.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;sndconfig.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;scsi_cmds.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;aiff.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;aifc.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;ioctl.d&quot;
+    ==&gt; MAKING DEPENDENCIES &quot;base64.d&quot;
+    ==&gt; COMPILING &quot;cdda2wav.o&quot;
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:48:6: error: conflicting types for
+'SetupInterface'
+In file included from cdda2wav.c:113:0:
+interface.h:137:13: note: previous declaration of 'SetupInterface' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:145:13: error: conflicting types
+for 'cdda_read'
+In file included from cdda2wav.c:113:0:
+interface.h:149:13: note: previous declaration of 'cdda_read' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:148:13: error: conflicting types
+for 'cdda_track_firstsector'
+In file included from cdda2wav.c:113:0:
+interface.h:152:13: note: previous declaration of
+'cdda_track_firstsector' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:149:13: error: conflicting types
+for 'cdda_track_lastsector'
+In file included from cdda2wav.c:113:0:
+interface.h:153:13: note: previous declaration of
+'cdda_track_lastsector' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:150:13: error: conflicting types
+for 'cdda_tracks'
+In file included from cdda2wav.c:113:0:
+interface.h:154:12: note: previous declaration of 'cdda_tracks' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:151:12: error: conflicting types
+for 'cdda_sector_gettrack'
+In file included from cdda2wav.c:113:0:
+interface.h:150:12: note: previous declaration of
+'cdda_sector_gettrack' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:153:12: error: conflicting types
+for 'cdda_track_audiop'
+In file included from cdda2wav.c:113:0:
+interface.h:151:12: note: previous declaration of 'cdda_track_audiop' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:156:13: error: conflicting types
+for 'cdda_disc_firstsector'
+In file included from cdda2wav.c:113:0:
+interface.h:147:13: note: previous declaration of
+'cdda_disc_firstsector' was here
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:157:13: error: conflicting types
+for 'cdda_disc_lastsector'
+In file included from cdda2wav.c:113:0:
+interface.h:148:13: note: previous declaration of
+'cdda_disc_lastsector' was here
+cdda2wav.c: In function 'main':
+cdda2wav.c:3419:2: error: too few arguments to function 'SetupInterface'
+In file included from /usr/local/include/cdda_paranoia.h:37:0,
+                 from global.h:21,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_interface.h:48:6: note: declared here
+cdda2wav.c:4033:5: warning: passing argument 1 of 'paranoia_init' from
+incompatible pointer type [enabled by default]
+In file included from global.h:21:0,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_paranoia.h:42:24: note: expected 'struct
+cdrom_drive *' but argument is of type 'struct SCSI *'
+cdda2wav.c:4033:5: error: too many arguments to function 'paranoia_init'
+In file included from global.h:21:0,
+                 from cdda2wav.c:120:
+/usr/local/include/cdda_paranoia.h:42:24: note: declared here
+smake: Operation not permitted. *** Code 1 from command line for
+target 'cdda2wav.o'.
+smake: The following command caused the error:
+echo &quot;    ==&gt; COMPILING \&quot;cdda2wav.o\&quot;&quot;; gcc   -O   -DSCHILY_BUILD
+-IOBJ/x86_64-dragonfly-cc -I../incs/x86_64-dragonfly-cc -I../include
+-I/usr/local/include   -I../libcdrdeflt -DFIFO -I../libscg
+-I../libparanoia -I../cdrecord
+-DCD_DEVICE='&quot;yourSCSI_Bus,yourSCSI_ID,yourSCSI_LUN&quot;'
+-DFILENAME='&quot;audio&quot;'  -DUNDERSAMPLING=1
+-DVERSION_OS='&quot;_dragonfly_3.4-release_x86_64_x86_64&quot;'  -DBITS_P_S=16
+-DCHANNELS=2 -DAUDIOTYPE='&quot;wav&quot;'  -DDURATION=0
+-DDEF_INTERFACE='&quot;generic_scsi&quot;' -DUSE_PARANOIA=1  -DDEFAULT_SPEED=0
+          -DCDINDEX_SUPPORT -DCDDB_SUPPORT
+-DCDDBHOST='&quot;freedb.freedb.org&quot;' -DCDDBPORT=8880
+-DHAVE_IOCTL_INTERFACE  -DECHO_TO_SOUNDCARD -DSOUND_DEV='&quot;/dev/dsp&quot;'
+-DNSECTORS=75  -DINFOFILES -DMD5_SIGNATURES -DAUX_DEVICE='&quot;&quot;'
+-DCDDA2WAV     -DSCHILY_PRINT -DINS_BASE=\&quot;/opt/schily\&quot;
+-DTEXT_DOMAIN=\&quot;SCHILY_cdrtools\&quot;  -c -o
+OBJ/x86_64-dragonfly-cc/cdda2wav.o cdda2wav.c
+smake: Couldn't make 'all'.
+smake: Leaving
+'/home/olivares/Downloads/schily-2013-05-10/./psmake/smake'[1] from
+directory '/home/olivares/Downloads/schily-2013-05-10/cdda2wav'
+smake: Default commandline target: 'all'
+smake: Doing                       exit(1)
+smake: Operation not permitted. *** Code 1 from command line for target 'all'.
+smake: The following command caused the error:
+list=&quot;&quot;;                            \
+    if [ -d TARGETS -a -f TARGETS/__slot ]; then                \
+        list=`echo TARGETS/[0123456789][0123456789]* |            \
+            sed -e 's;TARGETS/[0123456789][0123456789];;g' | sed -e
+'s;!@!;/;g'`;\
+    fi;                                    \
+    for DIR in ${list} ;                            \
+    do                                    \
+        (                                \
+        echo &quot;    ==&gt; MAKING \&quot;all\&quot; ON SUBDIRECTORY \&quot;SRCROOT/$DIR\&quot;&quot;;\
+        if [ -d ./$DIR -a -r ./$DIR/Makefile ] ; then            \
+            cd ./$DIR &amp;&amp;
+&quot;/home/olivares/Downloads/schily-2013-05-10/./psmake/smake&quot;
+XARCH=x86_64-dragonfly-cc DIRNAME=SRCROOT/$DIR all;        \
+        else                                \
+            echo &quot;NOTICE: Partial source (SRCROOT/$DIR) missing&quot;;\
+        fi                                \
+        );                                \
+    done
+smake: Couldn't make 'all'.
+gmake: *** [all] Error 1
+$ uname -a
+DragonFly quadcore.grullahs 3.4-RELEASE DragonFly v3.4.1-RELEASE #6:
+Wed Apr 24 13:11:54 PDT 2013
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at pkgbox64.dragonflybsd.org</A>:/usr/obj/build/home/justin/src/sys/X86_64_GENERIC
+ x86_64
+
+
+
+Maybe should I try to build smake first? then try this again?
+
+
+Best Regards,
+
+
+Antonio
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000930.html">[Cdrecord-support] cdrecord from schily-2013-05-10 fails to	build with gmake
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#929">[ date ]</a>
+              <a href="thread.html#929">[ thread ]</a>
+              <a href="subject.html#929">[ subject ]</a>
+              <a href="author.html#929">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Feature Request: CD Audio extraction with	sample offset
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20CD%20Audio%20extraction%20with%0A%09sample%20offset&In-Reply-To=%3Ct2n2c746f621004241142k6970fe89h8bb73355c0ac2dc1%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000646.html">
+   <LINK REL="Next"  HREF="000648.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Feature Request: CD Audio extraction with	sample offset</H1>
+    <B>Eric Shattow</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20CD%20Audio%20extraction%20with%0A%09sample%20offset&In-Reply-To=%3Ct2n2c746f621004241142k6970fe89h8bb73355c0ac2dc1%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Feature Request: CD Audio extraction with	sample offset">lucent at gmail.com
+       </A><BR>
+    <I>Sat Apr 24 20:42:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000646.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+        <LI>Next message: <A HREF="000648.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#647">[ date ]</a>
+              <a href="thread.html#647">[ thread ]</a>
+              <a href="subject.html#647">[ subject ]</a>
+              <a href="author.html#647">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, Apr 24, 2010 at 3:39 AM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+...
+&gt;<i> Are you sure that cdparanoia has this feature? Cdparanoia is based
+</I>...
+&gt;<i>From &quot;cdparanoia III release 10.2 (September 11, 2008)&quot; cdparanoia
+</I>--help output:
+  -O --sample-offset &lt;n&gt;          : Add &lt;n&gt; samples to the offset when
+reading data.  May be negative.
+
+
+&gt;<i>
+</I>&gt;&gt;<i> (<A HREF="http://gna.org/projects/cued">http://gna.org/projects/cued</A>) have the capability to apply sample
+</I>&gt;&gt;<i> offset correction, and under/over read the media on supported drives
+</I>&gt;&gt;<i> to &quot;recover&quot; these normally missed samples.
+</I>&gt;<i>
+</I>&gt;<i> It is most unlikely that this program will help you. It is based on libcdio
+</I>&gt;<i> and libcdio was created from an outdated version of cdda2wav and is even
+</I>
+I thought it was based on other vcdimager, is the information wrong?:
+<A HREF="http://www.gnu.org/software/libcdio/libcdio.html">http://www.gnu.org/software/libcdio/libcdio.html</A>
+
+&gt;&gt;<i> Please note this feature request is not intended to spark a discussion
+</I>&gt;&gt;<i> on the merits of AccurateRip(TM) compatibility, or &quot;what is zero
+</I>&gt;&gt;<i> (reference) anyways?&quot; It is just a feature that I would find useful if
+</I>&gt;&gt;<i> it were implemented. CDROM drive hardware varies a lot about which
+</I>&gt;&gt;<i> sample to begin reading from, and being able to compensate for this is
+</I>&gt;&gt;<i> important for my uses. I am surprised that a sample offset
+</I>&gt;&gt;<i> compensation read feature does not appear to be implemented already in
+</I>&gt;&gt;<i> cdrtools.
+</I>&gt;<i>
+</I>&gt;<i> Well, the features in cdda2wav are oriented on importance and offset correction
+</I>&gt;<i> is a task of low importance if you think of general audio extraction quality
+</I>&gt;<i> and if you look at the ability to extrace meta data from or for audio CDs.
+</I>&gt;<i> With general audio extraction quality, cdda2wav is one of the very best
+</I>&gt;<i> programs and e.g. better than cdparanoia. Cdda2wav reads many audio CDs
+</I>&gt;<i> without problems that cannot be read using cdparanoia at all.
+</I>
+I like the attention to features and quality in cdrtools, and also portability.
+
+&gt;<i>
+</I>&gt;<i> The next planned feature for cdda2wav is the ability to detect stable incorrect
+</I>&gt;<i> audio data and after that, offset correction is planned.
+</I>
+Glad to hear that! This answers my question / request about offset
+correction appearing in cdrtools.
+
+&gt;<i>
+</I>&gt;<i> Note that the typical audio read offset is less than 20ms and you will need to
+</I>&gt;<i> create a 20th or 50th stage copy in order to be able to notice the offset at
+</I>&gt;<i> all.
+</I>
+Very true, it's not noticeable by the ears. I am also interested in
+checksumming the audio data to compare with others on a 3rd party
+database. This requires a reference for zero (or, the first sample),
+and is most consistent if the audio output by the extractor program
+(i.e. cued / cdparanoia / cdda2wav) is aligned to &quot;zero&quot;. Zero can be
+anything but it does differ between drives. It is simplest from the
+view of a checksumming process to have the data aligned instead of
+adding metadata about which drive was used and missing audio samples
+used as data in the checksum.
+
+Thanks for addressing my questions.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000646.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+	<LI>Next message: <A HREF="000648.html">[Cdrecord-support] Feature Request: CD Audio extraction with sample offset
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#647">[ date ]</a>
+              <a href="thread.html#647">[ thread ]</a>
+              <a href="subject.html#647">[ subject ]</a>
+              <a href="author.html#647">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

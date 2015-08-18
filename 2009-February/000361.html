@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%09VMware%20ESX%20Server%203.5&In-Reply-To=%3C49a52f16./bGMsVEjmkIYEwR2%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000359.html">
+   <LINK REL="Next"  HREF="000363.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%09VMware%20ESX%20Server%203.5&In-Reply-To=%3C49a52f16./bGMsVEjmkIYEwR2%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Feb 25 12:44:22 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000359.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+        <LI>Next message: <A HREF="000363.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i>     It is the problem of lacking ide-scsi module...After I compile ide-scsi
+</I>&gt;<i> as a kernel module, and install it on esx server with booting param
+</I>&gt;<i> &quot;hda=scsi&quot; appended in /boot/grub/menu.lst, cdrecord can now burn and blank
+</I>&gt;<i> media correctly.
+</I>&gt;<i>     However, there is still a flaw....Actually, cdrecord works well when I
+</I>&gt;<i> feed &quot;dev=&quot; the name of device file(e.g. dev=/dev/sr0) aforetime though this
+</I>&gt;<i> doesn't obey the cdrecord's doc. To preserve a consistent way, we use this
+</I>&gt;<i> pattern...
+</I>&gt;<i>     Since cdrecord can locate the target device with device file provided,
+</I>&gt;<i> my question is how to find the corresponding identifier in terms of &quot;x,x,x&quot;
+</I>&gt;<i> to a device file name.Thx~~
+</I>
+See man page: cdrecord -scanbus
+
+
+&gt;<i> Joerg Schilling-3 wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Hi, this is what I got by issuing &quot;cdrecord dev=ATAPI:/dev/hda a.iso&quot;
+</I>&gt;<i> &gt;&gt; =====================================================================
+</I>&gt;<i> &gt;&gt; ./cdrecord: No write mode specified.
+</I>&gt;<i> &gt;&gt; ./cdrecord: Asuming -sao mode.
+</I>&gt;<i> &gt;&gt; ./cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> &gt;&gt; ./cdrecord: Future versions of cdrecord may have different drive
+</I>&gt;<i> &gt;&gt; dependent
+</I>&gt;<i> &gt;&gt; defaults.
+</I>&gt;<i> &gt;&gt; scsidev: 'ATAPI:/dev/hda'
+</I>&gt;<i> &gt;&gt; devname: 'ATAPI:/dev/hda'
+</I>&gt;<i> &gt;&gt; scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> &gt;&gt; Warning: dev=ATA: is preferred over dev=ATAPI:.
+</I>&gt;<i> &gt;&gt; Warning: Using ATA Packet interface.
+</I>&gt;<i> &gt;&gt; Warning: The related Linux kernel interface code seems to be
+</I>&gt;<i> &gt;&gt; unmaintained.
+</I>
+Well, I already mentioned that using dev=ATAPI:/dev/hda  is a bad idea.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000359.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+	<LI>Next message: <A HREF="000363.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#361">[ date ]</a>
+              <a href="thread.html#361">[ thread ]</a>
+              <a href="subject.html#361">[ subject ]</a>
+              <a href="author.html#361">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

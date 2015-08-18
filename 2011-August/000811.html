@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E367511.7090406%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000812.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E367511.7090406%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Mon Aug  1 11:42:41 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000812.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#811">[ date ]</a>
+              <a href="thread.html#811">[ thread ]</a>
+              <a href="subject.html#811">[ subject ]</a>
+              <a href="author.html#811">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Finally I had success in compiling the cdrtools with MinGW. Here is
+what I did in addition to the changes I reported in previous emails:
+1) cdda2wav/sndconfig.c
+    part of: cdda2wav
+    error: sndconfig.c:345: 'WIN_CallBack' undeclared
+    solution/workaround: do not use a callback function for waveOutOpen()
+      since the supposed callback function is not defined we do not lose
+      any functionality when not registering it.
+    Note: One would expect the same error for cygwin, since it is on
+      Windows, too. But this code is not used/compiled under cygwin.
+      Cygwin has the header file sys/soundcard.h which implies the use
+      of OSS. Thus HAVE_OSS is defined and another code branch is used.
+
+2) cdda2wav/cdda2wav.c:
+    part of: cdda2wav
+    error: undefined reference to 'wait' (linker error)
+    solution/workaround: in cdda2wav/cdda2wav.c line 879 is a call to
+      wait(), which is related to a previous fork(). Since we do not have
+      fork() (which is guarded by #ifdef) we can safely guard the
+      if-clause (lines 872-906) with &quot;#ifdef HAVE_FORK_AND_SHAREDMEM&quot;
+      like the call to fork() in line 4077.
+
+3) cdda2wav/semshm.c:
+    error: undefined reference to 'pipe' (linker error)
+    solution/workaround: in MinGW/MS C runtime there is no pipe()
+      function. But there is a _pipe() function, which takes in addition
+      to the filedescriptor array the size of the pipes and a binary/text
+      file mode argument. You can define a macro to wrap the pipe() call:
+      #ifdef __MINGW32__
+      #define pipe(fd)  _pipe(fd,PIPE_SIZE,0)
+      #endif
+      I chose for PIPE_SIZE 4096. Setting the third parameter to 0 uses
+      the value from the global _fmode variable for text/binary decision.
+
+4) cdda2wav/setuid.c:
+    part of: cdda2wav
+    error: undefined reference to 'alarm' (linker error)
+    solution/workaround: in function initsecurity() (line 69) there is a
+      call to alarm() with the parameter 0. From the description of the
+      alarm() system call: &quot;If seconds is 0, a pending alarm request, if
+      any, is cancelled.&quot; There are references to SIGALRM in
+      sformat/diskfmt.c and sh/fault.c but I bellieve that these are not
+      active within cdda2wav. J&#246;rg, can you confirm this, since I am not
+      sure. The call to alarm() can then be guarded by #ifdef __MINGW32__
+      or maybe better #ifdef SIGALRM.
+
+5) cdrecord/cdrecord.c:
+    part of: cdrecord
+    error: undefined reference to 'kill'
+    solution/workaround: add to the #if defined SIGINT in line 1758 the
+      check for kill:  #if defined SIGINT &amp;&amp; defined HAVE_KILL
+
+After unpacking schily-2011-07-26.tar.bz2 and applying these changes
+(see all changed files in the attachment) a simple 'make' from the
+cmd.exe command prompt - provided that MSYS/bin and MINGW/bin are in
+the searchpath as per READMEs/README.mingw32 - will first build the
+bootstrap smake and then, using the bootstrap smake, the whole schily
+distribution. Some of the programs will still not compile; there are 
+more undefined macros and functions.
+Following programs and libraries still do not build:
+- libshedit
+- bsh
+- ved
+- calltree
+- change
+- compare
+- label
+- lndir
+- mkisofs/diag/dump
+- mkisofs/diag/isodump
+- mkisofs/diag/isoinfo
+- mountcd
+- smt
+- p
+- patch
+- sccs/sccs/lib/comobj
+- sccs/sccs/lib/mpwlib
+- tools from sccs/sccs since comobj and mpwlib could not be built
+- scgcheck
+- sdd
+- sformat
+- sh
+- star
+- star_sym
+
+The whole schily-2011-07-26 package with applied changes compiles well
+with a few warnings on Mac OSX 10.4.11 and Slackware Linux 13.1.0.
+Cygwin chokes on 'mdigest' but all other programs and libraries are
+built OK.
+
+Please tell me whether you need or are waiting for further information
+and what it is.
+
+Best regards,
+
+Johannes
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: schily-2011-07-26_build3.log.gz
+Type: application/x-gzip
+Size: 20435 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110801/8927c46b/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110801/8927c46b/attachment.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: schily-2011-07-26_patch.diff.gz
+Type: application/x-gzip
+Size: 3428 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110801/8927c46b/attachment-0001.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110801/8927c46b/attachment-0001.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000812.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#811">[ date ]</a>
+              <a href="thread.html#811">[ thread ]</a>
+              <a href="subject.html#811">[ subject ]</a>
+              <a href="author.html#811">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

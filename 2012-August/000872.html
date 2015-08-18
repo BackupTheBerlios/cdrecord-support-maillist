@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Write new BIOS image to CD?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20new%20BIOS%20image%20to%20CD%3F&In-Reply-To=%3CCAK2H%2BefrBHkHUWS7fhEJ27GcjX9ixug%2BHDdHo8fKpnT4GZLGkg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000871.html">
+   <LINK REL="Next"  HREF="000873.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Write new BIOS image to CD?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Write%20new%20BIOS%20image%20to%20CD%3F&In-Reply-To=%3CCAK2H%2BefrBHkHUWS7fhEJ27GcjX9ixug%2BHDdHo8fKpnT4GZLGkg%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Write new BIOS image to CD?">markknecht at gmail.com
+       </A><BR>
+    <I>Sat Aug  4 20:25:04 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000871.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+        <LI>Next message: <A HREF="000873.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#872">[ date ]</a>
+              <a href="thread.html#872">[ thread ]</a>
+              <a href="subject.html#872">[ subject ]</a>
+              <a href="author.html#872">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+   Is cdrecord the right tool to write a new BIOS image to a CD? I'd
+like to update my BIOS. Inside of BIOS it says it will read the new
+BIOS image off of a CD but I'm having trouble finding an example in
+man cdrecord to just write a single file.
+
+   The new BIOS image file is named RampageII-ASUS-Extreme-2101.ROM.
+
+   The CDRW is device 2,0,0, as per:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mark at c2stable</A> ~ $ cdrecord --scanbus
+Cdrecord-ProDVD-ProBD-Clone 3.00 (x86_64-unknown-linux-gnu) Copyright
+(C) 1995-2010 J&#246;rg Schilling
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+scsibus2:
+        2,0,0   200) 'Optiarc ' 'DVD RW AD-7241S ' '1.03' Removable CD-ROM
+        2,1,0   201) 'ATA     ' 'WDC WD5002ABYS-0' '02.0' Disk
+        2,2,0   202) *
+        2,3,0   203) *
+        2,4,0   204) *
+&lt;SNIP&gt;
+
+   What's the correct way to get this file onto the CD in a format
+that's likely to be recognized by BIOS when I try to do the update? Do
+I need to create an iso image first, or can I simply write the file to
+disc somehow?
+
+Thanks,
+Mark
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000871.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+	<LI>Next message: <A HREF="000873.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#872">[ date ]</a>
+              <a href="thread.html#872">[ thread ]</a>
+              <a href="subject.html#872">[ subject ]</a>
+              <a href="author.html#872">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

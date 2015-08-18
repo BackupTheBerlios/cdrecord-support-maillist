@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C5BD8DB.1060604%40netspace.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000684.html">
+   <LINK REL="Next"  HREF="000682.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE</H1>
+    <B>Murray Blakeman</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C5BD8DB.1060604%40netspace.net.au%3E"
+       TITLE="[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE">mblakeman at netspace.net.au
+       </A><BR>
+    <I>Fri Aug  6 11:41:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000684.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+        <LI>Next message: <A HREF="000682.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#691">[ date ]</a>
+              <a href="thread.html#691">[ thread ]</a>
+              <a href="subject.html#691">[ subject ]</a>
+              <a href="author.html#691">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On  5/08/10 03:41 PM, Murray Blakeman wrote:
+&gt;<i> Executing 'format unit' command on Bus 0 Target 0, Lun 0 timeout 5300s
+</I>&gt;<i> CDB:  04 11 00 00 00 00
+</I>&gt;<i> Sending 12 (0xC) bytes of data.
+</I>&gt;<i> Write Data:  00 82 00 08 00 B4 74 00 C3 00 30 00
+</I>&gt;<i> cdrecord: I/O error. format unit: scsi sendcmd: no error
+</I>&gt;<i> CDB:  04 11 00 00 00 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 26 00 00 89 00 08
+</I>&gt;<i> Sense Key: 0x5 Illegal Request, Segment 0
+</I>&gt;<i> Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid) error refers to data part, bit ptr 1 
+</I>&gt;<i> (valid) field ptr 8
+</I>&gt;<i> resid: 12
+</I>&gt;<i> cmd finished after 0.013s timeout 5300s
+</I>&gt;<i> cdrecord: Cannot format medium.
+</I>&gt;<i>
+</I>&gt;<i> Executing 'flush cache' command on Bus 0 Target 0, Lun 0 timeout 200s
+</I>&gt;<i> CDB:  35 00 00 00 00 00 00 00 00 00
+</I>&gt;<i> cmd finished after 0.004s timeout 200s
+</I>&gt;<i>
+</I>&gt;<i> Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+</I>&gt;<i> CDB:  00 00 00 00 00 00
+</I>&gt;<i> cmd finished after 0.004s timeout 200s
+</I>&gt;<i> Mode Parameters (un-converted) 00 00 00 08 00 00 00 00 00 00 08 00
+</I>&gt;<i> Mode Parameters 00 00 00 00 00 00 00 08 00 00 00 00 00 00 08 00
+</I>&gt;<i>
+</I>&gt;<i> Executing 'mode select g1' command on Bus 0 Target 0, Lun 0 timeout 200s
+</I>&gt;<i> CDB:  55 10 00 00 00 00 00 00 10 00
+</I>&gt;<i> Sending 16 (0x10) bytes of data.
+</I>&gt;<i> Write Data:  00 00 00 00 00 00 00 08 00 00 00 00 00 00 08 00
+</I>&gt;<i> cmd finished after 0.005s timeout 200s
+</I>&gt;<i>
+</I>&gt;<i> Executing 'prevent/allow medium removal' command on Bus 0 Target 0, 
+</I>&gt;<i> Lun 0 timeout 200s
+</I>&gt;<i> CDB:  1E 00 00 00 00 00
+</I>&gt;<i> cmd finished after 0.004s timeout 200s
+</I>&gt;<i> Set
+</I>
+I have just updated to the latest firmware (1.04 -&gt; 1.08) and I'm still 
+getting this error.  It doesn't even start to record the disk.
+
+CD and DVD recording is fine.  It just BD media I am having problems with.
+
+Is there anything else I can try (short of testing with a different OS 
+:<i>-( ).
+</I>
+Thanks
+
+Murray B.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000684.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+	<LI>Next message: <A HREF="000682.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#691">[ date ]</a>
+              <a href="thread.html#691">[ thread ]</a>
+              <a href="subject.html#691">[ subject ]</a>
+              <a href="author.html#691">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

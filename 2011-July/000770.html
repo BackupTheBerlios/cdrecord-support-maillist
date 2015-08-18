@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E173E76.9090202%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000769.html">
+   <LINK REL="Next"  HREF="000771.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E173E76.9090202%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Fri Jul  8 19:29:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000769.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000771.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I tried to compile smake (from /pub/smake/smake-1.2.1.shar.gz) but had
+no success so far. It would compile the bootstrap smake ok but compiling
+the final smake using the bootstrap smake fails.
+
+Here are the error messages. I think it has something to do with the
+internal 'echo' command of cmd.exe. In RULES/rules1.top it says:
+   @echo &gt; $@ (line 259)
+I am not sure what this is supposed to do; under my setup it ends up
+with something like &quot;ECHO ist eingeschaltet (ON).&quot; in file incs/Dnull.
+
+./psmake/smake -r all
+d:\WINPROG\smake-1.2.1\psmake\smake.exe: Found illegal option '--unix' 
+in MAKEFLAGS.
+d:\WINPROG\smake-1.2.1\psmake\smake.exe: Ignoring illegal option '--unix'.
+d:\WINPROG\smake-1.2.1\psmake\smake.exe: Objcount: 4 Objects: 'ECHO' 
+'ist' 'eingeschaltet' '(ON).'
+d:\WINPROG\smake-1.2.1\psmake\smake.exe: Missing : or =, got '
+' &lt;12&gt; in line 2 col 0 of 'incs/Dnull'
+d:\WINPROG\smake-1.2.1\psmake\smake.exe: Bad syntax in 'incs/Dnull'.
+
+While I am typing this I try compiling the version you suggested in
+your last mail. BTW I still have problems with the FTP server. I
+investigated this a little with the cmdline ftp client. I can connect
+can 'cd' into dirctories, can do 'pwd'. But I cannot do 'ls', 'get'
+or similar. I can download files with the 'wget' utility. But for
+this I have to know the excdat name and location of the file I want
+to download. I did not notice problems with FTP with other sites. -
+Strange.
+
+For making the compilation of the bootstrap smake work I had to change
+in psmake/lnfiles: there are a number of header fils which are to be
+copied/linked to another location. I had to remove the ../../ part
+of the path (lines 38 - 76).
+
+I am willing to make this MinGW port work, but I need help...
+
+Johannes
+
+
+Joerg Schilling schrieb:
+&gt;<i> /*--------------------------------------------------------------------------*/
+</I>&gt;<i> Some new information:
+</I>&gt;<i>
+</I>&gt;<i> I have been able to find the patches from the russion guy who did make the last
+</I>&gt;<i> MinGW port in 2003. His code is very expensive, he implements many things by
+</I>&gt;<i> hand that are already available in the port abstraction system in a more
+</I>&gt;<i> generalized form.
+</I>&gt;<i>
+</I>&gt;<i> There are however a log of hints that could be used to create a new better port.
+</I>&gt;<i>
+</I>&gt;<i> Basic information in any case:
+</I>&gt;<i>
+</I>&gt;<i> You first need to port smake to mingw.
+</I>&gt;<i>
+</I>&gt;<i> Do this by downloading:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/schily/schily-2011-05-08.tar.bz2">ftp://ftp.berlios.de/pub/schily/schily-2011-05-08.tar.bz2</A>
+</I>&gt;<i>
+</I>&gt;<i> and unpacking the archive.
+</I>&gt;<i>
+</I>&gt;<i> Then chdir to the  directory &quot;psmake&quot; and call &quot;./MAKE-all&quot; in that directory.
+</I>&gt;<i> This works completely shell skript controlled. If there are basic problems
+</I>&gt;<i> with compiling smake, we first need to address them but the changes will
+</I>&gt;<i> immediately help cdrtools to advance as everything uses a unique portability
+</I>&gt;<i> system.
+</I>&gt;<i>
+</I>&gt;<i> With smake I mainly expect problems with calling shell commands.
+</I>&gt;<i>
+</I>&gt;<i> /*--------------------------------------------------------------------------*/
+</I>&gt;<i>
+</I>&gt;<i> Repeating things as they have not made it to the list
+</I>&gt;<i>
+</I>&gt;<i> Henry&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">defsyn at gmail.com</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i> I have never succeeded in compiling cdrtools on MinGW. Have tried on and
+</I>&gt;&gt;<i> off for the last 10 years. The Cygwin environment has been the only
+</I>&gt;&gt;<i> environment on windows that has worked for me.
+</I>&gt;<i>
+</I>&gt;<i> As I try to avoid to use a Microsoft environment, and as I have too few
+</I>&gt;<i> experiences with MinGW, I am just able to help with reports from people who
+</I>&gt;<i> actually try. Given the fact that I need to make sure that my software will be
+</I>&gt;<i> able to survive me, there should be other people who collaborate with the
+</I>&gt;<i> development ;-)
+</I>&gt;<i>
+</I>&gt;&gt;<i> From other porting attempts, it seems to be the best idea if someone who is
+</I>&gt;<i> used to  work under MinGW would do some testing and reports his results. As
+</I>&gt;<i> the basic code structure is higly portable, it usually takes less than one
+</I>&gt;<i> hour to fix problems with a specific platform.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> There is a russian guy who offered older versions from cdrtools as MinGW based
+</I>&gt;<i> binaries, but he unfortunately did not report what he did in order to succeed.
+</I>&gt;<i>
+</I>&gt;<i> There is MS SFU (Interix) or whatever it is called today. Cdrtools compile
+</I>&gt;<i> in this environment, but unfortunately MS does not offer access to the SCSI
+</I>&gt;<i> subsystem to programs that are run in that environment.
+</I>&gt;<i>
+</I>&gt;<i> There is also UWIN and from a discussion I had with David Korn, there is a big
+</I>&gt;<i> chance to get cdrtools compile and work on UWIN - I did not try yet.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> You need to follow Schilling's recommendations to use his smake at the very
+</I>&gt;&gt;<i> least.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> At one point Gnu Make used to work on Cygwin. About 3 years ago, it quit.
+</I>&gt;&gt;<i> Using smake became a requirment.
+</I>&gt;<i>
+</I>&gt;<i> Gmake always has been a problem. Gmake compiles on many platforms but it works
+</I>&gt;<i> in a suffuciently usable way only on very few platforms. Even though smake is
+</I>&gt;<i> much older than gmake, I planned to stop working on smake around 1995.
+</I>&gt;<i>
+</I>&gt;<i> When the OS/2 port was made for cdrtools in 1998, it turned out that the
+</I>&gt;<i> person in Russia who initially worked on the port spend more than two weeks
+</I>&gt;<i> without being able to advance. After he presented really strange results, I
+</I>&gt;<i> made the proposal to first port smake. He was confused and thought that this
+</I>&gt;<i> would force him to work for many additional weeks without being able to
+</I>&gt;<i> advance the cdrtools port. After I have been able to convince him to try to
+</I>&gt;<i> compile smake once, it turned out that porting smake to OS/2 took less than a
+</I>&gt;<i> day and most of the problems he observed before while trying to use gmake
+</I>&gt;<i> disappeared while using smake.
+</I>&gt;<i>
+</I>&gt;<i> After seeing this experience, It was obvious that I need to continue working on
+</I>&gt;<i> smake if I like to support more than a few target platforms.
+</I>&gt;<i>
+</I>&gt;<i> If you like to understans why gmake has problems on other platforms, have a
+</I>&gt;<i> look in the source and check how many platform specific #ifdefs are in the
+</I>&gt;<i> makefile parser. Smake has no such #ifdefs and this avoids platform specific
+</I>&gt;<i> problems. If you like to port smake, you only need to find a way to call a
+</I>&gt;<i> halfway POSIX compliant shell and to add code to smake/archconf.c to enable the
+</I>&gt;<i> automake features for the new platform (this is code like uname() for
+</I>&gt;<i> auto-detecting platforms).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> And I've found that only the 3.xx gcc compilers to have been successful in
+</I>&gt;&gt;<i> compiling on Cygwin for cdrtools. You should take note that the versions of
+</I>&gt;&gt;<i> cdrtools that appear on the net for Windows use a Cygwin compiled version of
+</I>&gt;&gt;<i> cdrtools.
+</I>&gt;<i>
+</I>&gt;<i> As mentioned before, GCC-4.x gives warnings on 100% ANSI-C compliant code.
+</I>&gt;<i> Warnings like:
+</I>&gt;<i>
+</I>&gt;<i>          ==&gt;  COMPILING &quot;raisecond.o&quot;
+</I>&gt;<i> raisecond.c: In function 'raiseabort':
+</I>&gt;<i> raisecond.c:159: warning: ignoring return value of 'write', declared with attribute warn_unused_result
+</I>&gt;<i>
+</I>&gt;<i> Are printed because GCC-4 ignores ANSI C rules that permit to write something
+</I>&gt;<i> like:
+</I>&gt;<i>
+</I>&gt;<i> 	(void) write(2, &quot;ERROR\n&quot;, 6);
+</I>&gt;<i>
+</I>&gt;<i> in order to tell the compiler that the return value from write() is
+</I>&gt;<i> intentionally ignored.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000769.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000771.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

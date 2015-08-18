@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] recover dvd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20recover%20dvd&In-Reply-To=%3C200705031630.12286.mg%40fork.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000037.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] recover dvd</H1>
+    <B>Marcin Gryszkalis</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20recover%20dvd&In-Reply-To=%3C200705031630.12286.mg%40fork.pl%3E"
+       TITLE="[Cdrecord-support] recover dvd">mg at fork.pl
+       </A><BR>
+    <I>Thu May  3 16:30:11 CEST 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000037.html">[Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+I have a DVD+R disc created on unknown stand-alone dvd writer (kind of pvr box 
+or so). It's not readable under linux or windows, it looks like the disc was 
+grabbed from writer before everything was fixated/closed/finished. 
+
+I'd like to recover data - the video stream (recorded live from connected cam) 
+but I don't know if anything can be done...
+
+Here's output from info:
+
+INQUIRY:                [ASUS    ][DRW-1608P3S     ][1.06]
+GET [CURRENT] CONFIGURATION:
+ Mounted Media:         1Bh, DVD+R
+ Media ID:              OPTODISC/OR4
+ Current Write Speed:   4.0x1385=5540KB/s
+ Write Speed #0:        4.0x1385=5540KB/s
+ Write Speed #1:        2.4x1385=3324KB/s
+ Speed Descriptor#0:    00/2295103 <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">R at 4.0x1385</A>=5540KB/s <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">W at 4.0x1385</A>=5540KB/s
+ Speed Descriptor#1:    00/2295103 <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">R at 2.4x1385</A>=3324KB/s <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">W at 2.4x1385</A>=3324KB/s
+READ DVD STRUCTURE[#0h]:
+ Media Book Type:       00h, DVD-ROM book [revision 0]
+ Legacy lead-out at:    2295104*2KB=4700372992
+READ DISC INFORMATION:
+ Disc status:           appendable
+ Number of Sessions:    1
+ State of Last Session: incomplete
+ &quot;Next&quot; Track:          1
+ Number of Tracks:      2
+READ TRACK INFORMATION[#1]:
+ Track State:           partial/complete
+ Track Start Address:   0*2KB
+ Free Blocks:           0*2KB
+ Track Size:            15872*2KB
+READ TRACK INFORMATION[#2]:
+ Track State:           invisible
+ Track Start Address:   15888*2KB
+ Next Writable Address: 281376*2KB
+ Free Blocks:           2013728*2KB
+ Track Size:            2279216*2KB
+READ CAPACITY:          0*2048=0
+
+
+and from cdrecord:
+
+Cdrecord-ProDVD-Clone 2.01.01a25 (i686-pc-linux-gnu) Copyright (C) 1995-2006 
+J&#195;&#182;rg Schilling
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+No target specified, trying to find one...
+Using dev=1001,1,0.
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-1608P3S     '
+Revision       : '1.06'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+WARNING: Phys disk size 2295104 differs from rzone size 15872! Prerecorded 
+disk?
+WARNING: Phys start: 196608 Phys end 2491711
+Disk Is not erasable
+data type:                standard
+disk status:              incomplete/appendable
+session status:           incomplete/appendable
+BG format status:         none
+first track:              1
+number of sessions:       1
+first track in last sess: 1
+last track in last sess:  2
+Disk Is not unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+    1     1 Data   0          15871      15872
+    2     1 Data   15888      2295103    2279216
+
+Last session start address:         0
+Last session leadout start address: 2295104
+Next writable address:              281376
+Remaining writable size:            2279216
+
+
+
+Unfortunately 
+# dd if=/dev/dvd of=test bs=512 count=1024
+
+shows
+
+dd: reading `/dev/dvd': Input/output error
+0+0 records in
+0+0 records out
+0 bytes (0 B) copied, 16.2773 s, 0.0 kB/s
+
+and kernel gives
+
+May  3 16:17:52 hq kernel: hdd: media error (bad sector): status=0x51 { 
+DriveReady SeekComplete Error }
+May  3 16:17:52 hq kernel: hdd: media error (bad sector): error=0x30 { 
+LastFailedSense=0x03 }
+May  3 16:17:52 hq kernel: ide: failed opcode was: unknown
+May  3 16:17:52 hq kernel: ATAPI device hdd:
+May  3 16:17:52 hq kernel:   Error: Medium error -- (Sense key=0x03)
+May  3 16:17:52 hq kernel:   &quot;28 00 00 00 00 00 00 00 01 00 00 00 00 00 00 
+00 &quot;
+May  3 16:17:52 hq kernel: end_request: I/O error, dev hdd, sector 0
+
+
+Any advice?
+Best regards
+-- 
+Marcin Gryszkalis, PGP 0x9F183FA3 
+jabber jid:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mg at fork.pl</A>, gg:2532994
+<A HREF="http://the.fork.pl">http://the.fork.pl</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000037.html">[Cdrecord-support] cdrtools-2.01.01a27 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#36">[ date ]</a>
+              <a href="thread.html#36">[ thread ]</a>
+              <a href="subject.html#36">[ subject ]</a>
+              <a href="author.html#36">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

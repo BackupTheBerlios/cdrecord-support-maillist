@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002031158v266df248gd2899433f2dbb5b7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000531.html">
+   <LINK REL="Next"  HREF="000532.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate</H1>
+    <B>bill browne</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002031158v266df248gd2899433f2dbb5b7%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate">bilie.browne at gmail.com
+       </A><BR>
+    <I>Wed Feb  3 20:58:28 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000531.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+        <LI>Next message: <A HREF="000532.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#534">[ date ]</a>
+              <a href="thread.html#534">[ thread ]</a>
+              <a href="subject.html#534">[ subject ]</a>
+              <a href="author.html#534">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the reply, Joerg.  Requested info below:
+
+On 3 February 2010 23:12, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> bill browne &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">bilie.browne at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> DVD seems to burn OK - can see burnt area visually
+</I>&gt;&gt;<i> Halts with cannot fixate - cdrecord -scanbus can then no longer see
+</I>&gt;&gt;<i> drive until reboot.
+</I>&gt;<i>
+</I>&gt;<i> This is a hint for a bug in the Linux kernel.
+</I>&gt;<i>
+</I>&gt;&gt;<i> cdrecord -minfo is showing Cannot read drive buffer:
+</I>&gt;<i>
+</I>&gt;<i> Not all drives support the READ BUFFER command.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a74 (x86_64-unknown-linux-gnu)
+</I>&gt;&gt;<i> Copyright (C) 1995-2010 J???rg Schilling
+</I>&gt;&gt;<i> scsidev: '1,0,0'
+</I>&gt;&gt;<i> scsibus: 1 target: 0 lun: 0
+</I>&gt;&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;&gt;<i> Device type&#160;&#160;&#160; : Removable CD-ROM
+</I>&gt;&gt;<i> Version&#160;&#160;&#160;&#160;&#160;&#160;&#160; : 5
+</I>&gt;&gt;<i> Response Format: 2
+</I>&gt;&gt;<i> Capabilities&#160;&#160; :
+</I>&gt;&gt;<i> Vendor_info&#160;&#160;&#160; : 'TSSTcorp'
+</I>&gt;&gt;<i> Identifikation : 'CDDVDW SH-S223C '
+</I>&gt;&gt;<i> Revision&#160;&#160;&#160;&#160;&#160;&#160; : 'SB01'
+</I>&gt;&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;&gt;<i> Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+</I>&gt;&gt;<i> Driver flags&#160;&#160; : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+</I>&gt;&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;&gt;<i> Mounted media class:&#160;&#160;&#160;&#160;&#160; DVD
+</I>&gt;&gt;<i> Mounted media type:&#160;&#160;&#160;&#160;&#160;&#160; DVD+R/DL
+</I>&gt;&gt;<i> Disk Is not erasable
+</I>&gt;&gt;<i> data type:&#160;??&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; standard
+</I>&gt;&gt;<i> disk status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; empty
+</I>&gt;&gt;<i> session status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;??&#160; empty
+</I>&gt;&gt;<i> BG format status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; none
+</I>&gt;&gt;<i> first track:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1
+</I>&gt;&gt;<i> number of sessions:&#160;&#160;??&#160;&#160;&#160; 1
+</I>&gt;&gt;<i> first track in last sess: 1
+</I>&gt;&gt;<i> last track in last sess:&#160; 1
+</I>&gt;&gt;<i> Disk Is not unrestricted
+</I>&gt;&gt;<i> Disk type: DVD, HD-DVD or BD
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Track&#160; Sess Type&#160;&#160; Start Addr End Addr&#160;&#160; Size
+</I>&gt;&gt;<i> ==============================================
+</I>&gt;&gt;<i> &#160;&#160;&#160; 1&#160;&#160;&#160;&#160; 1 Blank&#160; 0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173823&#160;&#160;&#160; 4173824
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Next writable address:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0
+</I>&gt;&gt;<i> Remaining writable size:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173824
+</I>&gt;<i>
+</I>&gt;<i> Do you have a log from the writing procedure?
+</I>
+# cdrecord -v speed=8 dev=1,0,0 try.iso
+cdrecord: No write mode specified.
+cdrecord: Assuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a74 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#9618;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD+R/DL
+Profile: DVD+R/DL (current)
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1048576 = 1024 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  4536 MB
+Total size:     4536 MB = 2322867 sectors
+Current Secsize: 2048
+Blocks total: 4173824 Blocks current: 4173824 Blocks remaining: 1850957
+Reducing transfer size from 64512 to 32768 bytes.
+Starting to write CD/DVD/BD at speed 8 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01: 4536 of 4536 MB written (fifo 100%) [buf  96%]
+4.0x.cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 23 71 B0 00 00 03 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 72 0B 00 00 00 00 00 0E 09 0C 00 00 00 02 00 00
+Sense Key: 0x0 No Additional Sense, Segment 11
+Sense Code: 0x00 Qual 0x02 (end-of-partition/medium detected) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 271.207s timeout 200s
+
+write track data: error after 4757225472 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: fatal error
+CDB:  00 00 00 00 00 00
+cmd finished after 0.000s timeout 200s
+Writing  time:  898.486s
+Average write speed   3.8x.
+Min drive buffer fill was 59%
+Fixating...
+cdrecord: Input/output error. flush cache: scsi sendcmd: fatal error
+CDB:  35 02 00 00 00 00 00 00 00 00
+cmd finished after 0.000s timeout 1000s
+cdrecord: Input/output error. flush cache: scsi sendcmd: fatal error
+CDB:  35 02 00 00 00 00 00 00 00 00
+cmd finished after 0.000s timeout 1000s
+cmd finished after 0.000s timeout 1000s
+Trouble flushing the cache
+cdrecord: Cannot fixate disk.
+Fixating time:    0.000s
+cdrecord: Input/output error. prevent/allow medium removal: scsi
+sendcmd: fatal error
+CDB:  1E 00 00 00 00 00
+cmd finished after 0.000s timeout 200s
+cdrecord: fifo had 145180 puts and 145180 gets.
+cdrecord: fifo was 0 times empty and 24837 times full, min fill was 79%.
+&gt;<i>
+</I>&gt;<i> What media manufacturer did you use?
+</I>
+imation DVD+R DL
+
+&gt;<i> Check with cdrecord -atip
+</I>
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a74 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#9618;rg Schilling
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+book type:       DVD+R/DL, Version (14.1)
+disc size:       120mm (0)
+maximum rate:    Not specified (15)
+number of layers:2
+track path:      Opposite Track Path (1)
+layer type:      Rewritable Area (2)
+linear density:  0.293 &#9618;m/bit (1)
+track density:   0.74 &#9618;m/track (0)
+phys start:      196608 (0x30000)
+phys end:        16580607
+end layer 0:     2283519
+bca:             0
+phys size:...    16384000
+layer break at:  2086912
+Category/Version        E1
+Disk size               0F
+Disk structure          32
+Recoding density        10
+Manufacturer:           'RITEK'
+Media type:             'S04'
+Product revision        66
+ADIP numbytes           64
+Reference speed         37
+Max speed               37
+L0 init status:  0
+L0 data areacap: 2086912
+copyr prot type: 0
+region mgt info: 0
+rzone size:         40
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         7 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        4173824
+blocking factor:    16
+rzone size:         4173824
+last recorded addr: 0
+read compat lba:    265696
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+     4173824             2048         0x00  Unformated or Blank Media
+
+&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &#160;EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;(uni)
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i> &#160;URL: &#160;<A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+Regards,
+Bill
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000531.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+	<LI>Next message: <A HREF="000532.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#534">[ date ]</a>
+              <a href="thread.html#534">[ thread ]</a>
+              <a href="subject.html#534">[ subject ]</a>
+              <a href="author.html#534">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

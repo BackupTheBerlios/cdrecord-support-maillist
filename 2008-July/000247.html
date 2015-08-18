@@ -1,0 +1,330 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C4873347d.bBMOKfmkWBews0Fe%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000244.html">
+   <LINK REL="Next"  HREF="000248.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C4873347d.bBMOKfmkWBews0Fe%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jul  8 11:33:49 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000244.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000248.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Enrico Weigelt &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">weigelt at metux.de</A>&gt; wrote:
+
+&gt;<i> * Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+</I>&gt;<i> &gt; &gt; &gt; &gt; * AC_CHECK_SIZEOF:  	a) there is sizeof()
+</I>&gt;<i> &gt; &gt; &gt; &gt; 			b) checking for a specific size is possible by compile-only
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; sizeof does not work for CPP, If you don't like this you cannot support Linux 
+</I>&gt;<i> &gt; &gt; &gt; include file bugs.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; IMHO normally not necessary. You simply can build test programs to try out 
+</I>&gt;<i> &gt; &gt; certain sizes - *IF* you really can't work with sizeof(). For most cases this 
+</I>&gt;<i> &gt; &gt; should be enough. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; See: 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; include/schily/utypes.h
+</I>&gt;<i> &gt; cdrecord/cdrecord.h
+</I>&gt;<i> &gt; cdda2wav/resample.c
+</I>&gt;<i> &gt; cdda2wav/mytype.h
+</I>&gt;<i> &gt; cdda2wav/sha.h
+</I>&gt;<i>
+</I>&gt;<i> All the cases I've found there are only interested in whether some type has
+</I>&gt;<i> certain size. This can be easily checked with a trivial compile test.
+</I>
+I am not sure what you mean with a &quot;compile test&quot;, but if you know a way that 
+allows you to find the size of certain data types _without_ running code, you 
+are welcome!
+
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+</I>&gt;<i> &gt; &gt; &gt; &gt;                         stick on old K&amp;R compiler ? ;-o
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Needed for e.g. HP-UX
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Why not just using an more recent compiler, eg. gcc ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; HP-UX comes with cc.
+</I>&gt;<i>
+</I>&gt;<i> Does that prevent you from using another compiler there ?
+</I>
+cc is there and did always create _correct_ code. gcc on HP-UX (HPPA) did in 
+many cases have bugs in the optimizer that caused the code not to work 
+correctly.
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+</I>&gt;<i> &gt; &gt; &gt; &gt; 			unless someone has an really broken libc. but then he should
+</I>&gt;<i> &gt; &gt; &gt; &gt; 			fix his broken system instead of holding individual 
+</I>&gt;<i> &gt; &gt; &gt; &gt; 			packages responsible for hacking around his buggy system.
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Needed for Mac OS X and *BSD. I have no idea how Apple managed to pass the POSIX
+</I>&gt;<i> &gt; &gt; &gt; compliance tests....
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Does that variable exist on osx+bsd, but doesnt work ? 
+</I>&gt;<i> &gt; &gt; Why not just fixing the build environment (system headers, etc) then ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; ???? Did you read the POSIX standard and the FreeBSD man pages?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; POSIX defixes extern long timezone; *BSD and SunOS-4.x have 
+</I>&gt;<i> &gt; char *timezone(zone, dst);
+</I>&gt;<i>
+</I>&gt;<i> And that can't be checked by a compile test ?
+</I>
+The minimum you would need to do is to _link_ in order to find whether 
+tinezone is a function or a variable. This test would still fail on HP-UX where 
+the name space of functions and variables is separated......
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong: needed on some platforms.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; What about explicitly using &quot;signed char&quot; and &quot;unsigned char&quot; where it matters ?
+</I>&gt;<i> &gt; &gt; IMHO, an compiler which doesnt support it, is broken ;-P
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Not all compilers implement the &quot;signed&quot; keyword.
+</I>&gt;<i>
+</I>&gt;<i> Which ones ? Anyone from this century ?
+</I>
+??? Should I drop support for all platforms that do not match the criteria
+for &quot;this century&quot; like Linux which is still non-POSIX?
+
+I support everything back to ~ 20 years.
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+</I>&gt;<i> &gt; &gt; &gt; &gt; 			use it at all.
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong: needed for *BSD and Mac OS X
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; It did some research on this issue and found many places which said, this is
+</I>&gt;<i> &gt; &gt; an internal function and should not be used directly. Why/where exactly is
+</I>&gt;<i> &gt; &gt; this required in cdrtools ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You did read the wrong information.
+</I>&gt;<i>
+</I>&gt;<i> So you have a better source ?
+</I>
+Correct.
+
+&gt;<i> &gt; &gt; Well, I didn't say, evrything's perfect w/ glibc. There're still too many bugs
+</I>&gt;<i> &gt; &gt; and standard violations. Please remind me in about 6 weeks, and I'll get back to
+</I>&gt;<i> &gt; &gt; this issue. Might be that it's time for a fork ;-P
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You will not be able to get a fixed glibc.....
+</I>&gt;<i>
+</I>&gt;<i> I'm sure you've already filed bug reports on that, so please give me some
+</I>&gt;<i> pointers to them. I'll try to fix them.
+</I>
+Drepper does not understand how to correctly use &quot;weak&quot; ELF symbols. 
+
+If he insists in implementing gcvt() via sprintf() (which itself _uses_ gcvt()) 
+he creates a circular dependency as long as he does not use weak references to 
+glibc internals in order to implement gcvt().
+
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_FUNC_MLOCK:	same. HP-UX folks should fix their system or at least make the
+</I>&gt;<i> &gt; &gt; &gt; &gt;   AC_FUNC_MLOCKALL:	compiling mlock() call fail.
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; You cannot even get the bugs in glibs fixed. How do you expect this to happen 
+</I>&gt;<i> &gt; &gt; &gt; for old versions of HP-UX?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Use a fixed toolchain ;-P
+</I>&gt;<i> &gt; &gt; Crosstool might be a proper place for that.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am using the best build system I am aware of. 
+</I>&gt;<i>
+</I>&gt;<i> Which one is thi ?
+</I>
+???
+
+&gt;<i> &gt; &gt; No, but I think there're other ways to fix this. Right, as I already said, 
+</I>&gt;<i> &gt; &gt; this is not that trivial. Perhaps go the same way as I suggested with bit-order.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You suggestet something for bitorder that does not work.
+</I>&gt;<i>
+</I>&gt;<i> An explicit configure option (with optional autodetect) does not work ?
+</I>
+????  cdrtools _highly_ depend on bit-ordering as it implements SCSI.
+This is why a test exist.
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_FUNC_SYS_SIGLIST:	can be checked by compile
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Why not exactly ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Check the include files for all important target platforms....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; And BTW: How do you like to check for a non-existent external variable without 
+</I>&gt;<i> &gt; a failing compile/link run?
+</I>&gt;<i>
+</I>&gt;<i> Just by compile (and link), not run. If a missing symbol doesn't break,
+</I>&gt;<i> you've got an really strange toolchain ... ;-o
+</I>
+No, you have lousy include files.
+
+You need to understand that compile tests only work if there are correct 
+definitions in well known include files _and_ if the linker works correctly.
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_USER_MALLOC:	not needed at all
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong: Dou you like to drop Cygwin?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Why exactly ? Doesn't cygwin have a working malloc() ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Some Cygwin versions dump core if you have your own malloc().
+</I>&gt;<i>
+</I>&gt;<i> Why do you need your own malloc() at all ?
+</I>
+Used by e.g. &quot;bsh&quot; and &quot;sh&quot;.
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong: needed for *BSD support
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; BSD doesn't have getpgpid ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Check the BSD and the POSIX man pages.....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; BSD is NOT POSIX.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; getpgpid() is not the problem, the problem is getpgrp() -&gt; various man pages.
+</I>&gt;<i> &gt; POSIX did a really bad job here and ignored POSIX rules!
+</I>&gt;<i>
+</I>&gt;<i> Where can I read more abotu that ?
+</I>
+Check my code.... bsh/bshconf.h:
+
+/*
+ * FreeBSD (anything that is BSD-4.4 derived)
+ * does not conform to POSIX and is not old BSD conforming either.
+ * Note that this seems to have been changed between 1995 and 2000
+ *
+ * getpgrp()/setpgrp() are not POSIX on BSD-4.4
+ *
+ * setpgrp() is old BSD compliant,
+ * getpgrp() is not BSD compliant but it is POSIX compliant
+ *
+ * setpgid() is OK (POSIX compliant)
+ * getpgid() is missing!
+ *
+ * The builtin command 'pgrp' will not work correctly for this reason.
+ *
+ *      BSD:
+ *
+ *      getpgrp(pid)            -&gt; pgid for pid
+ *      setpgrp(pid, pgid)      -&gt; set pgid of pid
+ *
+ *      POSIX:
+ *
+ *      getpgid(pid)            -&gt; pgid for pid
+ *      setpgid(pid, pgid)      -&gt; set pgid of pid
+ *      getpgrp(void)           -&gt; pgid for $$
+ *      setpgrp(void)           -&gt; setpgid(0,0)
+ *
+ *      4.4-BSD:
+ *
+ *      getpgid(pid)            -&gt; is missing!
+ *      setpgid(pid, pgid)      -&gt; set pgid of pid
+ *      getpgrp(void)           -&gt; ????
+ *      setpgrp(pid, pgid)      -&gt; set pgid of pid
+ */
+
+
+&gt;<i> &gt; &gt; &gt; &gt; * AC_HARD_SYMLINKS:	not used anywhere
+</I>&gt;<i> &gt; &gt; &gt; &gt;   AC_LINK_NOFOLLOW
+</I>&gt;<i> &gt; &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &gt; Wrong, needed for star
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; At least in 2.01.01, nothing seems to use the symbols defined by that macros.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; There is no star-2.01.01
+</I>&gt;<i>
+</I>&gt;<i> I'm talking about cdrtools-2.01.01
+</I>
+I am not going to reduce the content of my source consolidation just to get
+questionable results for the rest.
+
+
+&gt;<i> &gt; OK, go back into the past and fix all the operating systems that give problems ;-)
+</I>&gt;<i>
+</I>&gt;<i> No, not all. Only those which are still required. 
+</I>&gt;<i> How many old systems, which really cannot be updated, need cdrtools ?
+</I>
+????
+
+
+&gt;<i> &gt; &gt; &gt; BTW: I know two software sources for highly portable software. One is David Korn 
+</I>&gt;<i> &gt; &gt; &gt; and Glenn Fowler and the other is me. Both sources use the same basic ideas for 
+</I>&gt;<i> &gt; &gt; &gt; making the software highly portable. 
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Including your counter bug ? ;-)
+</I>&gt;<i>
+</I>&gt;<i> Please read your own text again. You've got count error there ;-P
+</I>
+????
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000244.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000248.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

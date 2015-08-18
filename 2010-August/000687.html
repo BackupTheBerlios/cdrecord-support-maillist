@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Rewriting DVD+RW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C20100805210914.29c89b9c%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000686.html">
+   <LINK REL="Next"  HREF="000689.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Rewriting DVD+RW</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C20100805210914.29c89b9c%40bashir%3E"
+       TITLE="[Cdrecord-support] Rewriting DVD+RW">list1 at michaelshell.org
+       </A><BR>
+    <I>Fri Aug  6 03:09:14 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000686.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+        <LI>Next message: <A HREF="000689.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 05 Aug 2010 02:44:47 -0400
+&quot;mwesten&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mwesten at verizon.net</A>&gt; wrote:
+
+&gt;<i> How do I rewrite one of these [DVD+RW] things?
+</I>
+
+Did you try the dvd+rw-tools to see if they work?:
+
+<A HREF="http://fy.chalmers.se/~appro/linux/DVD+RW/">http://fy.chalmers.se/~appro/linux/DVD+RW/</A>
+<A HREF="http://fy.chalmers.se/~appro/linux/DVD+RW/tools/?M=D">http://fy.chalmers.se/~appro/linux/DVD+RW/tools/?M=D</A>
+
+At the very least, it may allow you to find out where the problem is 
+(software, hardware or media) by testing a different application than
+cdrecord. If these tools are not already on your system it is easy
+to install from source via the usual unpack, ./configure --prefix=/usr/local ,
+make, su, make install sequence. Ask me if you need details.
+
+From my notes:
+
+To get media info and capacity:
+
+dvd+rw-mediainfo /dev/dvd
+
+To format/blank a DVD+RW DVD:
+
+dvd+rw-format -force=full -blank=full /dev/dvd
+
+all this does is fill it with zeros, so it is also possible to
+format/blank it another way:
+
+(adjust count for DVD capacity in 1024 bytes as needed):
+
+dd if=/dev/zero bs=1k count=4590208 | growisofs -Z /dev/dvd=/dev/fd/0
+
+Also, just writing zeros till the device is full may work too:
+
+growisofs -Z /dev/dvd=/dev/zero
+
+
+to write an image file:
+
+growisofs -dvd-compat -Z /dev/dvd=image.img
+
+(use -M instead of -Z to add to an existing session, and don't invoke
+ the -dvd-compat unless you want to close the disk to future writes)
+
+
+to verify that image's md5sum is the same:
+
+md5sum image.img
+
+dd if=/dev/dvd bs=1k count=image_size_in_1k_blocks | md5sum -
+
+
+  Cheers,
+
+  Mike Shell
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000686.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+	<LI>Next message: <A HREF="000689.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#687">[ date ]</a>
+              <a href="thread.html#687">[ thread ]</a>
+              <a href="subject.html#687">[ subject ]</a>
+              <a href="author.html#687">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

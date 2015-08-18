@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20truncates%20file%20names%20from%20previous%0A%09session%20%28ISO9660%2BJoliet%29%20-%20CD-R&In-Reply-To=%3C032D83C7-6522-4DB9-8878-1A8721D6B1D0%40waaves.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000550.html">
+   <LINK REL="Next"  HREF="000552.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R</H1>
+    <B>Sebastien TOPIN</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20truncates%20file%20names%20from%20previous%0A%09session%20%28ISO9660%2BJoliet%29%20-%20CD-R&In-Reply-To=%3C032D83C7-6522-4DB9-8878-1A8721D6B1D0%40waaves.com%3E"
+       TITLE="[Cdrecord-support] mkisofs truncates file names from previous	session (ISO9660+Joliet) - CD-R">sebastien.topin at waaves.com
+       </A><BR>
+    <I>Mon Feb 15 15:39:51 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000550.html">[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R
+</A></li>
+        <LI>Next message: <A HREF="000552.html">[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#551">[ date ]</a>
+              <a href="thread.html#551">[ thread ]</a>
+              <a href="subject.html#551">[ subject ]</a>
+              <a href="author.html#551">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for your answer.
+
+I understand that Joliet is not standard but to my knowledge there is  
+no Rock Ridge support on Windows platform and I need to be compatible  
+with CDs burned on Windows.
+
+Does that mean that there is no solution to my problem using ISO 9660  
+level 1?
+Should I try to find parameters that give the same Joliet result on  
+Mac and Windows?
+
+Thanks again,
+Sebastien
+
+
+On Feb 15, 2010, at 3:23 PM, Joerg Schilling wrote:
+
+&gt;<i> Sebastien TOPIN &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">sebastien.topin at waaves.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> I am trying to use &quot;cdrecord + mkisofs&quot; to add a session on a non
+</I>&gt;&gt;<i> finalized CD-R that already contains data burned on Windows. I use  
+</I>&gt;&gt;<i> ISO
+</I>&gt;&gt;<i> 9660 level 1 + relaxed Joliet options on Windows to support longer
+</I>&gt;&gt;<i> names.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Now I can add a new session to my CD on Mac OS X (10.5.8) also
+</I>&gt;&gt;<i> supporting long file names using Joliet. The only problem is that it
+</I>&gt;&gt;<i> truncates all file names from previous sessions to strict ISO 9660
+</I>&gt;&gt;<i> &quot;8+3&quot; characters.
+</I>&gt;<i>
+</I>&gt;<i> This is an unfortunate result of using the non-standard Joliet.
+</I>&gt;<i> While there is a 100% 1:1 relation between ISO-9660 file names and the
+</I>&gt;<i> Rock Ridge extensions, such a relation does not exist between ISO-9660
+</I>&gt;<i> and Joliet. For this reason, it is not possible to keep any file  
+</I>&gt;<i> names that
+</I>&gt;<i> only exist in Joliet.
+</I>&gt;<i>
+</I>&gt;&gt;<i> I also tried to add the following option but that did not change
+</I>&gt;&gt;<i> anything:
+</I>&gt;&gt;<i> -allow-lowercase
+</I>&gt;&gt;<i> -relaxed-filenames
+</I>&gt;&gt;<i> - r or -R (that does not work since it claims that the previous
+</I>&gt;&gt;<i> session does not contain Rock ridge option)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> If I use ISO 9660 level 2 on Windows side to burn the first session,
+</I>&gt;&gt;<i> that solves the problem up to 31 characters but I would need to be
+</I>&gt;&gt;<i> able to use ISO 9660 level 1 for compatibility reasons on Windows  
+</I>&gt;&gt;<i> side.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Any ideas how I can solve this problem?
+</I>&gt;<i>
+</I>&gt;<i> Use Rock Ridge extensions starting with the first session.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> -- 
+</I>&gt;<i> EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling  
+</I>&gt;<i> D-13353 Berlin
+</I>&gt;<i>       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i> URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100215/d2719535/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100215/d2719535/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000550.html">[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R
+</A></li>
+	<LI>Next message: <A HREF="000552.html">[Cdrecord-support] mkisofs truncates file names from previous session (ISO9660+Joliet) - CD-R
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#551">[ date ]</a>
+              <a href="thread.html#551">[ thread ]</a>
+              <a href="subject.html#551">[ subject ]</a>
+              <a href="author.html#551">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

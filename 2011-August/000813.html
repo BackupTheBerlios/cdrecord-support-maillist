@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E385AB3.6020801%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000812.html">
+   <LINK REL="Next"  HREF="000814.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E385AB3.6020801%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Tue Aug  2 22:14:43 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000812.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000814.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#813">[ date ]</a>
+              <a href="thread.html#813">[ thread ]</a>
+              <a href="subject.html#813">[ subject ]</a>
+              <a href="author.html#813">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>See my answers below, inline.
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi, I meanwhile installed a new virtual machine with Microsoft VC9.
+</I>Great! Is it the free version?
+
+&gt;<i> I had to change many of the autoconf tests in order to work around the strange
+</I>&gt;<i> behavior from &quot;cl.exe&quot; but I now have been able to compile and run cdrecord
+</I>&gt;<i> without even using gcc. Well, I did this in a Cygwin environment......
+</I>&gt;<i>
+</I>&gt;<i> I did also compile a smake binary using cl.exe only, so I am able to check
+</I>&gt;<i> the problems with the spawnl() call.
+</I>This will help the process a lot. We both can better reproduce each
+other's findings.
+
+&gt;&gt;<i> Finally I had success in compiling the cdrtools with MinGW. Here is
+</I>&gt;&gt;<i> what I did in addition to the changes I reported in previous emails:
+</I>&gt;&gt;<i> 1) cdda2wav/sndconfig.c
+</I>&gt;&gt;<i>      part of: cdda2wav
+</I>&gt;&gt;<i>      error: sndconfig.c:345: 'WIN_CallBack' undeclared
+</I>&gt;&gt;<i>      solution/workaround: do not use a callback function for waveOutOpen()
+</I>&gt;&gt;<i>        since the supposed callback function is not defined we do not lose
+</I>&gt;&gt;<i>        any functionality when not registering it.
+</I>&gt;&gt;<i>      Note: One would expect the same error for cygwin, since it is on
+</I>&gt;&gt;<i>        Windows, too. But this code is not used/compiled under cygwin.
+</I>&gt;&gt;<i>        Cygwin has the header file sys/soundcard.h which implies the use
+</I>&gt;&gt;<i>        of OSS. Thus HAVE_OSS is defined and another code branch is used.
+</I>&gt;<i>
+</I>&gt;<i> Compiling sndconfig.h with MSC is no problem. Maybe the include files provided
+</I>&gt;<i> by MINGW are not correct?
+</I>I am not sure. Is there the symbol 'WIN_CallBack' defined somewhere in
+the VC9 header files? I would rather think that this part of the code is
+not compiled due to some other #ifdefs. I am not sure what the callback
+function, which is not defined anywhere in the code, could do. Is
+cdda2wav capable of actually playing the extracted audio?
+
+&gt;&gt;<i> 2) cdda2wav/cdda2wav.c:
+</I>&gt;&gt;<i>      part of: cdda2wav
+</I>&gt;&gt;<i>      error: undefined reference to 'wait' (linker error)
+</I>&gt;&gt;<i>      solution/workaround: in cdda2wav/cdda2wav.c line 879 is a call to
+</I>&gt;&gt;<i>        wait(), which is related to a previous fork(). Since we do not have
+</I>&gt;&gt;<i>        fork() (which is guarded by #ifdef) we can safely guard the
+</I>&gt;&gt;<i>        if-clause (lines 872-906) with &quot;#ifdef HAVE_FORK_AND_SHAREDMEM&quot;
+</I>&gt;&gt;<i>        like the call to fork() in line 4077.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 3) cdda2wav/semshm.c:
+</I>&gt;&gt;<i>      error: undefined reference to 'pipe' (linker error)
+</I>&gt;&gt;<i>      solution/workaround: in MinGW/MS C runtime there is no pipe()
+</I>&gt;&gt;<i>        function. But there is a _pipe() function, which takes in addition
+</I>&gt;&gt;<i>        to the filedescriptor array the size of the pipes and a binary/text
+</I>&gt;&gt;<i>        file mode argument. You can define a macro to wrap the pipe() call:
+</I>&gt;&gt;<i>        #ifdef __MINGW32__
+</I>&gt;&gt;<i>        #define pipe(fd)  _pipe(fd,PIPE_SIZE,0)
+</I>&gt;&gt;<i>        #endif
+</I>&gt;&gt;<i>        I chose for PIPE_SIZE 4096. Setting the third parameter to 0 uses
+</I>&gt;&gt;<i>        the value from the global _fmode variable for text/binary decision.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 4) cdda2wav/setuid.c:
+</I>&gt;&gt;<i>      part of: cdda2wav
+</I>&gt;&gt;<i>      error: undefined reference to 'alarm' (linker error)
+</I>&gt;&gt;<i>      solution/workaround: in function initsecurity() (line 69) there is a
+</I>&gt;&gt;<i>        call to alarm() with the parameter 0. From the description of the
+</I>&gt;&gt;<i>        alarm() system call: &quot;If seconds is 0, a pending alarm request, if
+</I>&gt;&gt;<i>        any, is cancelled.&quot; There are references to SIGALRM in
+</I>&gt;&gt;<i>        sformat/diskfmt.c and sh/fault.c but I bellieve that these are not
+</I>&gt;&gt;<i>        active within cdda2wav. J&#246;rg, can you confirm this, since I am not
+</I>&gt;&gt;<i>        sure. The call to alarm() can then be guarded by #ifdef __MINGW32__
+</I>&gt;&gt;<i>        or maybe better #ifdef SIGALRM.
+</I>&gt;<i>
+</I>&gt;<i> This are problems that I see also here
+</I>OK. The whole fork/wait/kill/signal area is not there in MinGW. So there
+are a number of problens (also below).
+
+&gt;&gt;<i> 5) cdrecord/cdrecord.c:
+</I>&gt;&gt;<i>      part of: cdrecord
+</I>&gt;&gt;<i>      error: undefined reference to 'kill'
+</I>&gt;&gt;<i>      solution/workaround: add to the #if defined SIGINT in line 1758 the
+</I>&gt;&gt;<i>        check for kill:  #if defined SIGINT&amp;&amp;  defined HAVE_KILL
+</I>&gt;<i>
+</I>&gt;<i> This has been fixed yesterday already.
+</I>Great!
+
+&gt;&gt;<i> After unpacking schily-2011-07-26.tar.bz2 and applying these changes
+</I>&gt;&gt;<i> (see all changed files in the attachment) a simple 'make' from the
+</I>&gt;&gt;<i> cmd.exe command prompt - provided that MSYS/bin and MINGW/bin are in
+</I>&gt;&gt;<i> the searchpath as per READMEs/README.mingw32 - will first build the
+</I>&gt;&gt;<i> bootstrap smake and then, using the bootstrap smake, the whole schily
+</I>&gt;&gt;<i> distribution. Some of the programs will still not compile; there are
+</I>&gt;&gt;<i> more undefined macros and functions.
+</I>&gt;&gt;<i> Following programs and libraries still do not build:
+</I>&gt;&gt;<i> - libshedit
+</I>&gt;&gt;<i> - bsh
+</I>&gt;&gt;<i> - ved
+</I>&gt;<i>
+</I>&gt;<i> Both use tc*attr() functions and as MS is far away from any standard, this is
+</I>&gt;<i> expected to fail until there is a solution for switching to raw tty input.
+</I>&gt;<i>
+</I>&gt;&gt;<i> - calltree
+</I>&gt;<i>
+</I>&gt;<i> fork/wait()...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> - change
+</I>&gt;<i>
+</I>&gt;<i> SIGHUP
+</I>&gt;<i>
+</I>&gt;&gt;<i> - compare
+</I>&gt;<i>
+</I>&gt;<i> compiles
+</I>&gt;<i>
+</I>&gt;&gt;<i> - label
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> - lndir
+</I>&gt;<i>
+</I>&gt;<i> readdir
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> - mkisofs/diag/dump
+</I>&gt;&gt;<i> - mkisofs/diag/isodump
+</I>&gt;&gt;<i> - mkisofs/diag/isoinfo
+</I>&gt;<i>
+</I>&gt;<i> readdir... does mkisofs compile for you?
+</I>mkisofs complies OK, but not the programs in the mkisofs/diag directory.
+
+&gt;<i> If yes, then mingw offers readdir()
+</I>Yes, MinGW has the directory stream API; MS does not have.
+
+&gt;&gt;<i> - mountcd
+</I>&gt;&gt;<i> - smt
+</I>&gt;&gt;<i> - p
+</I>&gt;&gt;<i> - patch
+</I>&gt;<i>
+</I>&gt;<i> partly ioctl/ttymodes
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> - sccs/sccs/lib/comobj
+</I>&gt;<i>
+</I>&gt;<i> pwd.h in logname.c ... fixed -&gt;  compiles
+</I>&gt;<i>
+</I>&gt;&gt;<i> - sccs/sccs/lib/mpwlib
+</I>&gt;<i>
+</I>&gt;<i> Mmmm uname and SIGBUS
+</I>&gt;<i>
+</I>&gt;&gt;<i> - tools from sccs/sccs since comobj and mpwlib could not be built
+</I>&gt;<i>
+</I>&gt;<i> most likely a fork() issue
+</I>&gt;<i>
+</I>&gt;&gt;<i> - scgcheck
+</I>&gt;<i>
+</I>&gt;<i> F_GETFD
+</I>&gt;<i>
+</I>&gt;&gt;<i> - sdd
+</I>&gt;<i>
+</I>&gt;<i> SIGQUIT
+</I>&gt;<i>
+</I>&gt;&gt;<i> - sformat
+</I>&gt;<i>
+</I>&gt;<i> sys/file.h
+</I>&gt;<i> SIGALRM
+</I>&gt;<i> SIGKILL
+</I>&gt;<i>
+</I>&gt;&gt;<i> - sh
+</I>&gt;<i>
+</I>&gt;<i> expected: see bsh
+</I>&gt;<i>
+</I>&gt;&gt;<i> - star
+</I>&gt;&gt;<i> - star_sym
+</I>&gt;<i>
+</I>&gt;<i> star_fat.c(360) : error C2065: 'SIGHUP' : undeclared identifier
+</I>&gt;<i> star_fat.c(361) : error C2065: 'SIGHUP' : undeclared identifier
+</I>&gt;<i> star_fat.c(364) : error C2065: 'SIGQUIT' : undeclared identifier
+</I>&gt;<i> star_fat.c(365) : error C2065: 'SIGQUIT' : undeclared identifier
+</I>&gt;<i> star_fat.c(2413) : error C2065: 'SIGHUP' : undeclared identifier
+</I>&gt;<i>
+</I>&gt;<i> dumpdate.c(116) : error C2059: syntax error : ';'
+</I>&gt;<i> dumpdate.c(118) : error C2059: syntax error : ';'
+</I>&gt;<i> dumpdate.c(162) : error C2059: syntax error : ';'
+</I>&gt;<i> dumpdate.c(187) : error C2059: syntax error : ';'
+</I>&gt;<i> This is a flock() problem
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> findinfo.c(65) : error C2039: 'st_blksize' : is not a member of 'stat'
+</I>&gt;<i>
+</I>&gt;<i> not much for such a big program.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> There is a general problem with symlinks here. As I did run a &quot;cross
+</I>&gt;<i> compilation&quot; from Cygwin to MSC, the build tools believe they are on Cygwin
+</I>&gt;<i> and thus believe we have symlinks.
+</I>&gt;<i>
+</I>&gt;<i> cl.exe however does not understand symlinks. For this reason everything fails
+</I>&gt;<i> that depends on symlinked sources or includes.
+</I>Yes. MinGW does not understand symlinks either. As I said earlier the
+MSYS ln.exe just copies the files. So a few things have to be adapted
+accordingly.
+
+&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+Thanks, J&#246;rg!
+
+Best regards,
+
+Johannes
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000812.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000814.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#813">[ date ]</a>
+              <a href="thread.html#813">[ thread ]</a>
+              <a href="subject.html#813">[ subject ]</a>
+              <a href="author.html#813">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

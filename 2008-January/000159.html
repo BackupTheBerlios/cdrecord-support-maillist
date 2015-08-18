@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrtools-2.01.01a37 ready
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-2.01.01a37%20ready&In-Reply-To=%3C477DC21C.9040507%40unlimitedmail.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrtools-2.01.01a37 ready</H1>
+    <B>JOYDEEP</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrtools-2.01.01a37%20ready&In-Reply-To=%3C477DC21C.9040507%40unlimitedmail.org%3E"
+       TITLE="[Cdrecord-support] Cdrtools-2.01.01a37 ready">j.bakshi at unlimitedmail.org
+       </A><BR>
+    <I>Fri Jan  4 06:20:28 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000158.html">[Cdrecord-support] Cdrtools-2.01.01a37 ready
+</A></li>
+        <LI>Next message: <A HREF="000160.html">[Cdrecord-support] mkisofs udf versioning
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>GRAT NEWS :-)
+
+thanks a lot Joerg,
+may this year makes all your dream true.
+
+
+
+Joerg Schilling wrote:
+&gt;<i> NEW features of cdrtools-2.01.01a37:
+</I>&gt;<i>
+</I>&gt;<i> All:
+</I>&gt;<i>
+</I>&gt;<i> -	New autoconf test HAVE_SYS_SIGLIST_DEF checks for sys_siglist[]
+</I>&gt;<i> 	definition in signal.h Thanks to Tatjana Heuser for reporting
+</I>&gt;<i>
+</I>&gt;<i> -	Possibly double #defines HAVE_ICONV HAVE_ICONV_OPEN HAVE_ICONV_CLOSE
+</I>&gt;<i> 	in include/schily/iconv.h fixed. Thanks to Tatjana Heuser for reporting
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Libschily:
+</I>&gt;<i>
+</I>&gt;<i> Libparanoia (Ported/enhanced by J&#246;rg Schilling, originated by Monty <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">xiphmont at mit.edu</A>):
+</I>&gt;<i>
+</I>&gt;<i> Libedc (Optimized by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">heiko at hexco.de</A>):
+</I>&gt;<i>
+</I>&gt;<i> Libfind:
+</I>&gt;<i>
+</I>&gt;<i> -	-size now understands things like -size +10m
+</I>&gt;<i>
+</I>&gt;<i> -	the function getperm() has been moved to libschily
+</I>&gt;<i>
+</I>&gt;<i> -	find_main() now supports to propagate a different environment
+</I>&gt;<i> 	(e.g. with a different PATH) to fexec())
+</I>&gt;<i>
+</I>&gt;<i> Libfile:
+</I>&gt;<i>
+</I>&gt;<i> Libhfs_iso:
+</I>&gt;<i>
+</I>&gt;<i> Libsiconv:
+</I>&gt;<i>
+</I>&gt;<i> -	Changed sic_nls.c to allow compilation on SCO OpenServer-5.x and
+</I>&gt;<i> 	other compilers that set __STDC__ to 0 and are not at least
+</I>&gt;<i> 	fully C89 compliant.
+</I>&gt;<i>
+</I>&gt;<i> Libscg:
+</I>&gt;<i>
+</I>&gt;<i> -	scg/scgcmd.h upgraded to be sharable with the &quot;scg&quot; Solaris kernel driver
+</I>&gt;<i>
+</I>&gt;<i> -	scg/scgio.h upgraded to be sharable with the &quot;scg&quot; Solaris kernel driver
+</I>&gt;<i>
+</I>&gt;<i> Rscsi:
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord:
+</I>&gt;<i>
+</I>&gt;<i> -	Cdrecord now correctly recognizes unformatted BD-RE media.
+</I>&gt;<i> 	NOTE: The BD support code is not yet completely ready but
+</I>&gt;<i> 	I expect this to happen in a few days.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> -	cdrecord man page now mentiones the &quot;lofi&quot; driver for Solaris
+</I>&gt;<i>
+</I>&gt;<i> -	Cdrecord now re-checks the media after a &quot;blank&quot; or &quot;format&quot;
+</I>&gt;<i> 	operation has been issued. This prevents problems with incorrect
+</I>&gt;<i> 	media size assumptions.
+</I>&gt;<i>
+</I>&gt;<i> -	cdrecord now implements a simulated &quot;blank&quot; feature for media that
+</I>&gt;<i> 	itself does not support blanking: currently DVD-RAM + DVD+RW
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Cdda2wav (Maintained/enhanced by J&#246;rg Schilling, originated by Heiko Ei&#223;feldt <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">heiko at hexco.de</A>):
+</I>&gt;<i>
+</I>&gt;<i> Readcd:
+</I>&gt;<i>
+</I>&gt;<i> -	Man page now mentions -edc-corr
+</I>&gt;<i>
+</I>&gt;<i> Scgcheck:
+</I>&gt;<i>
+</I>&gt;<i> Scgskeleton:
+</I>&gt;<i>
+</I>&gt;<i> Btcflash:
+</I>&gt;<i>
+</I>&gt;<i> Mkisofs (Maintained/enhanced by J&#246;rg Schilling since 1997, originated by Eric Youngdale):
+</I>&gt;<i>
+</I>&gt;<i> -	isoinfo now allows to check the contents of the Joliet Volume descriptor
+</I>&gt;<i> 	by calling:
+</I>&gt;<i> 		isoinfo -dJ
+</I>&gt;<i>
+</I>&gt;<i> -	mkisofs bug fix for multi extent files, make UDF part from multi extent
+</I>&gt;<i> 	files working again. Thanks to a hint from
+</I>&gt;<i> 	Pav Lucistnik &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pav at oook.cz</A>&gt; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pav at FreeBSD.org</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> 	HELIOS TODO:
+</I>&gt;<i>
+</I>&gt;<i> 	-	Add the HELIOS UNICODE mapping code. This needs to be done 
+</I>&gt;<i> 		at UCS-2 level for Joliet and UDF (instead of UTF-8) and only
+</I>&gt;<i> 		for Rock Ridge (in case of a UTF-8 based target locale) using
+</I>&gt;<i> 		UTF-8 based translations.
+</I>&gt;<i>
+</I>&gt;<i> 	-	Make the Apple extensions work again with &quot;mkisofs -find&quot;
+</I>&gt;<i>
+</I>&gt;<i> TODO:
+</I>&gt;<i> 	-	Support correct inode numbers for UDF hardlinks
+</I>&gt;<i>
+</I>&gt;<i> 	-	Support sockets, pipes, char/blk-dev specials with UDF
+</I>&gt;<i>
+</I>&gt;<i> 	-	read Joliet filenames with multi-session if no TRANS.TBL
+</I>&gt;<i> 		or RR is present. I am looking for a volunteer for this task!
+</I>&gt;<i>
+</I>&gt;<i> 		Note that this can never be 100% correct as there is no relation
+</I>&gt;<i> 		between the names on the master (UNIX) filesystem, the ISO-9660
+</I>&gt;<i> 		names and the Joliet names. Only the Rock Ridge names are
+</I>&gt;<i> 		untranslated with respect to the original files on the
+</I>&gt;<i> 		master (UNIX) filesystem.
+</I>&gt;<i>
+</I>&gt;<i> 	-	add libecc/edc for CDI and similar.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> The files are located on:
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha">ftp://ftp.berlios.de/pub/cdrecord/alpha</A> ...
+</I>&gt;<i>
+</I>&gt;<i> NOTE:	These tar archives are 100% POSIX compatible. GNU tar may get some
+</I>&gt;<i> 	minor trouble. If you like a 100% POSIX compliant tar, get star from
+</I>&gt;<i> 	<A HREF="ftp://ftp.berlios.de/pub/star/">ftp://ftp.berlios.de/pub/star/</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000158.html">[Cdrecord-support] Cdrtools-2.01.01a37 ready
+</A></li>
+	<LI>Next message: <A HREF="000160.html">[Cdrecord-support] mkisofs udf versioning
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

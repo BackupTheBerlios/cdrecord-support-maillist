@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080707233830.GA17131%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000243.html">
+   <LINK REL="Next"  HREF="000247.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080707233830.GA17131%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] cdrecord">weigelt at metux.de
+       </A><BR>
+    <I>Tue Jul  8 01:38:30 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000243.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000247.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+&gt;<i> &gt; &gt; &gt; * AC_CHECK_SIZEOF:  	a) there is sizeof()
+</I>&gt;<i> &gt; &gt; &gt; 			b) checking for a specific size is possible by compile-only
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; sizeof does not work for CPP, If you don't like this you cannot support Linux 
+</I>&gt;<i> &gt; &gt; include file bugs.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; IMHO normally not necessary. You simply can build test programs to try out 
+</I>&gt;<i> &gt; certain sizes - *IF* you really can't work with sizeof(). For most cases this 
+</I>&gt;<i> &gt; should be enough. 
+</I>&gt;<i> 
+</I>&gt;<i> See: 
+</I>&gt;<i> 
+</I>&gt;<i> include/schily/utypes.h
+</I>&gt;<i> cdrecord/cdrecord.h
+</I>&gt;<i> cdda2wav/resample.c
+</I>&gt;<i> cdda2wav/mytype.h
+</I>&gt;<i> cdda2wav/sha.h
+</I>
+All the cases I've found there are only interested in whether some type has
+certain size. This can be easily checked with a trivial compile test.
+
+&gt;<i> &gt; &gt; &gt; * AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+</I>&gt;<i> &gt; &gt; &gt;                         stick on old K&amp;R compiler ? ;-o
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Needed for e.g. HP-UX
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Why not just using an more recent compiler, eg. gcc ?
+</I>&gt;<i> 
+</I>&gt;<i> HP-UX comes with cc.
+</I>
+Does that prevent you from using another compiler there ?
+
+&gt;<i> &gt; &gt; &gt; * AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+</I>&gt;<i> &gt; &gt; &gt; 			unless someone has an really broken libc. but then he should
+</I>&gt;<i> &gt; &gt; &gt; 			fix his broken system instead of holding individual 
+</I>&gt;<i> &gt; &gt; &gt; 			packages responsible for hacking around his buggy system.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Needed for Mac OS X and *BSD. I have no idea how Apple managed to pass the POSIX
+</I>&gt;<i> &gt; &gt; compliance tests....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Does that variable exist on osx+bsd, but doesnt work ? 
+</I>&gt;<i> &gt; Why not just fixing the build environment (system headers, etc) then ?
+</I>&gt;<i> 
+</I>&gt;<i> ???? Did you read the POSIX standard and the FreeBSD man pages?
+</I>&gt;<i> 
+</I>&gt;<i> POSIX defixes extern long timezone; *BSD and SunOS-4.x have 
+</I>&gt;<i> char *timezone(zone, dst);
+</I>
+And that can't be checked by a compile test ?
+
+&gt;<i> &gt; &gt; &gt; * AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong: needed on some platforms.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; What about explicitly using &quot;signed char&quot; and &quot;unsigned char&quot; where it matters ?
+</I>&gt;<i> &gt; IMHO, an compiler which doesnt support it, is broken ;-P
+</I>&gt;<i> 
+</I>&gt;<i> Not all compilers implement the &quot;signed&quot; keyword.
+</I>
+Which ones ? Anyone from this century ?
+
+&gt;<i> &gt; &gt; &gt; * AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+</I>&gt;<i> &gt; &gt; &gt; 			use it at all.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong: needed for *BSD and Mac OS X
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It did some research on this issue and found many places which said, this is
+</I>&gt;<i> &gt; an internal function and should not be used directly. Why/where exactly is
+</I>&gt;<i> &gt; this required in cdrtools ?
+</I>&gt;<i> 
+</I>&gt;<i> You did read the wrong information.
+</I>
+So you have a better source ?
+
+&gt;<i> &gt; Well, I didn't say, evrything's perfect w/ glibc. There're still too many bugs
+</I>&gt;<i> &gt; and standard violations. Please remind me in about 6 weeks, and I'll get back to
+</I>&gt;<i> &gt; this issue. Might be that it's time for a fork ;-P
+</I>&gt;<i> 
+</I>&gt;<i> You will not be able to get a fixed glibc.....
+</I>
+I'm sure you've already filed bug reports on that, so please give me some
+pointers to them. I'll try to fix them.
+
+&gt;<i> &gt; &gt; &gt; * AC_FUNC_MLOCK:	same. HP-UX folks should fix their system or at least make the
+</I>&gt;<i> &gt; &gt; &gt;   AC_FUNC_MLOCKALL:	compiling mlock() call fail.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; You cannot even get the bugs in glibs fixed. How do you expect this to happen 
+</I>&gt;<i> &gt; &gt; for old versions of HP-UX?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Use a fixed toolchain ;-P
+</I>&gt;<i> &gt; Crosstool might be a proper place for that.
+</I>&gt;<i> 
+</I>&gt;<i> I am using the best build system I am aware of. 
+</I>
+Which one is thi ?
+
+&gt;<i> &gt; No, but I think there're other ways to fix this. Right, as I already said, 
+</I>&gt;<i> &gt; this is not that trivial. Perhaps go the same way as I suggested with bit-order.
+</I>&gt;<i> 
+</I>&gt;<i> You suggestet something for bitorder that does not work.
+</I>
+An explicit configure option (with optional autodetect) does not work ?
+
+&gt;<i> &gt; &gt; &gt; * AC_FUNC_SYS_SIGLIST:	can be checked by compile
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Why not exactly ?
+</I>&gt;<i> 
+</I>&gt;<i> Check the include files for all important target platforms....
+</I>&gt;<i> 
+</I>&gt;<i> And BTW: How do you like to check for a non-existent external variable without 
+</I>&gt;<i> a failing compile/link run?
+</I>
+Just by compile (and link), not run. If a missing symbol doesn't break,
+you've got an really strange toolchain ... ;-o
+
+&gt;<i> &gt; &gt; &gt; * AC_USER_MALLOC:	not needed at all
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong: Dou you like to drop Cygwin?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Why exactly ? Doesn't cygwin have a working malloc() ?
+</I>&gt;<i> 
+</I>&gt;<i> Some Cygwin versions dump core if you have your own malloc().
+</I>
+Why do you need your own malloc() at all ?
+
+&gt;<i> &gt; &gt; &gt; * AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong: needed for *BSD support
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; BSD doesn't have getpgpid ?
+</I>&gt;<i> 
+</I>&gt;<i> Check the BSD and the POSIX man pages.....
+</I>&gt;<i> 
+</I>&gt;<i> BSD is NOT POSIX.
+</I>&gt;<i> 
+</I>&gt;<i> getpgpid() is not the problem, the problem is getpgrp() -&gt; various man pages.
+</I>&gt;<i> POSIX did a really bad job here and ignored POSIX rules!
+</I>
+Where can I read more abotu that ?
+
+&gt;<i> &gt; &gt; &gt; * AC_HARD_SYMLINKS:	not used anywhere
+</I>&gt;<i> &gt; &gt; &gt;   AC_LINK_NOFOLLOW
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Wrong, needed for star
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; At least in 2.01.01, nothing seems to use the symbols defined by that macros.
+</I>&gt;<i> 
+</I>&gt;<i> There is no star-2.01.01
+</I>
+I'm talking about cdrtools-2.01.01
+
+&gt;<i> &gt; &gt; &gt; BTW: most of these things are just hacks for a handful broken targets. Those things 
+</I>&gt;<i> &gt; &gt; &gt; could also be done via some --with-oshacks= swich.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; BTW: the target that includes the biggest number of bugs that need workarounds 
+</I>&gt;<i> &gt; &gt; if Linux. Do you like me to drop Linux from the supported target platforms?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; No, fix the bugs instead.
+</I>&gt;<i> &gt; But this has to happen in proper places, not individual apps.
+</I>&gt;<i> 
+</I>&gt;<i> OK, go back into the past and fix all the operating systems that give problems ;-)
+</I>
+No, not all. Only those which are still required. 
+How many old systems, which really cannot be updated, need cdrtools ?
+
+&gt;<i> &gt; &gt; BTW: I know two software sources for highly portable software. One is David Korn 
+</I>&gt;<i> &gt; &gt; and Glenn Fowler and the other is me. Both sources use the same basic ideas for 
+</I>&gt;<i> &gt; &gt; making the software highly portable. 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Including your counter bug ? ;-)
+</I>
+Please read your own text again. You've got count error there ;-P
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000243.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000247.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

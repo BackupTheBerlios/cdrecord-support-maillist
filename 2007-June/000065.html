@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Implementation botch: Unhashed file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Implementation%20botch%3A%20Unhashed%20file&In-Reply-To=%3C4677bc8d.X3awHDoxjgeuss4%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000064.html">
+   <LINK REL="Next"  HREF="000066.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Implementation botch: Unhashed file</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Implementation%20botch%3A%20Unhashed%20file&In-Reply-To=%3C4677bc8d.X3awHDoxjgeuss4%2B%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Implementation botch: Unhashed file">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Jun 19 13:22:53 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000064.html">[Cdrecord-support] Implementation botch: Unhashed file
+</A></li>
+        <LI>Next message: <A HREF="000066.html">[Cdrecord-support] Implementation botch: Unhashed file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Rob&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">42gk0qw02 at sneakemail.com</A>&gt; wrote:
+
+&gt;<i> |&quot;Joerg Shilling&quot; &lt;Joerg.Schilling-at-fokus.fraunhofer.de&gt; wrote:
+</I>&gt;<i> |
+</I>&gt;<i> ||&quot;Rob&quot; &lt;42gk0qw02-at-sneakemail.com&gt; wrote:
+</I>&gt;<i> ||
+</I>&gt;<i> ||Here's how to reproduce the problem: 1. compile cdrecord on a Mac
+</I>&gt;<i> ||running Panther, with developer tools installed and the gcc update. I
+</I>&gt;<i> ||don't know if this applies to Tiger, since I don't use that OS, but it
+</I>&gt;<i> ||might be worth checking.
+</I>&gt;<i> ||
+</I>&gt;<i> ||2. Find a folder with some files in it. Then, issue this command:
+</I>&gt;<i> ||mkisofs -hfs -r -o whatever.iso {path to folder}
+</I>&gt;<i> ||
+</I>&gt;<i> ||Whenever the -r or -R and -hfs options are combined, the error I
+</I>&gt;<i> ||mentioned appears. In contrast, the -r or -R and -hfs options may be
+</I>&gt;<i> ||safely combined when I use OpenBSD.
+</I>&gt;<i> |
+</I>&gt;<i> |This does not help.....
+</I>&gt;<i> |
+</I>&gt;<i> |<A HREF="http://cdrecord.berlios.de/old/private/problems.html">http://cdrecord.berlios.de/old/private/problems.html</A>
+</I>&gt;<i> |
+</I>&gt;<i> |If you do not mention the version it is impossible to tell anything.
+</I>&gt;<i>
+</I>&gt;<i> Okay - here's the version info:
+</I>&gt;<i>
+</I>&gt;<i> Cdrecord-ProDVD-Clone 2.01.01a26 (powerpc-apple-macosx7.9.0)
+</I>&gt;<i>
+</I>&gt;<i> Darwin Kernel Version 7.9.0: Wed Mar 30 20:11:17 PST 2005; \
+</I>&gt;<i> root:xnu/xnu-517.12.7.obj~1/RELEASE_PPC
+</I>&gt;<i>
+</I>&gt;<i> gcc version 3.3 20030304 (Apple Computer, Inc. build 1671)
+</I>
+I am still unable to reproduce the problem as I currently do not have access to 
+such a system....
+
+I would recommend that you try again with cdrtools-2.01.01a28 which will be out 
+within ~ one week.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000064.html">[Cdrecord-support] Implementation botch: Unhashed file
+</A></li>
+	<LI>Next message: <A HREF="000066.html">[Cdrecord-support] Implementation botch: Unhashed file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

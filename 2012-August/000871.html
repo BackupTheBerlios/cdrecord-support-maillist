@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C5018f852.dlNwpBWnTFGZCslQ%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000870.html">
+   <LINK REL="Next"  HREF="000872.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C5018f852.dlNwpBWnTFGZCslQ%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Aug  1 11:35:14 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000870.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+        <LI>Next message: <A HREF="000872.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#871">[ date ]</a>
+              <a href="thread.html#871">[ thread ]</a>
+              <a href="subject.html#871">[ subject ]</a>
+              <a href="author.html#871">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Fog_Watch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">db5 at exemail.com.au</A>&gt; wrote:
+
+&gt;<i> I too would guess that my cue file is incorrect.
+</I>&gt;<i>
+</I>&gt;<i> The cue file that I used is as follows.
+</I>&gt;<i>
+</I>&gt;<i> REM GENRE Classical
+</I>&gt;<i> REM COMMENT &quot;ExactAudioCopy v1.0b3&quot;
+</I>&gt;<i> PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i> TITLE &quot;Alina&quot;
+</I>&gt;<i> FILE &quot;Arvo Part - Alina.wav&quot; WAVE
+</I>&gt;<i>   TRACK 01 AUDIO
+</I>&gt;<i>     TITLE &quot;Spiegel Im Spiegel&quot;
+</I>&gt;<i>     PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i>     INDEX 01 00:00:00
+</I>&gt;<i>   TRACK 02 AUDIO
+</I>&gt;<i>     TITLE &quot;Fr Alina&quot;
+</I>&gt;<i>     PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i>     INDEX 01 10:41:50
+</I>&gt;<i>   TRACK 03 AUDIO
+</I>&gt;<i>     TITLE &quot;Spiegel Im Spiegel&quot;
+</I>&gt;<i>     PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i>     INDEX 01 21:29:47
+</I>&gt;<i>   TRACK 04 AUDIO
+</I>&gt;<i>     TITLE &quot;Fr Alina&quot;
+</I>&gt;<i>     PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i>     INDEX 01 30:42:37
+</I>&gt;<i>   TRACK 05 AUDIO
+</I>&gt;<i>     TITLE &quot;Spiegel Im Spiegel&quot;
+</I>&gt;<i>     PERFORMER &quot;Arvo Part&quot;
+</I>&gt;<i>     INDEX 01 41:35:50
+</I>
+&gt;<i>From a quick look, I cannot see problems here....
+</I>
+&gt;<i> I presume that the cue file should conform to the documentation at
+</I>&gt;<i> <A HREF="http://en.wikipedia.org/wiki/Cue_sheet_(computing">http://en.wikipedia.org/wiki/Cue_sheet_(computing</A>).  How does the cue
+</I>&gt;<i> file above not comply with the example
+</I>&gt;<i> (<A HREF="http://en.wikipedia.org/wiki/Cue_sheet_(computing">http://en.wikipedia.org/wiki/Cue_sheet_(computing</A>)#Examples)?
+</I>
+If in doubt, not Wikipedia but the original documentation from CDRWIN counts.
+
+A manual that includes the official docs can be found here:
+
+	<A HREF="ftp://209.113.146.144/public_ftp/cdrwin.pdf">ftp://209.113.146.144/public_ftp/cdrwin.pdf</A>
+
+
+As the CUE file looks OK, what writer do you use? If this is a Lite-ON, be 
+prepared that the time stamps will count backwards because of a firmware 
+bug.....
+
+
+If you like to make sure that not your drive is the cause, write a CD in 
+-raw96r mode.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000870.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+	<LI>Next message: <A HREF="000872.html">[Cdrecord-support] Write new BIOS image to CD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#871">[ date ]</a>
+              <a href="thread.html#871">[ thread ]</a>
+              <a href="subject.html#871">[ subject ]</a>
+              <a href="author.html#871">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

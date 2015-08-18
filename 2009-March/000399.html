@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] How to convert 'devname' to 'scsibus, target, lun' in RHEL3 (2.4 	kernel)?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20How%20to%20convert%20%27devname%27%20to%20%27scsibus%2C%20target%2C%0A%20lun%27%20in%20RHEL3%20%282.4%20%09kernel%29%3F&In-Reply-To=%3C49aa8136.WEH7hRbWjevnaQQR%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000397.html">
+   <LINK REL="Next"  HREF="000400.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] How to convert 'devname' to 'scsibus, target, lun' in RHEL3 (2.4 	kernel)?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20How%20to%20convert%20%27devname%27%20to%20%27scsibus%2C%20target%2C%0A%20lun%27%20in%20RHEL3%20%282.4%20%09kernel%29%3F&In-Reply-To=%3C49aa8136.WEH7hRbWjevnaQQR%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] How to convert 'devname' to 'scsibus, target, lun' in RHEL3 (2.4 	kernel)?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Mar  1 13:36:06 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000397.html">[Cdrecord-support] How to convert 'devname' to 'scsibus, target,	lun' in RHEL3 (2.4 	kernel)?
+</A></li>
+        <LI>Next message: <A HREF="000400.html">[Cdrecord-support] How to convert 'devname' to 'scsibus, target,	lun' in RHEL3 (2.4 	kernel)?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#399">[ date ]</a>
+              <a href="thread.html#399">[ thread ]</a>
+              <a href="subject.html#399">[ subject ]</a>
+              <a href="author.html#399">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bo Xie &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">xiebopublic at gmail.com</A>&gt; wrote:
+
+&gt;<i> I know cdrecord only officially support 'scsibus,target,lun'.
+</I>&gt;<i>
+</I>&gt;<i> My program only has 'devname', and I want to add a burn CD function
+</I>&gt;<i> using cdrecord. Then I need to find a way to convert 'devname' to
+</I>&gt;<i> 'scsibus,target,lun' by myself.
+</I>
+'scsibus,target,lun' is the &quot;devname&quot;, guess that you are talking about a 
+&quot;traditional UNI /dev/ driver entry&quot;.
+
+	Run cdrecord -scanbus.
+
+If you only have one drive in your system, omit the dev= parameter.
+
+The problem on Linux is that that there is no clean orthogonal SCSI subsystem 
+in the Linux kernel that supports all SCSI devices in a single driver 
+framework. Some drives (including CD/DVD-weiters) even may have more than 
+driver for a single piece of hardware.
+
+Even on a cleanly written OS, there may be SCSI devices that have no own driver
+and thus may only accessed by talking through the SCSI generic layer.
+Other OS do not implement &quot;visible&quot; &quot;native device drivers&quot; at all and thus do 
+not allow you to find such a name at all.
+
+As you see, there is no 1:1 relation between the portable OS independent SCSI 
+device specifyer and what you may be looking for.
+
+I recommend you to change your program.....
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000397.html">[Cdrecord-support] How to convert 'devname' to 'scsibus, target,	lun' in RHEL3 (2.4 	kernel)?
+</A></li>
+	<LI>Next message: <A HREF="000400.html">[Cdrecord-support] How to convert 'devname' to 'scsibus, target,	lun' in RHEL3 (2.4 	kernel)?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#399">[ date ]</a>
+              <a href="thread.html#399">[ thread ]</a>
+              <a href="subject.html#399">[ subject ]</a>
+              <a href="author.html#399">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

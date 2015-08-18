@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20schily-2013-07-29%20failure%20on%20FreeBSD%209.1&In-Reply-To=%3C521bb23c.z0gUSBmKtvYXnM3G%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000946.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20schily-2013-07-29%20failure%20on%20FreeBSD%209.1&In-Reply-To=%3C521bb23c.z0gUSBmKtvYXnM3G%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Aug 26 21:53:32 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000946.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#947">[ date ]</a>
+              <a href="thread.html#947">[ thread ]</a>
+              <a href="subject.html#947">[ subject ]</a>
+              <a href="author.html#947">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear Sir,
+</I>&gt;<i>
+</I>&gt;<i> Now I encounter the following:
+</I>&gt;<i>
+</I>&gt;<i> creating lconfig.h
+</I>&gt;<i> lconfig.h is unchanged
+</I>&gt;<i>     ==&gt; CONFIGURING LOCAL RULES &quot;OBJ/amd64-freebsd-cc/lconfig.h&quot;
+</I>
+&gt;<i>     ==&gt; COMPILING &quot;cdda2wav.o&quot;
+</I>&gt;<i> In file included from /usr/local/include/cdda_paranoia.h:37,
+</I>&gt;<i>                  from global.h:21,
+</I>&gt;<i>                  from cdda2wav.c:120:
+</I>&gt;<i> /usr/local/include/cdda_interface.h:48: error: conflicting types for
+</I>&gt;<i> 'SetupInterface'
+</I>&gt;<i> interface.h:137: error: previous declaration of 'SetupInterface' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:146: error: conflicting types for
+</I>&gt;<i> 'cdda_read'
+</I>&gt;<i> interface.h:149: error: previous declaration of 'cdda_read' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:148: error: conflicting types for
+</I>&gt;<i> 'cdda_track_firstsector'
+</I>&gt;<i> interface.h:152: error: previous declaration of
+</I>&gt;<i> 'cdda_track_firstsector' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:149: error: conflicting types for
+</I>&gt;<i> 'cdda_track_lastsector'
+</I>&gt;<i> interface.h:153: error: previous declaration of 'cdda_track_lastsector' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:150: error: conflicting types for
+</I>&gt;<i> 'cdda_tracks'
+</I>&gt;<i> interface.h:154: error: previous declaration of 'cdda_tracks' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:151: error: conflicting types for
+</I>&gt;<i> 'cdda_sector_gettrack'
+</I>&gt;<i> interface.h:150: error: previous declaration of 'cdda_sector_gettrack' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:153: error: conflicting types for
+</I>&gt;<i> 'cdda_track_audiop'
+</I>&gt;<i> interface.h:151: error: previous declaration of 'cdda_track_audiop' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:156: error: conflicting types for
+</I>&gt;<i> 'cdda_disc_firstsector'
+</I>&gt;<i> interface.h:147: error: previous declaration of 'cdda_disc_firstsector' was here
+</I>&gt;<i> /usr/local/include/cdda_interface.h:157: error: conflicting types for
+</I>&gt;<i> 'cdda_disc_lastsector'
+</I>
+An unfriendly software packages seen to have inctalled an extremely outdated 
+version of the file cdda_interface.h in a globally searched directory.
+
+The change happened 7 years ago, when support for dynamic linking with the 
+braindead Mac OS X linker was added.  I recommend you to remove this file 
+in the long term, I could try to reorder include directories.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000946.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#947">[ date ]</a>
+              <a href="thread.html#947">[ thread ]</a>
+              <a href="subject.html#947">[ subject ]</a>
+              <a href="author.html#947">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

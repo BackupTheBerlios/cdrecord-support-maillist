@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Error mounting a disk after a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3Cn2z75e81f931004200611zc6053d95p6874765c7c4019bb%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000644.html">
+   <LINK REL="Next"  HREF="000618.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Error mounting a disk after a burn</H1>
+    <B>Skye Sweeney</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3Cn2z75e81f931004200611zc6053d95p6874765c7c4019bb%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Error mounting a disk after a burn">skye at fll-freak.com
+       </A><BR>
+    <I>Tue Apr 20 15:11:00 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000644.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+        <LI>Next message: <A HREF="000618.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#617">[ date ]</a>
+              <a href="thread.html#617">[ thread ]</a>
+              <a href="subject.html#617">[ subject ]</a>
+              <a href="author.html#617">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> Mike,
+
+&gt;<i>
+</I>&gt;<i> &gt;Do let us know what you come up with here. I'm sure a lot of people
+</I>&gt;<i> &gt;will be interested to know the result. I will search some more and
+</I>&gt;<i> &gt;let you know if I find something that might help. If we can't find an
+</I>&gt;<i> &gt;answer, I think a post to the kernel mailing list is in order.
+</I>&gt;<i>
+</I>I will do just that if I find that the new kernel does not fix this problem.
+
+
+&gt;<i>
+</I>&gt;<i> &gt;60 DVDs! That's almost 300GB. I have been using a removable HD &gt;rack
+</I>&gt;<i> system for backup purposes, and using DVDs for data that
+</I>
+   &gt; needs to be duped/shared/stored at different locations. A 500GB
+   &gt; SATA drive can be had in the $50 range and at that price, a second
+   &gt;  backup can be justified if the data is critical.
+
+This was very similar to my backup strategy. I placed pairs of data drives
+in my file server and used rdiff-backup to backup the data from one to the
+other every night. But one day my power supply failed and dumped line
+voltage out the 5 and 12 volt lines. In less than a tenths of a second, I
+had lost every disk drive in the system. Along with mother board, fans, ...
+The only thing to survive was a 3+1/2 floppy drive!
+
+My backup strategy then changed to using external USB drives as the backup
+drives. USB limits current and the converter circuit would most likely
+protect the drive in a bad power situation. But I still was not sleeping
+well at night. So, I purchased a used Primera Composer robotic disk handler
+and wrote the software to control it. Now I can make a full backup and store
+it off site, and every night the software checks to see if it should burn an
+incremental disk. If it does, it emails me and I know to go to the basement
+to pick up the disk to take to offsite storage. Short of a nuclear strike,
+my data is well protected.
+
+
+&gt;<i>I recommend to use at least -iso-level 3 as this is the minimal level &gt;that
+</I>gives you large file suppoort.
+&gt;<i>Unless you like to use the medium on systems that have problems with Rock
+</I>Ridge,
+&gt;<i>it does not make sense to use options like -ldots -allow-lowercase
+</I>&gt;<i>-allow-multidot -relaxed-filenames
+</I>&gt;<i>The option -D was needed in former times as there have been bugs in
+</I>&gt;<i>mkisofs that prevented correct deep directory relocation with Rock
+</I>&gt;<i> Ridge. This was fixed in August 2006. There is absolutely no need to
+</I>&gt;<i> still use this option.
+</I>
+I changed the iso level to 3 and removed the -D and the -ldots
+-allow-lowercase -allow-multidot -relaxed-filenames options. I burned a disk
+and on the Linux box the disk is identical to the source. Yea! I then move
+this disk to a Windows machine, and the file names are different. They all
+appear in upper case and have been mangled to match the Windows file
+standard.
+
+Since I only care to use these disks to restore a Linux computer should I
+care that the disk appear different on a Windows box? With the -ldots...
+options the disk appeared the same on Linux and Windows.
+
+So much to learn... Is there a good reference to Jolliet/RockRidge formats
+that would let me understand this issue better?
+
+-Skye
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100420/3d8cea81/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100420/3d8cea81/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000644.html">[Cdrecord-support] mkisofs(Win7_x64Pro) -&gt; Using TERMINALSERVICES_SESSION000.MAN
+</A></li>
+	<LI>Next message: <A HREF="000618.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#617">[ date ]</a>
+              <a href="thread.html#617">[ thread ]</a>
+              <a href="subject.html#617">[ subject ]</a>
+              <a href="author.html#617">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

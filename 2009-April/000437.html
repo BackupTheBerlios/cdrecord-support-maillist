@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%0A%20to%20install&In-Reply-To=%3C49eb6a9e.c6G/3hwRjtjsWsyS%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000436.html">
+   <LINK REL="Next"  HREF="000438.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%0A%20to%20install&In-Reply-To=%3C49eb6a9e.c6G/3hwRjtjsWsyS%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Sun Apr 19 20:17:02 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000436.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to	install
+</A></li>
+        <LI>Next message: <A HREF="000438.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear fellow cdrecord users,
+</I>&gt;<i>
+</I>&gt;<i> Since the new release of cdrtools a59, I tried to install on Fedora 10
+</I>&gt;<i> and I can't update it to latest.  I am still running a58 which is OK,
+</I>&gt;<i> but I try to keep up with the releases:
+</I>
+This is noce and it helps to
+&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at localhost</A> ~]# /opt/schily/bin/cdrecord --version
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a58 (i686-pc-linux-gnu) Copyright
+</I>&gt;<i> (C) 1995-2009 J???rg Schilling
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  ==&gt; COMPILING &quot;OBJ/i686-linux-cc/scgcheck.o&quot;
+</I>&gt;<i> In file included from /usr/include/stdlib.h:321,
+</I>&gt;<i>                  from ../include/schily/stdlib.h:29,
+</I>&gt;<i>                  from scgcheck.c:30:
+</I>&gt;<i> /usr/include/sys/types.h:228: error: two or more data types in
+</I>&gt;<i> declaration specifiers
+</I>&gt;<i> gmake[1]: *** [OBJ/i686-linux-cc/scgcheck.o] Error 1
+</I>&gt;<i> gmake[1]: Leaving directory `/home/olivares/Download/cdrtools-2.01.01/scgcheck'
+</I>&gt;<i> 	==&gt; MAKING &quot;install&quot; ON SUBDIRECTORY &quot;SRCROOT/scgskeleton&quot;
+</I>&gt;<i> gmake[1]: Entering directory
+</I>&gt;<i> `/home/olivares/Download/cdrtools-2.01.01/scgskeleton'
+</I>&gt;<i>  ==&gt; COMPILING &quot;OBJ/i686-linux-cc/skel.o&quot;
+</I>&gt;<i> In file included from ../include/schily/types.h:29,
+</I>&gt;<i>                  from ../include/schily/unistd.h:31,
+</I>&gt;<i>                  from skel.c:29:
+</I>&gt;<i> /usr/include/sys/types.h:228: error: two or more data types in
+</I>&gt;<i> declaration specifiers
+</I>
+There is no problem with compiling this on suse-10.0
+
+What is on line 228 in the file /usr/include/sys/types.h from Fedora?
+
+
+&gt;<i> I tried compiling and installing with smake and it fails to install
+</I>&gt;<i> new version.  I also try with the the trick to use Gmake copying Gmake
+</I>&gt;<i> to /usr/bin/Gmake and calling it
+</I>
+Well, did you try to compile <A HREF="ftp://ftp.berlios.de/pub/schily/">ftp://ftp.berlios.de/pub/schily/</A> it contains a 
+recent smake. I had to change something in smake in autumn last year after I 
+introduced a workaround for gmake in the makefile system.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000436.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to	install
+</A></li>
+	<LI>Next message: <A HREF="000438.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

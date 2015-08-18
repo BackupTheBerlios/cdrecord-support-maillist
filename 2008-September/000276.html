@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Do you know how to remove the mkisofs.exe's CYGICONV-2.DLL and CYGINTL-8.DLL dependency?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Do%20you%20know%20how%20to%20remove%20the%20mkisofs.exe%27s%0A%20CYGICONV-2.DLL%20and%20CYGINTL-8.DLL%20dependency%3F&In-Reply-To=%3C48ca7768.dYxWfTGehnLbJTjF%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000275.html">
+   <LINK REL="Next"  HREF="000277.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Do you know how to remove the mkisofs.exe's CYGICONV-2.DLL and CYGINTL-8.DLL dependency?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Do%20you%20know%20how%20to%20remove%20the%20mkisofs.exe%27s%0A%20CYGICONV-2.DLL%20and%20CYGINTL-8.DLL%20dependency%3F&In-Reply-To=%3C48ca7768.dYxWfTGehnLbJTjF%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Do you know how to remove the mkisofs.exe's CYGICONV-2.DLL and CYGINTL-8.DLL dependency?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Sep 12 16:06:32 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000275.html">[Cdrecord-support] Do you know how to remove the mkisofs.exe's	CYGICONV-2.DLL and CYGINTL-8.DLL dependency?
+</A></li>
+        <LI>Next message: <A HREF="000277.html">[Cdrecord-support] What's the meaning of error message &quot;mkisofs: No	such file or directory. Invalid node - 'test.iso'.&quot;?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Bo Xie&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">xiebopublic at gmail.com</A>&gt; wrote:
+
+&gt;<i> I use Cygwin to compile cdrecord package. mkisofs 2.01 only depends on
+</I>&gt;<i> cygwin1.dll, but mkisofs 2.01.01.a44 depends on more
+</I>&gt;<i> cygwin DLLs (CYGICONV-2.DLL and CYGINTL-8.DLL).
+</I>&gt;<i>
+</I>&gt;<i> Do you know how to remove the dependency (CYGICONV-2.DLL and
+</I>&gt;<i> CYGINTL-8.DLL)? e.g., can I ./configure --without-iconv --without-intl
+</I>&gt;<i> ? or can I static link these cygwin DLLs (CYGICONV-2.DLL and
+</I>&gt;<i> CYGINTL-8.DLL)?
+</I>
+Why do you like to remove this dependency?
+
+If you like to support the character sets used on Win32 systems, this is needed.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000275.html">[Cdrecord-support] Do you know how to remove the mkisofs.exe's	CYGICONV-2.DLL and CYGINTL-8.DLL dependency?
+</A></li>
+	<LI>Next message: <A HREF="000277.html">[Cdrecord-support] What's the meaning of error message &quot;mkisofs: No	such file or directory. Invalid node - 'test.iso'.&quot;?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#276">[ date ]</a>
+              <a href="thread.html#276">[ thread ]</a>
+              <a href="subject.html#276">[ subject ]</a>
+              <a href="author.html#276">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

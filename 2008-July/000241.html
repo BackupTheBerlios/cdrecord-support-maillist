@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080706144302.GA15463%40nibiru.local%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000242.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord</H1>
+    <B>Enrico Weigelt</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord&In-Reply-To=%3C20080706144302.GA15463%40nibiru.local%3E"
+       TITLE="[Cdrecord-support] cdrecord">weigelt at metux.de
+       </A><BR>
+    <I>Sun Jul  6 16:43:03 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000240.html">[Cdrecord-support] cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000242.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>* Joerg Schilling &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; schrieb:
+&gt;<i> &gt; b) it normally affects only those misdesigned packages which use 
+</I>&gt;<i> &gt;    really obsoleted macros like AC_TRY_RUN, AC_CHECK_FILE or even
+</I>&gt;<i> &gt;    hand-written tests. In several hundreds of packages I had to 
+</I>&gt;<i> &gt;    cope with in recent years, there were just a few ones where it
+</I>&gt;<i> &gt;    wasn't easy to get around this, but not a single one where it's 
+</I>&gt;<i> &gt;    really impossible.
+</I>&gt;<i> 
+</I>&gt;<i> If you believe that there are better methods, you would need to explain them.
+</I>
+Please remind me in about 6 weeks :)
+I'll rework the configure script then ...
+
+&gt;<i> &gt; For example:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; * AC_CHECK_SIZEOF:  	a) there is sizeof()
+</I>&gt;<i> &gt; 			b) checking for a specific size is possible by compile-only
+</I>&gt;<i> 
+</I>&gt;<i> sizeof does not work for CPP, If you don't like this you cannot support Linux 
+</I>&gt;<i> include file bugs.
+</I>
+IMHO normally not necessary. You simply can build test programs to try out 
+certain sizes - *IF* you really can't work with sizeof(). For most cases this 
+should be enough. 
+
+&gt;<i> &gt; * AC_TYPE_PROTOTYPES:	IMHO not needed anymore, or is still somebody *really*
+</I>&gt;<i> &gt;                         stick on old K&amp;R compiler ? ;-o
+</I>&gt;<i> 
+</I>&gt;<i> Needed for e.g. HP-UX
+</I>
+Why not just using an more recent compiler, eg. gcc ?
+
+&gt;<i> &gt; * AC_VAR_TIMEZONE:	if the variable exists, it could be assumed to work, 
+</I>&gt;<i> &gt; 			unless someone has an really broken libc. but then he should
+</I>&gt;<i> &gt; 			fix his broken system instead of holding individual 
+</I>&gt;<i> &gt; 			packages responsible for hacking around his buggy system.
+</I>&gt;<i> 
+</I>&gt;<i> Needed for Mac OS X and *BSD. I have no idea how Apple managed to pass the POSIX
+</I>&gt;<i> compliance tests....
+</I>
+Does that variable exist on osx+bsd, but doesnt work ? 
+Why not just fixing the build environment (system headers, etc) then ?
+
+&gt;<i> &gt; * AC_C_BITFIELDS:	IMHO not needed at all. sane libc's provide proper bytesex
+</I>&gt;<i> &gt; 			macros ;-P
+</I>&gt;<i> 
+</I>&gt;<i> Try to inform you about C-compilers. Byte-order is independent from Bitorder in 
+</I>&gt;<i> bitfields. Even the byteorder macros are not compatible across platforms.
+</I>
+Sorry, I was a bit heedless, mixed up bit and byte order (uhm, lack of coffein) ;-O
+
+Actually, I didn't have the need for taking care of BITorder yet. 
+Which platforms and which parts of the code does this affect
+
+If there's *really* no other way around this, we simply could add an (mandatory)
+configure option to explicitly define it (autodetection only happens explicitly
+requested).
+
+&gt;<i> &gt; * AC_TYPE_CHAR:		unnecessary. just explicitly desired signedness
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: needed on some platforms.
+</I>
+What about explicitly using &quot;signed char&quot; and &quot;unsigned char&quot; where it matters ?
+IMHO, an compiler which doesnt support it, is broken ;-P
+
+&gt;<i> &gt; * AC_FUNC_DTOA_R:	AFAIK, __dtoa() is an libc *internal* function, so don't 
+</I>&gt;<i> &gt; 			use it at all.
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: needed for *BSD and Mac OS X
+</I>
+It did some research on this issue and found many places which said, this is
+an internal function and should not be used directly. Why/where exactly is
+this required in cdrtools ?
+
+&gt;<i> &gt; * AC_FUNC_ECVT:		same as w/ AC_VAR_TIMEZONE - if it exists, it can be assumed 
+</I>&gt;<i> &gt;   AC_FUNC_FCVT		to work - don't try to hack around certain people's broken libc.
+</I>&gt;<i> &gt;   AC_FUNC_GCVT
+</I>&gt;<i> 
+</I>&gt;<i> It would be fun to see how you try to explain Ulrich Drepper how to fix 
+</I>&gt;<i> the related bugs in glibc..... The last time I tried to do this, he anathematized 
+</I>&gt;<i> like Rumpelstiltskin and I received a menacing mail from RedHat lawyers 3 hours 
+</I>&gt;<i> later. David Korn had to calm down Mr. Drepper....
+</I>
+Well, I didn't say, evrything's perfect w/ glibc. There're still too many bugs
+and standard violations. Please remind me in about 6 weeks, and I'll get back to
+this issue. Might be that it's time for a fork ;-P
+			
+&gt;<i> &gt; * AC_FUNC_MLOCK:	same. HP-UX folks should fix their system or at least make the
+</I>&gt;<i> &gt;   AC_FUNC_MLOCKALL:	compiling mlock() call fail.
+</I>&gt;<i> 
+</I>&gt;<i> You cannot even get the bugs in glibs fixed. How do you expect this to happen 
+</I>&gt;<i> for old versions of HP-UX?
+</I>
+Use a fixed toolchain ;-P
+Crosstool might be a proper place for that.
+
+&gt;<i> &gt; * jsAC_FUNC_MMAP:	nearly the same (okay, requires a bit more magic ;-o)
+</I>&gt;<i> 
+</I>&gt;<i> Do you really like to drop support for Linux-2.4?
+</I>
+No, but I think there're other ways to fix this. Right, as I already said, 
+this is not that trivial. Perhaps go the same way as I suggested with bit-order.
+
+&gt;<i> &gt; * AC_FUNC_SYS_SIGLIST:	can be checked by compile
+</I>&gt;<i> 
+</I>&gt;<i> Wrong
+</I>
+Why not exactly ?
+
+&gt;<i> &gt; * AC_HEADER_MAKEDEV:	IMHO not needed at all - use the proper libc types/macros
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: there is no standard for this feature!!!!!!
+</I>
+Sorry, was a false alarm. It just does compile-test, which is fine for crosscompiling.
+
+&gt;<i> &gt; * AC_USER_MALLOC:	not needed at all
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: Dou you like to drop Cygwin?
+</I>
+Why exactly ? Doesn't cygwin have a working malloc() ?
+
+&gt;<i> &gt; * AC_FUNC_BSD_GETPGRP:	not needed. use getpgpid if you want another process' pg.
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: needed for *BSD support
+</I>
+BSD doesn't have getpgpid ?
+
+&gt;<i> &gt; * AC_HARD_SYMLINKS:	not used anywhere
+</I>&gt;<i> &gt;   AC_LINK_NOFOLLOW
+</I>&gt;<i> 
+</I>&gt;<i> Wrong, needed for star
+</I>
+At least in 2.01.01, nothing seems to use the symbols defined by that macros.
+
+&gt;<i> &gt; * AC_ACCESS_E_OK:	not needed, fix the broken libc.
+</I>&gt;<i> 
+</I>&gt;<i> Wrong: needed for many platforms. There is no standard for this!!!!!
+</I>
+It only seems to trigger an conditional #define for E_OK in your unistd.h,
+but E_OK doesn't seem to be used anywhere. So why is this necessary at all ?
+
+&gt;<i> &gt; BTW: most of these things are just hacks for a handful broken targets. Those things 
+</I>&gt;<i> &gt; could also be done via some --with-oshacks= swich.
+</I>&gt;<i> 
+</I>&gt;<i> BTW: the target that includes the biggest number of bugs that need workarounds 
+</I>&gt;<i> if Linux. Do you like me to drop Linux from the supported target platforms?
+</I>
+No, fix the bugs instead.
+But this has to happen in proper places, not individual apps.
+
+&gt;<i> BTW: I know two software sources for highly portable software. One is David Korn 
+</I>&gt;<i> and Glenn Fowler and the other is me. Both sources use the same basic ideas for 
+</I>&gt;<i> making the software highly portable. 
+</I>
+Including your counter bug ? ;-)
+
+
+cu
+-- 
+----------------------------------------------------------------------
+ Enrico Weigelt, metux IT service -- <A HREF="http://www.metux.de/">http://www.metux.de/</A>
+
+ cellphone: +49 174 7066481   email: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">info at metux.de</A>   skype: nekrad666
+----------------------------------------------------------------------
+ Embedded-Linux / Portierung / Opensource-QM / Verteilte Systeme
+----------------------------------------------------------------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000240.html">[Cdrecord-support] cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000242.html">[Cdrecord-support] cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

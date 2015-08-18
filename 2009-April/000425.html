@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to use DOS version of cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20use%20DOS%20version%20of%20cdrecord&In-Reply-To=%3C49e72aa2.mrOacMeD4cPrqJTo%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000424.html">
+   <LINK REL="Next"  HREF="000426.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to use DOS version of cdrecord</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20use%20DOS%20version%20of%20cdrecord&In-Reply-To=%3C49e72aa2.mrOacMeD4cPrqJTo%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Unable to use DOS version of cdrecord">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Apr 16 14:54:58 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000424.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000426.html">[Cdrecord-support] cdrecord and DOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;jassenna\@itelefonica\.com\.br&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">jassenna at itelefonica.com.br</A>&gt; wrote:
+
+&gt;<i>  I tried the DOS version of cdrecord in a DOS window of
+</I>&gt;<i>  Windows 98 (MSDOS 7.1) and: 
+</I>&gt;<i>  -If I use the option dev=SCSIMGR$ (the device name ASPI.SYS
+</I>&gt;<i>   creates for the CD-R driver), I get the error message:
+</I>&gt;<i>  Invalid argument (EINVAL) Open by &quot;devname&quot; is not
+</I>&gt;<i>   supported in this OS cannot open or use SCSI driver
+</I>&gt;<i>  -If I use dev=0,0,0  (the only device cdrecord finds
+</I>&gt;<i>  with the -scanbus option) I get the message:
+</I>&gt;<i>  Executing &quot;test unit ready&quot; command on Bus 0, Target 0 Lun 0 
+</I>&gt;<i>  until timeout, then cdrecord exits.
+</I>
+While cdrtools did compile on DOS (using DJGPP) some time ago, what
+is the reason for trying to run such a version?
+
+If your binary was compiled correctly, then I would asume that you did not 
+install a working ASPI driver.
+  
+&gt;<i>  I am quite surprised by the message &quot;open by devname is not
+</I>&gt;<i>  supported in this OS&quot;, since &quot;by name&quot; is the normal way of
+</I>&gt;<i>  opening a device in DOS.
+</I>&gt;<i>  More information: The machine has no physical SCSI bus; the
+</I>&gt;<i>  CD-R drive is an IDE/ATA. The device drivers I use are 
+</I>&gt;<i>  XCDROM.SYS and ASPI.SYS on top of it. The drive reads 
+</I>&gt;<i>  CDs without problem under MSDOS and reads and writes CDs
+</I>&gt;<i>  under Windows.
+</I>
+DOS does not support device names at all. There is nothing like explicit
+driver access in DOS.
+
+Note that the ASPI driver for Win98 is most likely not accessible in the
+DOS emulation and that any driver that have been loaded from DOS (before 
+running Win98) may not work anymore after Win98 runs.
+
+This is why it is a good idea to compile cdrtools on win32 for win32.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000424.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000426.html">[Cdrecord-support] cdrecord and DOS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

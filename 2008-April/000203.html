@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problems with mkisofs syntax: -no-bak
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problems%20with%20mkisofs%20syntax%3A%20-no-bak&In-Reply-To=%3C20080419230538.GA7694%40ilium.lan%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000204.html">
+   <LINK REL="Next"  HREF="000205.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problems with mkisofs syntax: -no-bak</H1>
+    <B>andrew</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problems%20with%20mkisofs%20syntax%3A%20-no-bak&In-Reply-To=%3C20080419230538.GA7694%40ilium.lan%3E"
+       TITLE="[Cdrecord-support] Problems with mkisofs syntax: -no-bak">andrew.david.45 at gmail.com
+       </A><BR>
+    <I>Sun Apr 20 01:05:38 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000204.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+        <LI>Next message: <A HREF="000205.html">[Cdrecord-support] Problems with mkisofs syntax: -no-bak
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mr Schilling,
+
+ I was hoping for some guidance on the use of the -no-bak option for
+mkisofs. I am attempting to use this option in the following example:
+
++-----------------
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at ilium</A>/home/andrew#  mkisofs -r -J -l -V &quot;Backup `date +&quot;%d %B %Y&quot;`&quot;\
+&gt;<i>             -allow-multidot -allow-leading-dots \
+</I>&gt;<i>             -x /etc/mtab -hide-rr-moved -no-bak \
+</I>&gt;<i>             -graft-points &quot;home/=/home/andrew&quot; &quot;etc/=/etc&quot; \
+</I>&gt;<i>             &quot;crontabs/=/var/spool/cron/crontabs&quot; -o test.iso
+</I>Bad Option '-no-bak' (error -1 BADFLAG).
+Usage: mkisofs [options] [-find] file... [find expression]
+
+Use mkisofs -help
+to get a list all of valid options.
+
+Use mkisofs -find -help
+to get a list of all valid -find options.
+
+Most important Options:
+        -posix-H                Follow sylinks encountered on command line
+        -posix-L                Follow all symlinks
+        -posix-P                Do not follow symlinks (default)
+        -o FILE, -output FILE   Set output file name
+        -R, -rock               Generate Rock Ridge directory information
+        -r, -rational-rock      Generate rationalized Rock Ridge directory info
+        -J, -joliet             Generate Joliet directory information
+        -print-size             Print estimated filesystem size and exit
+        -UDF                    Generate UDF file system
+        -dvd-video              Generate DVD-Video compliant UDF file system
+        -iso-level LEVEL        Set ISO9660 level (1..3) or 4 for ISO9660 v 2
+        -V ID, -volid ID        Set Volume ID
+        -graft-points           Allow to use graft points for filenames
+        -M FILE, -prev-session FILE     Set path to previous session to merge
+
++-----------------------
+
+I can see that my syntax must be incorrect but I do not understand the
+reference that is given to:
+
+Usage: mkisofs [options] [-find] file... [find expression]
+
+I am using the following:
+
++-----------------
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at ilium</A>~$ mkisofs --version
+mkisofs 2.01.01a38 (i686-pc-linux-gnu) Copyright (C) 1993-1997 Eric
+Youngdale (C) 1997-2007 J&#246;rg Schilling
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">andrew at ilium</A>~$ uname -a
+Linux ilium 2.6.21.5-smp #1 SMP Tue Jun 19 14:52:25 CDT 2007 i686
+Intel(R) Pentium(R) 4 CPU 2.40GHz GenuineIntel GNU/Linux
+
+Distro is Slackware 12 but I have upgraded the default cdrtools
+package to cdrtools-2.01.01a38.  
++------------------
+
+Thanks you very much for your trouble,
+
+    Andrew Strong
+
+-- 
+<A HREF="http://www.andrews-corner.org">http://www.andrews-corner.org</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000204.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+	<LI>Next message: <A HREF="000205.html">[Cdrecord-support] Problems with mkisofs syntax: -no-bak
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

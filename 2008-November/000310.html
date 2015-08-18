@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%0A%09usage%20%40%20compile%20time.&In-Reply-To=%3C492d25e8.V5wC7RBvALQ8s1Yh%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000309.html">
+   <LINK REL="Next"  HREF="000311.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%0A%09usage%20%40%20compile%20time.&In-Reply-To=%3C492d25e8.V5wC7RBvALQ8s1Yh%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Nov 26 11:33:12 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000309.html">[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.
+</A></li>
+        <LI>Next message: <A HREF="000311.html">[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#310">[ date ]</a>
+              <a href="thread.html#310">[ thread ]</a>
+              <a href="subject.html#310">[ subject ]</a>
+              <a href="author.html#310">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Philippe Chaintreuil &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrtools_peep at parallaxshift.com</A>&gt; wrote:
+
+&gt;<i> &gt; I would call this a Linux distro problem. I believe that ACL support is a basic
+</I>&gt;<i> &gt; OS feature that cannot be removed without creating major problems.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The basic ACL support that is needed by libfind is inside libc on Solaris and 
+</I>&gt;<i> &gt; the extended ACL support that is e.g. needed by programs like star is inside 
+</I>&gt;<i> &gt; libsec on Solaris and nobody would ever try to think about removing this.
+</I>&gt;<i>
+</I>&gt;<i> 	cdrtools works fine for me without having ACL support installed and
+</I>&gt;<i> therefore compiled against.*
+</I>
+In case of cdrtools, you are correct...
+
+However, cdrtools is only a small part of my sources that are compiled
+inside a common source tree. Other libfind users (star, sfind, ...) need the
+ACL support. The ACL calls are inside libfind....
+
+In any case, it is wrong to do an incomplete configure run just because there is
+a problem with the dependency handling in Gentoo.
+
+&gt;<i> 	So not strictly requiring ACL is a good thing from my perspective.
+</I>&gt;<i> Which, again, your software appears to do just fine.
+</I>
+On Solaris ACL support is unconditionally built into many basic programs like
+ls(1), chmod(1), cp(1), .... It may be that people who like to support small
+embedded systems think differently but ACL support does not cause overhead or
+makes the system slow.
+
+&gt;<i> * NOTE: I personally am using only using the older 2.01.01a34, and I'm
+</I>&gt;<i> assuming that the latest versions will work without ACL as well.
+</I>
+This is because of a bug and because you did not have ACL support when you 
+compiled a34. a34 will not compile correctly on Linux if there is ACL support.
+
+
+&gt;<i> &gt; Q1:	Wouldn't it be better to treat things similar on Linux?
+</I>&gt;<i>
+</I>&gt;<i> 	That's a question for someone with more brains than me.  :)  I'm just a
+</I>&gt;<i> user, not Mr. Torvalds.
+</I>
+This is not something to discuss with mr. Torvalds but this is a distro 
+decision.
+
+
+&gt;<i> &gt; Q2:	Is there no support for dependencies on Gentoo that knows that
+</I>&gt;<i> &gt; 	ACL support is still &quot;in use&quot; and cannot be removed before all other
+</I>&gt;<i> &gt; 	ACL users have been removed also?
+</I>&gt;<i>
+</I>&gt;<i> 	The Gentoo Devs problem is more with tracking that dependency.  You
+</I>&gt;<i> kind of surprise them, as they don't realize you've linked against ACL
+</I>&gt;<i> really.  They want explicit control over the use of ACL.  They want to
+</I>&gt;<i> be able to tell cdrtools's build system to not use ACL, even if it is on
+</I>&gt;<i> the system at this moment.
+</I>
+Well, of course Gentoo would need to create a list of dependencies that if 
+valid for Gentoo. The packaging system would need to prevent ACL removal in 
+case that there is a user for ACL code.
+
+Note that on Solaris, basic OS features are always installed (and ACL support
+is inside Solaris since 1993). 
+
+The way many Linux distributions work looks like a  closed source environment 
+from Microsoft as you explicitly need to first install &quot;additional&quot; support for
+basic OS features before you may use these features.
+
+&gt;<i> 	This boils down (I think) to conditionally settings the USE_ACL define
+</I>&gt;<i> (it looks like it's always being enabled in libfind's .mk files) via the
+</I>&gt;<i> make/build system.  Via an environment variable or something?
+</I>
+The patch on your bugsystem is definitely wrong as it simply destroys correct
+behavior of &quot;configure&quot;.
+
+With the latest preliminary source you may call make COPTX=-DNO_ACL &quot;LIB_ACL_TEST= &quot;
+
+Note that this is a hack and definitely wrong in case you like to do dynamic 
+linking which has been made default for now. To disable dynamic linking, you 
+would need to add LINKMODE=static in addition.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000309.html">[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.
+</A></li>
+	<LI>Next message: <A HREF="000311.html">[Cdrecord-support] Feature Request: manual control over ACL usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#310">[ date ]</a>
+              <a href="thread.html#310">[ thread ]</a>
+              <a href="subject.html#310">[ subject ]</a>
+              <a href="author.html#310">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

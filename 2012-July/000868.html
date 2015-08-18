@@ -1,0 +1,228 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] BD-R multi session disc finalises after the first session?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-R%20multi%20session%20disc%20finalises%20after%20the%0A%20first%20session%3F&In-Reply-To=%3C5016E1E8.3090902%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000865.html">
+   <LINK REL="Next"  HREF="000858.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] BD-R multi session disc finalises after the first session?</H1>
+    <B>Omega Weapon</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-R%20multi%20session%20disc%20finalises%20after%20the%0A%20first%20session%3F&In-Reply-To=%3C5016E1E8.3090902%40gmail.com%3E"
+       TITLE="[Cdrecord-support] BD-R multi session disc finalises after the first session?">omegaphil at gmail.com
+       </A><BR>
+    <I>Mon Jul 30 21:35:04 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000865.html">[Cdrecord-support] BD-R multi session disc finalises after the first session?
+</A></li>
+        <LI>Next message: <A HREF="000858.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG	report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#868">[ date ]</a>
+              <a href="thread.html#868">[ thread ]</a>
+              <a href="subject.html#868">[ subject ]</a>
+              <a href="author.html#868">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 30/07/12 12:47, Joerg Schilling wrote:
+&gt;<i> Omega Weapon&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 26/07/12 20:29, Omega Weapon wrote:
+</I>&gt;&gt;&gt;<i> The following was used to burn the first session on a BD-R disc:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> /opt/schily/bin/cdrecord -v -multi -fs=8m -dev=/dev/sr0
+</I>&gt;&gt;&gt;<i> &quot;/mnt/Storage_1/Temporary Storage Folder/Processing
+</I>&gt;&gt;&gt;<i> Folder/Burning/disc_image.iso&quot;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> /opt/schily/bin/cdrecord -minfo -dev=/dev/sr0:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a07 (x86_64-unknown-linux-gnu) Copyright
+</I>&gt;&gt;&gt;<i> (C) 1995-2012 Joerg Schilling
+</I>&gt;&gt;&gt;<i> scsidev: '/dev/sr0'
+</I>&gt;&gt;&gt;<i> devname: '/dev/sr0'
+</I>&gt;&gt;&gt;<i> scsibus: -2 target: -2 lun: -2
+</I>&gt;&gt;&gt;<i> Warning: Open by 'devname' is unintentional and not supported.
+</I>&gt;&gt;&gt;<i> Linux sg driver version: 3.5.27
+</I>&gt;&gt;&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;&gt;&gt;<i> Device type : Removable CD-ROM
+</I>&gt;&gt;&gt;<i> Version : 0
+</I>&gt;&gt;&gt;<i> Response Format: 2
+</I>&gt;&gt;&gt;<i> Capabilities :
+</I>&gt;&gt;&gt;<i> Vendor_info : 'ATAPI '
+</I>&gt;&gt;&gt;<i> Identifikation : 'iHBS112 2 '
+</I>&gt;&gt;&gt;<i> Revision : 'PL05'
+</I>&gt;&gt;&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;&gt;&gt;<i> Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;&gt;&gt;<i> Driver flags : NO-CD BD MMC-3 BURNFREE FORCESPEED
+</I>&gt;&gt;&gt;<i> Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;&gt;&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;&gt;&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;&gt;&gt;<i> Mounted media class: BD
+</I>&gt;&gt;&gt;<i> Mounted media type: BD-R sequential recording
+</I>&gt;&gt;&gt;<i> Disk Is not erasable
+</I>&gt;&gt;&gt;<i> data type: standard
+</I>&gt;&gt;&gt;<i> disk status: complete
+</I>&gt;&gt;&gt;<i> session status: complete
+</I>&gt;&gt;&gt;<i> BG format status: none
+</I>&gt;&gt;&gt;<i> first track: 1
+</I>&gt;&gt;&gt;<i> number of sessions: 1
+</I>&gt;&gt;&gt;<i> first track in last sess: 1
+</I>&gt;&gt;&gt;<i> last track in last sess: 1
+</I>&gt;&gt;&gt;<i> Disk Is unrestricted
+</I>&gt;&gt;&gt;<i> Disk type: DVD, HD-DVD or BD
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Track Sess Type Start Addr End Addr Size
+</I>&gt;&gt;&gt;<i> ==============================================
+</I>&gt;&gt;&gt;<i> 1 1 Data 0 1500043 1500044
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Last session start address: 0
+</I>&gt;&gt;&gt;<i> Last session leadout start address: 1500044
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Why is this disc 'complete' when it was specifically told to be
+</I>&gt;&gt;&gt;<i> appendable? I think I have a number of semi-bricked BD-Rs now, but this
+</I>&gt;&gt;&gt;<i> is by far the worst at ~3GB burnt...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have now done a number of tests with cdrskin
+</I>&gt;&gt;<i> (<A HREF="http://scdbackup.webframe.org/cdrskin_eng.html">http://scdbackup.webframe.org/cdrskin_eng.html</A>) and can confirm that it
+</I>&gt;&gt;<i> can burn multi session discs with this media and drive. Example commandline:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> cdrskin -v -fs=8M -multi -stream_recording=on -eject -dev=/dev/sr0
+</I>&gt;&gt;<i> '/mnt/Storage_1/Temporary Storage Folder/Processing
+</I>&gt;&gt;<i> Folder/Burning/disc_image.iso'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> stream_recording kills off the bluray defect management.
+</I>&gt;<i>
+</I>&gt;<i> And in what write mode was this written?
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+I have just completed a burn with cdrskin now - 'real SAO mode for multi 
+session':
+
+==========================================================================
+
+cdrskin 1.2.2 : limited cdrecord compatibility wrapper for libburn
+cdrskin: verbosity level : 1
+cdrskin: NOTE : greying out all drives besides given dev='/dev/sr0'
+cdrskin: scanning for devices ...
+cdrskin: ... scanning for devices done
+cdrskin: beginning to burn disc
+cdrskin: status 1 burn_disc_blank &quot;The drive holds a blank disc&quot;
+Current: BD-R sequential recording
+Track 01: data  23532 MB
+Total size:    23532 MB (2677:32.48) = 12048786 sectors
+Lout start:    23532 MB (2677:34/48) = 12048936 sectors
+Starting to write CD/DVD at speed MAX in real SAO mode for multi session.
+Last chance to quit, starting real write in   0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01: 23532 of 23532 MB written (fifo 100%) [buf 100%]   2.0x. 
+ 
+
+cdrskin: thank you for being patient for 2750 seconds
+Fixating...
+cdrskin: working post-track (burning since 2759 seconds)
+Track 01: Total bytes read/written: 24675913728/24675942400 (12048800 
+sectors).
+Writing  time:  2759.843s
+Cdrskin: fifo had 12048786 puts and 12048786 gets.
+Cdrskin: fifo was 0 times empty and 544367 times full, min fill was 99%.
+Min drive buffer fill was 0%
+cdrskin: burning done
+
+==========================================================================
+
+cdrskin -minfo:
+
+==========================================================================
+
+cdrskin 1.2.2 : limited cdrecord compatibility wrapper for libburn
+cdrskin: scanning for devices ...
+cdrskin: ... scanning for devices done
+cdrskin: pseudo-atip on drive 0
+cdrskin: status 3 BURN_DISC_APPENDABLE &quot;There is an incomplete disc in 
+the drive&quot;
+scsidev: '0,0,0'
+Device type    : Removable CD-ROM
+Vendor_info    : 'ATAPI'
+Identifikation : 'iHBS112 2'
+Revision       : 'PL05'
+Driver flags   : BURNFREE
+Supported modes: TAO SAO
+cdrskin: burn_drive_get_write_speed = 8990  (2.0x)
+Mounted Media: 41h, BD-R sequential recording
+Product Id:    JVC-AMS6/S6L/1
+Producer:      JVC Limited
+
+Mounted media class:      BD
+Mounted media type:       BD-R sequential recording
+Disk Is not erasable
+disk status:              incomplete/appendable
+session status:           empty
+first track:              1
+number of sessions:       2
+first track in last sess: 2
+last track in last sess:  2
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+BD Spare Area consumed:   0
+BD Spare Area available:  0
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+     1     1 Data   0          12048799   12048800
+     2     2 Blank  12048800   12219391   170592
+
+Last session start address:         0
+Last session leadout start address: 12048800
+Next writable address:              12048800
+Remaining writable size:            170592
+
+==========================================================================
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000865.html">[Cdrecord-support] BD-R multi session disc finalises after the first session?
+</A></li>
+	<LI>Next message: <A HREF="000858.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG	report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#868">[ date ]</a>
+              <a href="thread.html#868">[ thread ]</a>
+              <a href="subject.html#868">[ subject ]</a>
+              <a href="author.html#868">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

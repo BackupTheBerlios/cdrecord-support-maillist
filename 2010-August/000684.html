@@ -1,0 +1,220 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C5A4EEC.2060208%40netspace.net.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000681.html">
+   <LINK REL="Next"  HREF="000691.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE</H1>
+    <B>Murray Blakeman</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20with%20cdrecord%203.0.0%20and%20BD-RE&In-Reply-To=%3C4C5A4EEC.2060208%40netspace.net.au%3E"
+       TITLE="[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE">mblakeman at netspace.net.au
+       </A><BR>
+    <I>Thu Aug  5 07:41:00 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000681.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+        <LI>Next message: <A HREF="000691.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On  1/08/10 07:54 PM, Joerg Schilling wrote:
+&gt;<i>
+</I>&gt;<i> Did you swich on DMA for this drive?
+</I>&gt;<i> Solaris 10 was released more than 5.5 years ago and was build on outdated
+</I>&gt;<i> knowlegde from Solaris 9...
+</I>&gt;<i>
+</I>&gt;<i> Pioner drives won't work correctly if there is no DMA.
+</I>&gt;<i>
+</I>&gt;<i> eeprom
+</I>&gt;<i> ata-dma-enabled=1
+</I>&gt;<i> atapi-cd-dma-enabled=1
+</I>&gt;<i>
+</I>&gt;<i> Make sure both is on, reboot after a change.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>These options were set correctly.
+
+# eeprom
+ata-dma-enabled=1
+atapi-cd-dma-enabled=1
+....
+
+
+&gt;<i> It may be that there is a firmware bug in the drive and the drive sends
+</I>&gt;<i> format information that is will not accept.
+</I>&gt;<i>
+</I>&gt;<i> If you call cdrecord -VV, you will see the data that the drive does not like.
+</I>&gt;<i> It mentions even the exact byte/bit position....
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+Output of command is shown below.  I had to cut out a lot of the data to 
+reduce the size.  Hope this helps. Thanks :-)
+
+$ cdrecord dev=0,0,0 driveropts=burnfree -VV image.iso
+cdrecord: No write mode specified.
+cdrecord: Assuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive dependent 
+defaults.
+Cdrecord-ProDVD-ProBD-Clone 3.00 (i386-pc-solaris2.10) Copyright (C) 
+1995-2010 J&#246;rg Schilling
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Warning: Using USCSI interface.
+Using libscg version 'schily-0.9'.
+
+Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  00 00 00 00 00 00
+cmd finished after 0.000s timeout 200s
+
+Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  00 00 00 00 00 00
+cmd finished after 0.005s timeout 200s
+
+Executing 'inquiry' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  12 00 00 00 24 00
+cmd finished after 0.005s timeout 200s
+Got 36 (0x24), expecting 36 (0x24) bytes of data.
+Received Data:  05 80 00 32 5B 00 00 00 50 49 4F 4E 45 45 52 20 42 44 2D 
+52 57 20 20 20 42 44 52 2D 32 30 35 20 31 2E 30 34
+Inquiry Data   : 05 80 00 32 5B 00 00 00 50 49 4F 4E 45 45 52 20 42 44 
+2D 52 57 20 20 20 42 44 52 2D 32 30 35 20 31 2E 30 34
+
+Executing 'inquiry' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  12 00 00 00 60 00
+cmd finished after 0.004s timeout 200s
+Got 96 (0x60), expecting 96 (0x60) bytes of data.
+Received Data:  05 80 00 32 5B 00 00 00 50 49 4F 4E 45 45 52 20 42 44 2D 
+52 57 20 20 20 42 44 52 2D 32 30 35 20 31 2E 30 34 20 30 39 2F 31 32 2F 
+30 31 20 20 50 49 4F 4E 45 45 52 20 20 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00
+Inquiry Data   : 05 80 00 32 5B 00 00 00 50 49 4F 4E 45 45 52 20 42 44 
+2D 52 57 20 20 20 42 44 52 2D 32 30 35 20 31 2E 30 34 20 30 39 2F 31 32 
+2F 30 31 20 20 50 49 4F 4E 45 45 52 20 20 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+00 00 00 00 00 00
+Inquiry Data   : ...2[...PIONEER BD-RW   BDR-205 1.04 09/12/01  PIONEER 
+  ........................................
+
+Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  00 00 00 00 00 00
+cmd finished after 0.003s timeout 200s
+
+
+.
+..
+...
+
+
+Executing 'read buffer' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  3C 00 00 00 00 00 00 00 04 00
+cdrecord: I/O error. read buffer: scsi sendcmd: no error
+CDB:  3C 00 00 00 00 00 00 00 04 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 24 00 00 00 00 00
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x24 Qual 0x00 (invalid field in cdb) Fru 0x0
+Sense flags: Blk 0 (not valid)
+resid: 4
+cmd finished after 0.010s timeout 200s
+Got 0 (0x0), expecting 4 (0x4) bytes of data.
+Received Data:
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+
+Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  00 00 00 00 00 00
+cmd finished after 0.004s timeout 200s
+
+Executing 'start/stop unit' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  1B 00 00 00 03 00
+cmd finished after 0.005s timeout 200s
+
+.
+..
+...
+
+
+Executing 'format unit' command on Bus 0 Target 0, Lun 0 timeout 5300s
+CDB:  04 11 00 00 00 00
+Sending 12 (0xC) bytes of data.
+Write Data:  00 82 00 08 00 B4 74 00 C3 00 30 00
+cdrecord: I/O error. format unit: scsi sendcmd: no error
+CDB:  04 11 00 00 00 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0E 00 00 00 00 26 00 00 89 00 08
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x26 Qual 0x00 (invalid field in parameter list) Fru 0x0
+Sense flags: Blk 0 (not valid) error refers to data part, bit ptr 1 
+(valid) field ptr 8
+resid: 12
+cmd finished after 0.013s timeout 5300s
+cdrecord: Cannot format medium.
+
+Executing 'flush cache' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  35 00 00 00 00 00 00 00 00 00
+cmd finished after 0.004s timeout 200s
+
+Executing 'test unit ready' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  00 00 00 00 00 00
+cmd finished after 0.004s timeout 200s
+Mode Parameters (un-converted) 00 00 00 08 00 00 00 00 00 00 08 00
+Mode Parameters 00 00 00 00 00 00 00 08 00 00 00 00 00 00 08 00
+
+Executing 'mode select g1' command on Bus 0 Target 0, Lun 0 timeout 200s
+CDB:  55 10 00 00 00 00 00 00 10 00
+Sending 16 (0x10) bytes of data.
+Write Data:  00 00 00 00 00 00 00 08 00 00 00 00 00 00 08 00
+cmd finished after 0.005s timeout 200s
+
+Executing 'prevent/allow medium removal' command on Bus 0 Target 0, Lun 
+0 timeout 200s
+CDB:  1E 00 00 00 00 00
+cmd finished after 0.004s timeout 200s
+Set
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000681.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+	<LI>Next message: <A HREF="000691.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

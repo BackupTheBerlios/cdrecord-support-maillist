@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] w32 cdrecord and DMA
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20w32%20cdrecord%20and%20DMA&In-Reply-To=%3C7944941.1189263121780.JavaMail.root%40ps19%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000084.html">
+   <LINK REL="Next"  HREF="000086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] w32 cdrecord and DMA</H1>
+    <B>stefanovesa at tiscali.it</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20w32%20cdrecord%20and%20DMA&In-Reply-To=%3C7944941.1189263121780.JavaMail.root%40ps19%3E"
+       TITLE="[Cdrecord-support] w32 cdrecord and DMA">stefanovesa at tiscali.it
+       </A><BR>
+    <I>Sat Sep  8 16:52:01 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000084.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+        <LI>Next message: <A HREF="000086.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi,
+
+&gt;&gt;<i> Drive DMA Speed: 4255 kB/s 24x CD 3x DVD 0x BD
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Then if I try to burn a disc I get the following warning:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> cdrecord: DMA speed too slow (OK for 2x). Cannot write at 
+</I>speed 
+&gt;&gt;<i> 8x.
+</I>&gt;&gt;<i> cdrecord: Max DMA data speed is 2.
+</I>&gt;&gt;<i> cdrecord: Try to use 'driveropts=burnfree'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The problem disappears if I use &quot;burnfree&quot; 
+</I>&gt;&gt;<i> as suggested, but I tested that &quot;burnfree&quot; actually is not 
+</I>used.
+&gt;&gt;<i> May be I'm wrong but I think there someting wrong in DMA 
+</I>checks 
+&gt;&gt;<i> that cdrecord makes
+</I>&gt;&gt;<i> when it is used in a not native environment. (i.e. used 
+</I>through 
+&gt;&gt;<i> cygwin).
+</I>&gt;<i>
+</I>&gt;<i>Looks like you own a drive that disables DMA for the read buffer 
+</I>command.
+&gt;<i>This is a problem of your drive.....it missinforms cdrecord about 
+</I>the maximum 
+&gt;<i>speed.
+</I>
+The two Plextor drives are:
+a PX-716A with 1.11 firmware (not locked) and a PX-755A with stock 
+(locked) 1.08 firmware.
+I can confirm that under Linux (kernel 2.6.22.6) and Solaris 
+(Belenix) the DMA speed is read correctly by cdrecord so I suspect 
+it's a problem related 
+to the w32 port of the program or some incompatibily with Win 
+Vista.
+
+BTW you have mentioned the free firmware for 755.
+What tool have you used to flash the free firmware .bin file?
+I've tested your pxupdate-1.39 tool under Linux but it seems that 
+doesn't support the 755...
+
+At last a curiosity:
+All Win ports of cdrtools uses cygwin libraries.
+Could be possible to compile cdrtools with a w32 compiler, e.g. 
+Visual Studio,
+to obtail pure w32 binaries? 
+
+
+&gt;<i>&quot;free&quot; means disabled RPC check and disabled check for permission 
+</I>to use
+&gt;<i>vendor unique commands.
+</I>&gt;<i>
+</I>&gt;<i>J&#246;rg
+</I>&gt;<i>
+</I>
+Regards,
+Stefano
+
+
+
+
+____________________________________________________________
+Naviga e telefona senza limiti con Tiscali     
+Scopri le promozioni Tiscali Adsl: navighi e telefoni senza canone Telecom
+
+<A HREF="http://abbonati.tiscali.it/adsl/">http://abbonati.tiscali.it/adsl/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000084.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+	<LI>Next message: <A HREF="000086.html">[Cdrecord-support] w32 cdrecord and DMA
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#85">[ date ]</a>
+              <a href="thread.html#85">[ thread ]</a>
+              <a href="subject.html#85">[ subject ]</a>
+              <a href="author.html#85">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support]  cdrecord truncates .wav file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%20cdrecord%20truncates%20.wav%20file&In-Reply-To=%3C23144913.post%40talk.nabble.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000443.html">
+   <LINK REL="Next"  HREF="000447.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support]  cdrecord truncates .wav file</H1>
+    <B>Joanie Abalone</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%20cdrecord%20truncates%20.wav%20file&In-Reply-To=%3C23144913.post%40talk.nabble.com%3E"
+       TITLE="[Cdrecord-support]  cdrecord truncates .wav file">pfenerty at earthlink.net
+       </A><BR>
+    <I>Mon Apr 20 23:08:58 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000443.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install
+</A></li>
+        <LI>Next message: <A HREF="000447.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#446">[ date ]</a>
+              <a href="thread.html#446">[ thread ]</a>
+              <a href="subject.html#446">[ subject ]</a>
+              <a href="author.html#446">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hello,
+
+I have run cdrecord front-end application k3b, trouble-free, on an old
+fedora core 5 box for several years.
+
+Now k3b refuses to write a certain .wav file, but only when volume level
+normalization is requested:
+
+/usr/bin/cdrecord: Bad audio track size 79507412 for track 04.
+/usr/bin/cdrecord: Audio tracks must be at least 705600 bytes and a multiple
+of 2352.
+/usr/bin/cdrecord: See -pad option.
+
+Note that the actual file size is 127866524. If I turn off normalization, I
+can write the entire file to CDR, and playback all 127866524 bytes.
+
+When I add -pad to the command string, with normalization on, k3b also
+writes all the files to CDR, but now the problematic track 04, some 12+
+minutes in length, appears on the CDR truncated to 7:30.
+
+As a first attempt at handling this, i updated k3b, growisofs, dvd+rw-tools,
+and cdrecord, and in the process upgraded into an apparently, at least for
+now, unresolvable security system lockout
+(<A HREF="http://linux.derkeiler.com/Mailing-Lists/Fedora/2006-07/msg04134.html">http://linux.derkeiler.com/Mailing-Lists/Fedora/2006-07/msg04134.html</A> ...
+none of this works for me), and so i now run k3b as root in order to write
+anything at all.
+
+And both the &quot;Bad audio track size&quot; error and the truncated file problem
+remain as before.
+
+So i'm a little wary of further upgrades to this old OS, especially given
+that this is all about a single audio track (so far, anyway).
+
+But i'd be happy to learn if cdrecord can be informed to handle this
+correctly by way of command-line parameters: sector size? raw writing mode?
+
+The cdrecord manpage lists lots of possibilities in this regard that i have
+never messed with, and would no doubt have a good time burning up blank
+discs whilst exploring. But this is not my area of expertise, and i do have
+other things that i need to be working on, and so i am hoping for some
+guidance in this regard before launching into a full-on edisonian approach.
+
+Additionally, I'd love to understand why cdrecord only complains about this
+file given sound level normalization ... the error is reported in the
+logfile before any normalize logging, and is not reported at all when
+normalize is turned off ... shouldn't it be a &quot;Bad audio track size&quot; no
+matter what?
+
+Thanks for listening!
+
+
+ps:
+
+... from the k3b logfile ( -pad write session ):
+
+cdrecord command:
+-----------------------
+/usr/bin/cdrecord -v gracetime=2 dev=/dev/hdc speed=40 -dao
+driveropts=burnfree -force textfile=/tmp/k3brWKxZb.dat -eject -overburn -pad
+-useinfo -audio /tmp/kde-root/k3b_audio_0_01.wav
+/tmp/kde-root/k3b_audio_0_02.wav /tmp/kde-root/k3b_audio_0_03.wav
+/tmp/kde-root/k3b_audio_0_04.wav /tmp/kde-root/k3b_audio_0_05.wav
+/tmp/kde-root/k3b_audio_0_06.wav /tmp/kde-root/k3b_audio_0_07.wav
+/tmp/kde-root/k3b_audio_0_08.wav /tmp/kde-root/k3b_audio_0_09.wav
+/tmp/kde-root/k3b_audio_0_10.wav /tmp/kde-root/k3b_audio_0_11.wav
+/tmp/kde-root/k3b_audio_0_12.wav /tmp/kde-root/k3b_audio_0_13.wav
+
+... track 04:
+
+Track 04: audio   75 MB (07:31.34) no preemp pad copy
+
+WARNING: padding up to secsize.
+Track 04: Total bytes read/written: 79618004/79619904 (33852 sectors).
+
+
+pps:
+
+=========================================================
+
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at gezora</A> cdr]# /usr/bin/cdrecord -version
+Cdrecord-Clone 2.01.01a04 (i686-pc-linux-gnu) Copyright (C) 1995-2006 J&#65533;rg
+Schilling
+NOTE: this is OSS DVD extensions for cdrtools and thus may have bugs
+   related to DVD issues that are not present in the original cdrtools. For
+   more information see <A HREF="http://crashrecovery.org/oss-dvd.html.">http://crashrecovery.org/oss-dvd.html.</A> The original
+   cdrtools author should not be bothered with problems in this version.
+/usr/bin/cdrecord: Warning: Running on Linux-2.6.17-1.2174_FC5
+/usr/bin/cdrecord: There are unsettled issues with Linux-2.5 and newer.
+/usr/bin/cdrecord: If you have unexpected problems, please try Linux-2.4 or
+Solaris.
+
+
+=========================================================
+
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at gezora</A> fedora]# uname -a
+Linux gezora 2.6.17-1.2174_FC5 #1 Tue Aug 8 15:30:55 EDT 2006 i686 athlon
+i386 GNU/Linux
+
+
+=========================================================
+
+
+[<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pf at gezora</A> cdr]$ /usr/bin/file track4.wav
+track4.wav: RIFF (little-endian) data, WAVE audio, Microsoft PCM, 16 bit,
+stereo 44100 Hz
+
+
+... just like all the others.
+
+=========================================================
+
+
+... from the k3b logfile:
+
+System
+-----------------------
+K3b Version: 1.0
+
+KDE Version: 3.5.4-0.1.fc5 Fedora-Core
+QT Version:  3.3.6
+Kernel:      2.6.17-1.2174_FC5
+Devices
+-----------------------
+PIONEER DVD-RW  DVR-110D 1.17 (/dev/hdc, ) [CD-R, CD-RW, CD-ROM, DVD-ROM,
+DVD-R, DVD-RW, DVD-R DL, DVD+R, DVD+RW, DVD+R DL] [DVD-ROM, DVD-R
+Sequential, DVD-R Dual Layer Sequential, DVD-R Dual Layer Jump, DVD-RW
+Restricted Overwrite, DVD-RW Sequential, DVD+RW, DVD+R, DVD+R Dual Layer,
+CD-ROM, CD-R, CD-RW] [SAO, TAO, RAW, SAO/R96P, SAO/R96R, RAW/R16, RAW/R96P,
+RAW/R96R, Restricted Overwrite, Layer Jump]
+
+Used versions
+-----------------------
+cdrecord: 2.1.1a04
+
+cdrecord
+-----------------------
+/usr/bin/cdrecord: Warning: Running on Linux-2.6.17-1.2174_FC5
+/usr/bin/cdrecord: There are unsettled issues with Linux-2.5 and newer.
+/usr/bin/cdrecord: If you have unexpected problems, please try Linux-2.4 or
+Solaris.
+scsidev: '/dev/hdc'
+devname: '/dev/hdc'
+scsibus: -2 target: -2 lun: -2
+Warning: Open by 'devname' is unintentional and not supported.
+Linux sg driver version: 3.5.27
+SCSI buffer size: 64512
+Text len: 54
+Cdrecord-Clone 2.01.01a04 (i686-pc-linux-gnu) Copyright (C) 1995-2006 J&#246;rg
+Schilling
+NOTE: this is OSS DVD extensions for cdrtools and thus may have bugs
+   related to DVD issues that are not present in the original cdrtools. For
+   more information see <A HREF="http://crashrecovery.org/oss-dvd.html.">http://crashrecovery.org/oss-dvd.html.</A> The original
+   cdrtools author should not be bothered with problems in this version.
+TOC Type: 0 = CD-DA
+Using libscg version 'schily-0.8'.
+Driveropts: 'burnfree'
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'PIONEER '
+Identifikation : 'DVD-RW  DVR-110D'
+Revision       : '1.17'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW.
+Current: 0x0009
+Profile: 0x002B
+Profile: 0x001B
+Profile: 0x001A
+Profile: 0x0016
+Profile: 0x0015
+Profile: 0x0014
+Profile: 0x0013
+Profile: 0x0011
+Profile: 0x0010
+Profile: 0x000A
+Profile: 0x0009 (current)
+Profile: 0x0008
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+Drive buf size : 1267712 = 1238 KB
+FIFO size      : 4194304 = 4096 KB
+
+
+-- 
+View this message in context: <A HREF="http://www.nabble.com/cdrecord-truncates-.wav-file-tp23144913p23144913.html">http://www.nabble.com/cdrecord-truncates-.wav-file-tp23144913p23144913.html</A>
+Sent from the Cdrecord-support mailing list archive at Nabble.com.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000443.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install
+</A></li>
+	<LI>Next message: <A HREF="000447.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#446">[ date ]</a>
+              <a href="thread.html#446">[ thread ]</a>
+              <a href="subject.html#446">[ subject ]</a>
+              <a href="author.html#446">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Rewriting DVD+RW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C000a01cb3469%24b3bf4be0%24650110ac%40SERENITY%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000682.html">
+   <LINK REL="Next"  HREF="000686.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Rewriting DVD+RW</H1>
+    <B>mwesten</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Rewriting%20DVD%2BRW&In-Reply-To=%3C000a01cb3469%24b3bf4be0%24650110ac%40SERENITY%3E"
+       TITLE="[Cdrecord-support] Rewriting DVD+RW">mwesten at verizon.net
+       </A><BR>
+    <I>Thu Aug  5 08:44:47 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000682.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+        <LI>Next message: <A HREF="000686.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#685">[ date ]</a>
+              <a href="thread.html#685">[ thread ]</a>
+              <a href="subject.html#685">[ subject ]</a>
+              <a href="author.html#685">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm using Cdrtools-3.0 (on RIPLinux 10.3) to write DVDs.  DVD+Rs are written fine, but I have some DVD+RWs which were previously written by a DVR machine that I will want to rewrite.  The first one of those that I tried was only half-full (~2GB), and when I attempted to record a ~3GB iso, cdrecord said the disc was too small.  That disc was closed, so I assumed it would just overwrite it from the beginning.  I thought DVD+RWs did not need blanking, but I did blank=fast on it anyway.  After that, I happened to eject the disc before attempting another write.  I reinserted it and tried writing, but got the same error (too small).  I did blank=fast again, and then issued the write command again, but this time without ejecting the disc.  It did write, but apparently did not complete successfully, and the disc doesn't work.  It took 300 seconds to fixate, and then the drive hung with the light blinking.  After rebooting, I found that the toc is wrong, and some files give an Input/Output error when I try to read them.
+
+I guess I'm doing something wrong.  How do I rewrite one of these things?
+
+Thanks!
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100805/6efd0202/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20100805/6efd0202/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000682.html">[Cdrecord-support] Problem with cdrecord 3.0.0 and BD-RE
+</A></li>
+	<LI>Next message: <A HREF="000686.html">[Cdrecord-support] Rewriting DVD+RW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#685">[ date ]</a>
+              <a href="thread.html#685">[ thread ]</a>
+              <a href="subject.html#685">[ subject ]</a>
+              <a href="author.html#685">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Error mounting a disk after a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3C4bcc2f72.wLXOWYyrR4DNyc87%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000629.html">
+   <LINK REL="Next"  HREF="000613.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Error mounting a disk after a burn</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3C4bcc2f72.wLXOWYyrR4DNyc87%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Error mounting a disk after a burn">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Apr 19 12:24:50 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000629.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+        <LI>Next message: <A HREF="000613.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#612">[ date ]</a>
+              <a href="thread.html#612">[ thread ]</a>
+              <a href="subject.html#612">[ subject ]</a>
+              <a href="author.html#612">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Skye Sweeney \(FLL-Freak\)&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">skye at fll-freak.com</A>&gt; wrote:
+
+&gt;<i> Synopsis:
+</I>&gt;<i> I use mkisofs and then use cdrecord to burn the disk. When the cdrecord finishes I try to mount my new disk so that I can double check the md5 checksums to insure I have a good disk. The problem is the mount will fail. If I eject and the retract the tray and try the mount again it works fine. Other than ejecting and retracking the disk (looks kind of silly) what can I do to get the disk mounted?
+</I>
+This is obviously a problem in your OS, see below.
+
+&gt;<i> Details:
+</I>&gt;<i> Using Fedora Core 6. Uname returns: 
+</I>&gt;<i> Linux Peanut 2.6.22.14-72.fc6 #1 SMP Wed Nov 21 15:12:59 EST 2007 i686 i686 i386 GNU/Linux
+</I>&gt;<i> (Yes it is old, but before I can upgrade I need to get a backup!)
+</I>&gt;<i>
+</I>&gt;<i> I am calling mkisofs from a C program using 'system' as follows:
+</I>&gt;<i>
+</I>&gt;<i>     sprintf(str, &quot;mkisofs&quot;
+</I>&gt;<i>                  &quot; -ldots -allow-lowercase -allow-multidot&quot;
+</I>&gt;<i>                  &quot; -relaxed-filenames&quot;
+</I>&gt;<i>                  &quot; -A rbtbkg&quot;
+</I>&gt;<i>                  &quot; -sysid \&quot;Disk:%05d\&quot;&quot;
+</I>&gt;<i>                  &quot; -V Disk:%05d&quot;
+</I>&gt;<i>                  &quot; -quiet&quot;
+</I>&gt;<i>                  &quot; -iso-level 2&quot;
+</I>&gt;<i>                  &quot; -D&quot;
+</I>&gt;<i>                  &quot; -R&quot;
+</I>&gt;<i>                  &quot; -graft-points&quot;
+</I>&gt;<i>                  &quot; -path-list %s&quot;
+</I>&gt;<i>                  &quot; -o tmp.iso&quot;,
+</I>&gt;<i>                  diskId, diskId, list);
+</I>&gt;<i>     system(str);
+</I>&gt;<i>
+</I>&gt;<i> This seems to work fine in that I can burn a disk and read it back.
+</I>
+I recommend to use at least -iso-level 3 as this is the minimal level that 
+gives you large file suppoort.
+
+Unless you like to use the medium on systems that have problems with Rock Ridge,
+it does not make sense to use options like -ldots -allow-lowercase 
+-allow-multidot -relaxed-filenames
+
+The option -D was needed in former times as there have been bugs in mkisofs
+that prevented correct deep directory relocation with Rock Ridge. This was
+fixed in August 2006. There is absolutely no need to still use this option.
+Note that the mkisofs variant created by Debian in September 2006 is based 
+on a source from 2004............
+
+
+&gt;<i> I am calling cdrecord from a C program using 'system' as follows:
+</I>&gt;<i>
+</I>&gt;<i>     sprintf(str, &quot;cdrecord&quot;
+</I>&gt;<i>                  &quot; -sao&quot;
+</I>&gt;<i>                  &quot; speed=8&quot;
+</I>&gt;<i>                  &quot; dev=/dev/dvdrw&quot;
+</I>&gt;<i>                  &quot; tmp.iso&quot;);
+</I>&gt;<i>     system(str);
+</I>
+I cannot guarantee that something like dev=/dev/dvdrw will work.
+Most Operating systems do not allow to use /dev/ based &quot;device names&quot;
+at all, so dev=/dev/dvdrw is definitely non-portable. As the interfaces
+on the Linux kernel are unstable, I cannot even grant that dev=/dev/dvdrw
+will work on Linux. It may currently work, but it may stop working
+at any time.
+
+&gt;<i> Now I try to mount the disk from a C program using 'system' as follows&quot;
+</I>&gt;<i>
+</I>&gt;<i>     sprintf(str, &quot;mount /dev/dvdrw /mnt/optical&quot;);
+</I>&gt;<i>     system(str);
+</I>&gt;<i>
+</I>&gt;<i> And get the error:
+</I>&gt;<i>     mount: block device /dev/dvdrw is write-protected, mounting read-only
+</I>
+A correct message.
+
+&gt;<i>     mount: you must specify the filesystem type
+</I>
+This one depends on whether there is a working automnated filesystem type
+recognition.
+
+&gt;<i> I also get the following error on my console but I am not sure the sequence of it related to the above.
+</I>&gt;<i>     hfs: Unable to find HFS+ superblock
+</I>&gt;<i>     hfs: Unable to find HFS+ superblock
+</I>&gt;<i>   
+</I>&gt;<i>
+</I>&gt;<i> My guess is that cdrecoed leaves the drive and disk in some strange state. 
+</I>&gt;<i> I have tried a long delay between the burn and the mount. zip.
+</I>&gt;<i> I have tried to use the CDROMRESET ioctl. zip.
+</I>
+In RAW mode (e.g. when using -raw96r), the drive is always in an undefined state
+after writing is finished. In all other write modes, the drive should be able to 
+read the medium correctly after writing is finished. But as there are drives
+with bad firmware, cdrecord _always_ checks the medium in the drive and cdrecord
+_always_ reloads the medium if the drive needs this reload.
+
+If you have and further provlem, this is obviously a bug in your OS (e.g. a 
+result from a bad caching algorithm).
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000629.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+	<LI>Next message: <A HREF="000613.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#612">[ date ]</a>
+              <a href="thread.html#612">[ thread ]</a>
+              <a href="subject.html#612">[ subject ]</a>
+              <a href="author.html#612">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unreadable discs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unreadable%20discs&In-Reply-To=%3C0227678B508B46DD91865FC9C1DDF5BD%40indigobox%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000343.html">
+   <LINK REL="Next"  HREF="000345.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unreadable discs</H1>
+    <B>Phil Rhodes</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unreadable%20discs&In-Reply-To=%3C0227678B508B46DD91865FC9C1DDF5BD%40indigobox%3E"
+       TITLE="[Cdrecord-support] Unreadable discs">phil_rhodes at rocketmail.com
+       </A><BR>
+    <I>Wed Feb 18 01:45:20 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000343.html">[Cdrecord-support] Determining type of disc
+</A></li>
+        <LI>Next message: <A HREF="000345.html">[Cdrecord-support] Unreadable discs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've been using the following command to produce DVDs:
+
+C:\elphaba\helper&gt;mkisofs -J -R -V Session1 f:\session1 | cdrecord\cdrecord.exe -dao -dev=6,0,0 -v -tsize=1179926 -
+
+I'm getting discs which look like they have files on them - windows reports the files, name and size correctly - but if I try to copy them from the CD onto a hard disk, I get &quot;cannot copy [filename] - the parameter is incorrect&quot;.
+
+The output looks like this (I can give the entire output if necessary, but it looks normal and is very verbose, so I didn't want to post it all to the list):
+
+Starting to write CD/DVD/BD at speed 4 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+cdrecord/cdrecord: Input/Output error. reserve_track_rzone: scsi sendcmd: no err
+or
+CDB:  53 00 00 00 00 00 00 02 41 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 24 00 00 C0 00 03
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x24 Qual 0x00 (invalid field in cdb) Fru 0x0
+Sense flags: Blk 0 (not valid) error refers to command part, bit ptr 0 (not vali
+d) field ptr 3
+cmd finished after 0.002s timeout 200s
+cdrecord/cdrecord: Cannot open next track.
+Writing  time:    0.038s
+Average write speed  85.3x.
+Fixating...
+Fixating time:    0.002s
+cdrecord/cdrecord: fifo had 37 puts and 0 gets.
+cdrecord/cdrecord: fifo was 0 times empty and 0 times full, min fill was 100%.
+mkisofs: Broken pipe. cannot fwrite 32768*1
+
+I've tried this on two different drives with both DVD-R and DVD-RW discs. Any ideas?
+
+Thanks,
+
+P
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20090218/119167c7/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20090218/119167c7/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000343.html">[Cdrecord-support] Determining type of disc
+</A></li>
+	<LI>Next message: <A HREF="000345.html">[Cdrecord-support] Unreadable discs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#344">[ date ]</a>
+              <a href="thread.html#344">[ thread ]</a>
+              <a href="subject.html#344">[ subject ]</a>
+              <a href="author.html#344">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

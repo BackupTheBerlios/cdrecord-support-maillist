@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Feature Request: manual control over ACL usage @	compile time.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%20usage%20%40%0A%09compile%20time.&In-Reply-To=%3C492C4551.5090403%40parallaxshift.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000306.html">
+   <LINK REL="Next"  HREF="000308.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Feature Request: manual control over ACL usage @	compile time.</H1>
+    <B>Philippe Chaintreuil</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Feature%20Request%3A%20manual%20control%20over%20ACL%20usage%20%40%0A%09compile%20time.&In-Reply-To=%3C492C4551.5090403%40parallaxshift.com%3E"
+       TITLE="[Cdrecord-support] Feature Request: manual control over ACL usage @	compile time.">cdrtools_peep at parallaxshift.com
+       </A><BR>
+    <I>Tue Nov 25 19:34:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000306.html">[Cdrecord-support] error writing to DVD
+</A></li>
+        <LI>Next message: <A HREF="000308.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#307">[ date ]</a>
+              <a href="thread.html#307">[ thread ]</a>
+              <a href="subject.html#307">[ subject ]</a>
+              <a href="author.html#307">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>	Gentoo's cdrtools package has a &quot;theological&quot; issue with the
+auto-detection of ACL.  The Gentoo Devs would like to open a bug asking
+for manual control of if ACL should be used by cdrtools at compile time.
+
+	The original issue was from someone who had ACL installed, installed
+cdrtools, then uninstalled ACL.  Because they were unaware of the
+dependency, cdrtools stopped working.
+	Gentoo handles these optional dependencies explicitly via &quot;use-flags&quot;
+(of which &quot;acl&quot; is one).  These usually map to --enable-acl or
+--disable-acl configure options.
+	cdrtools's automatic detection confuses this system.  Normally if the
+&quot;acl&quot; use-flag was on, the package system would know that cdrtools had
+ACL as a dependency.  If it was off it does not know if the dependency.
+ They do not want to mimic/parallel cdrtools auto-detection of ACL.  The
+also are afraid of modifying cdrtools's makefile/configure system for
+fear of loosing the ability to report bugs because of said modifications.
+	So it appears they want the ability to manual control if cdrtools uses
+ACL or not at compile time.
+
+
+	The Gentoo bug (and all the lively discussions behind this request,
+including dissenting opinions) can be found at:
+
+	<A HREF="https://bugs.gentoo.org/show_bug.cgi?id=198779">https://bugs.gentoo.org/show_bug.cgi?id=198779</A>
+
+
+	
+	-- Philippe Chaintreuil
+	   (Gentoo user)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000306.html">[Cdrecord-support] error writing to DVD
+</A></li>
+	<LI>Next message: <A HREF="000308.html">[Cdrecord-support] Feature Request: manual control over ACL	usage @ compile time.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#307">[ date ]</a>
+              <a href="thread.html#307">[ thread ]</a>
+              <a href="subject.html#307">[ subject ]</a>
+              <a href="author.html#307">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

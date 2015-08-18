@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E3D723A.8090901%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000822.html">
+   <LINK REL="Next"  HREF="000824.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E3D723A.8090901%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Sat Aug  6 18:56:26 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000822.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000824.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#823">[ date ]</a>
+              <a href="thread.html#823">[ thread ]</a>
+              <a href="subject.html#823">[ subject ]</a>
+              <a href="author.html#823">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>See comments and questions below.
+
+Best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Thanks, J&#246;rg, for providing a new package. I downloaded and tested
+</I>&gt;&gt;<i> schily-dist-pre2.tar.bz2.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> These steps are necessary to successfully build a bootstrap smake:
+</I>&gt;&gt;<i> - add the &quot;test -h ..&quot; line to psmake/MAKE-sh.
+</I>&gt;<i>
+</I>&gt;<i> As mentioned, there are more scripts that create symlinks and there
+</I>&gt;<i> was a need to implement a more general method that also works if we compile
+</I>&gt;<i> with MSAC cl.exe from Cygwin
+</I>Yes, it should be.
+
+&gt;&gt;<i> - add the line
+</I>&gt;&gt;<i>     $cp ${incsrc}/include/schily/io.h include/schily/io.h
+</I>&gt;&gt;<i>     to psmake/cpfiles
+</I>&gt;<i>
+</I>&gt;<i> thank you for this hint.
+</I>:<i>-)
+</I>
+&gt;&gt;<i> Furthermore I replace smake/make.c with the version I was successful
+</I>&gt;&gt;<i> with ins schily-2011-07-26.
+</I>&gt;<i>
+</I>&gt;<i> As there is uname(), smake now looks much nicer - I am still not sure on
+</I>&gt;<i> whether a &quot;native&quot; smake binary makes sense at all as there is no:
+</I>&gt;<i>
+</I>&gt;<i>          -       sed
+</I>&gt;<i>          -       rm
+</I>&gt;<i>          -       egrep
+</I>&gt;<i>          -       grep
+</I>&gt;<i>          -       tr
+</I>&gt;<i>          -       uname
+</I>&gt;<i>          -       chmod
+</I>&gt;<i>          -       expr
+</I>&gt;<i>          -       false
+</I>&gt;<i>          -       cat
+</I>&gt;<i>          -       echo
+</I>&gt;<i>          -       cp
+</I>&gt;<i>          -       cmp
+</I>&gt;<i>          -       mv
+</I>&gt;<i>          -       ls
+</I>&gt;<i>          -       [
+</I>&gt;<i>          -       test
+</I>I have to say the results with smake or the make which is part of MSYS
+(I think you call it gmake) are quite the same. The messages are
+different but the reasons for problems are the same. As you say most
+problems are caused by missing library calls not by the make process.
+
+&gt;&gt;<i> When I start 'make' it builds the bootstrap smake successfully but
+</I>&gt;&gt;<i> when running the bootstrap smake to build the whole package I had to
+</I>&gt;&gt;<i> change file libschily/searchinpath.c: in line 206 remove the condition
+</I>&gt;&gt;<i> (!plain_file || S_ISREG(sb.st_mode)). Otherwise the shell (sh.exe)
+</I>&gt;&gt;<i> is not found in the system search path and the default (/bin/sh) is
+</I>&gt;&gt;<i> used. I am not sure what the meaning of the plain_file flag is and
+</I>&gt;&gt;<i> why the S_ISREG check is not true (sh.exe should be a regular file,
+</I>&gt;&gt;<i> shouldn't it?). Maybe the MinGW stat() function is deficient. This
+</I>&gt;&gt;<i> change in searchinpath.c is in addition to schily-2011-07-26 (replace
+</I>&gt;&gt;<i> 'xn' with 'NULL' in line 148).
+</I>&gt;<i>
+</I>&gt;<i> Your change is not correct - just because it seems to do what you expect in
+</I>&gt;<i> your case does not help in all other cases.
+</I>I am aware of that. But in order to be to test I had to have a working
+system. As I wrote in a previous mail I do not completely understand
+what is happening in searchinpath.c. For the functionality which is
+obvious to me it could be much simpler. So I believe there must be
+something aother, which I am not thinking of, etc.
+
+&gt;&gt;<i> following modules still fail to build:
+</I>&gt;&gt;<i> - libshedit
+</I>&gt;&gt;<i> - bsh
+</I>&gt;&gt;<i> - ved
+</I>&gt;&gt;<i> - calltree
+</I>&gt;&gt;<i> - copy
+</I>&gt;&gt;<i> - label
+</I>&gt;<i>
+</I>&gt;<i> Only 24 programs do not yet compile/link.
+</I>&gt;<i>
+</I>&gt;<i> This is mostly a result from missing fork() or from the fact that there is
+</I>&gt;<i> no standard terminal mode handling.
+</I>&gt;<i>
+</I>&gt;<i> Getting an executable however does not mean that this executable works as
+</I>&gt;<i> expected. Note that the OS behaves badly in many cases (violates POSIX on
+</I>&gt;<i> nearly any place) and thus many of the commands still may not make something
+</I>&gt;<i> useful.
+</I>Yes, this is the next step then. I discovered that cdda2wav crashes
+unless I disable the CD text functionality.
+
+&gt;<i> I need help from people who like to test and who are willing to debug in case
+</I>&gt;<i> that a program does not work.
+</I>I am ready to do that. Yesterday I downloaded and installed the MSVC
+2008 express. How do you do that that you compile with the MS compiler
+under cygwin? How to tell the build system which compiler to use?
+
+
+&gt;<i> I also need help from people wo are willing to find a solution for:
+</I>&gt;<i>
+</I>&gt;<i> 	-	Terminal mode handling
+</I>&gt;<i>
+</I>&gt;<i> 	-	fork().... Is there a way to implement a cheap vfork() like
+</I>&gt;<i> 		on VMS? This could be done via CreateThread if the following
+</I>&gt;<i> 		exec() call does not overwrite the whole process but just the
+</I>&gt;<i> 		current thread.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000822.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000824.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#823">[ date ]</a>
+              <a href="thread.html#823">[ thread ]</a>
+              <a href="subject.html#823">[ subject ]</a>
+              <a href="author.html#823">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

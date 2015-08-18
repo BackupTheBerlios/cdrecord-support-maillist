@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] 1:1 audio cd copy, clone mode problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C1287092527.5353.13.camel%40deepthought%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000703.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] 1:1 audio cd copy, clone mode problem</H1>
+    <B>Tobias Deiminger</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%201%3A1%20audio%20cd%20copy%2C%20clone%20mode%20problem&In-Reply-To=%3C1287092527.5353.13.camel%40deepthought%3E"
+       TITLE="[Cdrecord-support] 1:1 audio cd copy, clone mode problem">tobias.deiminger at t-online.de
+       </A><BR>
+    <I>Thu Oct 14 23:42:07 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000703.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi!
+
+While trying to back up my music CD collection to hard disk using
+cdrtools, i encountered several questions and problems which I think is
+worth asking here, as I couldn't find answers on the net despite
+extensive search.
+
+I'd like to create as close as possible 1:1 backups of my audio CDs,
+meaning:
+1) Backup in a lossless audio format, .wav or whatever
+2) Preserve all meta data of the original CD
+3) No gaps in original shall result in no gaps in backup
+4) If the original CD was some CD Extra, backup both audio and data
+5) Error correction if possible (but of less importance for me, as most
+originals are in quite good condition)
+would be nice: 6) do all this stuff as automated as possible, maybe
+shell script
+
+I saw that k3b has &quot;Clone Copy&quot; mode, which sounded just like what I
+want and it uses readcd -clone for this (well, it uses the forked tools,
+but I now use cdrtools 3.00). So, at command line I started with:
+readcd dev=5,0,0 -clone f=readcd.img
+cdrecord dev=5,0,0 -raw96r -clone -v readcd.img
+
+Read and write process went fine, but the resulting CD sadly was not
+playable in all CD Players (e.g. my old Technics standalone player liked
+it, while my car radio reported CD ERROR for the same CD). I tried
+several combinations of source CDs, blank CD-Rs, and two CD writers
+(TSSTcorp CDDVDW SH-S223C and HL-DT-ST DVDRAM GSA-4081B). But even after
+about 20 trials I could not manage to create only one CD that plays in
+all players here.
+
+I found this
+<A HREF="http://www.mail-archive.com/gentoo-user@lists.gentoo.org/msg86945.html">http://www.mail-archive.com/gentoo-user@lists.gentoo.org/msg86945.html</A>
+discussion, which seems to be related to my problem. One statement there
+is:
+&quot;The clone copy mode of cdrecord is definitely worse for audio CDs than
+using cdda2wav -vall cddb=0 -paranoia and writing using cdrecord.&quot;
+
+Could you please clarify this? Is it true, and if so, why is clone mode
+bad for audio CDs?
+
+Is my issue described above known or confirmed to be a general problem?
+Is there any solution or workaround?
+
+I would be happy if I can realize my intention somehow else. For example
+with cdda2wav -vall cddb=0 -paranoia as suggested in above discussion.
+But I'm not sure whether all points of my &quot;what I want to do&quot; list can
+be done this way. Could you explain if and how 3) and 4) are possible?
+
+Cheers,
+Tobias
+
+Btw: Ubuntu 10.04, Linux 2.6.31-11-rt, x86-64 here
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000703.html">[Cdrecord-support] 1:1 audio cd copy, clone mode problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#702">[ date ]</a>
+              <a href="thread.html#702">[ thread ]</a>
+              <a href="subject.html#702">[ subject ]</a>
+              <a href="author.html#702">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

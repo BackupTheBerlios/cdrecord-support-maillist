@@ -1,0 +1,535 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20to%20SATA%20Asus%20DRW-2014L1T%0A%20optical%20drive&In-Reply-To=%3CMTAwMDAyMS5zZXJ2YW50cw.1208572480%40quikprotect%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000201.html">
+   <LINK REL="Next"  HREF="000204.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive</H1>
+    <B>Bruce Hill, Jr.</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20to%20SATA%20Asus%20DRW-2014L1T%0A%20optical%20drive&In-Reply-To=%3CMTAwMDAyMS5zZXJ2YW50cw.1208572480%40quikprotect%3E"
+       TITLE="[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive">servants at cotse.net
+       </A><BR>
+    <I>Sat Apr 19 04:33:34 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000201.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+        <LI>Next message: <A HREF="000204.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg Schilling wrote:
+&gt;<i> PLEASE DO NOT use administrative mailing list addresses....
+</I>&gt;<i> I fixed the berlios addres.....
+</I>
+Sorry for the mistake.
+
+&gt;<i> Did you ever try to write in RAW mode as cdrecord suggests?
+</I>
+Yes. Recording in RAW mode was included in the previous message.
+
+&gt;<i> Your problem is not a problem caused by media 
+</I>
+But later you say:
+&quot;BTW: you are using low quality media, did you try better media?&quot;
+and still later you say:
+&quot;This is obviously a problem with the medium...&quot;
+
+Why do you say &quot;you are using low quality media&quot;?
+
+The CD-RW media is Memorex which I bought in the States. They have
+all been good.
+
+I used 2 different types of CD-R media. One is labeled TDK and the
+other Verbatim. The TDK (used in the first message to this list)
+burned 48 good out of a spindle of 50 (to several different PATA DVD
+burners) in Linux, Winodws, and with my DVD duplicator. The only
+coasters were made using cdrecord to write to the SATA burner.
+
+The Verbatim are giving the same results.
+
+Please educate me as to how you know they are low quality, and what 
+is not 'low quality', and how would one determine the quality 
+before/after buying the media?
+
+NB: We live in the People's Republic of China. They are experts at 
+copying everything, so labeling is not necessarily true. We purchase 
+from people we've used for over 5 years, which is the best 
+reliability standard we know atm.
+
+The only bad burns have come from the SATA Asus DRW-2014L1T using 
+cdrecord in Linux, to every different type of media used.
+
+I have included burn results later in this message to the SATA DVD
+drive and the PATA DVD drive using the _exact_same_disc_ so that you
+can see the problem is _not_ bad media.
+
+&gt;<i> Later, you write that you have SATA, what is correct?
+</I>
+First, check the title of the message ^^^.
+
+Clearly the &quot;cdrecord -scanbus&quot; output from Linux in each message
+would indicate that this machine has one SATA DVD burner, and one
+PATA DVD burner. Only the Solaris LiveCD failed to detect the SATA
+drives.
+
+&gt;<i> Does cdrecord write DVDs with your drive?
+</I>&gt;<i> Why did you use growisofs?
+</I>
+Because I am in the habit of writing DVDs with growisofs for 5
+years. Is there something wrong with using growisofs?
+
+&gt;<i> If you like to remove the medium, you cannot boot the &quot;full&quot; version,
+</I>&gt;<i> you need to boot the version that needs most RAM space as this is completely 
+</I>&gt;<i> inside memory.
+</I>
+It is not necessary to use the RAM option and remove the medium. The 
+computer was booted with the DVD in the PATA DVD drive. The SATA DVD 
+drive is the one we are testing, which was not detected by the 
+Solaris LiveCD.
+
+I first used the &quot;full&quot; version. I also tried the &quot;amd64&quot; version.
+None of them detected my SATA DVD burner. SchilliX-0.6.6 also does 
+not contain the latest version of cdrecord.
+
+&gt;<i> Well, some hardware does not correctly implement the SATA layer (I believe it 
+</I>&gt;<i> is called ehci)
+</I>
+The Enhanced Host Controller Interface (EHCI) is standard for USB
+2.0 &quot;high speed&quot; (480 Mbit/sec, 60 Mbyte/sec) host controller
+hardware. It has nothing to do with Serial-ATA (SATA).
+
+&gt;<i> and for this reason, Solaris does not yet support ATAPI over
+</I>&gt;<i> SATA for those chips. You need to tell the BIOS to emulate PATA for the SATA
+</I>&gt;<i> interfaces. The fact that Solaris does not yet support ATAPI over your SATA
+</I>&gt;<i> interface could be a hint for a Linux kernel bug....
+</I>
+There is no setting in this BIOS to &quot;emulate PATA for the SATA
+interface.&quot; Check it out:
+<A HREF="http://dlsvr04.asus.com/pub/ASUS/mb/sock754/k8v-x/e1879_k8v-x.pdf">http://dlsvr04.asus.com/pub/ASUS/mb/sock754/k8v-x/e1879_k8v-x.pdf</A>
+
+&gt;<i> Then it did return to a prompt but you did not see it....
+</I>
+No, as I wrote, it returned to a prompt _after_ I pressed &quot;Enter&quot;.
+
+&gt;<i> If your SATA interface chip supports ATAPI in Solaris _and_ if your SATA 
+</I>&gt;<i> hard disk is supporting tagged command queing, it will be shown up in Solaris.
+</I>&gt;<i> It may be that Linux implements SCSI emulation for the HD drive....
+</I>
+This output shows which driver the Linux kernel uses for that 
+controller:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# lspci -vv
+&lt;snip&gt;
+00:0f.0 RAID bus controller: VIA Technologies, Inc. VIA VT6420 SATA 
+RAID Controller (rev 80)
+         Subsystem: ASUSTeK Computer Inc. A7V600/K8V 
+Deluxe/K8V-X/A8V Deluxe motherboard
+         Control: I/O+ Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- 
+ParErr- Stepping- SERR- FastB2B- DisINTx-
+         Status: Cap+ 66MHz- UDF- FastB2B+ ParErr- DEVSEL=medium 
+ &gt;TAbort- &lt;TAbort- &lt;MAbort- &gt;SERR- &lt;PERR- INTx-
+         Latency: 64
+         Interrupt: pin B routed to IRQ 17
+         Region 0: I/O ports at e400 [size=8]
+         Region 1: I/O ports at e000 [size=4]
+         Region 2: I/O ports at d800 [size=8]
+         Region 3: I/O ports at d400 [size=4]
+         Region 4: I/O ports at d000 [size=16]
+         Region 5: I/O ports at c800 [size=256]
+         Capabilities: [c0] Power Management version 2
+                 Flags: PMEClk- DSI- D1- D2- AuxCurrent=0mA 
+PME(D0-,D1-,D2-,D3hot-,D3cold-)
+                 Status: D0 PME-Enable- DSel=0 DScale=0 PME-
+         Kernel driver in use: sata_via
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# dmesg | grep -i scsi
+SCSI subsystem initialized
+scsi0 : sata_via
+scsi1 : sata_via
+scsi 0:0:0:0: CD-ROM            ASUS     DRW-2014L1T      1.02 PQ: 0
+ANSI: 5
+sr0: scsi3-mmc drive: 48x/48x writer dvd-ram cd/rw xa/form2 cdda tray
+sr 0:0:0:0: Attached scsi CD-ROM sr0
+scsi 1:0:0:0: Direct-Access     ATA      WDC WD740GD-00FL 33.0 PQ: 0
+ANSI: 5
+sd 1:0:0:0: [sda] Attached SCSI disk
+sr 0:0:0:0: Attached scsi generic sg0 type 5
+sd 1:0:0:0: Attached scsi generic sg1 type 0
+
+^^^ what do those last two lines indicate? ^^^
+
+Is the information below pertinent?
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">mingdao at silas</A>:~$ less /usr/src/linux-2.6.24.4/drivers/ata/sata_via.c
+&lt;snip&gt;
+MODULE_AUTHOR(&quot;Jeff Garzik&quot;);
+MODULE_DESCRIPTION(&quot;SCSI low-level driver for VIA SATA controllers&quot;);
+MODULE_LICENSE(&quot;GPL&quot;);
+MODULE_DEVICE_TABLE(pci, svia_pci_tbl);
+MODULE_VERSION(DRV_VERSION);
+
+&gt;<i> As I told above, Solaris does not emulate SCSI, you need hard disks that
+</I>&gt;<i> speak SCSI and you need a SATA interface that has a driver with native ATAPI 
+</I>&gt;<i> support. If Solaris does not support ATAPI in native mode, this is a hint that 
+</I>&gt;<i> the Linux driver may have problems with your HW. I have a PATA computer at home 
+</I>&gt;<i> that gives similar problems (Illegal field in CDB although the SCSI command is 
+</I>&gt;<i> 100% correct) with Linux but everything works fine if the same hardware and same
+</I>&gt;<i> cdrecord version is running on Solaris or SCO unix.
+</I>
+The Linux kernel has no problem with my SATA hard disk, or with my 
+PATA DVD burner, or detecting and assigning the sata_via (libata) 
+driver to the SATA DVD burner.
+
+Could you please point me to the location to produce some evidence 
+that this is a problem with the Linux kernel?
+
+If you can do this, I can send a bug report to Jeff Garzik. But as 
+it stands, the Linux kernel detects the SATA DVD burner, and 
+cdrecord will not write to it without producing errors. Which is why 
+I first wrote the cdrecord-support list.
+
+Please, I'm a newb looking for help. It does not matter to me where 
+the problem lies, only that it can be fixed.
+
+&gt;<i> The Linux kernel most likely bastardizes the send cue sheet command before 
+</I>&gt;<i> forwarding it to the drive. This is why I like to see the same test on Solaris.
+</I>&gt;<i> Please switch your BIOS into PATA emulation mode and again boot Solaris in ram 
+</I>&gt;<i> only mode.
+</I>
+What do you mean by &quot;the Linux kernel most likely bastardizes the 
+send cue sheet command before forwarding it to the drive&quot;? This is 
+beyond my knowledge level, so I don't understand it.
+
+Solaris cannot detect the SATA DVD burner, so it is impossible to 
+test it. And there is no &quot;PATA emulation mode&quot; in my BIOS.
+
+&gt;<i> Does it work using cdrecord on Windows? This is another hint that your problem 
+</I>&gt;<i> is a bad drive rin the Linux kernel.
+</I>
+After two days of trying to download and install Cygwin, I gave up. 
+I used many different mirrors. Every time it would download for a 
+while, then stop and I'd have to start over. Maybe if I knew which 
+software where required to download for Cygwin to use cdrecord. 
+Maybe it would be less and I could get it all before it failed. 
+However, I have found no such information.
+
+The SATA DVD burner works in Windows burning with Nero.
+
+&gt;<i> If this is a coaster, then your drive is broken or Linux again did 
+</I>&gt;<i> do bad things while cdrecord was writing.....
+</I>
+The drive is not broken. It works fine in Windows using Nero. It
+_reads_ CD/VCD/DVD pre-recorded discs fine in Linux. It just doesn't
+write using cdrecord without errors.
+
+So how come Linux does not do bad things while writing to the PATA
+DVD burner?
+
+You have given me no proof that this problem is related to the Linux
+kernel. If you can produce such proof, I will send that in an email
+to Jeff Garzik, the maintainer of libata. If you read my previous
+email, you will see that sata_via (from libata) is the driver the
+Linux kernel is using for the controller which the SATA DVD burner,
+and SATA hard drive, are attached to. There are _no_errors_ produced
+for the SATA hard disk.
+
+&gt;<i> BTW: you are using low quality media, did you try better media?
+</I>
+&gt;<i> This is obviously a problem with the medium...
+</I>
+Okay, here's evidence that &quot;the medium&quot; is not at fault:
+
+First, burning to a Memorex CD-RW in the SATA Asus DRW-2014L1T:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# cdrecord -v -data driveropts=burnfree
+-raw96r speed=10 tsize=358918s dev=0,0,0
+/tmp/slackware-current-install1.iso
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '0,0,0'
+scsibus: 0 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'ASUS    '
+Identifikation : 'DRW-2014L1T     '
+Revision       : '1.02'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-RW
+Profile: DVD-R/DL sequential recording
+Profile: DVD-R/DL layer jump recording
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW (current)
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R
+Drive buf size : 1484032 = 1449 KB
+FIFO size      : 4194304 = 4096 KB
+Encoding speed : 619x (46396 sectors/s) for libedc from Heiko Ei&#65533;feldt
+Track 01: data   701 MB
+Total size:      805 MB (79:45.57) = 358918 sectors
+Lout start:      805 MB (79:47/43) = 358918 sectors
+Current Secsize: 2048
+ATIP info from disk:
+   Indicated writing power: 3
+   Reference speed: 6
+Disk Is not unrestricted
+Disk Is erasable
+   Disk sub type: High speed Rewritable (CAV) media (1)
+   ATIP start of lead in:  -11745 (97:25/30)
+   ATIP start of lead out: 359848 (79:59/73)
+   1T speed low:  4 1T speed high: 10
+   2T speed low:  4 2T speed high:  0 (reserved val  6)
+   power mult factor: 1 5
+   recommended erase/write power: 5
+   A1 values: 24 1A D8
+   A2 values: 26 B2 4A
+Disk type:    Phase change
+Manuf. index: 40
+Manufacturer: INFODISC Technology Co., Ltd.
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+       359848             2048         0x00  Unformated or Blank Media
+            0         13222734         0x10  Reserved (0)
+            0         13222734         0x11  Reserved (0)
+            0         13222734         0x12  Reserved (0)
+Blocks total: 359848 Blocks current: 359848 Blocks remaining: 930
+Starting to write CD/DVD/BD at speed 10 in real RAW/RAW96R mode for
+single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is ON.
+Performing OPC...
+cdrecord: WARNING: Drive returns wrong startsec (0) using -11745
+from ATIP
+Writing lead-in at sector -11745
+Lead-in write time:   18.467s
+Writing pregap for track 1 at -150
+Starting new track at sector: 0
+Track 01:  837 of  837 MB written (fifo 100%) [buf 100%]  10.1x.
+Track 01: Total bytes read/written: 878631264/878631264 (358918
+sectors).
+Writing  time:  496.826s
+Average write speed  10.0x.
+Min drive buffer fill was 99%
+Writing Leadout...
+Fixating...
+Fixating time:   22.360s
+BURN-Free was never needed.
+cdrecord: fifo had 13805 puts and 13805 gets.
+cdrecord: fifo was 0 times empty and 13740 times full, min fill was 98%.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# dd if=/dev/sr0 bs=2048 count=358918 | md5sum
+dd: reading `/dev/sr0': Input/output error
+0+0 records in
+0+0 records out
+0 bytes (0 B) copied, 18.7121 s, 0.0 kB/s
+d41d8cd98f00b204e9800998ecf8427e  -
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# cat /tmp/slackware-current-install1.iso.md5
+119d44f1ef81f651071af264d76d8ecd  slackware-current-install1.iso
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# eject /dev/sr0
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/home/mingdao# readcd dev=0,0,0 f=/dev/null
+Read  speed:  7056 kB/s (CD  40x, DVD  5x, BD  1x).
+Write speed:  1764 kB/s (CD  10x, DVD  1x, BD  0x).
+Capacity: 358918 Blocks = 717836 kBytes = 701 MBytes = 735 prMB
+Sectorsize: 2048 Bytes
+Copy from SCSI (0,0,0) disk to file '/dev/null'
+end:    358918
+readcd: Input/output error. read_g1: scsi sendcmd: no error
+CDB:  28 00 00 00 00 00 00 00 40 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 04 00 00 00 00 0A 00 00 00 00 3E 02 00 00
+Sense Key: 0x4 Hardware Error, Segment 0
+Sense Code: 0x3E Qual 0x02 (timeout on logical unit) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 6.659s timeout 40s
+readcd: Input/output error. Cannot read source disk
+readcd: Retrying from sector 0.
+.~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~+~~~-~~~
+readcd: Input/output error. Error on sector 0 not corrected. Total
+of 1 errors.
+
+Time total: 1996.861sec
+Read 0.00 kB at 0.0 kB/sec.
+Max corected retry count was 0 (limited to 128).
+The following 1 sector(s) could not be read correctly:
+0
+
+Second, burning to the same disc in the PATA TSSTcorpCD/DVDW TS-H552U:
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/tmp# cdrecord -v -data driveropts=burnfree -raw96r
+speed=10 tsize=358918s dev=1000,0,0 /tmp/slackware-current-install1.iso
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a38 (i686-pc-linux-gnu) Copyright
+(C) 1995-2008 J&#65533;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1000,0,0'
+scsibus: 1000 target: 0 lun: 0
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.9'.
+Driveropts: 'burnfree'
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 0
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CD/DVDW TS-H552U'
+Revision       : 'US06'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: CD-RW
+Profile: DVD+R/DL
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW (current)
+Profile: CD-R
+Profile: CD-ROM
+Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+Driver flags   : MMC-3 SWABAUDIO BURNFREE
+Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P
+RAW/R96R
+Drive buf size : 1968384 = 1922 KB
+FIFO size      : 4194304 = 4096 KB
+Encoding speed : 619x (46357 sectors/s) for libedc from Heiko Ei&#65533;feldt
+Track 01: data   701 MB
+Total size:      805 MB (79:45.57) = 358918 sectors
+Lout start:      805 MB (79:47/43) = 358918 sectors
+Current Secsize: 2048
+ATIP info from disk:
+   Indicated writing power: 3
+   Reference speed: 6
+Disk Is not unrestricted
+Disk Is erasable
+   Disk sub type: High speed Rewritable (CAV) media (1)
+   ATIP start of lead in:  -11745 (97:25/30)
+   ATIP start of lead out: 359848 (79:59/73)
+   1T speed low:  4 1T speed high: 10
+   2T speed low:  4 2T speed high:  0 (reserved val  6)
+   power mult factor: 1 5
+   recommended erase/write power: 5
+   A1 values: 24 1A D8
+   A2 values: 26 B2 4A
+Disk type:    Phase change
+Manuf. index: 40
+Manufacturer: INFODISC Technology Co., Ltd.
+
+     Capacity  Blklen/Sparesz.  Format-type  Type
+       359848             2048         0x00  Unformated or Blank Media
+            0               32         0x10  Reserved (0)
+            0               32         0x11  Reserved (0)
+            0               32         0x12  Reserved (0)
+Blocks total: 359848 Blocks current: 359848 Blocks remaining: 930
+Starting to write CD/DVD/BD at speed 10 in real RAW/RAW96R mode for
+single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+BURN-Free is OFF.
+Turning BURN-Free on
+Performing OPC...
+cdrecord: WARNING: Drive returns wrong startsec (0) using -11745
+from ATIP
+Writing lead-in at sector -11745
+Lead-in write time:   19.560s
+Writing pregap for track 1 at -150
+Starting new track at sector: 0
+Track 01:  837 of  837 MB written (fifo 100%) [buf 100%]  10.1x.
+Track 01: Total bytes read/written: 878631264/878631264 (358918
+sectors).
+Writing  time:  498.271s
+Average write speed  10.0x.
+Min drive buffer fill was 99%
+Writing Leadout...
+Fixating...
+Fixating time:   12.904s
+BURN-Free was never needed.
+cdrecord: fifo had 13805 puts and 13805 gets.
+cdrecord: fifo was 0 times empty and 13740 times full, min fill was 98%.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/tmp# dd if=/dev/hda bs=2048 count=358918 | md5sum
+119d44f1ef81f651071af264d76d8ecd  -
+358918+0 records in
+358918+0 records out
+735064064 bytes (735 MB) copied, 208.561 s, 3.5 MB/s
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at silas</A>:/tmp# cat slackware-current-install1.iso.md5
+119d44f1ef81f651071af264d76d8ecd  slackware-current-install1.iso
+
+This test should prove that the media is _NOT_ at fault.
+
+&gt;<i> J&#65533;rg
+</I>
+Thank you,
+Bruce
+-- 
+May the Lamb that was slain receive the reward of His suffering!
+
+Bruce Hill, Jr. &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">servants at cotse.net</A>&gt;
+Don't top post: <A HREF="http://www.catb.org/~esr/jargon/html/T/top-post.html">http://www.catb.org/~esr/jargon/html/T/top-post.html</A>
+Plain text mails only, please:   <A HREF="http://www.expita.com/nomime.html">http://www.expita.com/nomime.html</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000201.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+	<LI>Next message: <A HREF="000204.html">[Cdrecord-support] Unable to burn to SATA Asus DRW-2014L1T optical drive
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#202">[ date ]</a>
+              <a href="thread.html#202">[ thread ]</a>
+              <a href="subject.html#202">[ subject ]</a>
+              <a href="author.html#202">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

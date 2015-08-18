@@ -1,0 +1,219 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to	force a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%09force%20a%20burn&In-Reply-To=%3C20100215174256.GA7869%40cs.ualberta.ca%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000548.html">
+   <LINK REL="Next"  HREF="000556.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to	force a burn</H1>
+    <B>G. Atwood</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01a72%20minfo%20fails%20-%20have%20to%0A%09force%20a%20burn&In-Reply-To=%3C20100215174256.GA7869%40cs.ualberta.ca%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to	force a burn">gordon at cs.ualberta.ca
+       </A><BR>
+    <I>Mon Feb 15 18:42:56 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000548.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+        <LI>Next message: <A HREF="000556.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#554">[ date ]</a>
+              <a href="thread.html#554">[ thread ]</a>
+              <a href="subject.html#554">[ subject ]</a>
+              <a href="author.html#554">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Feb 14, 2010 at 09:15:28PM +0100, Joerg Schilling wrote:
+&gt;<i> &quot;G. Atwood&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">gordon at cs.ualberta.ca</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; So I moved on to the actual burn:
+</I>&gt;<i> &gt;   # /opt/schily/bin/cdrecord -v  -dev=2,0,0 data.raw
+</I>&gt;<i> &gt;   ...
+</I>&gt;<i> &gt;   /opt/schily/bin/cdrecord: Disk capacity is unknown.
+</I>&gt;<i> &gt;   /opt/schily/bin/cdrecord: Data will not fit on any CD.
+</I>&gt;<i> &gt;   /opt/schily/bin/cdrecord: DVD/BD capacity is unknown.
+</I>&gt;<i> &gt;   /opt/schily/bin/cdrecord: Cannot write more than remaining DVD/BD capacity.
+</I>&gt;<i> 
+</I>&gt;<i> Hi, I am just under way to write a workaround.
+</I>&gt;<i> Could you please send the output of cdrecord -v -minfo for your failing BD 
+</I>&gt;<i> media?
+</I>
+Here you go.  Also thru in a verbose atip as well:
+G.H.A.
+
+Script started on Mon 15 Feb 2010 10:35:33 AM MST
+# /opt/schily/bin/cdrecord -v -minfo -dev=2,0,0
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a75 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '2,0,0'
+scsibus: 2 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   : 
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'BD-RE  BH10LS30 '
+Revision       : '1.00'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-R sequential recording
+Profile: BD-ROM 
+Profile: BD-R sequential recording (current)
+Profile: BD-R random recording 
+Profile: BD-RE 
+Profile: DVD-RAM 
+Profile: DVD-R sequential recording 
+Profile: DVD-R/DL sequential recording 
+Profile: DVD-R/DL layer jump recording 
+Profile: DVD-RW sequential recording 
+Profile: DVD-RW restricted overwrite 
+Profile: DVD+RW 
+Profile: DVD+R 
+Profile: DVD+R/DL 
+Profile: DVD-ROM 
+Profile: CD-R 
+Profile: CD-RW 
+Profile: CD-ROM 
+Profile: Removable Disk 
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE 
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 2031616 = 1984 KB
+Drive pbuf size: 3850240 = 3760 KB
+Drive DMA Speed: 18223 kB/s 103x CD 13x DVD 4x BD
+Current Secsize: 2048
+Disk type:          'BDR' (BD-R)
+Disk class:         01
+Manufacturer:       'VERBAT'
+Media type:         'IMc'
+Disk:               is not in cartridge
+Media cartrige:     write protect is off
+Free Spare Blocks:  0
+Alloc Spare Blocks: 0
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+    12219392           151552         0x00  Unformated or Blank Media
+    11826176            12288         0x00  Reserved (0)
+    11826176            12288         0x32  Reserved (0)
+     7369728           151552         0x32  Reserved (0)
+    12088320             4096         0x32  Reserved (0)
+Mounted media class:      BD
+Mounted media type:       BD-R sequential recording
+Disk Is not erasable
+data type:                standard
+disk status:              empty
+session status:           empty
+BG format status:         none
+first track:              1
+number of sessions:       1
+first track in last sess: 1
+last track in last sess:  1
+Disk Is unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track  Sess Type   Start Addr End Addr   Size
+==============================================
+    1     1 Data   0          -1         0         -1
+
+Last session start address:         0
+Last session leadout start address: 0
+
+
+----
+# /opt/schily/bin/cdrecord -v -atip -dev=2,0,0
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a75 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2010 J&#246;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '2,0,0'
+scsibus: 2 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   : 
+Vendor_info    : 'HL-DT-ST'
+Identifikation : 'BD-RE  BH10LS30 '
+Revision       : '1.00'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: BD-R sequential recording
+Profile: BD-ROM 
+Profile: BD-R sequential recording (current)
+Profile: BD-R random recording 
+Profile: BD-RE 
+Profile: DVD-RAM 
+Profile: DVD-R sequential recording 
+Profile: DVD-R/DL sequential recording 
+Profile: DVD-R/DL layer jump recording 
+Profile: DVD-RW sequential recording 
+Profile: DVD-RW restricted overwrite 
+Profile: DVD+RW 
+Profile: DVD+R 
+Profile: DVD+R/DL 
+Profile: DVD-ROM 
+Profile: CD-R 
+Profile: CD-RW 
+Profile: CD-ROM 
+Profile: Removable Disk 
+Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+Driver flags   : NO-CD BD MMC-3 BURNFREE 
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 2031616 = 1984 KB
+Drive pbuf size: 3850240 = 3760 KB
+Drive DMA Speed: 17626 kB/s 100x CD 12x DVD 3x BD
+Current Secsize: 2048
+Disk type:          'BDR' (BD-R)
+Disk class:         01
+Manufacturer:       'VERBAT'
+Media type:         'IMc'
+Disk:               is not in cartridge
+Media cartrige:     write protect is off
+Free Spare Blocks:  0
+Alloc Spare Blocks: 0
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+    12219392           151552         0x00  Unformated or Blank Media
+    11826176            12288         0x00  Reserved (0)
+    11826176            12288         0x32  Reserved (0)
+     7369728           151552         0x32  Reserved (0)
+    12088320             4096         0x32  Reserved (0)
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000548.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+	<LI>Next message: <A HREF="000556.html">[Cdrecord-support] cdrtools-2.01.01a72 minfo fails - have to force a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#554">[ date ]</a>
+              <a href="thread.html#554">[ thread ]</a>
+              <a href="subject.html#554">[ subject ]</a>
+              <a href="author.html#554">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

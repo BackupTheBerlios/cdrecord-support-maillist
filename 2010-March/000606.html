@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Dvd multi distro
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Dvd%20multi%20distro&In-Reply-To=%3C4b9e02d1.Xn/0fvcvMl%2BCQsus%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000605.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Dvd multi distro</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Dvd%20multi%20distro&In-Reply-To=%3C4b9e02d1.Xn/0fvcvMl%2BCQsus%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Dvd multi distro">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Mar 15 10:50:09 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000605.html">[Cdrecord-support] Dvd multi distro
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;antispammbox-27&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">antispammbox-27 at yahoo.it</A>&gt; wrote:
+
+&gt;<i> Hi all
+</I>&gt;<i>
+</I>&gt;<i> I try to integrate Multi distro Linux and WinXp with bootloader Grub4dos
+</I>&gt;<i> and mkisofs 2.01.01a63 (i686-pc-cygwin)in to Dvd. Creating file size iso
+</I>&gt;<i> of 3,8 max&gt; 4,1gb.The folder is: 1070 The file is:11298
+</I>&gt;<i>
+</I>&gt;<i> The option flag command line of mkisofs is:
+</I>&gt;<i> mkisofs.exe -v -iso-level 3 -D -d -J -R -joliet-long -volid &quot;GRLDR&quot; -A
+</I>&gt;<i> GRLDR/MKISOFS -b grldr -no-emul-boot -boot-load-size
+</I>&gt;<i> 4 -allow-multidot -allow-lowercase -hide boot.catalog.
+</I>&gt;<i>
+</I>&gt;<i> Appears some error or warning:
+</I>&gt;<i>
+</I>&gt;<i> Using SYMANTEC_ANTIVIRUS_CORPO000.PMI;1
+</I>&gt;<i> install/Symantec.com/Packager/Products/Symantec AntiVirus Corporate Edition
+</I>&gt;<i> Server.PMI (Symantec AntiVirus Corporate Edition Client.PMI)
+</I>&gt;<i>
+</I>&gt;<i> Using LINUX-RESTRICTED-MODULES-2000.;1
+</I>&gt;<i> pool/restricted/l/linux-restricted-modules/linux-restricted-modules-2.6.28-11
+</I>&gt;<i> -server_2.6.28-11.15_i386.deb(linux-restricted-modules-2.6.28-11-generic
+</I>&gt;<i> _2.6.28-11.15_i386.deb).
+</I>&gt;<i>
+</I>&gt;<i> in the same folder and this file:
+</I>&gt;<i> D:/myfolder/pool/restricted/l/linux-meta/linux-restricted-modules-generic_2.6.28.11.15_i386.deb
+</I>&gt;<i>
+</I>&gt;<i> is file that has a one character more of :
+</I>&gt;<i> Using LINUX-RESTRICTED-MODULES-2000.;1
+</I>&gt;<i> pool/restricted/l/linux-restricted-modules/linux-restricted-modules-2.6.28-11-
+</I>&gt;<i> server_2.6.28-11.15_i386.deb(linux-restricted-modules-2.6.28-11-generic_
+</I>&gt;<i> 2.6.28-11.15_i386.deb).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> When install Ubuntu appears error that warning of not kernel in APT sources.
+</I>&gt;<i> Install dont continue!
+</I>&gt;<i>
+</I>&gt;<i> Where it could be the error?
+</I>
+I am sorry, I don't understand your problem.
+
+-	mkisofs has no known bugs. 
+
+-	You use a lot of unneeded options
+	e.g.:
+
+	-D
+	-d
+	-allow-multidot
+	-allow-lowercase
+
+-	It may be that there is a bug in Cygwin
+
+-	It may be that there is a bug in Linux
+
+If you have problems, please explain _what_ problems you habe with the
+filessystem. Don't send cryptic messages from some software that I will
+never be able to repeat. Instead send infrmation such as: file xxx seems
+to be missing on the medium.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000605.html">[Cdrecord-support] Dvd multi distro
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] burning iso image with cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20burning%20iso%20image%20with%20cdrecord&In-Reply-To=%3C472B0148.80708%40unlimitedmail.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000136.html">
+   <LINK REL="Next"  HREF="000138.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] burning iso image with cdrecord</H1>
+    <B>JOYDEEP</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20burning%20iso%20image%20with%20cdrecord&In-Reply-To=%3C472B0148.80708%40unlimitedmail.org%3E"
+       TITLE="[Cdrecord-support] burning iso image with cdrecord">j.bakshi at unlimitedmail.org
+       </A><BR>
+    <I>Fri Nov  2 11:51:52 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000136.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+        <LI>Next message: <A HREF="000138.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sebastian Tr&#252;g wrote:
+&gt;<i> On Friday 02 November 2007 05:28:32 JOYDEEP wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Joerg Schilling wrote:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> JOYDEEP &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">j.bakshi at unlimitedmail.org</A>&gt; wrote:
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> Hi all,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> cdrecord can burn the CD iso image.
+</I>&gt;&gt;&gt;&gt;<i> But if there is already a boot able CD-RW and you like to burn another
+</I>&gt;&gt;&gt;&gt;<i> iso image; then cdrecord just write 2nd iso image on it and the resultan
+</I>&gt;&gt;&gt;&gt;<i> CD-RW just boots with the previous image exists before burning it with
+</I>&gt;&gt;&gt;&gt;<i> the 2nd iso image  .
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> K3b has a feature which check the CD before burning with an iso ; if
+</I>&gt;&gt;&gt;&gt;<i> there is any bootable image K3b asked to erase it before burning with
+</I>&gt;&gt;&gt;&gt;<i> the iso. How is it possible to check the same with cdrecord ? Means how
+</I>&gt;&gt;&gt;&gt;<i> to check if the Cd already has a boot image ? or is there any option in
+</I>&gt;&gt;&gt;&gt;<i> cdrecord which over write the existing boot image with the new iso ?
+</I>&gt;&gt;&gt;&gt;<i> kindly enlighten me. Thanks
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> What is your problem?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The way cdrecord behaves is documented in the man page and there is the
+</I>&gt;&gt;&gt;<i> blank=xxxx option.
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> That means I have failed to describe the problem. Yes blank option is
+</I>&gt;&gt;<i> there to erase the CD. But I am trying implement a checking which will
+</I>&gt;&gt;<i> check if the cd under iso burn already have something in it or totally a
+</I>&gt;&gt;<i> blank CD. which K3b does but I don't know how it does it.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> K3b does it using libk3bdevice which implements MMC commands. But I think you 
+</I>&gt;<i> could do it using &quot;cdrecord -minfo&quot;
+</I>&gt;<i>   
+</I>Thanks a lot for the hint &quot; cdtrecord -minfo&quot;
+
+&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000136.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+	<LI>Next message: <A HREF="000138.html">[Cdrecord-support] burning iso image with cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#137">[ date ]</a>
+              <a href="thread.html#137">[ thread ]</a>
+              <a href="subject.html#137">[ subject ]</a>
+              <a href="author.html#137">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

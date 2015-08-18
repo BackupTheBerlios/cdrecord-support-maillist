@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] implementation botch: Unhashed file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20implementation%20botch%3A%20Unhashed%20file&In-Reply-To=%3C27400-84891%40sneakemail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000028.html">
+   <LINK REL="Next"  HREF="000029.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] implementation botch: Unhashed file</H1>
+    <B>Rob</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20implementation%20botch%3A%20Unhashed%20file&In-Reply-To=%3C27400-84891%40sneakemail.com%3E"
+       TITLE="[Cdrecord-support] implementation botch: Unhashed file">42gk0qw02 at sneakemail.com
+       </A><BR>
+    <I>Mon Apr 23 02:19:36 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000028.html">[Cdrecord-support] mkisofs: Implementation botch: Unhashed file
+</A></li>
+        <LI>Next message: <A HREF="000029.html">[Cdrecord-support] implementation botch: Unhashed file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have figured out my own problem - I'll post the answer here to help others in the future:
+
+mkisofs -RR -apple -r -T -N -v -v -V 'm_0_0_f' -l -allow-leading-dots -magic ./macppc-magic -map ./more.mapping -hfs-bless ./macboot -o ../OpenBSD_4.1.iso ./
+
+I needed to get rid of the Joliot information, since I wasn't copying from a Joliot system. Ha!
+
+--------------------------------------
+Protect yourself from spam, 
+use <A HREF="http://sneakemail.com">http://sneakemail.com</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000028.html">[Cdrecord-support] mkisofs: Implementation botch: Unhashed file
+</A></li>
+	<LI>Next message: <A HREF="000029.html">[Cdrecord-support] implementation botch: Unhashed file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

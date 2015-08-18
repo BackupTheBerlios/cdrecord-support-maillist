@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%09-msinfo%20%28Windows%20XP%29&In-Reply-To=%3C8FE93C89D86B486DABD343A967388B04%40indigobox%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000281.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)</H1>
+    <B>Phil_Rhodes@rocketmail.com</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%09-msinfo%20%28Windows%20XP%29&In-Reply-To=%3C8FE93C89D86B486DABD343A967388B04%40indigobox%3E"
+       TITLE="[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)">phil_rhodes at rocketmail.com
+       </A><BR>
+    <I>Wed Oct 22 18:12:14 CEST 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000281.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#280">[ date ]</a>
+              <a href="thread.html#280">[ thread ]</a>
+              <a href="subject.html#280">[ subject ]</a>
+              <a href="author.html#280">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+First I must apologise because the Windows port of cdrecord I'm using 
+specifically says that it's a modified version. However, it's the only 
+binary I could find that offered DVD support. It seemed better to ask here 
+than bother the author personally, anyway.
+
+I am attempting to write multi-session ISO (not UDF) to a DVD using the 
+following commandline:
+
+C:\elphaba\helper&gt;mkisofs -J -R -V Session1 f:\session1 | 
+cdrecord -sao -dev=6,0,0 -immed -tsize=114811 -multi -
+
+This works as expected and I get a readable session. The -tsize argument is 
+from a previous invocation of mkisofs with -print-size. In order to add more 
+sessions, I have been advised to use the -msinfo argument to get 
+multi-session info:
+
+C:\elphaba\helper&gt;cdrecord -msinfo -dev=6,0,0
+cdrecord: Found DVD media: using cdr_mdvd.
+Using Session At Once (SAO) for DVD mode.
+Using Session At Once (SAO) for DVD mode.
+Using Session At Once (SAO) for DVD mode.
+Speed set to 8467 KB/s
+cdrecord: Drive needs to reload the media to return to proper status.
+cdrecord: Input/Output error. read track info: scsi sendcmd: no error
+CDB:  52 02 00 00 00 FF 00 00 1C 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 70 00 05 00 00 00 00 0A 00 00 00 00 24 00 00 C0 00 02
+Sense Key: 0x5 Illegal Request, Segment 0
+Sense Code: 0x24 Qual 0x00 (invalid field in cdb) Fru 0x0
+Sense flags: Blk 0 (not valid) error refers to command part, bit ptr 0 (not 
+vali
+d) field ptr 2
+cmd finished after 0.002s timeout 240s
+cdrecord: Cannot read first writable address
+
+Device 6,0,0 is an external USB DVD burner; I have also tried this with an 
+different, internal ATA burner (0,1,0). I am using Philips branded DVD-R 
+media. I have tried the mmc_cd_dvd and mmc_mdvd drivers. cdrecord -version 
+gives:
+
+Cdrecord-Clone 2.01.01a01-dvd (i686-pc-cygwin) Copyright (C) 1995-2004 J&#246;rg 
+Schilling
+Note: This version is an unofficial (modified) version with DVD support
+Note: and therefore may have bugs that are not present in the original.
+Note: Please send bug reports or support requests to 
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">warly at mandrakesoft.com</A>&gt;.
+Note: The author of cdrecord should not be bothered with problems in this 
+version.
+
+Is this something I'm doing wrong, or just an incompatibility with both my 
+drives?
+Can I use the -print-size output from mkisofs to construct the multi-session 
+info?
+Would the -M argument for cdrecord simply be 0,114811 or is it more 
+complicated than that?
+
+Thanks for any help,
+
+Phil 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000281.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#280">[ date ]</a>
+              <a href="thread.html#280">[ thread ]</a>
+              <a href="subject.html#280">[ subject ]</a>
+              <a href="author.html#280">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

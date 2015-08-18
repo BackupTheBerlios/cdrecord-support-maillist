@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] [SOLVED] Re:  any way to check open tray ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%5BSOLVED%5D%20Re%3A%20%20any%20way%20to%20check%20open%20tray%20%3F&In-Reply-To=%3C46fccfac.4GecM%2BtNoZ5ubhcO%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000107.html">
+   <LINK REL="Next"  HREF="000111.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%5BSOLVED%5D%20Re%3A%20%20any%20way%20to%20check%20open%20tray%20%3F&In-Reply-To=%3C46fccfac.4GecM%2BtNoZ5ubhcO%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Sep 28 11:55:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000107.html">[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?
+</A></li>
+        <LI>Next message: <A HREF="000111.html">[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>JOYDEEP &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">j.bakshi at unlimitedmail.org</A>&gt; wrote:
+
+&gt;<i> &gt;&gt; Cdrecord closes the tray (if there is a tray).
+</I>&gt;<i> &gt;&gt; Readcd will report a related error message.
+</I>&gt;<i> &gt;&gt;     
+</I>&gt;<i>
+</I>&gt;<i> Thanks J&#246;rg,
+</I>&gt;<i>
+</I>&gt;<i> In case of open-tray situation readcd generates an error msg.
+</I>&gt;<i>
+</I>&gt;<i> ========================
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">admin at linux</A>:~&gt; readcd -dev=ATA:1,0,0 sectors=0-0
+</I>&gt;<i> Read  speed:  8467 kB/s (CD  48x, DVD  6x).
+</I>&gt;<i> Write speed:  8467 kB/s (CD  48x, DVD  6x).
+</I>&gt;<i> readcd: Success. test unit ready: scsi sendcmd: no error
+</I>&gt;<i> CDB:  00 00 00 00 00 00
+</I>&gt;<i> status: 0x2 (CHECK CONDITION)
+</I>&gt;<i> Sense Bytes: 70 00 02 00 00 00 00 0A 00 00 00 00 3A 00 00 00
+</I>&gt;<i> Sense Key: 0x2 Not Ready, Segment 0
+</I>&gt;<i> Sense Code: 0x3A Qual 0x00 (medium not present) Fru 0x0
+</I>&gt;<i> Sense flags: Blk 0 (not valid)
+</I>&gt;<i> cmd finished after 0.000s timeout 40s
+</I>&gt;<i> readcd: Device not ready.
+</I>&gt;<i> ===================================
+</I>&gt;<i>
+</I>&gt;<i> have a nice day.
+</I>
+Why do you still use the supersfluous dev=ATA ?
+You are using outdated cdrtools!
+
+Also note that your drive does not give the correct error message.
+
+Correct would be:
+
+&quot;medium not present - tray open&quot; well not all drives are implemented
+correctly.
+
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/old/private/">http://cdrecord.berlios.de/old/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000107.html">[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?
+</A></li>
+	<LI>Next message: <A HREF="000111.html">[Cdrecord-support] [SOLVED] Re:  any way to check open tray ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#110">[ date ]</a>
+              <a href="thread.html#110">[ thread ]</a>
+              <a href="subject.html#110">[ subject ]</a>
+              <a href="author.html#110">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

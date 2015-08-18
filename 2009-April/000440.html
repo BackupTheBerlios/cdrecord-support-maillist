@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%0A%09to%20install&In-Reply-To=%3C75107330904191331x50a5bef4i5027d9fba7ae44b4%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000439.html">
+   <LINK REL="Next"  HREF="000441.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Cdrecord-ProDVD-ProBD-Clone%202.01.01a59%20fails%0A%09to%20install&In-Reply-To=%3C75107330904191331x50a5bef4i5027d9fba7ae44b4%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails	to install">olivares14031 at gmail.com
+       </A><BR>
+    <I>Sun Apr 19 22:31:32 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000439.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+        <LI>Next message: <A HREF="000441.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, Apr 19, 2009 at 3:14 PM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> &gt;&gt; gmake[1]: Entering directory
+</I>&gt;&gt;<i> &gt;&gt; `/home/olivares/Download/cdrtools-2.01.01/scgskeleton'
+</I>&gt;&gt;<i> &gt;&gt; &#160;==&gt; COMPILING &quot;OBJ/i686-linux-cc/skel.o&quot;
+</I>&gt;&gt;<i> &gt;&gt; In file included from ../include/schily/types.h:29,
+</I>&gt;&gt;<i> &gt;&gt; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;from ../include/schily/unistd.h:31,
+</I>&gt;&gt;<i> &gt;&gt; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;from skel.c:29:
+</I>&gt;&gt;<i> &gt;&gt; /usr/include/sys/types.h:228: error: two or more data types in
+</I>&gt;&gt;<i> &gt;&gt; declaration specifiers
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; There is no problem with compiling this on suse-10.0
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; What is on line 228 in the file /usr/include/sys/types.h from Fedora?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> typedef __blksize_t blksize_t;
+</I>&gt;<i>
+</I>&gt;<i> If this is not caused by a gnumake bug, you need to make a bug report against
+</I>&gt;<i> Fedora for an incosistent &#160;or autoconf hostile /usr/include/sys/types.h
+</I>&gt;<i>
+</I>&gt;<i> The problem seems to be a result of adding -D_GNU_SOURCE recently.
+</I>&gt;<i>
+</I>&gt;<i> ----&gt;
+</I>&gt;<i> &quot;configure&quot; is called with CPPFLAGS=-D_GNU_SOURCE, does it detect blksize_t
+</I>&gt;<i> as defined type?
+</I>&gt;<i> &lt;-----
+</I>&gt;<i>
+</I>&gt;<i> It may be that configure believed that there is no blksize_t but later the
+</I>&gt;<i> compilation fails.
+</I>&gt;<i>
+</I>&gt;<i> BTW: On suse-10.0, sys/types.h is included several times.
+</I>&gt;<i>
+</I>&gt;<i> first &#160; indirectly from stddef.h
+</I>&gt;<i> second &#160;directly from schily/unistd.h
+</I>&gt;<i>
+</I>&gt;<i> As the failure is from the second include, there seems to be something wrong
+</I>&gt;<i> with /usr/include/sys/types.h.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;&gt;<i> &gt; Well, did you try to compile <A HREF="ftp://ftp.berlios.de/pub/schily/">ftp://ftp.berlios.de/pub/schily/</A> it contains a
+</I>&gt;&gt;<i> &gt; recent smake. I had to change something in smake in autumn last year after I
+</I>&gt;&gt;<i> &gt; introduced a workaround for gmake in the makefile system.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> smake is the most recent one found:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="ftp://ftp.berlios.de/pub/schily/smake/alpha/smake-1.2a41.tar.bz2">ftp://ftp.berlios.de/pub/schily/smake/alpha/smake-1.2a41.tar.bz2</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> As I told you, the most recent version is in <A HREF="ftp://ftp.berlios.de/pub/schily/">ftp://ftp.berlios.de/pub/schily/</A>
+</I>&gt;<i> and it is 1.2a43, try to compile the consolidation.
+</I>I can't find it :(
+
+here
+<A HREF="ftp://ftp.berlios.de/pub/schily/smake/alpha/">ftp://ftp.berlios.de/pub/schily/smake/alpha/</A>
+
+Is it the following:
+<A HREF="ftp://ftp.berlios.de/pub/schily/schily-2009-03-12.tar.bz2">ftp://ftp.berlios.de/pub/schily/schily-2009-03-12.tar.bz2</A>
+
+I'll try it in the meantime, and if it works, I'll report back.
+
+Regards,
+
+Antonio
+
+&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &#160;EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;(uni)
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i> &#160;URL: &#160;<A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000439.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+	<LI>Next message: <A HREF="000441.html">[Cdrecord-support] Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 fails to install
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#440">[ date ]</a>
+              <a href="thread.html#440">[ thread ]</a>
+              <a href="subject.html#440">[ subject ]</a>
+              <a href="author.html#440">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

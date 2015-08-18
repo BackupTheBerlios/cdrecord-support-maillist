@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%09VMware%20ESX%20Server%203.5&In-Reply-To=%3C499ea118.4rS2h8QG2IfCbuW/%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000352.html">
+   <LINK REL="Next"  HREF="000359.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%09VMware%20ESX%20Server%203.5&In-Reply-To=%3C499ea118.4rS2h8QG2IfCbuW/%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Feb 20 13:24:56 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000352.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+        <LI>Next message: <A HREF="000359.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#355">[ date ]</a>
+              <a href="thread.html#355">[ thread ]</a>
+              <a href="subject.html#355">[ subject ]</a>
+              <a href="author.html#355">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> Hi, this is what I got by issuing &quot;cdrecord dev=ATAPI:/dev/hda a.iso&quot;
+</I>&gt;<i> =====================================================================
+</I>&gt;<i> ./cdrecord: No write mode specified.
+</I>&gt;<i> ./cdrecord: Asuming -sao mode.
+</I>&gt;<i> ./cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> ./cdrecord: Future versions of cdrecord may have different drive dependent
+</I>&gt;<i> defaults.
+</I>&gt;<i> scsidev: 'ATAPI:/dev/hda'
+</I>&gt;<i> devname: 'ATAPI:/dev/hda'
+</I>&gt;<i> scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> Warning: dev=ATA: is preferred over dev=ATAPI:.
+</I>&gt;<i> Warning: Using ATA Packet interface.
+</I>&gt;<i> Warning: The related Linux kernel interface code seems to be unmaintained.
+</I>&gt;<i> Warning: There is absolutely NO DMA, operations thus are slow.
+</I>
+You are forinc cdrecord to do something bad by giving it a bad dev= parameter.
+Why did you do this instead of using the documented way?
+
+I am sorry, but as you use something that is not really supported by the Linux 
+kernel, there may be many problems outside the influence of cdrecord.
+
+&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a44 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2008 J???g Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 0
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   : 
+</I>&gt;<i> Vendor_info    : 'HL-DT-ST'
+</I>&gt;<i> Identifikation : 'RW/DVD GCC-T10N '
+</I>&gt;<i> Revision       : '1.00'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-ROM.
+</I>&gt;<i> Current: CD-RW
+</I>&gt;<i> Profile: DVD-ROM 
+</I>&gt;<i> Profile: CD-ROM 
+</I>&gt;<i> Profile: CD-R 
+</I>&gt;<i> Profile: CD-RW (current)
+</I>&gt;<i> Using generic SCSI-3/mmc   CD-R/CD-RW driver (mmc_cdr).
+</I>&gt;<i> Driver flags   : MMC-3 SWABAUDIO BURNFREE 
+</I>&gt;<i> Supported modes: TAO PACKET SAO SAO/R96P SAO/R96R RAW/R16 RAW/R96P RAW/R96R
+</I>&gt;<i> Drive buf size : 1601712 = 1564 KB
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> ./cdrecord: Drive needs to reload the media to return to proper status.
+</I>&gt;<i> ./cdrecord: Cannot load media with this drive!
+</I>&gt;<i> ./cdrecord: Try to load media by hand.
+</I>
+As I do not see any cdrecord error message, I cannot comment this.
+
+It may be that your OS or your cable are defectice and modify the drive 
+information data.
+
+Please send the cdrecord -prcap information
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000352.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+	<LI>Next message: <A HREF="000359.html">[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#355">[ date ]</a>
+              <a href="thread.html#355">[ thread ]</a>
+              <a href="subject.html#355">[ subject ]</a>
+              <a href="author.html#355">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

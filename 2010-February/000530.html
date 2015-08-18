@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002021740l6a7e7521w677b85b765dff011%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000528.html">
+   <LINK REL="Next"  HREF="000531.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate</H1>
+    <B>bill browne</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002021740l6a7e7521w677b85b765dff011%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate">bilie.browne at gmail.com
+       </A><BR>
+    <I>Wed Feb  3 02:40:33 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000528.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+        <LI>Next message: <A HREF="000531.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#530">[ date ]</a>
+              <a href="thread.html#530">[ thread ]</a>
+              <a href="subject.html#530">[ subject ]</a>
+              <a href="author.html#530">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>DVD seems to burn OK - can see burnt area visually
+Halts with cannot fixate - cdrecord -scanbus can then no longer see
+drive until reboot.
+
+cdrecord -minfo is showing Cannot read drive buffer:
+
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a74 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#65533;rg Schilling
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Device type&#160;&#160;&#160; : Removable CD-ROM
+Version&#160;&#160;&#160;&#160;&#160;&#160;&#160; : 5
+Response Format: 2
+Capabilities&#160;&#160; :
+Vendor_info&#160;&#160;&#160; : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision&#160;&#160;&#160;&#160;&#160;&#160; : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags&#160;&#160; : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+Mounted media class:&#160;&#160;&#160;&#160;&#160; DVD
+Mounted media type:&#160;&#160;&#160;&#160;&#160;&#160; DVD+R/DL
+Disk Is not erasable
+data type:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; standard
+disk status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; empty
+session status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; empty
+BG format status:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; none
+first track:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 1
+number of sessions:&#160;&#160;&#160;&#160;&#160;&#160; 1
+first track in last sess: 1
+last track in last sess:&#160; 1
+Disk Is not unrestricted
+Disk type: DVD, HD-DVD or BD
+
+Track&#160; Sess Type&#160;&#160; Start Addr End Addr&#160;&#160; Size
+==============================================
+&#160;&#160;&#160; 1&#160;&#160;&#160;&#160; 1 Blank&#160; 0&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173823&#160;&#160;&#160; 4173824
+
+Next writable address:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 0
+Remaining writable size:&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; 4173824
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000528.html">[Cdrecord-support] cdrtools-2.01.01a73 ready
+</A></li>
+	<LI>Next message: <A HREF="000531.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#530">[ date ]</a>
+              <a href="thread.html#530">[ thread ]</a>
+              <a href="subject.html#530">[ subject ]</a>
+              <a href="author.html#530">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

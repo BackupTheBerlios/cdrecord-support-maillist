@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to use DOS version of cdrecord
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20use%20DOS%20version%20of%20cdrecord&In-Reply-To=%3CKI6D34%249D4D1FF6E3985BD2082912D19F06C35F%40itelefonica.com.br%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000421.html">
+   <LINK REL="Next"  HREF="000423.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to use DOS version of cdrecord</H1>
+    <B>jassenna at itelefonica.com.br</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20use%20DOS%20version%20of%20cdrecord&In-Reply-To=%3CKI6D34%249D4D1FF6E3985BD2082912D19F06C35F%40itelefonica.com.br%3E"
+       TITLE="[Cdrecord-support] Unable to use DOS version of cdrecord">jassenna at itelefonica.com.br
+       </A><BR>
+    <I>Thu Apr 16 05:45:04 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000421.html">[Cdrecord-support] read r-w subchannel data
+</A></li>
+        <LI>Next message: <A HREF="000423.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#422">[ date ]</a>
+              <a href="thread.html#422">[ thread ]</a>
+              <a href="subject.html#422">[ subject ]</a>
+              <a href="author.html#422">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> I tried the DOS version of cdrecord in a DOS window of
+ Windows 98 (MSDOS 7.1) and: 
+ -If I use the option dev=SCSIMGR$ (the device name ASPI.SYS
+  creates for the CD-R driver), I get the error message:
+ Invalid argument (EINVAL) Open by &quot;devname&quot; is not
+  supported in this OS cannot open or use SCSI driver
+ -If I use dev=0,0,0  (the only device cdrecord finds
+ with the -scanbus option) I get the message:
+ Executing &quot;test unit ready&quot; command on Bus 0, Target 0 Lun 0 
+ until timeout, then cdrecord exits.
+ 
+ I am quite surprised by the message &quot;open by devname is not
+ supported in this OS&quot;, since &quot;by name&quot; is the normal way of
+ opening a device in DOS.
+ More information: The machine has no physical SCSI bus; the
+ CD-R drive is an IDE/ATA. The device drivers I use are 
+ XCDROM.SYS and ASPI.SYS on top of it. The drive reads 
+ CDs without problem under MSDOS and reads and writes CDs
+ under Windows.
+ 
+ Regards
+   JAS
+ 
+ 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000421.html">[Cdrecord-support] read r-w subchannel data
+</A></li>
+	<LI>Next message: <A HREF="000423.html">[Cdrecord-support] Unable to use DOS version of cdrecord
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#422">[ date ]</a>
+              <a href="thread.html#422">[ thread ]</a>
+              <a href="subject.html#422">[ subject ]</a>
+              <a href="author.html#422">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

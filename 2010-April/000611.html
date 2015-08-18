@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Error mounting a disk after a burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3C20100418064953.142de1cc%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000629.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Error mounting a disk after a burn</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Error%20mounting%20a%20disk%20after%20a%20burn&In-Reply-To=%3C20100418064953.142de1cc%40bashir%3E"
+       TITLE="[Cdrecord-support] Error mounting a disk after a burn">list1 at michaelshell.org
+       </A><BR>
+    <I>Sun Apr 18 12:49:53 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000610.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+        <LI>Next message: <A HREF="000629.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 17 Apr 2010 19:47:51 -0400
+&quot;Skye Sweeney \(FLL-Freak\)&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">skye at fll-freak.com</A>&gt; wrote:
+
+
+&gt;<i> If I eject and the retract the tray and try the mount again it works fine.
+</I>&gt;<i> Other than ejecting and retracking the disk (looks kind of silly) what
+</I>&gt;<i> can I do to get the disk mounted?
+</I>
+
+This seems to be a known issue under Linux:
+
+<A HREF="http://lkml.indiana.edu/hypermail/linux/kernel/0705.0/0259.html">http://lkml.indiana.edu/hypermail/linux/kernel/0705.0/0259.html</A>
+
+even as far back as 1996:
+
+<A HREF="http://lkml.indiana.edu/hypermail/linux/kernel/9604.3/0377.html">http://lkml.indiana.edu/hypermail/linux/kernel/9604.3/0377.html</A>
+
+which is a more serious annoyance with laptop drives that cannot
+close their trays without the help of a human hand.
+
+It seems the problem was added to a list of kernel regressions:
+
+<A HREF="http://lkml.indiana.edu/hypermail/linux/kernel/0705.0/0278.html">http://lkml.indiana.edu/hypermail/linux/kernel/0705.0/0278.html</A>
+
+(at very bottom of post) but seems to be no longer present, so
+newer kernels may not suffer from it. If so, I'd like to know
+when the change was made.
+
+What I would like, and suspect it exists, is some command that
+causes the kernel to invalidate all cache information and forces
+a total &quot;media reevaluation&quot; of a drive:
+
+driveresetcmd /dev/dvd
+
+If it can do it as part of an eject, it should be able to do
+it without actually ejecting it.
+
+I did a search for 
+
+linux invalidate read cache
+
+but have not yet found the magic chant. 
+
+One possibility (at least for ATA drives) is
+
+hdparm -f /dev/dvd
+
+but on my older system (haven't tried it on newer machines) this
+results in
+
+&quot;BLKFLSBUF failed: Function not implemented&quot;.
+
+Other possibilities include things with names like flush, fsync,
+sync, etc.
+
+
+  Cheers,
+
+  Mike Shell
+
+
+
+
+
+
+ 
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000610.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+	<LI>Next message: <A HREF="000629.html">[Cdrecord-support] Error mounting a disk after a burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

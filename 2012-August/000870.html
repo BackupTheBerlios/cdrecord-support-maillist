@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C20120801103641.73917df1%40mr-noisy-as.fogwatch.com.au%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000871.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well</H1>
+    <B>Fog_Watch</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C20120801103641.73917df1%40mr-noisy-as.fogwatch.com.au%3E"
+       TITLE="[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well">db5 at exemail.com.au
+       </A><BR>
+    <I>Wed Aug  1 02:36:41 CEST 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000871.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#870">[ date ]</a>
+              <a href="thread.html#870">[ thread ]</a>
+              <a href="subject.html#870">[ subject ]</a>
+              <a href="author.html#870">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 30 Jul 2012 12:31:29 +0200
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+
+&gt;<i> I would guess that your cue file is not correct.
+</I>&gt;<i> 
+</I>&gt;<i> Exact Audio Copy is known for creating cue files that do not follow
+</I>&gt;<i> the CUE file documentation from the &quot;inventor&quot; of this file format
+</I>&gt;<i> (CDRWIN).
+</I>&gt;<i> 
+</I>&gt;<i> The background is that the CUE format is extremely limited - this is
+</I>&gt;<i> why cdrecord and cdda2wav by default use the *.inf files.
+</I>&gt;<i> 
+</I>&gt;<i> Anyway: as you do not give any information, I don't know how to help.
+</I>&gt;<i> 
+</I>&gt;<i> J&#246;rg
+</I>Dear J&#246;rg
+
+I too would guess that my cue file is incorrect.
+
+The cue file that I used is as follows.
+
+REM GENRE Classical
+REM COMMENT &quot;ExactAudioCopy v1.0b3&quot;
+PERFORMER &quot;Arvo Part&quot;
+TITLE &quot;Alina&quot;
+FILE &quot;Arvo Part - Alina.wav&quot; WAVE
+  TRACK 01 AUDIO
+    TITLE &quot;Spiegel Im Spiegel&quot;
+    PERFORMER &quot;Arvo Part&quot;
+    INDEX 01 00:00:00
+  TRACK 02 AUDIO
+    TITLE &quot;Fr Alina&quot;
+    PERFORMER &quot;Arvo Part&quot;
+    INDEX 01 10:41:50
+  TRACK 03 AUDIO
+    TITLE &quot;Spiegel Im Spiegel&quot;
+    PERFORMER &quot;Arvo Part&quot;
+    INDEX 01 21:29:47
+  TRACK 04 AUDIO
+    TITLE &quot;Fr Alina&quot;
+    PERFORMER &quot;Arvo Part&quot;
+    INDEX 01 30:42:37
+  TRACK 05 AUDIO
+    TITLE &quot;Spiegel Im Spiegel&quot;
+    PERFORMER &quot;Arvo Part&quot;
+    INDEX 01 41:35:50
+
+I presume that the cue file should conform to the documentation at
+<A HREF="http://en.wikipedia.org/wiki/Cue_sheet_(computing">http://en.wikipedia.org/wiki/Cue_sheet_(computing</A>).  How does the cue
+file above not comply with the example
+(<A HREF="http://en.wikipedia.org/wiki/Cue_sheet_(computing">http://en.wikipedia.org/wiki/Cue_sheet_(computing</A>)#Examples)?
+
+Regards
+
+Fog_Watch 
+
+-- 
+&quot;A. Because it breaks the logical order of conversation.
+ Q. Why is top posting bad?&quot;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000871.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#870">[ date ]</a>
+              <a href="thread.html#870">[ thread ]</a>
+              <a href="subject.html#870">[ subject ]</a>
+              <a href="author.html#870">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

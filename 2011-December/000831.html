@@ -1,0 +1,233 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] trouble writing 25G blu-ray
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3C4ee73615.9jqHC4O1gihQTEBm%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000835.html">
+   <LINK REL="Next"  HREF="000836.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] trouble writing 25G blu-ray</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20trouble%20writing%2025G%20blu-ray&In-Reply-To=%3C4ee73615.9jqHC4O1gihQTEBm%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] trouble writing 25G blu-ray">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Dec 13 12:25:09 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000835.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+        <LI>Next message: <A HREF="000836.html">[Cdrecord-support] Clone a DVD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Steve Kelem &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">steve at kelem.net</A>&gt; wrote:
+
+&gt;<i> Thank you for your help. The reason I posted my request to this group is that, after reading the man page, I was unable to guess the parameters for using this utility. I did not find (or possibly recognize) an example that fit what I needed to do.
+</I>&gt;<i>
+</I>&gt;<i> The man page looks like it's been written by experts for experts. I have no idea what the Rockridge standard is. There are way more options than I know what to do with. I just want to dump my (Linux ext3) files onto a BD and be able to read them back again. I don't really care whether I can read them on a Microsoft system.
+</I>
+This is strange as the man page has been rewritten past 2006 in order to match 
+the needs of people who start to work with the software. There are also many 
+examples in the man pages that mention typical usage.
+
+&gt;<i> &gt;&gt; Total translation table size: 0
+</I>&gt;<i> &gt;&gt; Total rockridge attributes bytes: 767644
+</I>&gt;<i> &gt;&gt; Total directory bytes: 1501184
+</I>&gt;<i> &gt;&gt; Path table size(bytes): 3534
+</I>&gt;<i> &gt;&gt; Max brk space used 707000
+</I>&gt;<i> &gt;&gt; 12248975 extents written (23923 MB)
+</I>&gt;<i> &gt;&gt; % ls -l maxtor2.iso
+</I>&gt;<i> &gt;&gt; -rw-r--r--. 1 user group 25085900800 Dec  7 11:59 maxtor2.iso
+</I>&gt;<i> &gt; This is more than a single layer BD can hold.
+</I>&gt;<i> Thank you. What is the maximum number of bytes that a single and double-layer BD can hold?
+</I>
+That depends on the media and it is displayed by cdrecord (in special with your 
+command line), so you just need to read the output.....
+
+&gt;<i> &gt;&gt; I then got the block size with:
+</I>&gt;<i> &gt;&gt; % mkisofs -o /media/Maxtor2/Backups/maxtor2.iso -print-size -quiet -r -J -hide-rr-moved -V &quot;Backup 2011/12/07&quot; -publisher &quot;user&quot; -iso-level 4 -graft-points photos/Maxtor2/Photos=/media/Maxtor2/Photos photos/Maxtor2/Pictures=/media/Maxtor2/Pictures photos/Maxtor2/pix=/media/Maxtor2/pix
+</I>&gt;<i> &gt;&gt; 12248975
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; [sidebar: Do I need all those paramters if the iso file already exists? I tried:
+</I>&gt;<i> &gt; -hide-rr-moved is obsoleted since mkisofs in August 2006 started to correctly 
+</I>&gt;<i> &gt; follow the Rock Ridge standard.
+</I>&gt;<i> Nice to know. I didn't find any mention of that in the man page.
+</I>
+I recommend you to read the man page......
+
+     -hide-rr-moved
+          Rename the directory RR_MOVED to .rr_moved in the  Rock
+          Ridge  tree.   This  option  has  been  introduced when
+          mkisofs was not able to hide the directory in the  Rock
+          Ridge  tree.   This version of mkisofs always automati-
+          cally hides the RR_MOVED directory in  the  Rock  Ridge
+          tree.  If you need to have no RR_MOVED directory at all
+          (even in the ISO-9660 tree),  you  should  use  the  -D
+          option.  Note  that in case that the -D option has been
+          specified, the resulting  filesystem  is  not  ISO-9660
+          level-1  compliant  and will not be readable on MS-DOS.
+          See also NOTES section  for  more  information  on  the
+          RR_MOVED directory.
+
+This text from above is in place since March 2011 (since 3.01a03) and you are 
+using cdrtools version 3.01a06 from September....
+
+
+
+&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; % mkisofs -print-size maxtor2.iso
+</I>&gt;<i> &gt;&gt; Setting input-charset to 'UTF-8' from locale.
+</I>&gt;<i> &gt;&gt; mkisofs: Value too large for defined data type. File maxtor2.iso is too large for current mkisofs settings - ignoring
+</I>&gt;<i> &gt;&gt; Total extents scheduled to be written = 174
+</I>&gt;<i> &gt;&gt; 174
+</I>&gt;<i> &gt; See man page.....
+</I>&gt;<i> I used the man page.
+</I>
+You obviously did not read it, as both, the tsize= option descrioption and the  
+axamples in the man page mention the need for &quot;s&quot; in case you specify a sector 
+count.
+
+&gt;<i> &gt;&gt; I then wrote the BD with the following command:
+</I>&gt;<i> &gt;&gt; % cdrecord -v dev=/dev/sr2 tsize=12248975 -dao maxtor2.iso
+</I>&gt;<i> Because I have no idea it's unsupported! Why is the cryptic SCSI address used instead of one of the intuitive names of the device? If the software needs the SCSI address, why can't it derive it from the name of the device?
+</I>
+You of course know this as cdrecord warned you because of the dev= parameter 
+you used. You even quoted the warning (see below.....)
+
+Linux has a cryptic driver interface that includes more than one driver per 
+CD-ROM drive. If you use the OS-independent SCSI address notation (or if you 
+only have one drive and ommit the dev= option completely - see man page), 
+cdrecord (libscg) is able to select the best driver for your drive. If you force
+cdrecord (via dev=/dev/*) to use a suboptimal kernel driver, you get suboptimal 
+results.
+
+&gt;<i> &gt; Why do you use an unsupported dev= parameter?
+</I>&gt;<i> &gt; Setting dev= to a named driver instead of using the standard SCSI addresses may 
+</I>&gt;<i> &gt; force Linux to use a bad driver (note that Linux implements more than one 
+</I>&gt;<i> &gt; driver to access CD-ROM type drives).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Why do you use tsize= at all and why do you use such a strange value?
+</I>&gt;<i> Because one of the notes said I should.
+</I>
+Please send a report to the person you received this &quot;note&quot; from. The official 
+documentation is correct.
+
+&gt;<i> &gt;&gt; That's what created the BD that has directories I can read but files that give input/output errors.
+</I>&gt;<i> &gt; This is as expected: you told cdrecord to do something weird.
+</I>&gt;<i> Could you please help me and tell me how to run the command so that it will work?
+</I>
+This is why there are several examples in the man pages.
+
+&gt;<i> Thanks,
+</I>&gt;<i> Steve
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; I then tried adding the &quot;s&quot; suffix to the cdrecord command:
+</I>&gt;<i> &gt;&gt; % cdrecord -v dev=/dev/sr2 tsize=12248975s -dao maxtor2.iso
+</I>&gt;<i> &gt;&gt; Cdrecord-ProDVD-ProBD-Clone 3.01a06 (x86_64-unknown-linux-gnu) Copyright (C) 1995-2011 Joerg Schilling
+</I>&gt;<i> &gt;&gt; TOC Type: 1 = CD-ROM
+</I>&gt;<i> &gt;&gt; scsidev: '/dev/sr2'
+</I>&gt;<i> &gt;&gt; devname: '/dev/sr2'
+</I>&gt;<i> &gt;&gt; scsibus: -2 target: -2 lun: -2
+</I>&gt;<i> &gt;&gt; Warning: Open by 'devname' is unintentional and not supported.
+</I>&gt;<i> &gt;&gt; Linux sg driver version: 3.5.27
+</I>&gt;<i> &gt;&gt; Using libscg version 'schily-0.9'.
+</I>&gt;<i> &gt;&gt; SCSI buffer size: 64512
+</I>&gt;<i> &gt;&gt; atapi: 1
+</I>&gt;<i> &gt;&gt; Device type    : Removable CD-ROM
+</I>&gt;<i> &gt;&gt; Version        : 5
+</I>&gt;<i> &gt;&gt; Response Format: 2
+</I>&gt;<i> &gt;&gt; Capabilities   :
+</I>&gt;<i> &gt;&gt; Vendor_info    : 'PIONEER '
+</I>&gt;<i> &gt;&gt; Identifikation : 'BD-RW   BDR-206D'
+</I>&gt;<i> &gt;&gt; Revision       : '1.56'
+</I>&gt;<i> &gt;&gt; Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> &gt;&gt; Current: BD-R sequential recording
+</I>&gt;<i> &gt;&gt; Profile: BD-RE
+</I>&gt;<i> &gt;&gt; Profile: BD-R random recording
+</I>&gt;<i> &gt;&gt; Profile: BD-R sequential recording (current)
+</I>&gt;<i> &gt;&gt; Profile: BD-ROM
+</I>&gt;<i> &gt;&gt; Profile: DVD+R/DL
+</I>&gt;<i> &gt;&gt; Profile: DVD+RW
+</I>&gt;<i> &gt;&gt; Profile: DVD+R
+</I>&gt;<i> &gt;&gt; Profile: DVD-R/DL layer jump recording
+</I>&gt;<i> &gt;&gt; Profile: DVD-R/DL sequential recording
+</I>&gt;<i> &gt;&gt; Profile: DVD-RW restricted overwrite
+</I>&gt;<i> &gt;&gt; Profile: DVD-RW sequential recording
+</I>&gt;<i> &gt;&gt; Profile: DVD-R sequential recording
+</I>&gt;<i> &gt;&gt; Profile: Removable Disk
+</I>&gt;<i> &gt;&gt; Profile: DVD-ROM
+</I>&gt;<i> &gt;&gt; Profile: CD-RW
+</I>&gt;<i> &gt;&gt; Profile: CD-R
+</I>&gt;<i> &gt;&gt; Profile: CD-ROM
+</I>&gt;<i> &gt;&gt; Using generic SCSI-3/mmc-3 BD-R driver (mmc_bdr).
+</I>&gt;<i> &gt;&gt; Driver flags   : NO-CD BD MMC-3 BURNFREE
+</I>&gt;<i> &gt;&gt; Supported modes: PACKET SAO LAYER_JUMP
+</I>&gt;<i> &gt;&gt; Drive buf size : 1703936 = 1664 KB
+</I>&gt;<i> &gt;&gt; cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> &gt;&gt; cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> &gt;&gt; FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> &gt;&gt; Track 01: data  23923 MB       
+</I>&gt;<i> &gt;&gt; Total size:     23923 MB = 12248975 sectors
+</I>&gt;<i> &gt;&gt; Current Secsize: 2048
+</I>&gt;<i> &gt;&gt; WARNING: Phys disk size 4452354 differs from rzone size 12219392! Prerecorded disk?
+</I>&gt;<i> &gt;&gt; WARNING: Phys start: 25088 Phys end 4477441
+</I>&gt;<i> &gt;&gt; Blocks total: 12219392 Blocks current: 12219392 Blocks remaining: -29583
+</I>&gt;<i> &gt;&gt; cdrecord: Data does not fit on current disk.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; This implies that either the iso is too big, or that I have the wrong sector size (should it be 174 instead of 12248975?), or something else?
+</I>&gt;<i> &gt; As you see, the BD media is 60 MB too small for your data.
+</I>&gt;<i> I don't see.  How did you get 60 MB from 25085900800? (The size of the iso, unless you got it from somewhere else...) How is someone who hasn't taken Computer Science supposed to figure this out?
+</I>&gt;<i> &gt; You tried to write more than 25 billion bytes.
+</I>
+it seems that you do not read the output from cdrecord. If you did, you would 
+understand. Just see a few lines above....
+
+And the man page even mentions the &quot;-minfo&quot; option that allows you to retrieve 
+information about the current media status without starting to write.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000835.html">[Cdrecord-support] trouble writing 25G blu-ray
+</A></li>
+	<LI>Next message: <A HREF="000836.html">[Cdrecord-support] Clone a DVD?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#831">[ date ]</a>
+              <a href="thread.html#831">[ thread ]</a>
+              <a href="subject.html#831">[ subject ]</a>
+              <a href="author.html#831">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

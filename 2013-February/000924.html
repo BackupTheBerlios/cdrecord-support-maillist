@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] errors after first burn
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C1361169349.9687.15.camel%40tardis%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000923.html">
+   <LINK REL="Next"  HREF="000925.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] errors after first burn</H1>
+    <B>Noel Butler</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20errors%20after%20first%20burn&In-Reply-To=%3C1361169349.9687.15.camel%40tardis%3E"
+       TITLE="[Cdrecord-support] errors after first burn">noel.butler at ausics.net
+       </A><BR>
+    <I>Mon Feb 18 07:35:49 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000923.html">[Cdrecord-support] errors after first burn
+</A></li>
+        <LI>Next message: <A HREF="000925.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2013-02-17 at 14:27 +0100, Joerg Schilling wrote:
+
+
+&gt;<i> &gt; The only way I can get a new burn to succeed is to reboot &lt;gulp&gt; the
+</I>&gt;<i> &gt; box, and then its groundhog day all over again, more beer coasters,
+</I>&gt;<i> &gt; reboot......so on
+</I>&gt;<i> 
+</I>&gt;<i> OK, so this looks like a linux kernel bug if there is state that id not reset 
+</I>&gt;<i> from just opening the tray.
+</I>&gt;<i> 
+</I>
+
+I did have that thought, must have something to do with SATA side of
+things since the old IDE never had the problem, I note  3.7.9 was
+released overnight so I might put that on tonight and see how we go.
+
+
+&gt;<i> &gt;
+</I>&gt;<i> &gt; write track data: error after 851968 bytes
+</I>&gt;<i> 
+</I>&gt;<i> This is a write error after just filling up the RAM in the drive, so I assume 
+</I>&gt;<i> no previous successful media write before.
+</I>&gt;<i> 
+</I>
+
+There was one successful burn prior, every attempt after that gives that
+result.
+
+
+&gt;<i> What you should do is to call
+</I>&gt;<i> 
+</I>&gt;<i> cdrecord -atip 
+</I>&gt;<i> 
+</I>&gt;<i> to get the media manufacturer and retry with original Verbatim media and to call
+</I>&gt;<i> 
+</I>
+Manufacturer:   'PRINCO'
+
+Maybe this drive can only partially handle those disks. For emergency
+reasons I still keep the original slackware large kernel on installs
+even though I always use custom kernel, its 2.6.33.4, I might try
+booting into that kernel and seeing if it makes a difference, also, I
+think 3.8 is getting close to official release so I might try the latest
+rc as well, the fact cdrecord sees and burns at least one, leads me to
+agree with you that its kernel related, if it was cdrecord at fault
+surely it just would not even burn the first one.
+
+
+
+&gt;<i> cdrecord -minfo 
+</I>&gt;<i> 
+</I>&gt;<i> before writing to get the apparen media state before starting to write.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; PS:
+</I>&gt;<i> &gt; Cdrecord-ProDVD-ProBD-Clone   isnt it time we changed that now to
+</I>&gt;<i> &gt; Cdrecord-ProDVD-ProBD  :)
+</I>&gt;<i> 
+</I>&gt;<i> Do you belive that cdrecord is no longer capable of doing clone writes?
+</I>&gt;<i> 
+</I>
+
+Ahh, might be the grey matter, but I thought the Clone came about well
+over ten years back when there was a different version, a  Clone patch,
+from when official cdrecord was limited with DVD (I think it was) , way
+tooooooo long back to remember, once you changed that method/policy, I
+returned to your official source, but yeah it was great many years ago,
+you likely remember that more than me :) I (wrongfully) assumed the name
+stayed, or maybe i'm still muddled up - sign of getting too old.
+
+Will let you know how it goes
+
+Take care
+Noel
+
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: face-smile.png
+Type: image/png
+Size: 873 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.png">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.png</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 490 bytes
+Desc: This is a digitally signed message part
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.pgp">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20130218/438d56ae/attachment.pgp</A>&gt;
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000923.html">[Cdrecord-support] errors after first burn
+</A></li>
+	<LI>Next message: <A HREF="000925.html">[Cdrecord-support] errors after first burn
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

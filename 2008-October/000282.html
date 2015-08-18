@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%09-msinfo%20%28Windows%20XP%29&In-Reply-To=%3CB8F6ACA749314D0B8919310AA566FFE0%40indigobox%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000281.html">
+   <LINK REL="Next"  HREF="000283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)</H1>
+    <B>Phil_Rhodes@rocketmail.com</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%09-msinfo%20%28Windows%20XP%29&In-Reply-To=%3CB8F6ACA749314D0B8919310AA566FFE0%40indigobox%3E"
+       TITLE="[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)">phil_rhodes at rocketmail.com
+       </A><BR>
+    <I>Thu Oct 23 19:25:54 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000281.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+        <LI>Next message: <A HREF="000283.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> <A HREF="http://www.google.de/search?hl=de&amp;ie=UTF-8&amp;qt_s=Suche&amp;sa=N&amp;tab=gw&amp;q=cdrtools%20win32">http://www.google.de/search?hl=de&amp;ie=UTF-8&amp;qt_s=Suche&amp;sa=N&amp;tab=gw&amp;q=cdrtools%20win32</A>
+</I>
+Thanks for that, but I've already tried the first one on that list. It gives 
+the version string:
+
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a51 (i686-pc-cygwin) Copyright (C) 
+1995-2008 J&#246;rg Schilling
+
+I have not been able to make it write anything useful to any disc. I tried 
+this:
+
+C:\elphaba\helper&gt;mkisofs -J -R -V Session1 f:\session1 | 
+cdrecord\cdrecord.exe -sao -immed -tsize=114805 -dev=0,1,0 -v -multi -nofix  
+-
+
+Notice that this version of cdrecord gives a different tsize for the same 
+data - I don't know if this is correct. This command line produces coasters 
+with this version of cdrecord - it seems to want to write no data:
+
+Track 01:    0 of    0 MB written.
+
+Tried this on two DVD burners ('Optiarc ' 'DVD RW AD-5170A ' and  'PIONEER ' 
+'DVD-RW  DVR-105 ') with both DVD-R and DVD-RW media (cdrecord cannot see 
+the DVD-RW media in the AD5170 though it states it is compatible).
+
+This did not occur with the other, &quot;defective&quot; version, which wrote 
+correctly. Is there anything else I can try? At this point I will probably 
+just go back to the modified version and live without multisession.
+
+While there are many versions of cdrecord around I do not want to become 
+involved in opensource politics - if this is simply something that cdrecord 
+cannot do then I would prefer to know that rather than waste blank discs.
+
+P 
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000281.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+	<LI>Next message: <A HREF="000283.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#282">[ date ]</a>
+              <a href="thread.html#282">[ thread ]</a>
+              <a href="subject.html#282">[ subject ]</a>
+              <a href="author.html#282">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

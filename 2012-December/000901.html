@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-December/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%20in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50BA27D2.9080203%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000900.html">
+   <LINK REL="Next"  HREF="000902.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB</H1>
+    <B>Omega Weapon</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%20-%20Invalid%20rock%20ridge%20data%20with%20file%0A%20in%20appended%20session%20with%20CE%20record%20past%204GB&In-Reply-To=%3C50BA27D2.9080203%40gmail.com%3E"
+       TITLE="[Cdrecord-support] mkisofs - Invalid rock ridge data with file in appended session with CE record past 4GB">omegaphil at gmail.com
+       </A><BR>
+    <I>Sat Dec  1 16:52:50 CET 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000900.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+        <LI>Next message: <A HREF="000902.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#901">[ date ]</a>
+              <a href="thread.html#901">[ thread ]</a>
+              <a href="subject.html#901">[ subject ]</a>
+              <a href="author.html#901">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 01/12/12 14:53, Joerg Schilling wrote:
+&gt;<i> Omega Weapon&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Based on media info, the bad session is 3:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ============================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> 3     3 Data   3066496    3182943    116448
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ============================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> So the following commandline is hopefully a valid test:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> ========================================================================
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> $ /opt/schily/bin/mkisofs -volid &quot;ADN70&quot; -rational-rock
+</I>&gt;&gt;<i> -full-iso9660-filenames -iso-level 3 -follow-links -C &quot;3066496,3182943&quot;
+</I>&gt;&gt;<i> -M &quot;/dev/sr0&quot; -o &quot;/mnt/Storage_1/Temporary Storage Folder/Processing
+</I>&gt;&gt;<i> Folder/ADN70-mkisofsa9.iso&quot; '/mnt/Storage_3/Anime Storage Folder
+</I>&gt;&gt;<i> 2/Nisemonogatari [N-S][Coalgirls]'
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Setting input-charset to 'UTF-8' from locale.
+</I>&gt;&gt;<i> ISO-9660 image includes checksum signature for correct inode numbers.
+</I>&gt;&gt;<i> SUSP signatures version 1 found
+</I>&gt;&gt;<i> Rock Ridge signatures version 1 found
+</I>&gt;&gt;<i> Rock Ridge id 'RRIP_1991A'
+</I>&gt;&gt;<i> BAD RR ATTRIBUTES: 11 A2 07 4A 3D 88 93 69 A5 CD 37 52 71 FD 97 71 B9 FE
+</I>&gt;&gt;<i> 78 BE 03 E4 FA B0 C1 26
+</I>&gt;&gt;<i> BAD RR ATTRIBUTES: ...J=..i..7Rq..q..x......&amp;
+</I>&gt;&gt;<i> mkisofs: **BAD RRVERSION (74) in '????' field (11 A2).
+</I>&gt;&gt;<i> mkisofs: Cannot parse Rock Ridge attributes for
+</I>&gt;&gt;<i> 'MERI_VEGETTOEX___EVA___OBL.MPEG;1RR????NMd?'.
+</I>&gt;<i>
+</I>&gt;<i> It seems that you missunderstand the problem.
+</I>&gt;<i>
+</I>&gt;<i> The message you see here is not a result of a bug in mkisofs but flags the
+</I>&gt;<i> result of a bug in the filesystem image.
+</I>&gt;<i>
+</I>&gt;<i> This bug cannot be &quot;fixed&quot; automatically unless you add a lot of specific
+</I>&gt;<i> heuristics. In case that the filesystem is larger than 2x 4GB, there even may
+</I>&gt;<i> be more possible &quot;correct&quot; block numbers.
+</I>&gt;<i>
+</I>&gt;<i> Note that we currently know of just one single defective filesystem with that
+</I>&gt;<i> problem, so it does not make sense to add such a heuristic.
+</I>&gt;<i>
+</I>&gt;<i> Aprox. 6 years ago, when people discovered _many_ gnu tar archives with
+</I>&gt;<i> incorrect block bumbers for sparse files, I could not help them with a trick in
+</I>&gt;<i> star to become able to read the archives, I could just advise them to use star
+</I>&gt;<i> instead of gnu tar for creating future archives.
+</I>&gt;<i>
+</I>&gt;<i> So I can only advise you to use the fixed mkisofs to avoid to create another
+</I>&gt;<i> similar filesystem image. If you like to test that, you need to create a new
+</I>&gt;<i> session based on the previous session without the bug.
+</I>&gt;<i>
+</I>&gt;<i> After we verified that the new mkisofs fixed the problem, we may discuss
+</I>&gt;<i> whether it may be a good idea to add an option to mkisofs to tell it to be a
+</I>&gt;<i> bit more forgiving with similar problems in the filesystem image.
+</I>&gt;<i>
+</I>&gt;<i> The problem with doing this is the fact that a ISO-9660 file name usually does
+</I>&gt;<i> not match the real file name and in our case we would result in a left over
+</I>&gt;<i> file with rotten file name.
+</I>
+The point is, the filename is fine - the full name is available, further 
+file descriptor information wasn't.
+
+I have followed some instructions to test the latest mkisofs' ability to 
+cope with the long AMV filename, and can confirm that it works (and 
+further sessions based on the test session appear to work as well).
+
+The correct command to generate a test session was:
+
+=======================================================================
+
+/opt/schily/bin/mkisofs -volid &quot;ADN70&quot; -rational-rock 
+-full-iso9660-filenames -iso-level 3 -follow-links -C &quot;2899360,3066496&quot; 
+-M &quot;/dev/sr0&quot; -o &quot;/mnt/Storage_1/Temporary Storage Folder/Processing 
+Folder/ADN70-mkisofsa9.iso&quot; '/mnt/Storage_6/Data To Burn/Image'
+
+=======================================================================
+
+The Image directory contained:
+
+=======================================================================
+
+$ ls -a '/mnt/Storage_6/Data To Burn/Image/'**
+
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion 
+AMVs/Evangelion - Star Wars Piss Take - Good [B0EC604C].mpeg
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Meri 
+VegettoEX - EVA - Obligatory EVA Trailer - Deep Blue Sea Trailer Piss 
+Take [00359A73].mpeg
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol000+01.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol001+02.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol003+04.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol007+08.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol015+16.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol031+32.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol063+64.par2
+/mnt/Storage_6/Data To Burn/Image/Neon Genesis Evangelion AMVs/Neon 
+Genesis Evangelion AMVs.vol127+73.par2
+
+=======================================================================
+
+By creating a zero'd data pad and then appending the generated session, 
+I was able to create an iso that could be mounted to test:
+
+=======================================================================
+
+dd if=/dev/zero bs=2048 count=3066496 of='/mnt/Storage_1/Temporary 
+Storage Folder/Processing Folder/ADN70-zero-padding.iso'
+
+cat '/mnt/Storage_1/Temporary Storage Folder/Processing 
+Folder/ADN70-mkisofsa9.iso' &gt;&gt;  '/mnt/Storage_1/Temporary Storage 
+Folder/Processing Folder/ADN70-zero-padding.iso'
+
+sudo mount -t iso9660 -o loop,sbsector=3066496 
+'/media/sf_Temporary_Storage_Folder/Processing 
+Folder/ADN70-zero-padding-with-session-3.iso' /media/bad_disc/
+
+=======================================================================
+
+I did the mount test in the VM in case it obliterated mount (it didn't).
+
+I will send the new generated session metadata in a different mail so 
+this message isnt obstructed.
+
+
+&gt;<i> If you like to test to mount different session, I just checked the public
+</I>&gt;<i> source and it seems that I did not publish the code to work with the sector=#
+</I>&gt;<i> mount option to the &quot;hsfs&quot; filesystem.
+</I>
+I'm not sure its worth it, since the bug is confirmed and the fix works?
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000900.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+	<LI>Next message: <A HREF="000902.html">[Cdrecord-support] mkisofs - Invalid rock ridge data with file	in appended session with CE record past 4GB
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#901">[ date ]</a>
+              <a href="thread.html#901">[ thread ]</a>
+              <a href="subject.html#901">[ subject ]</a>
+              <a href="author.html#901">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

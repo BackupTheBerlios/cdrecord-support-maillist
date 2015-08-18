@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Trying cdrecord to write data to DVD+R?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160629p16fb339bpa232fede0115eebb%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000566.html">
+   <LINK REL="Next"  HREF="000567.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Trying cdrecord to write data to DVD+R?</H1>
+    <B>Mark Knecht</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C5bdc1c8b1002160629p16fb339bpa232fede0115eebb%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Trying cdrecord to write data to DVD+R?">markknecht at gmail.com
+       </A><BR>
+    <I>Tue Feb 16 15:29:54 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000566.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+        <LI>Next message: <A HREF="000567.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Feb 16, 2010 at 2:18 AM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Am I supposed to use mkisofs or something else BEFORE writing data
+</I>&gt;&gt;<i> backups to a DVD+R disc? Is there a good web page on doing this with
+</I>&gt;&gt;<i> cdrtools? All the pages I'm finding are for using GUI frontends and I
+</I>&gt;&gt;<i> want to learn to do this from the command line.
+</I>&gt;<i>
+</I>&gt;<i> Did you look at the EXAMPLES sections in the various man pages?
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://cdrecord.berlios.de/private/man/cdrecord/index.html">http://cdrecord.berlios.de/private/man/cdrecord/index.html</A>
+</I>&gt;<i>
+</I>
+Absolutely YES. If I hadn't I wouldn't have known to even ask about mkisofs.
+
+On the other hand it's my feeling that the EXAMPLES section makes very
+broad assumptions about how much people understand about writing CDs
+and DVDs. did whoever wrote this section ever ask someone who knows
+nothing about writing CDs whether it answered their questions and left
+them in a place where they could accomplish their tasks?
+
+cdrecord *.wav   works and plays.
+cdrecord File.iso works and loads.
+cdrecord Data.File works but doesn't load
+
+and then user is left scratching their heads?
+
+Again, if I hadn't read the EXAMPLES section I couldn't have even
+asked a question. I'm suggesting there is information there but little
+in terms of training.
+
+&gt;<i>
+</I>&gt;&gt;<i> I've never used cdrecord from the command line to do backups so I
+</I>&gt;&gt;<i> thought as a test I would try writing a large tar file to a DVD+R disc
+</I>&gt;&gt;<i> as data. The command I used was about as simple as possible and
+</I>&gt;&gt;<i> probably not right:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> cdrecord dev=1001,0,0 backup.tar.bz2
+</I>&gt;<i>
+</I>&gt;<i> This is possible but not really recommended as such a medium will not mount
+</I>&gt;<i> because there is no file system on it.
+</I>&gt;<i>
+</I>
+Humm...so what happened then when the write operation completed? Do I
+have a DVD with files but no file system? What does that mean? On a
+disk drive I cannot place files until I first build a file system. Are
+DVDs and CDs different?
+
+&gt;<i>
+</I>&gt;&gt;<i> The command seemed to have executed so I ejected the disc and took it
+</I>&gt;&gt;<i> to another system where I tried:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> firefly ~ # mount -t iso9660 /dev/dvdrw /mnt/tmpMnt/
+</I>&gt;&gt;<i> mount: block device /dev/sr0 is write-protected, mounting read-only
+</I>&gt;&gt;<i> mount: wrong fs type, bad option, bad superblock on /dev/sr0,
+</I>&gt;&gt;<i> &#160; &#160; &#160; &#160;missing codepage or helper program, or other error
+</I>&gt;&gt;<i> &#160; &#160; &#160; &#160;In some cases useful info is found in syslog - try
+</I>&gt;&gt;<i> &#160; &#160; &#160; &#160;dmesg | tail &#160;or so
+</I>&gt;<i>
+</I>&gt;<i> See above, there is no filesystem ;-)
+</I>
+I see you response. I do not understand it. I'm not a cdrecord
+developer. I believe you but it makes no sense to me.
+
+Thanks,
+Mark
+
+&gt;<i>
+</I>&gt;<i> You may like to look at the option -stream-media-size from mkisofs.
+</I>&gt;<i>
+</I>&gt;<i> If you have no problem to remember that such a medium contains a tar
+</I>&gt;<i> archive, you may continue.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &#160;EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;(uni)
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i> &#160;URL: &#160;<A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000566.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+	<LI>Next message: <A HREF="000567.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

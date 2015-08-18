@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord - 15 minute fixate?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C4d3020b6.EmDNp9KM6xECw2lG%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000740.html">
+   <LINK REL="Next"  HREF="000744.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord - 15 minute fixate?</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20-%2015%20minute%20fixate%3F&In-Reply-To=%3C4d3020b6.EmDNp9KM6xECw2lG%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord - 15 minute fixate?">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Jan 14 11:08:54 CET 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000740.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+        <LI>Next message: <A HREF="000744.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Schmidt, Daniel&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">DSchmi at wyo.gov</A>&gt; wrote:
+
+&gt;<i> I couldn't find anybody else with this issue; I apologize if it has been asked before!
+</I>&gt;<i>
+</I>&gt;<i> Why is it taking so long to fixate?  Kernel bug?
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; sudo /opt/schily/bin/cdrecord dev=3,0,0 -v driveropts=burnfree CentOS-5.5-x86_64-bin-DVD-2of2.iso
+</I>&gt;<i> cdrecord: No write mode specified.
+</I>&gt;<i> cdrecord: Assuming -sao mode.
+</I>&gt;<i> cdrecord: If your drive does not accept -sao, try -tao.
+</I>&gt;<i> cdrecord: Future versions of cdrecord may have different drive dependent defaults.
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.01a02 (i686-pc-linux-gnu) Copyright (C) 1995-2010 Joerg Schilling
+</I>&gt;<i> TOC Type: 1 = CD-ROM
+</I>&gt;<i> scsidev: '3,0,0'
+</I>&gt;<i> scsibus: 3 target: 0 lun: 0
+</I>&gt;<i> Linux sg driver version: 3.5.34
+</I>&gt;<i> Using libscg version 'schily-0.9'.
+</I>&gt;<i> Driveropts: 'burnfree'
+</I>&gt;<i> SCSI buffer size: 64512
+</I>&gt;<i> atapi: 1
+</I>&gt;<i> Device type    : Removable CD-ROM
+</I>&gt;<i> Version        : 5
+</I>&gt;<i> Response Format: 2
+</I>&gt;<i> Capabilities   :
+</I>&gt;<i> Vendor_info    : 'PLDS    '
+</I>&gt;<i> Identifikation : 'DVD+-RW DH-16AAS'
+</I>&gt;<i> Revision       : 'JD11'
+</I>&gt;<i> Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+</I>&gt;<i> Current: DVD+R
+</I>&gt;<i> Profile: DVD+R/DL
+</I>&gt;<i> Profile: DVD+R (current)
+</I>&gt;<i> Profile: DVD+RW
+</I>&gt;<i> Profile: DVD-R/DL sequential recording
+</I>&gt;<i> Profile: DVD-RW sequential recording
+</I>&gt;<i> Profile: DVD-RW restricted overwrite
+</I>&gt;<i> Profile: DVD-RAM
+</I>&gt;<i> Profile: DVD-R sequential recording
+</I>&gt;<i> Profile: DVD-ROM
+</I>&gt;<i> Profile: CD-RW
+</I>&gt;<i> Profile: CD-R
+</I>&gt;<i> Profile: CD-ROM
+</I>&gt;<i> Profile: Removable Disk
+</I>&gt;<i> Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+</I>&gt;<i> Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE FORCESPEED
+</I>&gt;<i> Supported modes: PACKET SAO
+</I>&gt;<i> Drive buf size : 393216 = 384 KB
+</I>&gt;<i> cdrecord: Warning: Cannot read drive buffer.
+</I>&gt;<i> cdrecord: Warning: The DMA speed test has been skipped.
+</I>&gt;<i> FIFO size      : 4194304 = 4096 KB
+</I>&gt;<i> Track 01: data   412 MB
+</I>&gt;<i> Total size:      412 MB = 211114 sectors
+</I>&gt;<i> Current Secsize: 2048
+</I>&gt;<i> Blocks total: 2295104 Blocks current: 2295104 Blocks remaining: 2083990
+</I>&gt;<i> Reducing transfer size from 64512 to 32768 bytes.
+</I>&gt;<i> Forcespeed is OFF.
+</I>&gt;<i> Starting to write CD/DVD/BD at speed 16 in real SAO mode for single session.
+</I>&gt;<i> Last chance to quit, starting real write    0 seconds. Operation starts.
+</I>&gt;<i> Waiting for reader process to fill input buffer ... input buffer ready.
+</I>&gt;<i> Starting new track at sector: 0
+</I>&gt;<i> Track 01:  412 of  412 MB written (fifo 100%) [buf  99%]   6.0x.
+</I>&gt;<i> Track 01: Total bytes read/written: 432361472/432361472 (211114 sectors).
+</I>&gt;<i> Writing  time:   80.530s
+</I>&gt;<i> Average write speed   3.9x.
+</I>&gt;<i> Min drive buffer fill was 99%
+</I>&gt;<i> Fixating...
+</I>&gt;<i> Fixating time:  953.708s
+</I>&gt;<i> BURN-Free was 23 times used.
+</I>&gt;<i> cdrecord: fifo had 13195 puts and 13195 gets.
+</I>&gt;<i> cdrecord: fifo was 0 times empty and 2521 times full, min fill was 90%.
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt; !ej
+</I>&gt;<i> eject /media/cdrom
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">dans at dans-desktop</A>:~/Downloads/CentOS-5.5-x86_64-bin-DVD$&gt;
+</I>
+I would asume that this delay is caused by the drives firmware.
+
+A DVD needs to carry at least 800 MB but with DVD+R this is portion from the 
+standard usually not enforced. DVD+R usually rather writes a too short 
+lead-out. Your drive may behave different.
+
+You are using a no-name drive and thus it is hard to tell anything on the 
+drives estimated behavior.
+
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000740.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+	<LI>Next message: <A HREF="000744.html">[Cdrecord-support] cdrecord - 15 minute fixate?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

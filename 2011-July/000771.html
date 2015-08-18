@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e174f31.2N2kzaP%2BrsagbcZU%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000770.html">
+   <LINK REL="Next"  HREF="000772.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4e174f31.2N2kzaP%2BrsagbcZU%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Fri Jul  8 20:40:49 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000770.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000772.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Just a note: from the research I did, it seems that I have been able to run 
+cdrtools myself under DJGPP (DOS) but not under MINGW (WIN-DOS).
+
+
+
+Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+
+&gt;<i> I tried to compile smake (from /pub/smake/smake-1.2.1.shar.gz) but had
+</I>&gt;<i> no success so far. It would compile the bootstrap smake ok but compiling
+</I>&gt;<i> the final smake using the bootstrap smake fails.
+</I>
+Do you really have no working tar program that you cannot use the latest schily
+source consolidation from:
+
+	<A HREF="ftp://ftp.berlios.de/pub/schily/">ftp://ftp.berlios.de/pub/schily/</A>
+
+
+&gt;<i> Here are the error messages. I think it has something to do with the
+</I>&gt;<i> internal 'echo' command of cmd.exe. In RULES/rules1.top it says:
+</I>&gt;<i>    @echo &gt; $@ (line 259)
+</I>&gt;<i> I am not sure what this is supposed to do; under my setup it ends up
+</I>&gt;<i> with something like &quot;ECHO ist eingeschaltet (ON).&quot; in file incs/Dnull.
+</I>
+This is a result from not calling a halfway POSIX compliant shell but a DOS 
+cmd.exe
+
+
+&gt;<i> ./psmake/smake -r all
+</I>&gt;<i> d:\WINPROG\smake-1.2.1\psmake\smake.exe: Found illegal option '--unix' 
+</I>&gt;<i> in MAKEFLAGS.
+</I>&gt;<i> d:\WINPROG\smake-1.2.1\psmake\smake.exe: Ignoring illegal option '--unix'.
+</I>
+You have an illegal shell setup that includes an environment variable
+MAKEFLAGS with content that is not permitted.
+
+As smake is prepared to work on gmake influenced WIN-DOS enviroments, it is 
+prepared to ignore such illegal content.
+
+Check your .profile or equivalent to fix this problem.
+
+&gt;<i> d:\WINPROG\smake-1.2.1\psmake\smake.exe: Objcount: 4 Objects: 'ECHO' 
+</I>&gt;<i> 'ist' 'eingeschaltet' '(ON).'
+</I>&gt;<i> d:\WINPROG\smake-1.2.1\psmake\smake.exe: Missing : or =, got '
+</I>&gt;<i> ' &lt;12&gt; in line 2 col 0 of 'incs/Dnull'
+</I>&gt;<i> d:\WINPROG\smake-1.2.1\psmake\smake.exe: Bad syntax in 'incs/Dnull'.
+</I>
+See above. You need to change smake/make.c to let smake use something else than 
+calling the fallback system() that is not POSIX compliant on your platform.
+
+I recommend to tell smake to call:
+
+	spawnl(P_NOWAIT, shell, filename(shell), shellflag, 
+
+as on EMX and to retry. We need to see whether smake automagically finds the 
+right path to a POSIX shell or whether you need to add more code.
+
+You could check this even now already by calling:
+
+	smake -r -f /dev/null -p
+
+If /dev/null does not work use an empty file.
+
+Check for SHELL in the output.
+
+
+&gt;<i> While I am typing this I try compiling the version you suggested in
+</I>&gt;<i> your last mail. BTW I still have problems with the FTP server. I
+</I>&gt;<i> investigated this a little with the cmdline ftp client. I can connect
+</I>&gt;<i> can 'cd' into dirctories, can do 'pwd'. But I cannot do 'ls', 'get'
+</I>&gt;<i> or similar. I can download files with the 'wget' utility. But for
+</I>&gt;<i> this I have to know the excdat name and location of the file I want
+</I>&gt;<i> to download. I did not notice problems with FTP with other sites. -
+</I>&gt;<i> Strange.
+</I>
+I've never seen such problems, so the problem is at your side.
+
+&gt;<i> For making the compilation of the bootstrap smake work I had to change
+</I>&gt;<i> in psmake/lnfiles: there are a number of header fils which are to be
+</I>&gt;<i> copied/linked to another location. I had to remove the ../../ part
+</I>&gt;<i> of the path (lines 38 - 76).
+</I>
+Do you have emulated symlinks on mingw?
+
+The script works the way it is. If there is a problem on mingw, then it seems 
+that mingw does not work correctly.
+
+What change did you make?
+
+&gt;<i> I am willing to make this MinGW port work, but I need help...
+</I>
+You need to give me sufficient information (see e.g. lnfiles above) so I can 
+help.
+
+Porting is an iterative process.
+
+It loops over 
+
+	find a way that seems to work
+	do it right, so it will not harm other OS
+
+for every problem.
+
+You may speed up things by telling me where I could get the include files you 
+are using.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000770.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000772.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Bad%20key%20or%20directory%20name...%22%20occured%20when%0A%20blanking%20DVD%2BRW%20media&In-Reply-To=%3C22115448.post%40talk.nabble.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000350.html">
+   <LINK REL="Next"  HREF="000356.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media</H1>
+    <B>Aaron Tang</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Bad%20key%20or%20directory%20name...%22%20occured%20when%0A%20blanking%20DVD%2BRW%20media&In-Reply-To=%3C22115448.post%40talk.nabble.com%3E"
+       TITLE="[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media">twwbooleana at gmail.com
+       </A><BR>
+    <I>Fri Feb 20 07:12:37 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000350.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+        <LI>Next message: <A HREF="000356.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Just as you said, for some reason gnome-volume-manager was called after
+cdrecord finishes blanking the media and it didn't behave correctly in
+SLES10, I finally got the workaround... for your reference:
+1.Start &quot;gnome-volume-properties&quot;
+2.Select the tab &quot;Storage&quot;
+3.In the area of &quot;Removable Storage&quot;, unselect &quot;Mount removable media when
+inserted&quot;
+May this will help~~~Thx anyway :)
+
+
+Joerg Schilling-3 wrote:
+&gt;<i> 
+</I>&gt;<i> Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The burner I used is an external one with usb interface
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Aaron Tang wrote:
+</I>&gt;&gt;<i> &gt; 
+</I>&gt;&gt;<i> &gt; Hi,
+</I>&gt;&gt;<i> &gt;     I issued a blanking cmd &quot;cdrecord dev=/dev/sr1 blank=fast &gt;
+</I>&gt;&gt;<i> &gt; stdout.txt&quot; in SLES10, an error diag popped up with msg:
+</I>&gt;&gt;<i> &gt; &quot;An error occurred while loading or saving configuration information
+</I>&gt;&gt;<i> for
+</I>&gt;&gt;<i> &gt; gnome-volume-manager. 
+</I>&gt;&gt;<i> &gt; Some of your configuration settings may not work properly.
+</I>&gt;&gt;<i> &gt; Bad key or directory name:
+</I>&gt;&gt;<i> &gt; &quot;/system/storage/default_options//mount_options&quot;: 
+</I>&gt;&gt;<i> &gt; Can't have two slashes (/) in a row&quot;
+</I>&gt;&gt;<i> &gt;     But the media could be blanked successfully.
+</I>&gt;&gt;<i> &gt;     Contents in stdout.txt told &quot;......Operation starts../cdrecord:
+</I>&gt;&gt;<i> Cannot
+</I>&gt;&gt;<i> &gt; blank DVD+RW media with non Ricoh based drive.
+</I>&gt;&gt;<i> &gt; Running pad based emulation to blank the medium.
+</I>&gt;&gt;<i> &gt; secsize 2048 padbytes 2048000 padblocks 1000 maxblocks 2295104
+</I>&gt;&gt;<i> &gt; Track 00:    0 of    1 MB pad written.&quot;
+</I>&gt;&gt;<i> &gt;     The burner I used is Sony DRX-830UL.
+</I>&gt;&gt;<i> &gt;     Any workaround to cover this issue? Thx
+</I>&gt;<i> 
+</I>&gt;<i> You seem to have a problem with a bug in gnome. Please make a bug report 
+</I>&gt;<i> against gnome.
+</I>&gt;<i> 
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353
+</I>&gt;<i> Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog:
+</I>&gt;<i> <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Cdrecord-support mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Cdrecord-support at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">https://lists.berlios.de/mailman/listinfo/cdrecord-support</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+-- 
+View this message in context: <A HREF="http://www.nabble.com/%22Bad-key-or-directory-name...%22-occured-when-blanking-DVD%2BRW-media-tp22094135p22115448.html">http://www.nabble.com/%22Bad-key-or-directory-name...%22-occured-when-blanking-DVD%2BRW-media-tp22094135p22115448.html</A>
+Sent from the Cdrecord-support mailing list archive at Nabble.com.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000350.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+	<LI>Next message: <A HREF="000356.html">[Cdrecord-support] &quot;Bad key or directory name...&quot; occured when blanking DVD+RW media
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#353">[ date ]</a>
+              <a href="thread.html#353">[ thread ]</a>
+              <a href="subject.html#353">[ subject ]</a>
+              <a href="author.html#353">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

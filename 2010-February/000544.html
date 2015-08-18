@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002091703q75ef6917k68ae4b5194d01356%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000543.html">
+   <LINK REL="Next"  HREF="000545.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate</H1>
+    <B>bill browne</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrtools-2.01.01.a74%20Cannot%20fixate&In-Reply-To=%3Cba8fba8d1002091703q75ef6917k68ae4b5194d01356%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate">bilie.browne at gmail.com
+       </A><BR>
+    <I>Wed Feb 10 02:03:25 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000543.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+        <LI>Next message: <A HREF="000545.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joerg,
+
+I managed to find some Verbatim DVD+R DL media
+
+Unfortunately, still the same problem:
+
+DVD seems to burn OK - can see burnt area visually
+Halts with cannot fixate - cdrecord -scanbus can then no longer see
+drive until reboot.
+
+I have included atip and burning log below.
+
+-atip data:
+
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a75 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#9618;rg Schilling
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+book type:       DVD+R/DL, Version (14.1)
+disc size:       120mm (0)
+maximum rate:    Not specified (15)
+number of layers:2
+track path:      Opposite Track Path (1)
+layer type:      Rewritable Area (2)
+linear density:  0.293 &#9618;m/bit (1)
+track density:   0.74 &#9618;m/track (0)
+phys start:      196608 (0x30000)
+phys end:        16580607
+end layer 0:     2283519
+bca:             0
+phys size:...    16384000
+layer break at:  2086912
+Category/Version        E1
+Disk size               0F
+Disk structure          32
+Recoding density        10
+Manufacturer:           'MKM'
+Media type:             '001'
+Product revision        0
+ADIP numbytes           64
+Reference speed         37
+Max speed               37
+L0 init status:  0
+L0 data areacap: 2086912
+copyr prot type: 0
+region mgt info: 0
+rzone size:         40
+rzone number:       1
+border number:      1
+ljrs:               0
+track mode:         7 copy: 0
+damage:             0
+reserved track:     0 blank: 1 incremental: 0 fp: 0
+data mode:          1
+lra valid:          0
+nwa valid:          1
+rzone start:        0
+next wr addr:       0
+free blocks:        4173824
+blocking factor:    16
+rzone size:         4173824
+last recorded addr: 0
+read compat lba:    265696
+
+    Capacity  Blklen/Sparesz.  Format-type  Type
+     4173824             2048         0x00  Unformated or Blank Media
+
+---------------------------------------------
+ # cdrecord -v speed=2 dev=1,0,0 try2.iso
+cdrecord: No write mode specified.
+cdrecord: Assuming -sao mode.
+cdrecord: If your drive does not accept -sao, try -tao.
+cdrecord: Future versions of cdrecord may have different drive
+dependent defaults.
+Cdrecord-ProDVD-ProBD-Clone 2.01.01a75 (x86_64-unknown-linux-gnu)
+Copyright (C) 1995-2010 J&#9618;rg Schilling
+TOC Type: 1 = CD-ROM
+scsidev: '1,0,0'
+scsibus: 1 target: 0 lun: 0
+Linux sg driver version: 3.5.34
+Using libscg version 'schily-0.9'.
+SCSI buffer size: 64512
+atapi: 1
+Device type    : Removable CD-ROM
+Version        : 5
+Response Format: 2
+Capabilities   :
+Vendor_info    : 'TSSTcorp'
+Identifikation : 'CDDVDW SH-S223C '
+Revision       : 'SB01'
+Device seems to be: Generic mmc2 DVD-R/DVD-RW/DVD-RAM.
+Current: DVD+R/DL
+Profile: DVD+R/DL (current)
+Profile: DVD+R
+Profile: DVD+RW
+Profile: DVD-R/DL layer jump recording
+Profile: DVD-R/DL sequential recording
+Profile: DVD-RW sequential recording
+Profile: DVD-RW restricted overwrite
+Profile: DVD-RAM
+Profile: DVD-R sequential recording
+Profile: DVD-ROM
+Profile: CD-RW
+Profile: CD-R
+Profile: CD-ROM
+Profile: Removable Disk
+Using generic SCSI-3/mmc-3 DVD+R driver (mmc_dvdplusr).
+Driver flags   : NO-CD DVD MMC-3 SWABAUDIO BURNFREE
+Supported modes: PACKET SAO LAYER_JUMP
+Drive buf size : 1048576 = 1024 KB
+cdrecord: Warning: Cannot read drive buffer.
+cdrecord: Warning: The DMA speed test has been skipped.
+FIFO size      : 4194304 = 4096 KB
+Track 01: data  8038 MB
+Total size:     8038 MB = 4115609 sectors
+Current Secsize: 2048
+Blocks total: 4173824 Blocks current: 4173824 Blocks remaining: 58215
+Reducing transfer size from 64512 to 32768 bytes.
+Starting to write CD/DVD/BD at speed 4 in real SAO mode for single session.
+Last chance to quit, starting real write    0 seconds. Operation starts.
+Waiting for reader process to fill input buffer ... input buffer ready.
+Starting new track at sector: 0
+Track 01: 8038 of 8038 MB written (fifo 100%) [buf  96%]
+4.0x.cdrecord: Input/output error. write_g1: scsi sendcmd: no error
+CDB:  2A 00 00 3E CC 90 00 00 09 00
+status: 0x2 (CHECK CONDITION)
+Sense Bytes: 72 0B 00 00 00 00 00 0E 09 0C 00 00 00 02 00 00
+Sense Key: 0x0 No Additional Sense, Segment 11
+Sense Code: 0x00 Qual 0x02 (end-of-partition/medium detected) Fru 0x0
+Sense flags: Blk 0 (not valid)
+cmd finished after 270.368s timeout 200s
+
+write track data: error after 8428748800 bytes
+cdrecord: A write error occured.
+cdrecord: Please properly read the error message above.
+cdrecord: Input/output error. test unit ready: scsi sendcmd: fatal error
+CDB:  00 00 00 00 00 00
+cmd finished after 0.000s timeout 200s
+Writing  time: 1867.083s
+Average write speed   3.3x.
+Min drive buffer fill was 87%
+Fixating...
+cdrecord: Input/output error. flush cache: scsi sendcmd: fatal error
+CDB:  35 02 00 00 00 00 00 00 00 00
+cmd finished after 0.000s timeout 1000s
+cdrecord: Input/output error. flush cache: scsi sendcmd: fatal error
+CDB:  35 02 00 00 00 00 00 00 00 00
+cmd finished after 0.000s timeout 1000s
+cmd finished after 0.000s timeout 1000s
+Trouble flushing the cache
+cdrecord: Cannot fixate disk.
+Fixating time:    0.000s
+cdrecord: Input/output error. prevent/allow medium removal: scsi
+sendcmd: fatal error
+CDB:  1E 00 00 00 00 00
+cmd finished after 0.000s timeout 200s
+cdrecord: fifo had 257226 puts and 257226 gets.
+cdrecord: fifo was 0 times empty and 74212 times full, min fill was 80%.
+On 9 February 2010 23:58, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> bill browne &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">bilie.browne at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> On 7 February 2010 09:52, Joerg Schilling
+</I>&gt;&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+</I>&gt;&gt;<i> &gt; bill browne &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">bilie.browne at gmail.com</A>&gt; wrote:
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt;&gt; Joerg,
+</I>&gt;&gt;<i> &gt;&gt;
+</I>&gt;&gt;<i> &gt;&gt; I sent you the info you requested in an earlier mail &#160;- but I forgot
+</I>&gt;&gt;<i> &gt;&gt; to ask, is there a work around for the bug in the linux kernel or do I
+</I>&gt;&gt;<i> &gt;&gt; need to use an earlier kernel, and if so, what is the latest known
+</I>&gt;&gt;<i> &gt;&gt; good one?
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; OK, I see.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; Then I did probably already send you a reply to recommend you to try Verbatim
+</I>&gt;&gt;<i> &gt; Media.
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> &gt; J&#246;rg
+</I>&gt;&gt;<i> &gt;
+</I>&gt;&gt;<i> Jeorge, sorry I missed the mail regarding trying Verbatim - I have
+</I>&gt;&gt;<i> done this now.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Unfortunately I am still getting the same result:
+</I>&gt;&gt;<i> DVD seems to burn OK - can see burnt area visually
+</I>&gt;&gt;<i> Halts with cannot fixate - cdrecord -scanbus can then no longer see
+</I>&gt;&gt;<i> drive until reboot.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Any other ideas?
+</I>&gt;<i>
+</I>&gt;<i> I am not sure whether you previously used DVD-R/DL or DVD+R/DL.
+</I>&gt;<i>
+</I>&gt;<i> There are known problems with DVD-R/DL that I currently cannot address because
+</I>&gt;<i> of missing information.
+</I>&gt;<i>
+</I>&gt;<i> Although I generally recommend DVD- before DVD+, this does not apply to /DL
+</I>&gt;<i> media. So please retry with DVD+R/DL media from verbatim.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> &#160;EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A> &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;(uni)
+</I>&gt;<i> &#160; &#160; &#160; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i> &#160;URL: &#160;<A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000543.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+	<LI>Next message: <A HREF="000545.html">[Cdrecord-support] cdrtools-2.01.01.a74 Cannot fixate
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#544">[ date ]</a>
+              <a href="thread.html#544">[ thread ]</a>
+              <a href="subject.html#544">[ subject ]</a>
+              <a href="author.html#544">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

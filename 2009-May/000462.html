@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord and 2.6.28.10 linux kernel hangs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20and%202.6.28.10%20linux%20kernel%20hangs&In-Reply-To=%3C20090508063431.0eade135%40dax%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000461.html">
+   <LINK REL="Next"  HREF="000463.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord and 2.6.28.10 linux kernel hangs</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20and%202.6.28.10%20linux%20kernel%20hangs&In-Reply-To=%3C20090508063431.0eade135%40dax%3E"
+       TITLE="[Cdrecord-support] cdrecord and 2.6.28.10 linux kernel hangs">list1 at michaelshell.org
+       </A><BR>
+    <I>Fri May  8 12:34:31 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000461.html">[Cdrecord-support] cdrecord and 2.6.28.10 linux kernel hangs
+</A></li>
+        <LI>Next message: <A HREF="000463.html">[Cdrecord-support] cdrtools-2.01.01a60 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 08 May 2009 10:31:43 +0200
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+
+&gt;<i> You may try to look into the kernel messages and other Linux
+</I>&gt;<i> kernel related resources to find indications for the
+</I>&gt;<i> problem and report it to the Linux kernel people.
+</I>&gt;<i> Did you report it?
+</I>
+
+  J&#246;rg,
+
+There does not seem to be anything related in the log messages, but
+this is expected given that the system cannot write to the disk
+during the event. :(
+
+I did not report it yet. I was hoping that someone else watching
+the list can reproduce it on their machine. I do not know which
+version of the kernel first showed the problem. It happened
+somewhere between 2.6.20 and 2.6.28.10.
+
+I note that in that 2.6.28.10 kernel configuration that
+SCSI emulation support is now labeled as DEPRECATED and
+it states:
+
+&quot;If both this SCSI emulation and native ATAPI support
+ are compiled into the kernel, the native support will
+ be used.&quot;
+
+On both my kernels both these configuration options are selected,
+but I do not pass any special kernel boot options (e.g., scsi
+emulation setup) for the (ATA) DVD writer drive.
+
+
+  Mike
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000461.html">[Cdrecord-support] cdrecord and 2.6.28.10 linux kernel hangs
+</A></li>
+	<LI>Next message: <A HREF="000463.html">[Cdrecord-support] cdrtools-2.01.01a60 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#462">[ date ]</a>
+              <a href="thread.html#462">[ thread ]</a>
+              <a href="subject.html#462">[ subject ]</a>
+              <a href="author.html#462">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

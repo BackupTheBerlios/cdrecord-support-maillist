@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-November/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20configure%3A%20error%3A%20installation%20or%0A%20configuration%20problem%3A%20C%20compiler%20cannot%20create%20executables.%27%3B%0A%20schily-2013-11-09%20not%20compiling%20on%20FreeBSD%208.4&In-Reply-To=%3CCAJ5UdcPTd72Y1pkdD4YdUYZy9paAutXSrpjLiiQN867ZBWcxUQ%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000952.html">
+   <LINK REL="Next"  HREF="000954.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20configure%3A%20error%3A%20installation%20or%0A%20configuration%20problem%3A%20C%20compiler%20cannot%20create%20executables.%27%3B%0A%20schily-2013-11-09%20not%20compiling%20on%20FreeBSD%208.4&In-Reply-To=%3CCAJ5UdcPTd72Y1pkdD4YdUYZy9paAutXSrpjLiiQN867ZBWcxUQ%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4">olivares14031 at gmail.com
+       </A><BR>
+    <I>Wed Nov 13 19:57:38 CET 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000952.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+        <LI>Next message: <A HREF="000954.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#953">[ date ]</a>
+              <a href="thread.html#953">[ thread ]</a>
+              <a href="subject.html#953">[ subject ]</a>
+              <a href="author.html#953">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Sir,
+
+I am not sure about -l% if it is an l or a 1 ?  I try to change the
+files and get same error :(
+
+$ smake
+    ==&gt; CONFIGURING RULES &quot;incs/amd64-freebsd-cc/rules.cnf&quot;
+loading cache ./config.cache
+checking host system type... amd64-unknown-freebsd8.4
+checking if sh is bash... no
+checking if /bin/sh is bash... no
+checking whether sh -ce is broken... no
+checking whether /bin/sh -ce is broken... no
+checking whether /bin/bosh is a working shell... no
+checking whether /opt/schily/bin/bosh is a working shell... yes
+checking for cc... gcc
+checking for gcc... (cached) gcc
+checking whether the C compiler (gcc   -O   -Llibs/amd64-freebsd-cc
+-L/opt/schily/lib -L/usr/local/lib) works... no
+configure: error: installation or configuration problem: C compiler
+cannot create executables.
+smake: Operation not permitted. *** Code 1 from command line for
+target 'incs/amd64-freebsd-cc/rules.cnf'.
+smake: The following command caused the error:
+echo &quot;    ==&gt; CONFIGURING RULES \&quot;incs/amd64-freebsd-cc/rules.cnf\&quot;&quot;;
+/bin/rm -f incs/amd64-freebsd-cc/rules.cnf;  cd incs/amd64-freebsd-cc;
+ CONFIG_NOFAIL=TRUE CC=&quot;gcc&quot; CFLAGS=&quot;  -O  &quot;  CXXFLAGS=&quot;  -O  &quot;
+CPPFLAGS=&quot;-l/usr/local/include  &quot;  LDFLAGS=&quot;-Llibs/amd64-freebsd-cc
+-L/opt/schily/lib -L/usr/local/lib&quot; sh ../../autoconf/configure
+smake: No such file or directory. Can not open
+'incs/amd64-freebsd-cc/rules.cnf'.
+$ cat RULES/cc* | grep 'OSINCDIRS'
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-|%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+CPPFLAGS=    -DSCHILY_BUILD $(CPPOPTS) $(CPPOPTX) $(OSINCDIRS:%=-l%)
+$(OSDEFS) $(OSDEFSX)
+$
+
+I used sed command as follows to change the OSINCDIRS
+
+sed -i &quot;&quot; 's|$(OSINCDIRS)|$(OSINCDIRS:%=-l%)|g' RULES/cc*
+and RULES/rules.cnf
+
+and the -1 to a | in one of them manually but had to do it with root
+priviledges.
+
+
+I apologize in advance because I am not sure if it is a 1 an l or a | ?
+
+Best Regards,
+
+
+Antonio
+
+
+On Wed, Nov 13, 2013 at 9:21 AM, Joerg Schilling
+&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>&gt; wrote:
+&gt;<i> Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Dear all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I have a working version of cdrecord version a16 and saw new version
+</I>&gt;&gt;<i> and wanted to update to latest, I get error:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     ==&gt; CONFIGURING RULES &quot;incs/amd64-freebsd-cc/rules.cnf&quot;
+</I>&gt;&gt;<i> loading cache ./config.cache
+</I>&gt;&gt;<i> checking host system type... amd64-unknown-freebsd8.4
+</I>&gt;&gt;<i> checking if sh is bash... no
+</I>&gt;&gt;<i> checking if /bin/sh is bash... no
+</I>&gt;&gt;<i> checking whether sh -ce is broken... no
+</I>&gt;&gt;<i> checking whether /bin/sh -ce is broken... no
+</I>&gt;&gt;<i> checking whether /bin/bosh is a working shell... no
+</I>&gt;&gt;<i> checking whether /opt/schily/bin/bosh is a working shell... yes
+</I>&gt;&gt;<i> checking for cc... gcc
+</I>&gt;&gt;<i> checking for gcc... (cached) gcc
+</I>&gt;&gt;<i> checking whether the C compiler (gcc   -O   -Llibs/amd64-freebsd-cc
+</I>&gt;&gt;<i> -L/opt/schily/lib -L/usr/local/lib) works... no
+</I>&gt;&gt;<i> configure: error: installation or configuration problem: C compiler
+</I>&gt;&gt;<i> cannot create executables.
+</I>&gt;&gt;<i> smake: Operation not permitted. *** Code 1 from command line for
+</I>&gt;&gt;<i> target 'incs/amd64-freebsd-cc/rules.cnf'.
+</I>&gt;&gt;<i> smake: The following command caused the error:
+</I>&gt;&gt;<i> echo &quot;    ==&gt; CONFIGURING RULES \&quot;incs/amd64-freebsd-cc/rules.cnf\&quot;&quot;;
+</I>&gt;&gt;<i> /bin/rm -f incs/amd64-freebsd-cc/rules.cnf;  cd incs/amd64-freebsd-cc;
+</I>&gt;&gt;<i>  CONFIG_NOFAIL=TRUE CC=&quot;gcc&quot; CFLAGS=&quot;  -O  &quot;  CXXFLAGS=&quot;  -O  &quot;
+</I>&gt;&gt;<i> CPPFLAGS=&quot;/usr/local/include  &quot;  LDFLAGS=&quot;-Llibs/amd64-freebsd-cc
+</I>&gt;&gt;<i> -L/opt/schily/lib -L/usr/local/lib&quot; sh ../../autoconf/configure
+</I>&gt;&gt;<i> smake: No such file or directory. Can not open
+</I>&gt;&gt;<i> 'incs/amd64-freebsd-cc/rules.cnf'.
+</I>&gt;&gt;<i> gmake: *** [all] Error 2
+</I>&gt;<i>
+</I>&gt;<i> Edit RULES/cc* and RULES/rules.cnf and change:
+</I>&gt;<i>
+</I>&gt;<i> $(OSINCDIRS)
+</I>&gt;<i>
+</I>&gt;<i> to
+</I>&gt;<i>
+</I>&gt;<i> $(OSINCDIRS:%=-I%)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I></PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000952.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+	<LI>Next message: <A HREF="000954.html">[Cdrecord-support] configure: error: installation or configuration problem: C compiler cannot create executables.'; schily-2013-11-09 not compiling on FreeBSD 8.4
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#953">[ date ]</a>
+              <a href="thread.html#953">[ thread ]</a>
+              <a href="subject.html#953">[ subject ]</a>
+              <a href="author.html#953">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

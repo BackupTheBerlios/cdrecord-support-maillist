@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090225100820.1a49a0ad%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000361.html">
+   <LINK REL="Next"  HREF="000364.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090225100820.1a49a0ad%40bashir%3E"
+       TITLE="[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5">list1 at michaelshell.org
+       </A><BR>
+    <I>Wed Feb 25 16:08:20 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000361.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+        <LI>Next message: <A HREF="000364.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 24 Feb 2009 00:25:48 -0800 (PST)
+Aaron Tang &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">twwbooleana at gmail.com</A>&gt; wrote:
+
+&gt;<i> It is the problem of lacking ide-scsi module...After I compile
+</I>&gt;<i> ide-scsi as a kernel module, and install it on esx server with
+</I>&gt;<i> booting param &quot;hda=scsi&quot; appended in /boot/grub/menu.lst,
+</I>&gt;<i> cdrecord can now burn and blank media correctly.
+</I>
+
+Don't use the hda=scsi stuff anymore. And, in what follows,
+it is required that you *don't* use it. (You'll need to reboot
+after removing the hda=scsi kernel boot parameters.)
+
+The chants you probably want under Linux are:
+
+
+cdrecord dev=ATA: -scanbus
+
+cdrecord dev=ATA:1,0,0 file.img
+
+
+where the &quot;1,0,0&quot; is whatever parameters your drive is using
+as reported by the dev=ATA: -scanbus.
+
+
+  Cheers,
+
+  Mike Shell
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000361.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+	<LI>Next message: <A HREF="000364.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#363">[ date ]</a>
+              <a href="thread.html#363">[ thread ]</a>
+              <a href="subject.html#363">[ subject ]</a>
+              <a href="author.html#363">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

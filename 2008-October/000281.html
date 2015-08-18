@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%20-msinfo%20%28Windows%20XP%29&In-Reply-To=%3C48ff5851.N1v5fR8/B/Zp%2Bqne%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000280.html">
+   <LINK REL="Next"  HREF="000282.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20%22Cannot%20read%20first%20writable%20address%22%20with%0A%20-msinfo%20%28Windows%20XP%29&In-Reply-To=%3C48ff5851.N1v5fR8/B/Zp%2Bqne%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] &quot;Cannot read first writable address&quot; with -msinfo (Windows XP)">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Wed Oct 22 18:44:01 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000280.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+</A></li>
+        <LI>Next message: <A HREF="000282.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#281">[ date ]</a>
+              <a href="thread.html#281">[ thread ]</a>
+              <a href="subject.html#281">[ subject ]</a>
+              <a href="author.html#281">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Phil_Rhodes at rocketmail.com</A>&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">phil_rhodes at rocketmail.com</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> First I must apologise because the Windows port of cdrecord I'm using 
+</I>&gt;<i> specifically says that it's a modified version. However, it's the only 
+</I>&gt;<i> binary I could find that offered DVD support. It seemed better to ask here 
+</I>&gt;<i> than bother the author personally, anyway.
+</I>&gt;<i>
+</I>&gt;<i> I am attempting to write multi-session ISO (not UDF) to a DVD using the 
+</I>&gt;<i> following commandline:
+</I>&gt;<i>
+</I>&gt;<i> C:\elphaba\helper&gt;mkisofs -J -R -V Session1 f:\session1 | 
+</I>&gt;<i> cdrecord -sao -dev=6,0,0 -immed -tsize=114811 -multi -
+</I>&gt;<i>
+</I>&gt;<i> This works as expected and I get a readable session. The -tsize argument is 
+</I>&gt;<i> from a previous invocation of mkisofs with -print-size. In order to add more 
+</I>&gt;<i> sessions, I have been advised to use the -msinfo argument to get 
+</I>&gt;<i> multi-session info:
+</I>&gt;<i>
+</I>&gt;<i> C:\elphaba\helper&gt;cdrecord -msinfo -dev=6,0,0
+</I>&gt;<i> cdrecord: Found DVD media: using cdr_mdvd.
+</I>
+Sorry - this is not cdrecord but a defective variant created by someone else.
+The original software works correctly.
+
+Please fetch a recent original source from:
+
+<A HREF="ftp://ftp.berlios.de/pub/cdrecord/alpha/">ftp://ftp.berlios.de/pub/cdrecord/alpha/</A>
+
+There are several people who provide binaries for MS-WIN compiled from recent 
+original sources.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">schilling at fokus.fraunhofer.de</A>     (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000280.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+</A></li>
+	<LI>Next message: <A HREF="000282.html">[Cdrecord-support] &quot;Cannot read first writable address&quot; with	-msinfo (Windows XP)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#281">[ date ]</a>
+              <a href="thread.html#281">[ thread ]</a>
+              <a href="subject.html#281">[ subject ]</a>
+              <a href="author.html#281">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

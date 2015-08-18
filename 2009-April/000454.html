@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord truncates .wav file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20truncates%20.wav%20file&In-Reply-To=%3C49ee1d5e.gf%2BdqixZ8d6FkYVi%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000453.html">
+   <LINK REL="Next"  HREF="000455.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord truncates .wav file</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20truncates%20.wav%20file&In-Reply-To=%3C49ee1d5e.gf%2BdqixZ8d6FkYVi%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord truncates .wav file">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Tue Apr 21 21:24:14 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000453.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+        <LI>Next message: <A HREF="000455.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#454">[ date ]</a>
+              <a href="thread.html#454">[ thread ]</a>
+              <a href="subject.html#454">[ subject ]</a>
+              <a href="author.html#454">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joanie Abalone &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pfenerty at earthlink.net</A>&gt; wrote:
+
+&gt;<i>
+</I>&gt;<i> thanks for all of your replies, and of course, for all of your efforts
+</I>&gt;<i> regarding the cdrtools package itself. i am a big fan.
+</I>&gt;<i>
+</I>&gt;<i> the latest: 
+</I>&gt;<i>
+</I>&gt;<i> 1) updated cdrecord &amp; cdda2wav (also mkisofs, etc)
+</I>&gt;<i> 2) re-ripped the track ('Walk On By') from the 2005 (remastered) source CD
+</I>&gt;<i> (ASIN: B000BBOVGC).
+</I>&gt;<i> 3) problem persists
+</I>&gt;<i>
+</I>&gt;<i> =================
+</I>&gt;<i>
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pf at gezora</A> cdrtools-2.01.01]$ /usr/bin/cdrecord -version
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 2.01.01a59 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2009 J???rg Schilling
+</I>&gt;<i>
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">pf at gezora</A> cdrtools-2.01.01]$ /usr/bin/cdda2wav -version
+</I>&gt;<i> cdda2wav 2.01.01a59 (i686-pc-linux-gnu) Copyright (C) 1993-2004 Heiko
+</I>&gt;<i> Ei???feldt (C) 2004-2009 J???rg Schilling
+</I>&gt;<i>
+</I>&gt;<i> =================
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ... excerpts from k3b logfile:
+</I>&gt;<i>
+</I>&gt;<i> Used versions
+</I>&gt;<i> -----------------------
+</I>&gt;<i> cdrecord: 2.1.1a59
+</I>&gt;<i>
+</I>&gt;<i> /usr/bin/cdrecord: Bad audio track size 79499220 for track 04.
+</I>&gt;<i> /usr/bin/cdrecord: Audio tracks must be at least 705600 bytes and a multiple
+</I>&gt;<i> of 2352.
+</I>&gt;<i> /usr/bin/cdrecord: See -pad option.
+</I>
+The problem is that you used a program that changed the length of track 4 to a 
+value that is not a multiple of 2352.
+
+If you follow the advise from cdrecord and use the -pad option, cdrecord will 
+fill up the missing 732 bytes with null bytes at the end of the track.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000453.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+	<LI>Next message: <A HREF="000455.html">[Cdrecord-support] cdrecord truncates .wav file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#454">[ date ]</a>
+              <a href="thread.html#454">[ thread ]</a>
+              <a href="subject.html#454">[ subject ]</a>
+              <a href="author.html#454">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

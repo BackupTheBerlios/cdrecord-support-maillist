@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] readcd to read unfinalized DVD-VIDEO
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-October/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20readcd%20to%20read%20unfinalized%20DVD-VIDEO&In-Reply-To=%3C582583.11205.qm%40web31912.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000709.html">
+   <LINK REL="Next"  HREF="000711.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] readcd to read unfinalized DVD-VIDEO</H1>
+    <B>Bob DeCarlo</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20readcd%20to%20read%20unfinalized%20DVD-VIDEO&In-Reply-To=%3C582583.11205.qm%40web31912.mail.mud.yahoo.com%3E"
+       TITLE="[Cdrecord-support] readcd to read unfinalized DVD-VIDEO">bobs2002mail at yahoo.com
+       </A><BR>
+    <I>Sun Oct 24 18:37:45 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000709.html">[Cdrecord-support] Notice, PPA for Ubuntu users
+</A></li>
+        <LI>Next message: <A HREF="000711.html">[Cdrecord-support] Cdrtools-3.00-final vs cdrtools-2.01.01a78
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#710">[ date ]</a>
+              <a href="thread.html#710">[ thread ]</a>
+              <a href="subject.html#710">[ subject ]</a>
+              <a href="author.html#710">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&#160;
+&#160;
+Hi,
+&#160;
+Thank you for cdrtools, a great package!
+&#160;
+Sometime ago, I lost some fuctionality with readcd that I added back&#160;into the newest versions, 3.00.&#160; I want to show the developers my change so maybe it will be added in some form to future releases.
+&#160;
+I use readcd to read DVD-video discs recorded by panasonic DVD recorders.&#160; I do NOT finalize the DVD on the panasonic recorder.&#160; I use cdrecord to read the unfinaized disc.&#160; In order to do this, I had to go into the code a make a small change.
+&#160;
+Please see line 1950 and line 2080 below, readcd.c.&#160; I use a retry value of 3 from the command to activate one of my changes.&#160; I would be happy to send sample DVD's and sample application if anyone wants to really understand what I am doing.&#160;Just email me an address.
+&#160;
+&#160;
+Line 1950 change is done so readcd does not retry reading sectors that do not exist.
+Line 2080 change allows readcd to read good sectors even when the staring sectors do not exist.
+&#160;
+FYI:&#160; I build for windows using cygwin with smake.
+&#160;
+Thank you ,
+Bob
+&#160;
+&#160;
+LOCAL int
+read_retry(scgp, bp, addr, cnt, rfunc, rp)
+&#160;SCSI&#160;*scgp;
+&#160;caddr_t&#160;bp;
+&#160;long&#160;addr;
+&#160;long&#160;cnt;
+&#160;int&#160;(*rfunc)__PR((SCSI *scgp, rparm_t *rp, caddr_t bp, long addr, int cnt));
+&#160;rparm_t&#160;*rp;
+{
+/*&#160;int&#160;secsize = scgp-&gt;cap-&gt;c_bsize;*/
+&#160;int&#160;secsize = rp-&gt;secsize;
+&#160;int&#160;try = 0;
+&#160;int&#160;err;
+&#160;char&#160;dummybuf[8192];
+&#160;if (secsize &gt; sizeof (dummybuf)) {
+&#160;&#160;errmsgno(EX_BAD, &quot;Cannot retry, sector size %d too big.\n&quot;, secsize);
+&#160;&#160;return (-1);
+&#160;}
+&#160;
+// Line:1950
+&#160;if (retries &lt;= 3)
+&#160;{
+&#160;&#160;/* Don't try if retries are low */
+&#160;&#160;error(&quot;\nrdd... Exiting\n&quot;);
+&#160;&#160;return (-2);
+&#160;}
+&#160;errmsgno(EX_BAD, &quot;Retrying from sector %ld.\n&quot;, addr);
+&#160;while (cnt &gt; 0) {
+&#160;&#160;error(&quot;.&quot;);
+&#160;
+&#160;
+&#160;
+&#160;
+&#160;
+LOCAL void
+read_generic(scgp, parmp, rfunc, rp, dfunc)
+&#160;SCSI&#160;*scgp;
+&#160;parm_t&#160;*parmp;
+&#160;int&#160;(*rfunc)__PR((SCSI *scgp, rparm_t *rp, caddr_t bp, long addr, int cnt));
+&#160;rparm_t&#160;*rp;
+&#160;int&#160;(*dfunc)__PR((rparm_t *rp, caddr_t bp, long addr, int cnt));
+{
+&#160;char&#160;filename[512];
+&#160;char&#160;*defname = NULL;
+&#160;FILE&#160;*f;
+&#160;long&#160;addr = 0L;
+&#160;long&#160;old_addr = 0L;
+&#160;long&#160;num;
+&#160;long&#160;end = 0L;
+&#160;long&#160;start = 0L;
+&#160;long&#160;cnt = 0L;
+&#160;long&#160;next_point = 0L;
+&#160;long&#160;secs_per_point = 0L;
+&#160;double&#160; speed;
+&#160;int&#160;msec;
+&#160;int&#160;old_msec = 0;
+&#160;int&#160;err = 0;
+&#160;BOOL&#160;askrange = FALSE;
+&#160;BOOL&#160;isrange = FALSE;
+&#160;int&#160;secsize = rp-&gt;secsize;
+&#160;int&#160;i = 0;
+&#160;if (is_suid) {
+&#160;&#160;if (scgp-&gt;inq-&gt;type != INQ_ROMD)
+&#160;&#160;&#160;comerrno(EX_BAD, &quot;Not root. Will only read from CD in suid/priv mode\n&quot;);
+&#160;}
+&#160;if (parmp == NULL || parmp-&gt;askrange)
+&#160;&#160;askrange = TRUE;
+&#160;if (parmp != NULL &amp;&amp; !askrange &amp;&amp; (parmp-&gt;start &lt;= parmp-&gt;end))
+&#160;&#160;isrange = TRUE;
+&#160;filename[0] = '\0';
+&#160;scgp-&gt;silent++;
+&#160;
+// Line: 2080
+&#160;if (read_capacity(scgp) &gt;= 0)
+&#160;{
+&#160;&#160;/* Allow the disk to be read even if the 
+&#160;&#160;&#160;first sector(s) do not exists */
+&#160;&#160;error(&quot;\n\nrdd... read_capacity &gt;=0&quot;);
+&#160;&#160;end = scgp-&gt;cap-&gt;c_baddr + 1;
+&#160;&#160;if (end &lt; parmp-&gt;end) {
+&#160;&#160;&#160;error(&quot; end = %d&quot;, end);
+&#160;&#160;&#160;end = parmp-&gt;end;
+&#160;&#160;}
+&#160;&#160;error(&quot;\n\n&quot;);
+&#160;}
+&#160;scgp-&gt;silent--;
+&#160;
+
+
+      
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20101024/5b08984c/attachment.html">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20101024/5b08984c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000709.html">[Cdrecord-support] Notice, PPA for Ubuntu users
+</A></li>
+	<LI>Next message: <A HREF="000711.html">[Cdrecord-support] Cdrtools-3.00-final vs cdrtools-2.01.01a78
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#710">[ date ]</a>
+              <a href="thread.html#710">[ thread ]</a>
+              <a href="subject.html#710">[ subject ]</a>
+              <a href="author.html#710">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

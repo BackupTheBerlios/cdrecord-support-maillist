@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Trying cdrecord to write data to DVD+R?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C20100216212059.6d611063%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000572.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Trying cdrecord to write data to DVD+R?</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Trying%20cdrecord%20to%20write%20data%20to%20DVD%2BR%3F&In-Reply-To=%3C20100216212059.6d611063%40bashir%3E"
+       TITLE="[Cdrecord-support] Trying cdrecord to write data to DVD+R?">list1 at michaelshell.org
+       </A><BR>
+    <I>Wed Feb 17 03:20:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000568.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+        <LI>Next message: <A HREF="000572.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 16 Feb 2010 08:43:30 -0800
+Mark Knecht &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">markknecht at gmail.com</A>&gt; wrote:
+
+&gt;<i> On Tue, Feb 16, 2010 at 8:14 AM, Lucas Levrel &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">llevrel at yahoo.fr</A>&gt; wrote:
+</I>&gt;<i> &gt; Le 16 f&#233;vrier 2010, Mark Knecht a &#233;crit :
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; cdrecord Data.File works but doesn't load
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; and then user is left scratching their heads?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; an OS has no clue on what these data are (I think even the
+</I>&gt;<i> &gt; filename isn't on the disc)! But if you know what the data are, I
+</I>&gt;<i> &gt; guess you can recover the file with any tool able to read raw stuff,
+</I>&gt;<i> &gt; like dd.
+</I>
+
+Yes, that is what mkisofs does (just as its name implies) - makes an ISO
+filesystem &quot;file/image&quot; from a list of directories/files. And that's the
+reason for the Joilet/Rock Ridge stuff - to store extra information found
+in MS Windows or Unix filesystems that is not supported by ISO-9660.
+Unless there is a filesystem, the OS won't be able to mount it, but the
+data will still be there.
+
+BTW, I think this issue is going to become a big deal with respect to
+copying files between different mounted filesystems. The most important
+features of ISO-9660 are that it lays out the files in ways that make it
+easier and faster to access and makes it possible to append to later with
+&quot;sequential-like&quot; access devices such as CD/DVDs.
+
+To recover Mark's backup.tar.bz2, he could try:
+
+dd if=/dev/dvd of=backup.tar.bz2
+
+Now, IIRC, there is an issue regarding the length of the file. 
+CDs/ISO-9660 usually uses a 2K (2048) sector size (and most CDs use this
+as a block size, but see the mkisofs man page as there are exceptions),
+so .iso images should be a multiple of 2048. 
+
+I'm not exactly sure what cdrecord/linux/Unix does if it is fed a file
+that is not a multiple of 2K. A problem may come in when one wants to
+recover the exact original file without any trailing padding sectors.
+
+For this reason, and to serve as a check/safeguard that a drive does not
+try to read past EOF (or something else in the system appending zeros), I
+usually record the number of 1K blocks (or bytes if your file is not a
+multiple of 1K long) as well as the md5sum of any image or data I write
+to a CD/DVD.
+
+Then, I can do things like:
+
+dd if=/dev/dvd bs=1k count=1077 | md5sum -
+
+to verify the burn.
+
+BTW, a few years ago I asked some questions and got some answers related
+to using filesystem images other than ISO-9660:
+
+<A HREF="http://www.mail-archive.com/cdwrite@other.debian.org/msg08887.html">http://www.mail-archive.com/cdwrite@other.debian.org/msg08887.html</A>
+
+However, I mainly still use ISO-9660 with Rock Ridge extensions today.
+
+
+  Cheers,
+
+  Mike Shell
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000568.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+	<LI>Next message: <A HREF="000572.html">[Cdrecord-support] Trying cdrecord to write data to DVD+R?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

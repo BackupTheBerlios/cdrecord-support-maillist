@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E28283D.5090101%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000797.html">
+   <LINK REL="Next"  HREF="000782.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E28283D.5090101%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Thu Jul 21 15:23:09 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000797.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000782.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I just tried the suggested quoting, with no success. Besides a small
+mistake (the malloced pointer has to be saved and returned in quote())
+It just generates a lot of &quot; and \, see the example in the attachement
+(I cannot paste it her into the mail; it becomes totally unreadable).
+
+
+The solution I found is like this:
+
+in function docmd():
+.
+.
+.
+escape_single_quotes (cmd);
+sprintf (cmdline, &quot;'%s'&quot;, cmd);
+Exit = spawnl(P_WAIT, shell, filename(shell), shellflag, cmdline, NULL);
+.
+.
+.
+
+The Microsoft spawnl() function, which is as you mentioned a wrapper
+for CreateProcess(), apparently behaves not like we expect when there
+are (unescaped) whitespaces within one argument. It builds the
+&quot;cmdline&quot; for CreateProcess() ending up in several arguments to sh,
+which is not what we want. Putting (single) quotes around the cmd we
+want to be run by sh prevents the splitting in several arguments. Since
+single quotes are &quot;stronger&quot; than double quotes within sh there is no
+problem when cmd contains double quotes. But apparently it comes to
+problems with a cmd which contains single quotes although I escape
+possible single quotes. I did not yet fully understand that. Anyway,
+this is the reason for modifying the &quot;sed ...&quot; lines in
+RULES/r-smake.dep.
+But maybe it would work too when just escaping the whitespaces within
+the original cmd or this would be even a better solution. I will try
+this and will let you know my findings.
+
+
+Best regards,
+
+Johannes
+
+
+Joerg Schilling wrote:
+&gt;<i> Johannes Hausensteiner&lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt;  wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Yesterday I made some progress with smake. I had partly success by
+</I>&gt;&gt;<i> putting the command line between quotes before the call to spawnl(). It
+</I>&gt;&gt;<i> still chokes on the multi-line commands from RULES/rules1.dir . I do not
+</I>&gt;&gt;<i> know yet why. I have to investigate further.
+</I>&gt;<i>
+</I>&gt;<i> The reason why you have problems with spawnl() and other functions when on
+</I>&gt;<i> &quot;native&quot; WIN-DOS is that they are all mapped to CreateProcess() that Microsoft
+</I>&gt;<i> created a nightmare of mess when implementing:
+</I>&gt;<i>
+</I>&gt;<i> -	CreateProcess() based on a &quot;commandline&quot; instead of the IEEE C standard
+</I>&gt;<i> 	arg vector for main().
+</I>&gt;<i>
+</I>&gt;<i> -	using a mapping between the arg vector and the &quot;commandline&quot; (and vice
+</I>&gt;<i> 	versa) that is not inverse to each other.
+</I>&gt;<i>
+</I>&gt;<i> There is some hope... Heiko Ei&#223;feld detected an idea in a Perl Module that may
+</I>&gt;<i> be able to hack the original command string into something that is later
+</I>&gt;<i> unpacked correctly by the caller of main().
+</I>&gt;<i>
+</I>&gt;<i> Try to map the &quot;cmd&quot; variable by calling:
+</I>&gt;<i>
+</I>&gt;<i> char *quote(char *p) {
+</I>&gt;<i>          char *q = malloc(3*strlen(p));
+</I>&gt;<i>          unsigned quotes = 0;
+</I>&gt;<i>
+</I>&gt;<i>          if (!q) {
+</I>&gt;<i>                  return 0;
+</I>&gt;<i>          }
+</I>&gt;<i>          while (*p) {
+</I>&gt;<i>                  if ( *p == '&quot;' ) {
+</I>&gt;<i>                          ++quotes;
+</I>&gt;<i>                          *q++ = *p;
+</I>&gt;<i>                          *q++ = *p;
+</I>&gt;<i>                  } else if (*p == '\\') {
+</I>&gt;<i>                          *q++ = *p;
+</I>&gt;<i>                  } else if ((quotes&amp;  1)&amp;&amp;
+</I>&gt;<i>                              (*p == '&lt;' || *p =='&gt;' || *p == '|')) {
+</I>&gt;<i>                          *q++ = '^';
+</I>&gt;<i>                  }
+</I>&gt;<i>                  *q++ = *p++;
+</I>&gt;<i>          }
+</I>&gt;<i>          return q;
+</I>&gt;<i> }
+</I>&gt;<i>
+</I>&gt;<i> Do not forget to free() the resulting string after spawnl() returned.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: quoted_cmd.txt.gz
+Type: application/x-gzip
+Size: 565 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110721/70c7933e/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110721/70c7933e/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000797.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000782.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

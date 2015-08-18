@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3CCAJ5UdcP5t-ft%3D0TBy8Cb58RggYk7fUH%2BLwWywQjjSaOWN88YKg%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000778.html">
+   <LINK REL="Next"  HREF="000768.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Antonio Olivares</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3CCAJ5UdcP5t-ft%3D0TBy8Cb58RggYk7fUH%2BLwWywQjjSaOWN88YKg%40mail.gmail.com%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">olivares14031 at gmail.com
+       </A><BR>
+    <I>Fri Jul  8 00:11:10 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000778.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000768.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, Jul 7, 2011 at 10:30 AM, Johannes Hausensteiner &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">johau at gmx.net</A>&gt; wrote:
+&gt;<i> Hello all,
+</I>&gt;<i>
+</I>&gt;<i> After some time I am again trying to compile cdrtools for the Windows
+</I>&gt;<i> operating system. I prefer the MinGW version because I experience
+</I>&gt;<i> problems with mounting paths with the Cygwin version and the
+</I>&gt;<i> additional dependancy on the Cygwin dlls.
+</I>&gt;<i> I downloaded the latest version (cdrtools 3.01a05). Unpacking the
+</I>&gt;<i> source tarball went without problems; last time I tried I had lots
+</I>&gt;<i> of trouble even with that. I read the README.mingw32 file which says
+</I>&gt;<i> that I need MinGW in a specific version and MSYS in a specific version.
+</I>&gt;<i> I downloaded and installed those (actually I already had MinGW). Then
+</I>&gt;<i> it says I should adjust the Path varible, which I did accordingly. The
+</I>&gt;<i> final step should simply be running `make&#180; and that's it.
+</I>&gt;<i> During make a few problems arose though, some are minor and easy to fix
+</I>&gt;<i> some are more basic and would require more understanding of what is
+</I>&gt;<i> really required.
+</I>&gt;<i> 1) in the rules files RULES/i?86-mingw32_nt-gcc.rul the library mgw32
+</I>&gt;<i> &#160; is added to the linker options (-lmgw32). On my system there no
+</I>&gt;<i> &#160; libmgw32.a file but rather a libmingw32.a. I do not know what this
+</I>&gt;<i> &#160; library does and why it is needed but replacing mgw32 by mingw32
+</I>&gt;<i> &#160; succeeds in building the programs &#160;align_test.exe and avoffset.exe
+</I>&gt;<i> &#160; which in turn results in generating the otherwise missing files
+</I>&gt;<i> &#160; align.h and avoffset.h.
+</I>&gt;<i> 2) In libschily/fexec.c the macro `fd_getfd&#180; is incorrectly defined
+</I>&gt;<i> &#160; if the macro F_GETFD is not defined (lines 138 - 142). This leads
+</I>&gt;<i> &#160; to compile errors in lines 370, 376, 382.
+</I>&gt;<i> &#160; I set it to &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;`#define fd_getfd(fd) &#160;fd&#180;
+</I>&gt;<i>
+</I>&gt;<i> &#160; Likewise I set fd_setfd() to `#define df_setfd(fd, val) &#160;fd=val&#180;
+</I>&gt;<i> &#160; (not yet done in the attached build log).
+</I>&gt;<i>
+</I>&gt;<i> &#160; Although this seems reasonable to me I did not dig into the code
+</I>&gt;<i> &#160; to see what this really does.
+</I>&gt;<i> 3) Changing line 64 of include/schily/ccomdefs.h from
+</I>&gt;<i> &#160; &#160; #if __GNUC__ &gt; 3 || __GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1
+</I>&gt;<i> &#160; to
+</I>&gt;<i> &#160; &#160; #if (__GNUC__ &gt; 3 || (__GNUC__ == 3 &amp;&amp; __GNUC_MINOR__ &gt; 1)) &amp;&amp; !defined
+</I>&gt;<i> WIN32
+</I>&gt;<i> &#160; helped avoiding a lot of warnings `ignoring attribute __used__&#180;
+</I>&gt;<i> &#160; (or similar). Obviously, although the MinGW gcc I am using (MinGW
+</I>&gt;<i> &#160; distribution 3.1.0-1 as requested in README.mingw32) is version
+</I>&gt;<i> &#160; 3.2.3 it does not support the __used__ attribute as apparently
+</I>&gt;<i> &#160; his brothers on other OSs.
+</I>&gt;<i>
+</I>&gt;<i> These were the minor ones, now to the more severe problems:
+</I>&gt;<i> 4) A number of *nix system calls regarding file/process ownership,
+</I>&gt;<i> &#160; such as getuid(), geteuid(), etc., are not found and therefore
+</I>&gt;<i> &#160; linking fails (btcflash.exe, mkisofs.exe, readcd.exe,
+</I>&gt;<i> &#160; scgskeleton.exe)
+</I>&gt;<i> &#160; I am aware that these are Unix-specific functions and have to be
+</I>&gt;<i> &#160; emulated or at least provided dummy functions in Windows. I think
+</I>&gt;<i> &#160; the build system (configure ...) should take care of that or at
+</I>&gt;<i> &#160; least produce some warnings.
+</I>&gt;<i> &#160; I have code for some of these calls but not for setuid().
+</I>&gt;<i> 5) The same goes for the gettimeofday() system call. I do have code
+</I>&gt;<i> &#160; for this, too, but again the build system should have warned about
+</I>&gt;<i> &#160; it.
+</I>&gt;<i> 6) More errors from the build log:
+</I>&gt;<i>
+</I>&gt;<i> make[1]: Entering directory `/d/WINPROG/cdrtools-3.01/cdda2wav'
+</I>&gt;<i> ../RULES/local.cnf:43: OBJ/i686-mingw32_nt-gcc/Inull: No such file or
+</I>&gt;<i> directory
+</I>&gt;<i> ../RULES/local.cnf:44: OBJ/i686-mingw32_nt-gcc/local.cnf: No such file or
+</I>&gt;<i> directory
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; MAKING DIRECTORY &quot;OBJ/i686-mingw32_nt-gcc&quot;
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/parse.d&quot;
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; MAKING DEPENDENCIES &quot;OBJ/i686-mingw32_nt-gcc/base64.d&quot;
+</I>&gt;<i> In file included from base64.c:2:
+</I>&gt;<i> config.h:34:21: lconfig.h: No such file or directory
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> sndconfig.c: In function `init_soundcard':
+</I>&gt;<i> sndconfig.c:345: `WIN_CallBack' undeclared (first use in this function)
+</I>&gt;<i> sndconfig.c:345: (Each undeclared identifier is reported only once
+</I>&gt;<i> sndconfig.c:345: for each function it appears in.)
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/sndconfig.o] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160;==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/cdrecord.o&quot;
+</I>&gt;<i> cdrecord.c:5091:28: stropts.h: No such file or directory
+</I>&gt;<i> cdrecord.c:5092:25: poll.h: No such file or directory
+</I>&gt;<i> cdrecord.c: In function `wait_input':
+</I>&gt;<i> cdrecord.c:5107: storage size of `pfd' isn't known
+</I>&gt;<i> cdrecord.c:5117: `POLLIN' undeclared (first use in this function)
+</I>&gt;<i> cdrecord.c:5117: (Each undeclared identifier is reported only once
+</I>&gt;<i> cdrecord.c:5117: for each function it appears in.)
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/cdrecord.o] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/mkisofs.exe&quot;
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x6db0):mkisofs.c: undefined
+</I>&gt;<i> reference to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x828d):mkisofs.c: undefined
+</I>&gt;<i> reference to `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/mkisofs.o(.text+0x8295):mkisofs.c: undefined
+</I>&gt;<i> reference to `setuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/tree.o(.text+0x43b2):tree.c: undefined reference to
+</I>&gt;<i> `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/tree.o(.text+0x43ce):tree.c: undefined reference to
+</I>&gt;<i> `getgid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x17eb):find.c:
+</I>&gt;<i> undefined reference to `getpwnam'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x1859):find.c:
+</I>&gt;<i> undefined reference to `getgrnam'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x28d3):find.c:
+</I>&gt;<i> undefined reference to `getpwuid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x28e5):find.c:
+</I>&gt;<i> undefined reference to `getgrgid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x2c21):find.c:
+</I>&gt;<i> undefined reference to `fork'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(find.o)(.text+0x2c51):find.c:
+</I>&gt;<i> undefined reference to `wait'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0xa5):idcache.c:
+</I>&gt;<i> undefined reference to `getpwuid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x1a8):idcache.c:
+</I>&gt;<i> undefined reference to `getpwnam'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x241):idcache.c:
+</I>&gt;<i> undefined reference to `getgrgid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libfind.a(idcache.o)(.text+0x344):idcache.c:
+</I>&gt;<i> undefined reference to `getgrnam'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0xa0):fnmatch.c:
+</I>&gt;<i> undefined reference to `mbrtowc'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0xc8):fnmatch.c:
+</I>&gt;<i> undefined reference to `mbrtowc'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x29d):fnmatch.c:
+</I>&gt;<i> undefined reference to `mbrtowc'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x395):fnmatch.c:
+</I>&gt;<i> undefined reference to `mbrtowc'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x4ab):fnmatch.c:
+</I>&gt;<i> undefined reference to `mbrtowc'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libschily.a(fnmatch.o)(.text+0x517):fnmatch.c:
+</I>&gt;<i> more undefined references to `mbrtowc' follow
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/mkisofs.exe] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160;==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/dump.o&quot;
+</I>&gt;<i> dump.c: In function `reset_tty':
+</I>&gt;<i> dump.c:88: `TIOCSETN' undeclared (first use in this function)
+</I>&gt;<i> dump.c:88: (Each undeclared identifier is reported only once
+</I>&gt;<i> dump.c:88: for each function it appears in.)
+</I>&gt;<i> dump.c: In function `set_tty':
+</I>&gt;<i> dump.c:105: `TIOCSETN' undeclared (first use in this function)
+</I>&gt;<i> dump.c: In function `main':
+</I>&gt;<i> dump.c:349: `TIOCGETP' undeclared (first use in this function)
+</I>&gt;<i> dump.c:360: `newtty' has an incomplete type
+</I>&gt;<i> dump.c:362: invalid use of undefined type `struct sgttyb'
+</I>&gt;<i> dump.c:362: `ECHO' undeclared (first use in this function)
+</I>&gt;<i> dump.c:362: `CRMOD' undeclared (first use in this function)
+</I>&gt;<i> dump.c:363: invalid use of undefined type `struct sgttyb'
+</I>&gt;<i> dump.c:363: `CBREAK' undeclared (first use in this function)
+</I>&gt;<i> D:/Programme/MinGW/Include/inttypes.h: At top level:
+</I>&gt;<i> dump.c:67: storage size of `savetty' isn't known
+</I>&gt;<i> dump.c:68: storage size of `newtty' isn't known
+</I>&gt;<i> make[2]: *** [OBJ/i686-mingw32_nt-gcc/dump.o] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160;==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/isodump.o&quot;
+</I>&gt;<i> isodump.c: In function `reset_tty':
+</I>&gt;<i> isodump.c:147: `TIOCSETN' undeclared (first use in this function)
+</I>&gt;<i> isodump.c:147: (Each undeclared identifier is reported only once
+</I>&gt;<i> isodump.c:147: for each function it appears in.)
+</I>&gt;<i> isodump.c: In function `set_tty':
+</I>&gt;<i> isodump.c:164: `TIOCSETN' undeclared (first use in this function)
+</I>&gt;<i> isodump.c: In function `main':
+</I>&gt;<i> isodump.c:637: `TIOCGETP' undeclared (first use in this function)
+</I>&gt;<i> isodump.c:648: `newtty' has an incomplete type
+</I>&gt;<i> isodump.c:650: invalid use of undefined type `struct sgttyb'
+</I>&gt;<i> isodump.c:650: `ECHO' undeclared (first use in this function)
+</I>&gt;<i> isodump.c:650: `CRMOD' undeclared (first use in this function)
+</I>&gt;<i> isodump.c:651: invalid use of undefined type `struct sgttyb'
+</I>&gt;<i> isodump.c:651: `CBREAK' undeclared (first use in this function)
+</I>&gt;<i> D:/Programme/MinGW/Include/inttypes.h: At top level:
+</I>&gt;<i> isodump.c:136: storage size of `savetty' isn't known
+</I>&gt;<i> isodump.c:137: storage size of `newtty' isn't known
+</I>&gt;<i> make[2]: *** [OBJ/i686-mingw32_nt-gcc/isodump.o] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160;==&gt; COMPILING &quot;OBJ/i686-mingw32_nt-gcc/isoinfo.o&quot;
+</I>&gt;<i> isoinfo.c: In function `find_stat':
+</I>&gt;<i> isoinfo.c:1882: structure has no member named `st_blksize'
+</I>&gt;<i> make[2]: *** [OBJ/i686-mingw32_nt-gcc/isoinfo.o] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/isovfy.exe&quot;
+</I>&gt;<i> ../../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> ../../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> make[2]: *** [OBJ/i686-mingw32_nt-gcc/isovfy.exe] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/isodebug.exe&quot;
+</I>&gt;<i> ../../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> ../../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> make[2]: *** [OBJ/i686-mingw32_nt-gcc/isodebug.exe] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/readcd.exe&quot;
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x11e4):readcd.c: undefined reference
+</I>&gt;<i> to `geteuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x11eb):readcd.c: undefined reference
+</I>&gt;<i> to `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1202):readcd.c: undefined reference
+</I>&gt;<i> to `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x120a):readcd.c: undefined reference
+</I>&gt;<i> to `setuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x16c8):readcd.c: undefined reference
+</I>&gt;<i> to `geteuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1b6a):readcd.c: undefined reference
+</I>&gt;<i> to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x1bee):readcd.c: undefined reference
+</I>&gt;<i> to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x4a62):readcd.c: undefined reference
+</I>&gt;<i> to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x52de):readcd.c: undefined reference
+</I>&gt;<i> to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x64e8):readcd.c: undefined reference
+</I>&gt;<i> to `gettimeofday'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/readcd.o(.text+0x6559):readcd.c: more undefined
+</I>&gt;<i> references to `gettimeofday' follow
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/readcd.exe] Error 1
+</I>&gt;<i>
+</I>&gt;<i> &lt;snip&gt;
+</I>&gt;<i>
+</I>&gt;<i> &#160; &#160; &#160; &#160;==&gt; LINKING &quot;OBJ/i686-mingw32_nt-gcc/scgskeleton.exe&quot;
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb79):skel.c: undefined reference to
+</I>&gt;<i> `geteuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb80):skel.c: undefined reference to
+</I>&gt;<i> `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb97):skel.c: undefined reference to
+</I>&gt;<i> `getuid'
+</I>&gt;<i> OBJ/i686-mingw32_nt-gcc/skel.o(.text+0xb9f):skel.c: undefined reference to
+</I>&gt;<i> `setuid'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libscg.a(scsitransp.o)(.text+0x40e):scsitransp.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> ../libs/i686-mingw32_nt-gcc/libscg.a(scgtimes.o)(.text+0x4f):scgtimes.c:
+</I>&gt;<i> undefined reference to `gettimeofday'
+</I>&gt;<i> make[1]: *** [OBJ/i686-mingw32_nt-gcc/scgskeleton.exe] Error 1
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I have attached a complete log of the configure/make process.
+</I>&gt;<i>
+</I>&gt;<i> Was anyone on the list successful in compiling/building cdrtools on
+</I>&gt;<i> Windows/MinGW? How did you do?
+</I>&gt;<i>
+</I>&gt;<i> Please help in sorting out these issues. Thanks in advance!
+</I>&gt;<i>
+</I>&gt;<i> Johannes
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>
+
+Johannes,
+
+Usually I find cdrtools for windows easier to get a binary package from:
+
+<A HREF="http://www.student.tugraz.at/thomas.plank/">http://www.student.tugraz.at/thomas.plank/</A>
+
+If you contact him, maybe he can tell you how he compiles it?
+
+Regards,
+
+Antonio
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000778.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000768.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#767">[ date ]</a>
+              <a href="thread.html#767">[ thread ]</a>
+              <a href="subject.html#767">[ subject ]</a>
+              <a href="author.html#767">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

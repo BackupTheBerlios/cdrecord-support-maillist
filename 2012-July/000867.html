@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3C5016a4f5.VG51gjeT/HRP/oHq%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000866.html">
+   <LINK REL="Next"  HREF="000869.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3C5016a4f5.VG51gjeT/HRP/oHq%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Jul 30 17:15:01 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000866.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+        <LI>Next message: <A HREF="000869.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ady Ady &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>&gt; wrote:
+
+&gt;<i>  
+</I>&gt;<i>  In fact, users indeed have seen this problem since 3.01a05, but nobody knew why or took the time to look into it. I have seen reports in different (forum) sites.
+</I>&gt;<i>  
+</I>&gt;<i> Moreover, someone actually reported this here in this mailing list a few months ago, without knowing this was the problem. The way some users are seeing this behavior is by using 7-zip to try to open ISO images built with mkisofs latest alpha(s).
+</I>&gt;<i> 7-zip requires from the ISO image to follow ECMA-119, and users have reported here and in 7-zip's forum (among other places) about 7-zip not being able to open ISO images built with mkisofs 3.01a05 or newer versions.
+</I>&gt;<i>  
+</I>&gt;<i> SalixOS 13.37 use mkisofs 3.01a02, the same as Slackware 13.37 stable. Finally Slackware -current updated to cdrtools 3.01a07 two weeks ago, so I was able to reproduce the same behavior under Windows and also under SalixOS.
+</I>&gt;<i> Igor Pavlov, 7-zip's developer, was kind enough to look into it and he gave me enough info so I manually &quot;hexedited&quot; the ISO images at the relevant data field(s) (Creation Date and Time). After the hexedit, the ISO images are correctly opened by 7-zip.
+</I>&gt;<i> Other &quot;archive-related&quot; tools are able to open those ISO images anyway, just because they don't check them against ECMA-119, but many utilities are using 7z.dll or some other 7-zip's component to handle ISO images, so they also have the same difficulty to manage these ISO images originally built with mkisofs 3.01a05 to 3.01a07.
+</I>&gt;<i> Now you know the long boring story about how I got aware of this issue :). The only difference is that I tested enough cases, collected feedback and reported it, instead of moving to other alternatives.
+</I>
+Without your hint, I guess that this would have been undiscovered for a longer 
+time.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000866.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+	<LI>Next message: <A HREF="000869.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

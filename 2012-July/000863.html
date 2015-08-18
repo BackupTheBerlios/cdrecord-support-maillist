@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C50166281.WFTBj4FPgG33A8tD%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000861.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20cdrecord%20dev%3DREMOTE%3Arscsi%40hostname%3A3%2C%201%2C%0A%200%20cuefile%3Dfilename.cue%20-dao%20can%27t%20play%20back%20very%20well&In-Reply-To=%3C50166281.WFTBj4FPgG33A8tD%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Jul 30 12:31:29 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000861.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#863">[ date ]</a>
+              <a href="thread.html#863">[ thread ]</a>
+              <a href="subject.html#863">[ subject ]</a>
+              <a href="author.html#863">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Fog_Watch &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">db5 at exemail.com.au</A>&gt; wrote:
+
+&gt;<i> Hello
+</I>&gt;<i>
+</I>&gt;<i> When I issue the command
+</I>&gt;<i> cdrecord dev=REMOTE:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">rscsi at hostname</A>:3,1,0 cuefile=filename.cue -dao
+</I>&gt;<i> the CD appears to burn correctly.  When I put the disk into a CD player
+</I>&gt;<i> the correct number of tracks is listed and track one can be played
+</I>&gt;<i> entirely.  However, if I attempt to skip to track 3, for example, the
+</I>&gt;<i> player hangs.  
+</I>&gt;<i>
+</I>&gt;<i> This is different from ExactAudioCopy.  When I use the same cue and wav
+</I>&gt;<i> file to burn, the disk that is created can be track skipped.  That is
+</I>&gt;<i> ExactAudioCopy is successful, cdrecord is not.  How can I use cdrecord
+</I>&gt;<i> to create a CD that can be track skipped?
+</I>&gt;<i>
+</I>&gt;<i> Regards
+</I>&gt;<i>
+</I>&gt;<i> Fog_Watch
+</I>&gt;<i>
+</I>&gt;<i> cdrecord -version
+</I>&gt;<i> Cdrecord-ProDVD-ProBD-Clone 3.00 (i686-pc-linux-gnu) Copyright (C)
+</I>&gt;<i> 1995-2010 J???rg Schilling
+</I>&gt;<i>
+</I>&gt;<i> ExactAudioCopy v1.0 beta3
+</I>
+I would guess that your cue file is not correct.
+
+Exact Audio Copy is known for creating cue files that do not follow the CUE 
+file documentation from the &quot;inventor&quot; of this file format (CDRWIN).
+
+The background is that the CUE format is extremely limited - this is why 
+cdrecord and cdda2wav by default use the *.inf files.
+
+Anyway: as you do not give any information, I don't know how to help.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000861.html">[Cdrecord-support] cdrecord dev=REMOTE:rscsi at hostname:3, 1, 0 cuefile=filename.cue -dao can't play back very well
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#863">[ date ]</a>
+              <a href="thread.html#863">[ thread ]</a>
+              <a href="subject.html#863">[ subject ]</a>
+              <a href="author.html#863">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

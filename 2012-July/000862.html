@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3CBAY170-W1569997C4DE8D8A53732A68BC60%40phx.gbl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000859.html">
+   <LINK REL="Next"  HREF="000864.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report</H1>
+    <B>Ady Ady</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20mkisofs%203.01a07%20%22Creation%20Date%20and%20Time%22%20BUG%0A%20report&In-Reply-To=%3CBAY170-W1569997C4DE8D8A53732A68BC60%40phx.gbl%3E"
+       TITLE="[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report">ady-sf at hotmail.com
+       </A><BR>
+    <I>Mon Jul 30 10:34:42 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000859.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+        <LI>Next message: <A HREF="000864.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#862">[ date ]</a>
+              <a href="thread.html#862">[ thread ]</a>
+              <a href="subject.html#862">[ subject ]</a>
+              <a href="author.html#862">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+&gt;<i> Date: Sat, 28 Jul 2012 17:19:12 +0200
+</I>&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A>
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">cdrecord-support at lists.berlios.de</A>; <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>
+</I>&gt;<i> Subject: Re: [Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</I>&gt;<i> 
+</I>&gt;<i> Ady Ady &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">ady-sf at hotmail.com</A>&gt; wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hello,
+</I>&gt;<i> &gt; The alpha versions of mkisofs are producing ISO images with a certain incompatibility (against ECMA-119 standard): 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Data in &quot;Creation Date and Time&quot; field(s) of &quot;Volume descriptor&quot; is incorrect (it contains spaces). 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I believe the incompatibility started in version 3.01a05 (if I am not mistaken, version 3.01a04 was OK regarding these data fields), but please don't just take my word.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Thank you for the report, the problem was introduced when adding support for 
+</I>&gt;<i> Grub2 UUIDs. I removed one line that should stay.
+</I>&gt;<i> 
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i> 
+</I>Thank you for your answer.
+During my tests and searches before reporting, I wasn't able to find anything about the bug (except users not knowing why the resulting ISO images were incompatible). Do you mean this was an already-known bug?
+I don't know which are the criteria to release new (alpha/beta) versions.
+More users are seeing this issue because cdrtools (mkisofs) 3.01a07 was recently added to Slackware -current, and the next release of Slackware stable seems to be relatively close. Also Debian is preparing its next stable release. As known, these 2 Linux distros are the based to many others.
+Additionally, since the resulting ISO images (of mkisofs 3.01a05, -a06 and -a07 too) are incompatible to ECMA-119, some (few) tools will not accept (work) with those ISO images. One such software is 7-zip, which is in time also used by many other tools to expand ISO images (like for example multiboot USB-media related utilities).
+So, as I was saying, I don't know which criteria you use to release (or not) new alpha versions. Please consider releasing a bug-fix release, so the developers of relevant Linux distros would be able to update cdrtools too before their mayor next releases.
+TIA. 		 	   		  
+</PRE>
+
+
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000859.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+	<LI>Next message: <A HREF="000864.html">[Cdrecord-support] mkisofs 3.01a07 &quot;Creation Date and Time&quot; BUG report
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#862">[ date ]</a>
+              <a href="thread.html#862">[ thread ]</a>
+              <a href="subject.html#862">[ subject ]</a>
+              <a href="author.html#862">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

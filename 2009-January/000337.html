@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Problem fixating svn 105
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C4970A4CC.2020406%40infineon.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000336.html">
+   <LINK REL="Next"  HREF="000338.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Problem fixating svn 105</H1>
+    <B>Richard Skelton</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Problem%20fixating%20svn%20105&In-Reply-To=%3C4970A4CC.2020406%40infineon.com%3E"
+       TITLE="[Cdrecord-support] Problem fixating svn 105">Richard.Skelton at infineon.com
+       </A><BR>
+    <I>Fri Jan 16 16:16:28 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000336.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+        <LI>Next message: <A HREF="000338.html">[Cdrecord-support] cdrtools-2.01.01a56 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#337">[ date ]</a>
+              <a href="thread.html#337">[ thread ]</a>
+              <a href="subject.html#337">[ subject ]</a>
+              <a href="author.html#337">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Joerg,
+Here you go :-
+
+Track 01: Total bytes read/written: 3406561280/3406561280 (1663360 sectors).
+Writing  time:  457.150s
+Average write speed   5.4x.
+Min drive buffer fill was 13%
+Fixating...
+ret: -1 errno: 5 (I/O error)
+uscsi_flags:     0x10003
+uscsi_status:    0x0
+uscsi_timeout:   1000
+uscsi_bufaddr:   0x0
+uscsi_buflen:    0
+uscsi_resid:     0
+uscsi_rqlen:     18
+uscsi_rqstatus:  0x0
+uscsi_rqresid:   18
+uscsi_rqbuf ptr: 0x80cc783
+uscsi_rqbuf:     &lt;data not available&gt;
+/bin/cdrecord.bin: I/O error. flush cache: scsi sendcmd: no error
+CDB:  35 00 00 00 00 00 00 00 00 00
+status: 0x0 (GOOD STATUS)
+cmd finished after 6.057s timeout 1000s
+Trouble flushing the cache
+/bin/cdrecord.bin: Cannot fixate disk.
+Fixating time:    6.057s
+ret: -1 errno: 5 (I/O error)
+uscsi_flags:     0x10003
+uscsi_status:    0x0
+uscsi_timeout:   120
+uscsi_bufaddr:   0x0
+uscsi_buflen:    0
+uscsi_resid:     0
+uscsi_rqlen:     18
+uscsi_rqstatus:  0x0
+uscsi_rqresid:   18
+uscsi_rqbuf ptr: 0x80cc783
+uscsi_rqbuf:     &lt;data not available&gt;
+ret: -1 errno: 5 (I/O error)
+uscsi_flags:     0x10003
+uscsi_status:    0x0
+uscsi_timeout:   100
+uscsi_bufaddr:   0x0
+uscsi_buflen:    0
+uscsi_resid:     0
+uscsi_rqlen:     18
+uscsi_rqstatus:  0x0
+uscsi_rqresid:   18
+uscsi_rqbuf ptr: 0x80cc783
+uscsi_rqbuf:     &lt;data not available&gt;
+ret: -1 errno: 5 (I/O error)
+uscsi_flags:     0x10003
+uscsi_status:    0x0
+uscsi_timeout:   100
+uscsi_bufaddr:   0x8044960
+uscsi_buflen:    16
+uscsi_resid:     16
+uscsi_rqlen:     18
+uscsi_rqstatus:  0x0
+uscsi_rqresid:   18
+uscsi_rqbuf ptr: 0x80cc783
+uscsi_rqbuf:     &lt;data not available&gt;
+ret: -1 errno: 5 (I/O error)
+uscsi_flags:     0x10003
+uscsi_status:    0x0
+uscsi_timeout:   100
+uscsi_bufaddr:   0x0
+uscsi_buflen:    0
+uscsi_resid:     0
+uscsi_rqlen:     18
+uscsi_rqstatus:  0x0
+uscsi_rqresid:   18
+uscsi_rqbuf ptr: 0x80cc783
+uscsi_rqbuf:     &lt;data not available&gt;
+/bin/cdrecord.bin: I/O error. prevent/allow medium removal: scsi sendcmd: no error
+CDB:  1E 00 00 00 00 00
+status: 0x0 (GOOD STATUS)
+cmd finished after 12.079s timeout 100s
+/bin/cdrecord.bin: fifo had 53657 puts and 53657 gets.
+/bin/cdrecord.bin: fifo was 50 times empty and 11871 times full, min fill was 0%.
+
+
+Joerg Schilling wrote:
+&gt;<i> Richard Skelton &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi Joerg,
+</I>&gt;&gt;<i> I tried a TDK disk but this time my Laptop DAM was not fast enough.
+</I>&gt;&gt;<i> The label says it's a 1-16x
+</I>&gt;&gt;<i> So I tried to burn a 8x but get the same :-(
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> You could use cdrecord debug=1 ..... to switch on the debugging between the
+</I>&gt;<i> libscg layer and the USCSI (Sun) layer and find out what the USCSI laye
+</I>&gt;<i> returns for:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Fixating...
+</I>&gt;<i> /bin/cdrecord.bin: I/O error. flush cache: scsi sendcmd: no error
+</I>&gt;<i> CDB:  35 00 00 00 00 00 00 00 00 00
+</I>&gt;<i> status: 0x0 (GOOD STATUS)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> as additional information.
+</I>&gt;<i>
+</I>&gt;<i> J&#246;rg
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i>  EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)
+</I>&gt;<i>        <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+</I>&gt;<i>  URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</I>&gt;<i>   
+</I>
+-- 
+
+
+
+Cheers
+
+Richard Skelton
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Richard.Skelton at infineon.com</A>
+Infineon Technologies UK Ltd
+Infineon House
+Great Western Court
+Hunts Ground Road
+Stoke Gifford
+Bristol
+BS34 8HP
+Tel +44(0)117 9528808
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000336.html">[Cdrecord-support] Problem fixating svn 105
+</A></li>
+	<LI>Next message: <A HREF="000338.html">[Cdrecord-support] cdrtools-2.01.01a56 ready
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#337">[ date ]</a>
+              <a href="thread.html#337">[ thread ]</a>
+              <a href="subject.html#337">[ subject ]</a>
+              <a href="author.html#337">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

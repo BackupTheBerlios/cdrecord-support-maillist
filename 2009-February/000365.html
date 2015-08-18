@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090226022349.789f9041%40bashir%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000364.html">
+   <LINK REL="Next"  HREF="000366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5</H1>
+    <B>Michael Shell</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Unable%20to%20burn%20media%20with%20IDE%20burner%20in%0A%20VMware%20ESX%20Server%203.5&In-Reply-To=%3C20090226022349.789f9041%40bashir%3E"
+       TITLE="[Cdrecord-support] Unable to burn media with IDE burner in VMware ESX Server 3.5">list1 at michaelshell.org
+       </A><BR>
+    <I>Thu Feb 26 08:23:49 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000364.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+        <LI>Next message: <A HREF="000366.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 25 Feb 2009 16:56:24 +0100
+<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">Joerg.Schilling at fokus.fraunhofer.de</A> (Joerg Schilling) wrote:
+
+&gt;<i> This is not correct!
+</I>&gt;<i> 
+</I>&gt;<i> If you have just one drive, call:
+</I>&gt;<i> 
+</I>&gt;<i> cdrecord
+</I>&gt;<i> 
+</I>&gt;<i> else call:
+</I>&gt;<i> 
+</I>&gt;<i> cdrecord -scanbus 
+</I>&gt;<i> 
+</I>&gt;<i> and then use one of the listed devices.
+</I>
+
+  J&#246;rg,
+
+I know I am not running the very latest cdrecord, but I haven't got
+around to updating my system and I have been very happy with my
+version of cdrecord (2.01.01a2) with the dev=ATA: interface. I
+have used it a lot and it has served me well. Perhaps it will
+do so for the original poster as well. 
+
+On my system:
+
+[root]: cdrecord -scanbus
+Cdrecord-Clone 2.01 (i586-pc-linux-gnu) Copyright (C) 1995-2004 J&#246;rg Schilling
+cdrecord: Warning: Running on Linux-2.6.25.4
+cdrecord: There are unsettled issues with Linux-2.5 and newer.
+cdrecord: If you have unexpected problems, please try Linux-2.4 or Solaris.
+cdrecord: No such file or directory. Cannot open '/dev/pg*'. Cannot open SCSI driver.
+cdrecord: For possible targets try 'cdrecord -scanbus'.
+cdrecord: For possible transport specifiers try 'cdrecord dev=help'.
+
+
+However:
+
+[root]: cdrecord dev=ATA: -scanbus
+Cdrecord-Clone 2.01 (i586-pc-linux-gnu) Copyright (C) 1995-2004 J&#246;rg Schilling
+cdrecord: Warning: Running on Linux-2.6.25.4
+cdrecord: There are unsettled issues with Linux-2.5 and newer.
+cdrecord: If you have unexpected problems, please try Linux-2.4 or Solaris.
+scsidev: 'ATA:'
+devname: 'ATA'
+scsibus: -1 target: -1 lun: -1
+Warning: Using badly designed ATAPI via /dev/hd* interface.
+Linux sg driver version: 3.5.27
+Using libscg version 'schily-0.8'.
+scsibus0:
+        0,0,0     0) *
+        0,1,0     1) 'MATSHITA' 'LS-120 VER5   00' 'F515' Removable Disk
+        0,2,0     2) *
+        0,3,0     3) *
+        0,4,0     4) *
+        0,5,0     5) *
+        0,6,0     6) *
+        0,7,0     7) *
+scsibus1:
+        1,0,0   100) '_NEC    ' 'DVD_RW ND-4551A ' '1-09' Removable CD-ROM
+        1,1,0   101) *
+        1,2,0   102) *
+        1,3,0   103) *
+        1,4,0   104) *
+        1,5,0   105) *
+        1,6,0   106) *
+        1,7,0   107) *
+
+
+
+If you changed this behavior since 2.01.01a2, do let us know with which
+version the change occurred (if you know off the top of your head). The
+original poster is using 2.01.01a44.
+
+I tried to update to 2.01.01a58 to retest the above, however make complained:
+
+
+checking if Linux include file /usr/src/linux/include/linux/ext2_fs.h is broken... yes
+checking if Linux include file scsi/scsi.h is broken... no
+checking if Linux include file /usr/src/linux/include/scsi/scsi.h is broken... no
+checking if Linux include file scsi/sg.h is broken... no
+checking if Linux include file /usr/src/linux/include/scsi/sg.h is broken... no
+
+Warning: *** /usr/src/linux/include contains broken include files ***
+Warning: *** /usr/src/linux/include is not used this reason ***
+Warning: This may result in the inability to use recent Linux kernel interfaces
+
+Warning: *** linux/ext2_fs.h is not usable at all ***
+Warning: *** This makes it impossible to support Linux file flags ***
+You may try to compile using 'make COPTX=-DTRY_EXT2_FS'
+
+
+And thus, trying 2.01.01a58 will have to wait until I update my system.
+
+
+  Cheers,
+
+  Mike
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000364.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+	<LI>Next message: <A HREF="000366.html">[Cdrecord-support] Unable to burn media with IDE burner in	VMware ESX Server 3.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#365">[ date ]</a>
+              <a href="thread.html#365">[ thread ]</a>
+              <a href="subject.html#365">[ subject ]</a>
+              <a href="author.html#365">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

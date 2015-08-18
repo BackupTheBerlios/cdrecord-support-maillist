@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2013-August/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20schily-2013-07-29%20failure%20on%20FreeBSD%209.1&In-Reply-To=%3C521b8d8e.7cV0xXcgav7DTUUl%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000944.html">
+   <LINK REL="Next"  HREF="000946.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20schily-2013-07-29%20failure%20on%20FreeBSD%209.1&In-Reply-To=%3C521b8d8e.7cV0xXcgav7DTUUl%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Mon Aug 26 19:17:02 CEST 2013</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000944.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+        <LI>Next message: <A HREF="000946.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Antonio Olivares &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">olivares14031 at gmail.com</A>&gt; wrote:
+
+&gt;<i> Dear Sir,
+</I>&gt;<i>
+</I>&gt;<i> On a FreeBSD 9.1 machine which has the cdrecord from FreeBSD ports, I
+</I>&gt;<i> want to install cdrecord from source.  I copy Gmake to /usr/local/bin/
+</I>&gt;<i> and run Gmake
+</I>&gt;<i>
+</I>&gt;<i> $ uname -a
+</I>&gt;<i> FreeBSD e213-amd64-1.grullahighschool.org 9.1-RELEASE-p6 FreeBSD
+</I>&gt;<i> 9.1-RELEASE-p6 #0: Wed Aug 21 20:40:52 UTC 2013
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">root at amd64-builder.daemonology.net</A>:/usr/obj/usr/src/sys/GENERIC  amd64
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> $ Gmake
+</I>&gt;<i> NOTICE: Using bootstrap 'Makefile' to make 'all'
+</I>&gt;<i> cd psmake &amp;&amp; sh ./MAKE-all
+</I>&gt;<i> Checking for working bootstrap make...
+</I>&gt;<i> ./MAKE-all: ./smake: not found
+</I>&gt;<i> Creating bootstrap make...
+</I>&gt;<i> Removing old objects...
+</I>&gt;<i> Removing old config cache files...
+</I>&gt;<i> done.
+</I>&gt;<i> Checking for source files...
+</I>&gt;<i> Source files are not present...
+</I>&gt;<i> Creating links to source files...
+</I>&gt;<i> Checking for rotten symlinks...
+</I>&gt;<i> testing for uname...
+</I>&gt;<i> Trying to find GCC
+</I>&gt;<i> SYSTEM:        FreeBSD
+</I>&gt;<i> CC:        gcc
+</I>&gt;<i> OPT:        -O
+</I>&gt;<i> CFLAGS:
+</I>&gt;<i> INCLUDE:    -Iinclude -I.
+</I>&gt;<i>
+</I>&gt;<i> creating cache ./config.cache
+</I>&gt;<i> checking host system type... amd64-unknown-freebsd9.1
+</I>&gt;<i> checking if sh is bash... no
+</I>...
+
+&gt;<i> -DNO_SCANSTACK -DNO_USG_STDIO -DSCHILY_PRINT archconf.c
+</I>&gt;<i> In file included from archconf.c:31:
+</I>&gt;<i> include/schily/hostname.h:47:56: error: schily/netdb.h: No such file
+</I>&gt;<i> or directory
+</I>
+Thank you for the hint, a symlink is missing.
+
+cd psmake/include/schily
+ln -s ../../../include/schily/netdb.h
+
+and try again.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000944.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+	<LI>Next message: <A HREF="000946.html">[Cdrecord-support] schily-2013-07-29 failure on FreeBSD 9.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

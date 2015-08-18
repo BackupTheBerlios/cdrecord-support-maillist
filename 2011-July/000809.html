@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] Compile cdrtools with MinGW
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E34212F.9050806%40gmx.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000808.html">
+   <LINK REL="Next"  HREF="000810.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] Compile cdrtools with MinGW</H1>
+    <B>Johannes Hausensteiner</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20Compile%20cdrtools%20with%20MinGW&In-Reply-To=%3C4E34212F.9050806%40gmx.net%3E"
+       TITLE="[Cdrecord-support] Compile cdrtools with MinGW">johau at gmx.net
+       </A><BR>
+    <I>Sat Jul 30 17:20:15 CEST 2011</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000808.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+        <LI>Next message: <A HREF="000810.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I am sorry for not coming back for a while. I had a hard disc failure
+on my main computer and it took me soome time to recover with fragments
+of the damaged disk and the latest backup.
+---
+Now I took on again the task of building the cdrtools under MS Windows
+using MinGW/MSYS. I saw that there is a new SW distribution
+&quot;schily-2011-07-26&quot;. I downloaded it and tried to build it. Here are my
+results and findings:
+* I have applied similar changes to smake/make.c as I did when compiling
+   smake-1.2.1
+
+* add &quot;test -h ...&quot; in psmake/MAKE-sh (as previously discussed)
+
+* replace the single quotes qith double quotes in RULES/r-smake.dep
+   (as previously discussed)
+
+* replace $O/$@ with $(ARCHDIR)/$@ in RULES/r-smake-obj (as discussed
+   before)
+   I did not yet explore this issue furthere, why $O sometimes is not
+   set correctly. Although I think this can be resolved I wanted to go
+   ahead with the overall building process.
+
+* libschily/searchinpath.c is unchanged from schily-dist-pre5 so the
+   issue is still the same that it does not find sh.exe.
+
+These issues are already known and under investigation (I hope). The
+following are new (for me):
+
+* in include/schily/libport.h the getgr..() functions are declared
+   errornously; they should be of the type 'struct group *' instead of
+   'struct passwd *' - a copy/paste error
+
+* in include/schily/mconfig.h the definitions for PATH_DELIM... are
+   for a MinGW in a separate #ifdef - section. But in line 83 IS_UNIX
+   gets defined for MinGW, too. Thus there are some &quot;redefined macro&quot;
+   warnings are produced by the compiler. I suggest to add a check for
+   __MINGW32__ in line 82, similar to __DJGPP__. The resulting paragraph
+   would be then:
+#ifndef IS_UNIX
+# if (defined(unix) || defined(__unix) || defined(__unix__)) &amp;&amp; \
+   !defined(__DJGPP__) &amp;&amp; !defined(__MINGW32__)
+#   define  IS_UNIX
+# endif
+#endif
+   I do not know whether the IS_UNIX macro does have impact on
+   conditional code in other files.
+
+* missing header files: pwd.h, grp.h, sys/utsname.h, sys/times.h
+
+* mkdir(): under Unix mkdir() takes two parameters, the directory name
+   and the permissions. Under DOS/Windows it has only one parameter, the
+   directory name. Could this be handled by the autoconf system?
+
+* missing system calls/library functions: pipe(), fork(), wait(),
+   mkstemp(). These produce linker errors for several programs.
+
+* missing macros/constants: SIGHUP, SIGPIPE, SIGQUIT, SIGALARM, SIGKILL.
+   Maybe related to pipe(), fork(), wait()?
+
+* missing macro S_IFLNK: MinGW is not aware of links (this is in
+   contrast to Cygwin). S_IFLNK is used in sccs/sccs/cmd/src/diff.c;
+   it is used in other locations, too, but there is where the compiling
+   problem occurs. My suggestion is to guard the S_IFLNK case with an
+   #ifdef S_IFLNK condition, like it is done in libfind/find_list.c
+
+* missing macro F_GETFD: this is used in scgcheck/scgcheck.c. A
+   solution could be to define it, if not already defined, to 0, or
+   introduce another macro similar to libschily/fexec.c. Or a more
+   general solution in a header file created by autoconf.
+
+* &quot;illegal macro definition 'i386-mingw32_nt-gcc' in MAKEFLAGS&quot;. This
+   is a message produce by smake. I had this already when compiling the
+   final smake using the bootstrap smake within smake-1.2.1. I
+   investigated it a little but not in depth when I saw it happens in the
+   deep of smake. The compilation process was only affected slightly
+   since it happend only in building the man pages. I do not know how
+   we continue on this issue.
+
+Questions:
+* How can I create a cdrtools package out of the complete Schily
+   distribution? Some of the problems are within programs that I am not
+   interested in.
+
+* Did you check the searchfileinpath() function?
+
+
+I have attached a build log.
+
+
+Best regards,
+
+Johannes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: schily-2011-07-26_build.log.gz
+Type: application/x-gzip
+Size: 20909 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110730/89f842d9/attachment.bin">https://lists.berlios.de/pipermail/cdrecord-support/attachments/20110730/89f842d9/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000808.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+	<LI>Next message: <A HREF="000810.html">[Cdrecord-support] Compile cdrtools with MinGW
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>

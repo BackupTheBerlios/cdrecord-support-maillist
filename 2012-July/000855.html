@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Cdrecord-support] BD-RE: getting nominal max write speed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/cdrecord-support/2012-July/index.html" >
+   <LINK REL="made" HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C50110a6f.OJMud3ZCiui9m3w6%25Joerg.Schilling%40fokus.fraunhofer.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000854.html">
+   <LINK REL="Next"  HREF="000856.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Cdrecord-support] BD-RE: getting nominal max write speed</H1>
+    <B>Joerg Schilling</B> 
+    <A HREF="mailto:cdrecord-support%40lists.berlios.de?Subject=Re%3A%20%5BCdrecord-support%5D%20BD-RE%3A%20getting%20nominal%20max%20write%20speed&In-Reply-To=%3C50110a6f.OJMud3ZCiui9m3w6%25Joerg.Schilling%40fokus.fraunhofer.de%3E"
+       TITLE="[Cdrecord-support] BD-RE: getting nominal max write speed">Joerg.Schilling at fokus.fraunhofer.de
+       </A><BR>
+    <I>Thu Jul 26 11:14:23 CEST 2012</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000854.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+        <LI>Next message: <A HREF="000856.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#855">[ date ]</a>
+              <a href="thread.html#855">[ thread ]</a>
+              <a href="subject.html#855">[ subject ]</a>
+              <a href="author.html#855">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Omega Weapon &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">omegaphil at gmail.com</A>&gt; wrote:
+
+&gt;<i> Right, I have done more work on this - since I am calling the correct
+</I>&gt;<i> mkisofs and cdrecord direct, I now get 2x burning - I assume this means
+</I>&gt;<i> the strange defect recovery stuff is no longer happening? I had
+</I>&gt;<i> previously told k3b to use cdrecord whereever possible, perhaps
+</I>&gt;<i> growisofs was somehow to blame for the previous slow burning.
+</I>
+growisofa operates on formatted media and this enforces a defect handling that 
+makes writes slow.
+
+
+&gt;<i> So, now I am in a position where the drive probably doesnt recognise the
+</I>&gt;<i> media, and subsequently burns at 2x rather than the media's rated 6x. To
+</I>&gt;<i> counter this I used the following:
+</I>&gt;<i>
+</I>&gt;<i> /opt/schily/bin/cdrecord -v -multi -fs=8m -driveropts=forcespeed
+</I>&gt;<i> -speed=4 -dev=/dev/sr0 &quot;/mnt/Storage_1/Temporary Storage
+</I>&gt;<i> Folder/Processing Folder/Burning/disc_image.iso&quot;
+</I>&gt;<i>
+</I>&gt;<i> However, cdrecord says 'Starting to write CD/DVD/BD at speed 0 in real
+</I>&gt;<i> SAO mode for multi session' - presumably if the force speed stuff works,
+</I>&gt;<i> it should say 4x? It then proceeds to burn at 2x.
+</I>&gt;<i>
+</I>&gt;<i> Am I correct in understanding that this is wrong? The drive reports that
+</I>&gt;<i> it supports forcespeed.
+</I>
+Cdrecord depends on the speed selection of the drive. You may request a write 
+speed from the drive but the drive may ignore this request and select a lower 
+speed.
+
+The actual speed depends on the constraints and the drive/media pairing is one 
+of the criteria.
+
+J&#246;rg
+
+-- 
+ EMail:<A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg at schily.isdn.cs.tu-berlin.de</A> (home) J&#246;rg Schilling D-13353 Berlin
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">js at cs.tu-berlin.de</A>                (uni)  
+       <A HREF="https://lists.berlios.de/mailman/listinfo/cdrecord-support">joerg.schilling at fokus.fraunhofer.de</A> (work) Blog: <A HREF="http://schily.blogspot.com/">http://schily.blogspot.com/</A>
+ URL:  <A HREF="http://cdrecord.berlios.de/private/">http://cdrecord.berlios.de/private/</A> <A HREF="ftp://ftp.berlios.de/pub/schily">ftp://ftp.berlios.de/pub/schily</A>
+</PRE>
+
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000854.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+	<LI>Next message: <A HREF="000856.html">[Cdrecord-support] BD-RE: getting nominal max write speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#855">[ date ]</a>
+              <a href="thread.html#855">[ thread ]</a>
+              <a href="subject.html#855">[ subject ]</a>
+              <a href="author.html#855">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/cdrecord-support">More information about the Cdrecord-support
+mailing list</a><br>
+</body></html>
